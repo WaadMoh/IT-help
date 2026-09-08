@@ -1,1 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT HELP Portal</title>
+  <div style="text-align:center; margin:30px;">
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search for a problem..."
+        onkeyup="searchProblems()"
+        style="width:300px; padding:10px; border-radius:8px;"
+    >
+</div>
 
+<div id="problems">
+
+    <div class="card problem">
+        <h3>Wi-Fi Issues</h3>
+        wifi.html
+            <button>Open Guide</button>
+        </a>
+    </div>
+
+    <div class="card problem">
+        <h3>Forgot Password</h3>
+        password.html
+            <button>Open Guide</button>
+        </a>
+    </div>
+
+    <div class="card problem">
+        <h3>Microsoft Teams Problems</h3>
+        teams.html
+            <button>Open Guide</button>
+        </a>
+    </div>
+
+    <div class="card problem">
+        <h3>Printing Issues</h3>
+        printing.html
+            <button>Open Guide</button>
+        </a>
+    </div>
+
+</div>
+
+<script>
+function searchProblems() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let problems = document.getElementsByClassName("problem");
+
+    for (let i = 0; i < problems.length; i++) {
+        let text = problems[i].innerText.toLowerCase();
+
+        if (text.includes(input)) {
+            problems[i].style.display = "";
+        } else {
+            problems[i].style.display = "none";
+        }
+    }
+}
+</script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f6f9;
+        }
+
+        header {
+            background-color: #0078d4;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #005a9e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background-color: #0078d4;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>IT Student Portal</h1>
+        <p>Resources, Guides, and Support for Students</p>
+    </header>
+
+    <nav>
+        <a hrefbout</a>
+        <a href="#resources">Resources  #contactContact</a>
+    </nav>
+
+    <section id="about">
+        <div class="card">
+            <h2>About</h2>
+            <p>Welcome to the IT HELP Portal. This website helps students solve basic technical issues they may encounter and provides the guides they need to resoilve them. </p>
+        </div>
+    </section>
+
+    <section id="resources">
+        <div class="card">
+            <h2>Resources</h2>
+            <ul>
+                <li>Programming Tutorials</li>
+                <li>Networking Guides</li>
+                <li>Cybersecurity Resources</li>
+                <li>Software Development Tools</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="card">
+            <h2>Contact</h2>
+            <p>Email: support@example.com</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 IT Student Portal</p>
+    </footer>
+
+</body>
+</html>
