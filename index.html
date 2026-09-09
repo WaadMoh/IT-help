@@ -278,7 +278,30 @@
 <footer>
     © Student Support Portal
 </footer>
+    
+<script>
+function searchProblems() {
 
+    let input =
+        document.getElementById("searchInput")
+        .value.toLowerCase();
+
+    let cards =
+        document.getElementsByClassName("problem-card");
+
+    for (let i = 0; i < cards.length; i++) {
+
+        let text =
+            cards[i].innerText.toLowerCase();
+
+        if (text.includes(input)) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+</script>
 </body>
 </html>
 
