@@ -1,20 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Absence Support Documents</title>
+    <title>Wi‑Fi Guide</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 30px;
+        }
+
+        button {
+            background: #0078D4;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .guide {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
-<h1>Absence Support Documents</h1>
+<h1>Wi‑Fi Setup Guide</h1>
 
-<iframe src="Kottab LMS.cleaned.pdf"
+<p>Please select your device:</p>
+
+<button onclick="showAndroid()">Android</button>
+<button onclick="showIOS()">iPhone / iPad</button>
+
+<div id="androidGuide" class="guide">
+    <embed
+        src="wifi-android.pdf"
+        type="application/pdf"
         width="100%"
-        height="800px">
-</iframe>
-    
-    <br><br>
-    <a href="index.html">
-        <button>Back to Home</button>
-    </a>
+        height="1200px">
+</div>
+
+<div id="iosGuide" class="guide">
+    <embed
+        src="wifi-ios>
+
+<a href="index.html">
+    <button>Back to Homee.display = "block";
+    document.getElementById("iosGuide").style.display = "none";
+}
+
+function showIOS() {
+    document.getElementById("iosGuide").style.display = "block";
+    document.getElementById("androidGuide").style.display = "none";
+}
+</script>
+
 </body>
 </html>
