@@ -33,7 +33,7 @@
 <p>Please select your device:</p>
 
 <button onclick="showAndroid()">Android</button>
-<button onclick="showIOS()">iPhone / iPad</button>
+<button onclick="showIOS()">IOS</button>
 
 <div id="androidGuide" class="guide">
     <embed
@@ -45,10 +45,20 @@
 
 <div id="iosGuide" class="guide">
     <embed
-        src="WI-FI Connectivity Guide - IOS.pdf>
+   
+        src="WI-FI Connectivity Guide - IOS.pdf"
+        type="application/pdf"
+        width="100%"
+        heighty Guide - IOS.pdf">
 
 <a href="index.html">
     <button>Back to Homee.display = "block";
+    document.getElementById("iosGuide").style.display = "none";
+}
+
+<script>
+function showAndroid() {
+    document.getElementById("androidGuide").style.display = "block";
     document.getElementById("iosGuide").style.display = "none";
 }
 
