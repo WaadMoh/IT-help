@@ -16,9 +16,11 @@
             --ecae-blue: #0034A8;
             --ecae-dark-blue: #00277F;
             --ecae-light-blue: #EDF3FF;
+            --ecae-teal: #ADEDEA;
             --background: #F5F7FA;
             --text-dark: #1F2937;
             --text-grey: #5B6472;
+            --success: #157347;
             --white: #FFFFFF;
         }
 
@@ -28,6 +30,10 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             min-height: 100vh;
             background: var(--background);
@@ -35,7 +41,13 @@
             font-family: "Segoe UI", Arial, sans-serif;
         }
 
-        /* Header */
+        button {
+            font-family: inherit;
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
 
         .page-header {
             background: var(--ecae-blue);
@@ -78,7 +90,9 @@
             object-fit: contain;
         }
 
-        /* Main content */
+        /* =========================================
+           MAIN CONTENT
+        ========================================= */
 
         main {
             width: 92%;
@@ -102,7 +116,9 @@
             line-height: 1.7;
         }
 
-        /* Guide options */
+        /* =========================================
+           GUIDE OPTIONS
+        ========================================= */
 
         .guide-options {
             display: grid;
@@ -159,16 +175,21 @@
         }
 
         .guide-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 100%;
             max-width: 235px;
+            min-height: 49px;
             padding: 13px 18px;
             border: 2px solid var(--ecae-blue);
             border-radius: 9px;
             background: var(--ecae-blue);
             color: white;
+            font-size: 15px;
             font-weight: 700;
             text-decoration: none;
+            cursor: pointer;
             transition: 0.3s;
         }
 
@@ -187,7 +208,9 @@
             color: var(--ecae-dark-blue);
         }
 
-        /* Back button */
+        /* =========================================
+           BACK BUTTON
+        ========================================= */
 
         .back-section {
             margin-top: 32px;
@@ -199,16 +222,251 @@
             padding: 12px 22px;
             border: 2px solid var(--ecae-blue);
             border-radius: 9px;
+            background: white;
             color: var(--ecae-blue);
             font-weight: 700;
             text-decoration: none;
+            transition: 0.3s;
         }
 
         .back-button:hover {
             background: var(--ecae-light-blue);
         }
 
-        /* Footer */
+        /* =========================================
+           INTERACTIVE GUIDE
+        ========================================= */
+
+        .interactive-guide {
+            display: none;
+        }
+
+        .interactive-guide.visible {
+            display: block;
+        }
+
+        .interactive-heading {
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .interactive-heading h2 {
+            margin: 17px 0 8px;
+            color: var(--ecae-blue);
+            font-size: 28px;
+        }
+
+        .interactive-heading p {
+            color: var(--text-grey);
+            line-height: 1.7;
+        }
+
+        .return-button {
+            padding: 11px 18px;
+            border: 2px solid var(--ecae-blue);
+            border-radius: 8px;
+            background: white;
+            color: var(--ecae-blue);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .return-button:hover {
+            background: var(--ecae-light-blue);
+        }
+
+        /* =========================================
+           PROGRESS BAR
+        ========================================= */
+
+        .progress-information {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            color: var(--ecae-blue);
+            font-weight: 700;
+        }
+
+        .progress-bar {
+            height: 10px;
+            margin-bottom: 24px;
+            border-radius: 20px;
+            background: #DCE5EF;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 20%;
+            height: 100%;
+            background: var(--ecae-blue);
+            transition: width 0.3s ease;
+        }
+
+        /* =========================================
+           STEP CARDS
+        ========================================= */
+
+        .step-card {
+            display: none;
+            padding: 34px;
+            border: 1px solid #DCE5F3;
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 8px 25px rgba(0, 52, 168, 0.09);
+        }
+
+        .step-card.active {
+            display: block;
+            animation: showStep 0.35s ease;
+        }
+
+        @keyframes showStep {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-number {
+            display: inline-block;
+            padding: 7px 13px;
+            border-radius: 7px;
+            background: var(--ecae-teal);
+            color: #004F4A;
+            font-weight: 700;
+        }
+
+        .step-card h3 {
+            margin: 16px 0 12px;
+            color: var(--ecae-blue);
+            font-size: 24px;
+        }
+
+        .instruction-list {
+            margin: 18px 0;
+            padding-left: 24px;
+        }
+
+        .instruction-list li {
+            margin-bottom: 11px;
+            line-height: 1.75;
+        }
+
+        /* =========================================
+           INFORMATION NOTES
+        ========================================= */
+
+        .information-note {
+            margin: 18px 0;
+            padding: 15px;
+            border-left: 5px solid var(--ecae-blue);
+            border-radius: 8px;
+            background: var(--ecae-light-blue);
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           STEP LINKS
+        ========================================= */
+
+        .step-links {
+            margin-top: 18px;
+        }
+
+        .step-link {
+            display: inline-block;
+            margin: 5px 5px 5px 0;
+            padding: 11px 18px;
+            border: 2px solid var(--ecae-blue);
+            border-radius: 8px;
+            background: var(--ecae-light-blue);
+            color: var(--ecae-blue);
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .step-link:hover {
+            background: #DCE8FF;
+        }
+
+        /* =========================================
+           NAVIGATION BUTTONS
+        ========================================= */
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .next-button,
+        .previous-button {
+            padding: 12px 19px;
+            border: 2px solid var(--ecae-blue);
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .next-button {
+            background: var(--ecae-blue);
+            color: white;
+        }
+
+        .next-button:hover {
+            background: var(--ecae-dark-blue);
+        }
+
+        .previous-button {
+            background: white;
+            color: var(--ecae-blue);
+        }
+
+        .previous-button:hover {
+            background: var(--ecae-light-blue);
+        }
+
+        /* =========================================
+           COMPLETION SCREEN
+        ========================================= */
+
+        .completion-card {
+            text-align: center;
+        }
+
+        .completion-icon {
+            margin-bottom: 12px;
+            font-size: 58px;
+        }
+
+        .completion-card h3 {
+            color: var(--success);
+        }
+
+        .completion-card p {
+            line-height: 1.7;
+        }
+
+        .completion-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
 
         footer {
             margin-top: 50px;
@@ -218,7 +476,9 @@
             text-align: center;
         }
 
-        /* Mobile */
+        /* =========================================
+           MOBILE
+        ========================================= */
 
         @media (max-width: 700px) {
             .header-container {
@@ -237,11 +497,36 @@
             .guide-option {
                 min-height: 300px;
             }
+
+            .step-card {
+                padding: 25px 19px;
+            }
+
+            .navigation-buttons {
+                flex-direction: column-reverse;
+            }
+
+            .navigation-buttons button {
+                width: 100%;
+            }
+
+            .completion-actions {
+                flex-direction: column;
+            }
+
+            .completion-actions button,
+            .completion-actions a {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
     <header class="page-header">
         <div class="header-container">
@@ -256,8 +541,7 @@
             </div>
 
             <div class="header-logo">
-                <img
-                    src="Logoc.png"
+                Logoc.png
             </div>
 
         </div>
@@ -265,79 +549,490 @@
 
     <main>
 
-        <section class="introduction">
-            <h2>Select a Guide Format</h2>
+        <!-- =========================================
+             FORMAT SELECTION
+        ========================================== -->
 
-            <p>
-                Follow an interactive step-by-step guide or open the
-                original PDF document.
-            </p>
-        </section>
+        <div id="formatSelection">
 
-        <section class="guide-options">
-
-            <!-- Interactive guide -->
-
-            <article class="guide-option">
-
-                <div class="option-icon" aria-hidden="true">
-                    💻
-                </div>
-
-                <h3>Interactive Guide</h3>
+            <section class="introduction">
+                <h2>Select a Guide Format</h2>
 
                 <p>
-                    Follow the portal access and document submission
-                    instructions one step at a time.
+                    Follow an interactive step-by-step guide or open
+                    the original PDF document.
                 </p>
+            </section>
+
+            <section class="guide-options">
+
+                <!-- Interactive guide option -->
+
+                <article class="guide-option">
+
+                    <div class="option-icon" aria-hidden="true">
+                        💻
+                    </div>
+
+                    <h3>Interactive Guide</h3>
+
+                    <p>
+                        Follow the portal access and document
+                        submission instructions one step at a time.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="guide-button"
+                        onclick="openInteractiveGuide()"
+                    >
+                        Start Interactive Guide
+                    </button>
+
+                </article>
+
+                <!-- PDF guide option -->
+
+                <article class="guide-option">
+
+                    <div class="option-icon" aria-hidden="true">
+                        📄
+                    </div>
+
+                    <h3>PDF Guide</h3>
+
+                    <p>
+                        Open the original Absence Support Documents
+                        guide with its instructions and screenshots.
+                    </p>
+
+                    Absence Support Documents.cleaned.pdf
+                        View PDF Guide
+                    </a>
+
+                </article>
+
+            </section>
+
+            <div class="back-section">
                 <a
-                    href="Absence_Interactive.html"
-                    class="guide-button"
+                    href="index.html"
+                    class="back-button"
                 >
-                   Start Interactive Guide
+                    ← Back to Support Portal
                 </a>
-                
+            </div>
 
-            </article>
-
-            <!-- PDF guide -->
-
-            <article class="guide-option">
-
-                <div class="option-icon" aria-hidden="true">
-                    📄
-                </div>
-
-                <h3>PDF Guide</h3>
-
-                <p>
-                    Open the original Absence Support Documents guide
-                    with its instructions and screenshots.
-                </p>
-
-                <a
-                    href="Absence Support Documents.cleaned.pdf"
-                    class="guide-button"
-                >
-                   View PDF Guide
-                </a>
-                
-
-            </article>
-
-        </section>
-
-        <div class="back-section">
-            <a
-                href="index.html"
-                class="guide-button"
-            >
-                 ← Back to Support Portal
-            </a>
-            
         </div>
 
+        <!-- =========================================
+             INTERACTIVE GUIDE
+        ========================================== -->
+
+        <section
+            class="interactive-guide"
+            id="interactiveGuide"
+        >
+
+            <div class="interactive-heading">
+
+                <button
+                    type="button"
+                    class="return-button"
+                    onclick="returnToGuideOptions()"
+                >
+                    ← Choose Another Format
+                </button>
+
+                <h2>
+                    Interactive Absence Support Documents Guide
+                </h2>
+
+                <p>
+                    Follow the instructions one step at a time.
+                </p>
+
+            </div>
+
+            <!-- Progress -->
+
+            <div class="progress-information">
+                <span id="stepText">Step 1 of 5</span>
+                <span id="progressText">20%</span>
+            </div>
+
+            <div class="progress-bar">
+                <div
+                    class="progress-fill"
+                    id="progressFill"
+                ></div>
+            </div>
+
+            <!-- =====================================
+                 STEP 1
+            ====================================== -->
+
+            <article class="step-card active" data-step="1">
+
+                <span class="step-number">Step 1</span>
+
+                <h3>Open the ECAE Website or Portal</h3>
+
+                <ol class="instruction-list">
+                    <li>
+                        Open the Emirates College for Advanced
+                        Education official website.
+                    </li>
+
+                    <li>
+                        Select <strong>Login</strong> in the top-right
+                        corner of the page.
+                    </li>
+
+                    <li>
+                        Choose <strong>ECAE Portal</strong> from the
+                        dropdown menu.
+                    </li>
+
+                    <li>
+                        You can also open the ECAE Portal directly
+                        using the button below.
+                    </li>
+                </ol>
+
+                <div class="step-links">
+
+                    <a
+                        href="https://www.ecae.ac.ae/en/"
+                        class="step-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Open ECAE Website
+                    </a>
+
+                    <a
+                        href="https://portal.ecae.ac.ae/"
+                        class="step-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Open ECAE Portal
+                    </a>
+
+                </div>
+
+                <div class="navigation-buttons">
+                    <span></span>
+
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showStep(2)"
+                    >
+                        Next
+                    </button>
+                </div>
+
+            </article>
+
+            <!-- =====================================
+                 STEP 2
+            ====================================== -->
+
+            <article class="step-card" data-step="2">
+
+                <span class="step-number">Step 2</span>
+
+                <h3>Sign In and Choose Students</h3>
+
+                <ol class="instruction-list">
+                    <li>
+                        Sign in using your ECAE username and password.
+                    </li>
+
+                    <li>
+                        After the portal opens, select the
+                        <strong>Students</strong> tab.
+                    </li>
+                </ol>
+
+                <div class="information-note">
+                    <strong>Password reminder:</strong>
+                    If your password has expired, update it through
+                    Office 365. Then try signing in to the ECAE Portal
+                    again using your new password.
+                </div>
+
+                <div class="step-links">
+                    <a
+                        href="https://www.office.com"
+                        class="step-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Open Office 365
+                    </a>
+                </div>
+
+                <div class="navigation-buttons">
+
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showStep(1)"
+                    >
+                        Previous
+                    </button>
+
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showStep(3)"
+                    >
+                        Next
+                    </button>
+
+                </div>
+
+            </article>
+
+            <!-- =====================================
+                 STEP 3
+            ====================================== -->
+
+            <article class="step-card" data-step="3">
+
+                <span class="step-number">Step 3</span>
+
+                <h3>Open Student Service</h3>
+
+                <ol class="instruction-list">
+                    <li>
+                        On the ECAE Portal, find the
+                        <strong>Important Links (Internal)</strong>
+                        section.
+                    </li>
+
+                    <li>
+                        This section is located on the right-side
+                        panel of the ECAE Portal.
+                    </li>
+
+                    <li>
+                        Select <strong>Student Service</strong>.
+                    </li>
+                </ol>
+
+                <div class="navigation-buttons">
+
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showStep(2)"
+                    >
+                        Previous
+                    </button>
+
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showStep(4)"
+                    >
+                        Next
+                    </button>
+
+                </div>
+
+            </article>
+
+            <!-- =====================================
+                 STEP 4
+            ====================================== -->
+
+            <article class="step-card" data-step="4">
+
+                <span class="step-number">Step 4</span>
+
+                <h3>Select Absence Support Documents</h3>
+
+                <ol class="instruction-list">
+                    <li>
+                        On the Student Service homepage, find the
+                        available student services.
+                    </li>
+
+                    <li>
+                        Select
+                        <strong>Absence Support Documents</strong>.
+                    </li>
+
+                    <li>
+                        You can also use the direct Student Service
+                        link below.
+                    </li>
+                </ol>
+
+                <div class="information-note">
+                    The Absence Support Documents service allows
+                    students to provide supporting documents related
+                    to approved absences.
+                </div>
+
+                <div class="step-links">
+                    <a
+                        href="https://ecae.sharepoint.com/sites/StudentService"
+                        class="step-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Open Student Service
+                    </a>
+                </div>
+
+                <div class="navigation-buttons">
+
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showStep(3)"
+                    >
+                        Previous
+                    </button>
+
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showStep(5)"
+                    >
+                        Next
+                    </button>
+
+                </div>
+
+            </article>
+
+            <!-- =====================================
+                 STEP 5
+            ====================================== -->
+
+            <article class="step-card" data-step="5">
+
+                <span class="step-number">Step 5</span>
+
+                <h3>Complete the Service</h3>
+
+                <ol class="instruction-list">
+                    <li>
+                        Open
+                        <strong>Absence Support Documents</strong>.
+                    </li>
+
+                    <li>
+                        Fill in the requested information.
+                    </li>
+
+                    <li>
+                        Add the relevant supporting document.
+                    </li>
+
+                    <li>
+                        The supporting document may be a medical
+                        certificate or other official documentation.
+                    </li>
+
+                    <li>
+                        Check the information and document before
+                        completing the service.
+                    </li>
+                </ol>
+
+                <div class="information-note">
+                    Make sure your supporting document is clear and
+                    that the information you provide is correct.
+                </div>
+
+                <div class="navigation-buttons">
+
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showStep(4)"
+                    >
+                        Previous
+                    </button>
+
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="finishGuide()"
+                    >
+                        Finish Guide
+                    </button>
+
+                </div>
+
+            </article>
+
+            <!-- =====================================
+                 COMPLETION SCREEN
+            ====================================== -->
+
+            <article
+                class="step-card completion-card"
+                id="completionCard"
+            >
+
+                <div
+                    class="completion-icon"
+                    aria-hidden="true"
+                >
+                    ✅
+                </div>
+
+                <h3>Guide Complete</h3>
+
+                <p>
+                    You have reached the end of the Absence Support
+                    Documents guide.
+                </p>
+
+                <div class="completion-actions">
+
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="restartGuide()"
+                    >
+                        Restart Guide
+                    </button>
+
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="returnToGuideOptions()"
+                    >
+                        Choose Another Format
+                    </button>
+
+                    <a
+                        href="index.html"
+                        class="back-button"
+                    >
+                        Back to Support Portal
+                    </a>
+
+                </div>
+
+            </article>
+
+        </section>
+
     </main>
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
 
     <footer>
         <p>
@@ -346,10 +1041,138 @@
         </p>
     </footer>
 
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
     <script>
+        const totalGuideSteps = 5;
+
+        function openInteractiveGuide() {
+            document.getElementById(
+                "formatSelection"
+            ).style.display = "none";
+
+            document.getElementById(
+                "interactiveGuide"
+            ).classList.add("visible");
+
+            showStep(1);
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        function returnToGuideOptions() {
+            document.getElementById(
+                "interactiveGuide"
+            ).classList.remove("visible");
+
+            document.getElementById(
+                "formatSelection"
+            ).style.display = "block";
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        function showStep(stepNumber) {
+            const cards = document.querySelectorAll(
+                ".step-card"
+            );
+
+            cards.forEach(function (card) {
+                card.classList.remove("active");
+            });
+
+            const selectedStep = document.querySelector(
+                '.step-card[data-step="' +
+                stepNumber +
+                '"]'
+            );
+
+            if (selectedStep) {
+                selectedStep.classList.add("active");
+            }
+
+            const progress = Math.round(
+                (stepNumber / totalGuideSteps) * 100
+            );
+
+            document.getElementById(
+                "stepText"
+            ).textContent =
+                "Step " +
+                stepNumber +
+                " of " +
+                totalGuideSteps;
+
+            document.getElementById(
+                "progressText"
+            ).textContent =
+                progress + "%";
+
+            document.getElementById(
+                "progressFill"
+            ).style.width =
+                progress + "%";
+
+            document.getElementById(
+                "interactiveGuide"
+            ).scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+
+        function finishGuide() {
+            const cards = document.querySelectorAll(
+                ".step-card"
+            );
+
+            cards.forEach(function (card) {
+                card.classList.remove("active");
+            });
+
+            document.getElementById(
+                "completionCard"
+            ).classList.add("active");
+
+            document.getElementById(
+                "stepText"
+            ).textContent =
+                "Guide completed";
+
+            document.getElementById(
+                "progressText"
+            ).textContent =
+                "100%";
+
+            document.getElementById(
+                "progressFill"
+            ).style.width =
+                "100%";
+
+            document.getElementById(
+                "interactiveGuide"
+            ).scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+
+        function restartGuide() {
+            showStep(1);
+        }
+
         document.getElementById(
             "currentYear"
-        ).textContent = new Date().getFullYear();
+        ).textContent =
+            new Date().getFullYear();
     </script>
 
 </body>
