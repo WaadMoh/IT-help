@@ -3,377 +3,1088 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Student Portal Support</title>
 
     <style>
+        /* =========================================
+           GENERAL SETTINGS
+        ========================================= */
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Segoe UI, Arial, sans-serif;
-        }
-
-        body{
-            background:#f5f7fa;
-        }
-
-        header{
-            background:linear-gradient(135deg, #0078D4, #005A9E);
-            color:white;
-            text-align:center;
-            padding:60px 20px;
+        :root {
+            --ecae-blue: #0034A8;
+            --ecae-dark-blue: #00277F;
+            --ecae-light-blue: #82C3FF;
+            --ecae-teal: #ADEDEA;
+            --ecae-grey: #C4CFD4;
+            --white: #FFFFFF;
+            --background: #F5F7FA;
+            --text-dark: #1F2937;
+            --text-grey: #5B6472;
         }
 
-        header h1{
-            font-size:42px;
-            margin-bottom:10px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        header p{
-            font-size:18px;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .search-section{
-            text-align:center;
-            margin-top:40px;
+        body {
+            min-height: 100vh;
+            background: var(--background);
+            color: var(--text-dark);
+            font-family: "Segoe UI", Arial, sans-serif;
         }
 
-        .search-section input{
-            width:60%;
-            max-width:600px;
-            padding:15px;
-            border-radius:30px;
-            border:none;
-            box-shadow:0 2px 10px rgba(0,0,0,0.15);
-            font-size:16px;
+        button,
+        input {
+            font: inherit;
         }
 
-        .title{
-            text-align:center;
-            margin-top:50px;
-            margin-bottom: 30px;
-            color:#333;
+        /* =========================================
+           ACCESSIBILITY
+        ========================================= */
+
+        .skip-link {
+            position: absolute;
+            top: -50px;
+            left: 20px;
+            z-index: 1000;
+            padding: 12px 18px;
+            border-radius: 8px;
+            background: white;
+            color: var(--ecae-blue);
+            font-weight: 700;
+            text-decoration: none;
         }
 
-        .problem-card{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-            gap:40px;
-            padding:40px;
-            max-width:1200px;
-            margin:auto;
+        .skip-link:focus {
+            top: 20px;
         }
 
-        .problem-card{
-            background:white;
-            border-radius:15px;
-            padding:25px;
-            text-align:center;
-            box-shadow:0 4px 15px rgba(0,0,0,0.1);
-            transition:0.3s;
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .site-header {
+            position: relative;
+            overflow: hidden;
+            background: var(--ecae-blue);
+            color: var(--white);
+            padding: 55px 20px;
         }
 
-        .problem-card:hover{
-            transform:translateY(-5px);
+        .site-header::before {
+            content: "";
+            position: absolute;
+            top: -130px;
+            left: -100px;
+            width: 330px;
+            height: 330px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
         }
 
-        .problem-card h3{
-            color:#0078D4;
-            margin-bottom:15px;
+        .site-header::after {
+            content: "";
+            position: absolute;
+            right: -100px;
+            bottom: -180px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .problem-card button{
-            background:#0078D4;
-            color:white;
-            border:none;
-            padding:12px 20px;
-            border-radius:8px;
-            cursor:pointer;
+        .header-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 45px;
+            width: 92%;
+            max-width: 1200px;
+            margin: auto;
         }
 
-        .problem-card button:hover{
-            background:#005A9E;
+        .header-text {
+            max-width: 700px;
         }
 
-        footer{
-            background:#1f2937;
-            color:white;
-            text-align:center;
-            padding:20px;
-            margin-top:40px;
-        }
-        footer{
-            background:#1f2937;
-            color:white;
-            padding:40px 20px;
-            margin-top:50px;
+        .header-text h1 {
+            margin-bottom: 14px;
+            font-size: clamp(33px, 5vw, 48px);
+            line-height: 1.2;
         }
 
-
-        .footer-container{
-            display:flex;
-            justify-content:space-around;flex-wrap:wrap;
-            max-width:1000px;
-            margin:auto;
-        }
-        
-        .footer-section{
-            width:300px;
-            text-align:left;
-        }
-        
-        .footer-section h3{
-            margin-bottom:15px;
-            color:#60a5fa;
-        }
-        
-        .footer-section p{
-            margin-bottom:10px;
+        .header-text p {
+            max-width: 650px;
+            font-size: 18px;
+            line-height: 1.7;
+            opacity: 0.95;
         }
 
+        .header-logo {
+            flex-shrink: 0;
+        }
+
+        .header-logo img {
+            display: block;
+            width: 210px;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* =========================================
+           SEARCH
+        ========================================= */
+
+        .search-section {
+            width: 92%;
+            max-width: 800px;
+            margin: 38px auto 0;
+            text-align: center;
+        }
+
+        .search-label {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--ecae-blue);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .search-wrapper {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            color: var(--ecae-blue);
+            font-size: 20px;
+            pointer-events: none;
+        }
+
+        .search-section input {
+            width: 100%;
+            padding: 17px 55px;
+            border: 2px solid transparent;
+            border-radius: 30px;
+            outline: none;
+            background: white;
+            color: var(--text-dark);
+            box-shadow: 0 5px 20px rgba(0, 52, 168, 0.12);
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .search-section input:focus {
+            border-color: var(--ecae-blue);
+            box-shadow: 0 5px 24px rgba(0, 52, 168, 0.18);
+        }
+
+        .clear-search {
+            position: absolute;
+            top: 50%;
+            right: 14px;
+            display: none;
+            transform: translateY(-50%);
+            width: 35px;
+            height: 35px;
+            border: none;
+            border-radius: 50%;
+            background: transparent;
+            color: #667282;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .clear-search:hover {
+            background: #EDF3FF;
+            color: var(--ecae-blue);
+        }
+
+        .search-result-text {
+            min-height: 24px;
+            margin-top: 14px;
+            color: var(--text-grey);
+            font-size: 15px;
+        }
+
+        /* =========================================
+           MAIN CONTENT
+        ========================================= */
+
+        main {
+            min-height: 500px;
+        }
+
+        .title-section {
+            width: 92%;
+            max-width: 1200px;
+            margin: 50px auto 10px;
+            text-align: center;
+        }
+
+        .title-section h2 {
+            margin-bottom: 10px;
+            color: var(--ecae-blue);
+            font-size: 31px;
+        }
+
+        .title-section p {
+            color: var(--text-grey);
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           PROBLEM CARDS
+        ========================================= */
+
+        .problems-container {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fit,
+                minmax(260px, 1fr)
+            );
+            gap: 25px;
+            width: 92%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 35px 0 60px;
+        }
+
+        .problem-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 205px;
+            padding: 28px 23px;
+            border: 1px solid rgba(0, 52, 168, 0.1);
+            border-top: 5px solid var(--ecae-blue);
+            border-radius: 15px;
+            background: white;
+            text-align: center;
+            box-shadow: 0 5px 18px rgba(0, 52, 168, 0.08);
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(0, 52, 168, 0.25);
+            box-shadow: 0 12px 28px rgba(0, 52, 168, 0.15);
+        }
+
+        .card-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            margin-bottom: 16px;
+            border-radius: 12px;
+            background: #EDF3FF;
+            color: var(--ecae-blue);
+            font-size: 25px;
+        }
+
+        .problem-card h3 {
+            flex-grow: 1;
+            margin-bottom: 20px;
+            color: var(--ecae-blue);
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .guide-button {
+            display: inline-block;
+            min-width: 135px;
+            padding: 12px 20px;
+            border: 2px solid var(--ecae-blue);
+            border-radius: 8px;
+            background: var(--ecae-blue);
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .guide-button:hover {
+            border-color: var(--ecae-dark-blue);
+            background: var(--ecae-dark-blue);
+            transform: translateY(-2px);
+        }
+
+        .guide-button:focus {
+            outline: 3px solid var(--ecae-light-blue);
+            outline-offset: 3px;
+        }
+
+        /* =========================================
+           NO SEARCH RESULTS
+        ========================================= */
+
+        .no-results {
+            display: none;
+            width: 92%;
+            max-width: 700px;
+            margin: 10px auto 50px;
+            padding: 35px 25px;
+            border: 1px solid #D9E3EC;
+            border-radius: 15px;
+            background: white;
+            text-align: center;
+        }
+
+        .no-results-icon {
+            margin-bottom: 12px;
+            font-size: 45px;
+        }
+
+        .no-results h3 {
+            margin-bottom: 8px;
+            color: var(--ecae-blue);
+        }
+
+        .no-results p {
+            color: var(--text-grey);
+            line-height: 1.6;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            margin-top: 10px;
+            background: var(--ecae-blue);
+            color: white;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(
+                3,
+                minmax(220px, 1fr)
+            );
+            gap: 40px;
+            width: 92%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 45px 0 35px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 18px;
+            color: white;
+            font-size: 19px;
+        }
+
+        .footer-section p {
+            margin-bottom: 11px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        .footer-section a {
+            color: white;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .footer-section a:hover {
+            color: var(--ecae-teal);
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .footer-item span:first-child {
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 14px;
+        }
+
+        /* =========================================
+           MOBILE DESIGN
+        ========================================= */
+
+        @media (max-width: 850px) {
+            .header-container {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .header-logo img {
+                width: 175px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .site-header {
+                padding: 40px 18px;
+            }
+
+            .header-text h1 {
+                font-size: 31px;
+            }
+
+            .header-text p {
+                font-size: 16px;
+            }
+
+            .search-section {
+                margin-top: 28px;
+            }
+
+            .search-section input {
+                padding: 15px 48px;
+            }
+
+            .title-section {
+                margin-top: 40px;
+            }
+
+            .title-section h2 {
+                font-size: 26px;
+            }
+
+            .problems-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .problem-card {
+                min-height: 190px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Student Portal Support</h1>
-    <p>Find solutions to common student issues</p>
-</header>
+    #main-content
+        Skip to main content
+    </a>
 
-<div class="search-section">
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Search for..."
-        onkeyup="searchProblems()"
-    >
-</div>
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
-<h2 class="title">What Are You Looking For?</h2>
-    
-<div class="problems-container">
+    <header class="site-header">
+        <div class="header-container">
 
-    <div class="problem-card">
-        <h3>ECAE official website login problem</h3>
-        <a href="ECAE_Official.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+            <div class="header-text">
+                <h1>Student Portal Support</h1>
 
-    <div class="problem-card">
-        <h3>Kottab Learning Management System</h3>
-        <a href="Kottab.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+                <p>
+                    Find clear, step-by-step solutions for common
+                    student systems and services.
+                </p>
+            </div>
 
-    <div class="problem-card">
-        <h3>My Attendance & Advisor</h3>
-        <a href="Attendance.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+            <!--
+                Upload your white ECAE logo to:
+                images/ecae-logo-white.png
 
-    <div class="problem-card">
-        <h3>Registration Letter Request</h3>
-        <a href="Registration.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
-    <div class="problem-card">
-        <h3>ECAE Office 365</h3>
-        <a href="Office_365.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+                If you do not have the logo yet, temporarily remove
+                this entire header-logo div.
+            -->
 
-    <div class="problem-card">
-        <h3>ECAE Email</h3>
-        <a href="Email.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+            <div class="header-logo">
+                images/ecae-logo-white.png
+            </div>
 
-    <div class="problem-card">
-        <h3>ECAE Library</h3>
-        <a href="Library.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+        </div>
+    </header>
 
-    <div class="problem-card">
-        <h3>Students Directory of Institutional Documents</h3>
-        <a href="Documents.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
-    
-    <div class="problem-card">
-        <h3>Feedback/Complaint</h3>
-        <a href="FeedbackComplain.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+    <main id="main-content">
 
-    <div class="problem-card">
-        <h3>Feedback Follow-Up</h3>
-        <a href="Feedback_Follow-Up.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+        <!-- =========================================
+             SEARCH
+        ========================================== -->
 
-    <div class="problem-card">
-        <h3>Research Grant Application Submittal Access</h3>
-        <a href="Research.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+        <section
+            class="search-section"
+            aria-labelledby="search-label"
+        >
+            <label
+                class="search-label"
+                id="search-label"
+                for="searchInput"
+            >
+                Search the support guides
+            </label>
 
-    <div class="problem-card">
-        <h3>ECAE Calendar</h3>
-        <a href="Calendar.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
-    
-    <div class="problem-card">
-        <h3>ECAE Academic Programs</h3>
-        <a href="Academic_Programs.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+            <div class="search-wrapper">
 
-    <div class="problem-card">
-        <h3>Student Information System (SIS) Portal</h3>
-        <a href="Portal.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+                <span class="search-icon" aria-hidden="true">
+                    🔍
+                </span>
 
-    <div class="problem-card">
-        <h3>eClearance & Letter of Completion</h3>
-        <a href="eClearance.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Example: Wi-Fi, email, grades..."
+                    autocomplete="off"
+                    oninput="searchProblems()"
+                >
 
-    <div class="problem-card">
-        <h3>Absence Support Documents</h3>
-        <a href="Absence.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
-    
-    <div class="problem-card">
-        <h3>Grade Appeal</h3>
-        <a href="Grade.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+                <button
+                    type="button"
+                    class="clear-search"
+                    id="clearSearch"
+                    onclick="clearSearchInput()"
+                    aria-label="Clear search"
+                >
+                    ×
+                </button>
 
-    <div class="problem-card">
-        <h3>My Timetable</h3>
-        <a href="Timetable.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+            </div>
 
-    <div class="problem-card">
-        <h3>My Grades</h3>
-        <a href="Grades.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+            <p
+                class="search-result-text"
+                id="searchResultText"
+                aria-live="polite"
+            ></p>
+        </section>
 
-    <div class="problem-card">
-        <h3>Unofficial Transcript</h3>
-        <a href="Unofficial_Transcript.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+        <!-- =========================================
+             GUIDE TITLE
+        ========================================== -->
 
-    <div class="problem-card">
-        <h3>Request a Transcript</h3>
-        <a href="Request.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
-    <div class="problem-card">
-        <h3>Account Authentication Guide</h3>
-        <a href="Account.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+        <section class="title-section">
+            <h2>What Are You Looking For?</h2>
 
-    <div class="problem-card">
-        <h3>WIFI Connectivity Guide</h3>
-        <a href="WIFI.html">
-            <button>Open Guide</button>
-        </a>
-    </div>
+            <p>
+                Select a topic below to open its support guide.
+            </p>
+        </section>
 
-</div>
-<footer>
+        <!-- =========================================
+             PROBLEM CARDS
+        ========================================== -->
 
-    <div class="footer-container">
+        <div class="problems-container" id="problemsContainer">
 
-        <div class="footer-section">
-            <h3>Need More Help?</h3>
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">🌐</div>
 
-            <p>Website: https://esm.gov.ae/servicehub/</p>
-            <p>Email: ithelp@ecae.ac.ae</p>
-            <p>No: 02 5099911</p>
+                <h3>ECAE Official Website Login Problem</h3>
+
+                ECAE_Official.html
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">📚</div>
+
+                <h3>Kottab Learning Management System</h3>
+
+                <a
+                    href="Kottab.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">📋</div>
+
+                <h3>My Attendance &amp; Advisor</h3>
+
+                <a
+                    href="Attendance.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">📄</div>
+
+                <h3>Registration Letter Request</h3>
+
+                <a
+                    href="Registration.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">▦</div>
+
+                <h3>ECAE Office 365</h3>
+
+                Office_365.html
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">✉️</div>
+
+                <h3>ECAE Email</h3>
+
+                <a
+                    href="Email.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">📖</div>
+
+                <h3>ECAE Library</h3>
+
+                <a
+                    href="Library.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">🗂️</div>
+
+                <h3>
+                    Students Directory of Institutional Documents
+                </h3>
+
+                <a
+                    href="Documents.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">💬</div>
+
+                <h3>Feedback/Complaint</h3>
+
+                <a
+                    href="FeedbackComplain.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">🔎</div>
+
+                <h3>Feedback Follow-Up</h3>
+
+                Feedback_Follow-Up.html
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">🔬</div>
+
+                <h3>Research Grant Application Submittal Access</h3>
+
+                <a
+                    href="Research.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">📅</div>
+
+                <h3>ECAE Calendar</h3>
+
+                <a
+                    href="Calendar.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">🎓</div>
+
+                <h3>ECAE Academic Programs</h3>
+
+                Academic_Programs.html
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">💻</div>
+
+                <h3>Student Information System (SIS) Portal</h3>
+
+                <a
+                    href="Portal.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">✅</div>
+
+                <h3>eClearance &amp; Letter of Completion</h3>
+
+                <a
+                    href="eClearance.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">📝</div>
+
+                <h3>Absence Support Documents</h3>
+
+                <a
+                    href="Absence.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">📊</div>
+
+                <h3>Grade Appeal</h3>
+
+                <a
+                    href="Grade.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">🕒</div>
+
+                <h3>My Timetable</h3>
+
+                <a
+                    href="Timetable.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">🏅</div>
+
+                <h3>My Grades</h3>
+
+                <a
+                    href="Grades.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">📑</div>
+
+                <h3>Unofficial Transcript</h3>
+
+                Unofficial_Transcript.html
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">📨</div>
+
+                <h3>Request a Transcript</h3>
+
+                <a
+                    href="Request.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">🔐</div>
+
+                <h3>Account Authentication Guide</h3>
+
+                <a
+                    href="Account.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
+            <article class="problem-card">
+                <div class="card-icon" aria-hidden="true">📶</div>
+
+                <h3>Wi-Fi Connectivity Guide</h3>
+
+                <a
+                    href="WIFI.html"
+                    class="guide-button"
+                >
+                    Open Guide
+                </a>
+            </article>
+
         </div>
 
-        <div class="footer-section">
-            <h3>Location</h3>
+        <!-- Displayed when search has no matching cards -->
 
-            <p>📍Abu Dhabi Campus –Ground Floor Room G17</p>
-            <p>   Al Ain Campus – in Classes</p>
-            <p>   Campus – in Classes</p>
-            
-        <div class="footer-section">
-            <h3>Working Hours</h3>
-            <p> Monday - Thursday</p>
-            <p>    8AM – 9PM</p>
-            <p> Friday</p>
-            <p>    7:30 AM – 12 P</p>
+        <div class="no-results" id="noResults">
+            <div class="no-results-icon" aria-hidden="true">
+                🔍
+            </div>
+
+            <h3>No guide found</h3>
+
+            <p>
+                Try searching with a shorter term such as
+                “email”, “grades”, “Wi-Fi”, or “attendance”.
+            </p>
         </div>
 
-    </div>
+    </main>
 
-</footer>
-    
-<script>
-function searchProblems() {
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
 
-    let input =
-        document.getElementById("searchInput")
-        .value.toLowerCase();
+    <footer>
 
-    let cards =
-        document.getElementsByClassName("problem-card");
+        <div class="footer-container">
 
-    for (let i = 0; i < cards.length; i++) {
+            <section class="footer-section">
+                <h3>Need More Help?</h3>
 
-        let text =
-            cards[i].innerText.toLowerCase();
+                <p class="footer-item">
+                    <span aria-hidden="true">🌐</span>
 
-        if (text.includes(input)) {
-            cards[i].style.display = "";
-        } else {
-            cards[i].style.display = "none";
+                    <span>
+                        <a
+                            href="https://esm.gov.ae/servicehub/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Open Helpdesk Portal
+                        </a>
+                    </span>
+                </p>
+
+                <p class="footer-item">
+                    <span aria-hidden="true">✉️</span>
+
+                    <span>
+                        <a href="mailto:ithelp@ecae.ac.ae">
+                            ithelp@ecae.ac.ae
+                        </a>
+                    </span>
+                </p>
+
+                <p class="footer-item">
+                    <span aria-hidden="true">☎️</span>
+
+                    <span>
+                        tel:025099911
+                            02 5099911
+                        </a>
+                    </span>
+                </p>
+            </section>
+
+            <section class="footer-section">
+                <h3>Location</h3>
+
+                <p class="footer-item">
+                    <span aria-hidden="true">📍</span>
+
+                    <span>
+                        Abu Dhabi Campus<br>
+                        Ground Floor, Room G17
+                    </span>
+                </p>
+
+                <p class="footer-item">
+                    <span aria-hidden="true">📍</span>
+
+                    <span>
+                        Al Ain Campus<br>
+                        Support available in classes
+                    </span>
+                </p>
+            </section>
+
+            <section class="footer-section">
+                <h3>Working Hours</h3>
+
+                <p>
+                    <strong>Monday to Thursday</strong><br>
+                    8:00 AM to 9:00 PM
+                </p>
+
+                <p>
+                    <strong>Friday</strong><br>
+                    7:30 AM to 12:00 PM
+                </p>
+            </section>
+
+        </div>
+
+        <div class="footer-bottom">
+            © <span id="currentYear"></span>
+            Student Support Portal
+        </div>
+
+    </footer>
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+        function searchProblems() {
+            const input = document
+                .getElementById("searchInput")
+                .value
+                .toLowerCase()
+                .trim();
+
+            const cards = document.querySelectorAll(
+                ".problem-card"
+            );
+
+            const noResults = document.getElementById(
+                "noResults"
+            );
+
+            const resultText = document.getElementById(
+                "searchResultText"
+            );
+
+            const clearButton = document.getElementById(
+                "clearSearch"
+            );
+
+            let visibleCards = 0;
+
+            cards.forEach(function (card) {
+                const cardText = card
+                    .textContent
+                    .toLowerCase();
+
+                const isMatch = cardText.includes(input);
+
+                if (isMatch) {
+                    card.style.display = "flex";
+                    visibleCards++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            if (input === "") {
+                resultText.textContent = "";
+                noResults.style.display = "none";
+                clearButton.style.display = "none";
+                return;
+            }
+
+            clearButton.style.display = "block";
+
+            if (visibleCards === 0) {
+                resultText.textContent =
+                    "No matching support guides found.";
+
+                noResults.style.display = "block";
+            } else {
+                resultText.textContent =
+                    visibleCards +
+                    (visibleCards === 1
+                        ? " matching guide found."
+                        : " matching guides found.");
+
+                noResults.style.display = "none";
+            }
         }
-    }
-}
-</script>
-</body>
-</html>
-    © Student Support Portal
-</footer>
+
+        function clearSearchInput() {
+            const searchInput = document.getElementById(
+                "searchInput"
+            );
+
+            searchInput.value = "";
+            searchProblems();
+            searchInput.focus();
+        }
+
+        document.getElementById(
+            "currentYear"
+        ).textContent = new Date().getFullYear();
+    </script>
 
 </body>
+
 </html>
