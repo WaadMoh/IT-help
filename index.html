@@ -500,10 +500,242 @@
                 gap: 32px;
             }
         }
+        /* =========================================
+   PASSWORD REMINDER POP-UP
+========================================= */
+
+.password-popup-overlay {
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(10, 24, 48, 0.72);
+    backdrop-filter: blur(4px);
+}
+
+.password-popup-overlay.hidden {
+    display: none;
+}
+
+.password-popup {
+    position: relative;
+    width: 100%;
+    max-width: 560px;
+    padding: 38px 34px 32px;
+    border-top: 7px solid var(--ecae-blue);
+    border-radius: 18px;
+    background: white;
+    text-align: center;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+    animation: showPasswordPopup 0.35s ease;
+}
+
+@keyframes showPasswordPopup {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.popup-close {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #EDF3FF;
+    color: var(--ecae-blue);
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.popup-close:hover {
+    background: var(--ecae-blue);
+    color: white;
+}
+
+.popup-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 18px;
+    border-radius: 18px;
+    background: #EDF3FF;
+    font-size: 36px;
+}
+
+.password-popup h2 {
+    margin: 0 0 15px;
+    color: var(--ecae-blue);
+    font-size: 26px;
+}
+
+.password-popup > p {
+    margin: 0;
+    color: var(--text-dark);
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.password-popup strong {
+    color: var(--ecae-blue);
+}
+
+.popup-information {
+    margin-top: 20px;
+    padding: 16px;
+    border-left: 5px solid var(--ecae-blue);
+    border-radius: 8px;
+    background: #EDF3FF;
+    color: var(--text-dark);
+    font-size: 15px;
+    line-height: 1.7;
+    text-align: left;
+}
+
+.popup-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.popup-primary-button,
+.popup-secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 19px;
+    border: 2px solid var(--ecae-blue);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.popup-primary-button {
+    background: var(--ecae-blue);
+    color: white;
+}
+
+.popup-primary-button:hover {
+    border-color: var(--ecae-dark-blue);
+    background: var(--ecae-dark-blue);
+}
+
+.popup-secondary-button {
+    background: white;
+    color: var(--ecae-blue);
+}
+
+.popup-secondary-button:hover {
+    background: #EDF3FF;
+}
+
+@media (max-width: 600px) {
+    .password-popup {
+        padding: 34px 22px 25px;
+    }
+
+    .password-popup h2 {
+        font-size: 23px;
+    }
+
+    .popup-actions {
+        flex-direction: column;
+    }
+
+    .popup-primary-button,
+    .popup-secondary-button {
+        width: 100%;
+    }
+}
     </style>
 </head>
 
 <body>
+    <!-- Password Reminder Pop-up -->
+<div
+    class="password-popup-overlay"
+    id="passwordPopup"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="passwordPopupTitle"
+>
+    <div class="password-popup">
+
+        <button
+            type="button"
+            class="popup-close"
+            onclick="closePasswordPopup()"
+            aria-label="Close password reminder"
+        >
+            &times;
+        </button>
+
+        <div class="popup-icon" aria-hidden="true">
+            🔐
+        </div>
+
+        <h2 id="passwordPopupTitle">
+            Password Update Reminder
+        </h2>
+
+        <p>
+            Please update your ECAE password every
+            <strong>60 days</strong> to maintain continuous access
+            to college systems and resources.
+        </p>
+
+        <div class="popup-information">
+            If your password expires, you can still access
+            <strong>Office 365</strong> to update the password.
+            After changing it, try signing in to the college
+            resources again using the new password.
+        </div>
+
+        <div class="popup-actions">
+
+            <a
+                href="https://www.office.com"
+                class="popup-primary-button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Open Office 365
+            </a>
+
+            <button
+                type="button"
+                class="popup-secondary-button"
+                onclick="closePasswordPopup()"
+            >
+                Continue to Support Portal
+            </button>
+
+        </div>
+
+    </div>
+</div>
 
     #main-content
         Skip to main content
@@ -1094,6 +1326,33 @@
         document.getElementById(
             "currentYear"
         ).textContent = new Date().getFullYear();
+
+        function closePasswordPopup() {
+            const popup =
+                document.getElementById("passwordPopup");
+            popup.classList.add("hidden");
+            document.body.style.overflow = "";
+        }
+
+
+        function openPasswordPopup() {
+            const popup =
+                document.getElementById("passwordPopup");
+            popup.classList.remove("hidden");
+            document.body.style.overflow = "hidden";
+        }
+
+
+        window.addEventListener("load", function () {
+            openPasswordPopup();
+        });
+        
+        
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                closePasswordPopup();
+            }
+        });
     </script>
 
 </body>
