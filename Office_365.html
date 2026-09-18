@@ -559,7 +559,37 @@
     </header>
 
     <main>
-
+        <!-- =====================================
+             OFFICE GUIDE SELECTION
+        ====================================== -->
+        
+        <section id="guide-selection" class="selection-container">
+        
+            <h2>Select a Guide</h2>
+        
+            <div class="guide-buttons">
+        
+                <button
+                    type="button"
+                    class="choice-button"
+                    onclick="showLoginGuide()"
+                >
+                    Office 365 Login Guide
+                </button>
+        
+                <button
+                    type="button"
+                    class="choice-button"
+                    onclick="showDownloadGuide()"
+                >
+                    Office 365 Download Guide
+                </button>
+        
+            </div>
+        
+        </section>
+        
+        <div id="login-guide" style="display:none;">
         <!-- =========================================
              FORMAT SELECTION
         ========================================== -->
@@ -914,7 +944,171 @@
                 </div>
 
             </article>
+            </div>
 
+            <div id="download-guide" style="display:none;">
+            <article class="step-card active" data-step="101">
+            
+                <span class="step-number">Step 1</span>
+            
+                <h3>Open Office 365</h3>
+            
+                <ol class="instruction-list">
+                    <li>Open Office 365.</li>
+                    <li>Select Sign In.</li>
+                </ol>
+            
+                download-step1.png
+            
+                <div class="step-links">
+                    <a
+                        href="https://www.office.com"
+                        class="step-link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Open Office 365
+                    </a>
+                </div>
+            
+                <div class="navigation-buttons">
+            
+                    <span></span>
+            
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showStep(102)"
+                    >
+                        Next
+                    </button>
+            
+                </div>
+            
+            </article>
+            <article class="step-card" data-step="102">
+            
+                <span class="step-number">Step 2</span>
+            
+                <h3>Sign In</h3>
+            
+                <ol class="instruction-list">
+                    <li>Enter your ECAE email.</li>
+                    <li>Enter your password.</li>
+                    <li>Select Sign In.</li>
+                </ol>
+            
+                download-step2.png
+            
+                <div class="information-note">
+            
+                    <strong>Important:</strong><br><br>
+            
+                    Students using other corporate devices may need to sign in using:
+            
+                    <br><br>
+            
+                    <strong>ECAE\StudentID</strong>
+            
+                    <br>
+            
+                    Example:
+            
+                    <strong>ECAE\001164</strong>
+            
+                </div>
+            
+                <div class="navigation-buttons">
+            
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showStep(101)"
+                    >
+                        Previous
+                    </button>
+            
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showStep(103)"
+                    >
+                        Next
+                    </button>
+            
+                </div>
+            
+            </article>
+            <article class="step-card" data-step="103">
+            
+                <span class="step-number">Step 3</span>
+            
+                <h3>Select Install Apps</h3>
+            
+                <ol class="instruction-list">
+                    <li>After signing in, the Microsoft 365 portal will open.</li>
+                    <li>Select <strong>Install Apps</strong>.</li>
+                    <li>Select <strong>Microsoft 365 Apps</strong>.</li>
+                </ol>
+            
+                download-step3.png
+            
+                <div class="navigation-buttons">
+            
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showStep(102)"
+                    >
+                        Previous
+                    </button>
+            
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showStep(104)"
+                    >
+                        Next
+                    </button>
+            
+                </div>
+            
+            </article>
+            <article class="step-card" data-step="103">
+            
+                <span class="step-number">Step 3</span>
+            
+                <h3>Select Install Apps</h3>
+            
+                <ol class="instruction-list">
+                    <li>After signing in, the Microsoft 365 portal will open.</li>
+                    <li>Select <strong>Install Apps</strong>.</li>
+                    <li>Select <strong>Microsoft 365 Apps</strong>.</li>
+                </ol>
+            
+                download-step3.png
+            
+                <div class="navigation-buttons">
+            
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showStep(102)"
+                    >
+                        Previous
+                    </button>
+            
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showStep(104)"
+                    >
+                        Next
+                    </button>
+            
+                </div>
+            
+            </article>
         </section>
 
     </main>
@@ -1062,6 +1256,19 @@
             "currentYear"
         ).textContent =
             new Date().getFullYear();
+    </script>
+    <script>
+
+    function showLoginGuide() {
+        document.getElementById("guide-selection").style.display = "none";
+        document.getElementById("login-guide").style.display = "block";
+    }
+    
+    function showDownloadGuide() {
+        document.getElementById("guide-selection").style.display = "none";
+        document.getElementById("download-guide").style.display = "block";
+    }
+    
     </script>
 
 </body>
