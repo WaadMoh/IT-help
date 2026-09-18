@@ -659,7 +659,8 @@
 
             <div class="progress-information">
                 <span id="stepText">Choose Your Device</span>
-                <span id="progressText">0%</span>
+                <span id="progressText">0%
+                </span>
             </div>
 
             <div class="progress-bar">
@@ -669,7 +670,294 @@
                 ></div>
             </div>
 
-
+            <!-- =====================================
+                 DEVICE SELECTION
+            ====================================== -->
+            
+            <article class="step-card active" data-step="1">
+            
+                <span class="step-number">Device Selection</span>
+            
+                <h3>Which Device Are You Using?</h3>
+            
+                <ol class="instruction-list">
+                    <li>Select the type of device you want to connect.</li>
+                    <li>You will only see the instructions for your selected device.</li>
+                </ol>
+            
+                <div class="information-note">
+                    The Wi-Fi settings are different for iPhone/iPad and Android devices.
+                </div>
+            
+                <div class="navigation-buttons">
+            
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showWifiStep(2, 'iOS Step 1 of 3', 33)"
+                    >
+                        iPhone / iPad
+                    </button>
+            
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showWifiStep(5, 'Android Step 1 of 3', 33)"
+                    >
+                        Android
+                    </button>
+            
+                </div>
+            
+            </article>
+            
+            <!-- =====================================
+                 iOS STEP 1
+            ====================================== -->
+            
+            <article class="step-card" data-step="2">
+            
+                <span class="step-number">iOS Step 1</span>
+            
+                <h3>Open Wi-Fi Settings</h3>
+            
+                <ol class="instruction-list">
+                    <li>Open <strong>Settings</strong> on your iPhone or iPad.</li>
+                    <li>Select <strong>Wi-Fi</strong>.</li>
+                    <li>Select <strong>ECAE-BYOD</strong> from the available networks.</li>
+                </ol>
+            
+                <div class="navigation-buttons">
+            
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showDeviceSelection()"
+                    >
+                        Choose Another Device
+                    </button>
+            
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showWifiStep(3, 'iOS Step 2 of 3', 67)"
+                    >
+                        Next
+                    </button>
+            
+                </div>
+            
+            </article>
+            
+            <!-- =====================================
+                 iOS STEP 2
+            ====================================== -->
+            
+            <article class="step-card" data-step="3">
+            
+                <span class="step-number">iOS Step 2</span>
+            
+                <h3>Enter Your ECAE Account Details</h3>
+            
+                <ol class="instruction-list">
+                    <li>Enter your ECAE username.</li>
+                    <li>Enter your ECAE account password.</li>
+                    <li>Tap <strong>Join</strong> or <strong>Connect</strong>.</li>
+                </ol>
+            
+                <div class="information-note">
+                    Enter your Student ID as the username.<br><br>
+                    Example: <strong>002091</strong>
+                </div>
+            
+                <div class="navigation-buttons">
+            
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showWifiStep(2, 'iOS Step 1 of 3', 33)"
+                    >
+                        Previous
+                    </button>
+            
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showWifiStep(4, 'iOS Step 3 of 3', 100)"
+                    >
+                        Next
+                    </button>
+            
+                </div>
+            
+            </article>
+            
+            <!-- =====================================
+                 iOS STEP 3
+            ====================================== -->
+            
+            <article class="step-card" data-step="4">
+            
+                <span class="step-number">iOS Step 3</span>
+            
+                <h3>Trust the Connection</h3>
+            
+                <ol class="instruction-list">
+                    <li>Wait for the certificate information to appear.</li>
+                    <li>Tap <strong>Trust</strong> to complete the setup.</li>
+                    <li>Wait for your device to connect to ECAE-BYOD.</li>
+                </ol>
+            
+                <div class="information-note">
+                    Your iPhone or iPad should now be connected to ECAE-BYOD.
+                </div>
+            
+                <div class="navigation-buttons">
+            
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showWifiStep(3, 'iOS Step 2 of 3', 67)"
+                    >
+                        Previous
+                    </button>
+            
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="finishGuide()"
+                    >
+                        Finish Guide
+                    </button>
+            
+                </div>
+            
+            </article>
+            
+            <!-- =====================================
+                 ANDROID STEP 1
+            ====================================== -->
+            
+            <article class="step-card" data-step="5">
+            
+                <span class="step-number">Android Step 1</span>
+            
+                <h3>Open Wi-Fi Settings</h3>
+            
+                <ol class="instruction-list">
+                    <li>Open Wi-Fi settings on your Android device.</li>
+                    <li>Select <strong>ECAE-BYOD</strong> from the available networks.</li>
+                </ol>
+            
+                <div class="navigation-buttons">
+            
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showDeviceSelection()"
+                    >
+                        Choose Another Device
+                    </button>
+            
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showWifiStep(6, 'Android Step 2 of 3', 67)"
+                    >
+                        Next
+                    </button>
+            
+                </div>
+            
+            </article>
+            
+            <!-- =====================================
+                 ANDROID STEP 2
+            ====================================== -->
+            
+            <article class="step-card" data-step="6">
+            
+                <span class="step-number">Android Step 2</span>
+            
+                <h3>Configure the Wi-Fi Settings</h3>
+            
+                <ol class="instruction-list">
+                    <li>Select <strong>PEAP</strong> as the EAP method.</li>
+                    <li>Select <strong>MSCHAPV2</strong> for Phase 2 authentication.</li>
+                    <li>Set the certificate option to <strong>Don't validate</strong>.</li>
+                    <li>Enter your ECAE Student ID in the Identity field.</li>
+                    <li>Leave the Anonymous Identity field blank.</li>
+                    <li>Enter your ECAE account password.</li>
+                </ol>
+            
+                <div class="information-note">
+                    Enter your Student ID in the Identity field.<br><br>
+                    Example: <strong>0020911</strong>
+                </div>
+            
+                <div class="navigation-buttons">
+            
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showWifiStep(5, 'Android Step 1 of 3', 33)"
+                    >
+                        Previous
+                    </button>
+            
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="showWifiStep(7, 'Android Step 3 of 3', 100)"
+                    >
+                        Next
+                    </button>
+            
+                </div>
+            
+            </article>
+            
+            <!-- =====================================
+                 ANDROID STEP 3
+            ====================================== -->
+            
+            <article class="step-card" data-step="7">
+            
+                <span class="step-number">Android Step 3</span>
+            
+                <h3>Connect to ECAE-BYOD</h3>
+            
+                <ol class="instruction-list">
+                    <li>Review the connection settings.</li>
+                    <li>Tap <strong>Connect</strong>.</li>
+                    <li>Wait for your device to join the ECAE-BYOD network.</li>
+                </ol>
+            
+                <div class="information-note">
+                    Your Android device should now be connected to ECAE-BYOD.
+                </div>
+            
+                <div class="navigation-buttons">
+            
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="showWifiStep(6, 'Android Step 2 of 3', 67)"
+                    >
+                        Previous
+                    </button>
+            
+                    <button
+                        type="button"
+                        class="next-button"
+                        onclick="finishGuide()"
+                    >
+                        Finish Guide
+                    </button>
+            
+                </div>
+            
+            </article>
             <!-- =====================================
                  COMPLETION SCREEN
             ====================================== -->
@@ -689,8 +977,8 @@
                 <h3>Guide Complete</h3>
 
                 <p>
-                    You have reached the end of the Students Directory 
-                    of Institutional Documents guide.
+                    You have reached the end of the Wi-Fi
+                    Connectivity Guide.
                 </p>
 
                 <div class="completion-actions">
@@ -745,129 +1033,110 @@
         const totalGuideSteps = 4;
 
         function openInteractiveGuide() {
-            document.getElementById(
-                "formatSelection"
-            ).style.display = "none";
-
-            document.getElementById(
-                "interactiveGuide"
-            ).classList.add("visible");
-
-            showStep(1);
-
+            document.getElementById("formatSelection").style.display = "none";
+        
+            document.getElementById("interactiveGuide").classList.add("visible");
+        
+            showDeviceSelection();
+        
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
         }
-
+        
         function returnToGuideOptions() {
-            document.getElementById(
-                "interactiveGuide"
-            ).classList.remove("visible");
-
-            document.getElementById(
-                "formatSelection"
-            ).style.display = "block";
-
+            document.getElementById("interactiveGuide").classList.remove("visible");
+        
+            document.getElementById("formatSelection").style.display = "block";
+        
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
         }
-
-        function showStep(stepNumber) {
-            const cards = document.querySelectorAll(
-                ".step-card"
-            );
-
+        
+        function hideAllStepCards() {
+            const cards = document.querySelectorAll(".step-card");
+        
             cards.forEach(function (card) {
                 card.classList.remove("active");
             });
-
-            const selectedStep = document.querySelector(
-                '.step-card[data-step="' +
-                stepNumber +
-                '"]'
+        }
+        
+        function showDeviceSelection() {
+            hideAllStepCards();
+        
+            const deviceSelection = document.querySelector(
+                '.step-card[data-step="1"]'
             );
-
+        
+            deviceSelection.classList.add("active");
+        
+            document.getElementById("stepText").textContent =
+                "Choose Your Device";
+        
+            document.getElementById("progressText").textContent =
+                "0%";
+        
+            document.getElementById("progressFill").style.width =
+                "0%";
+        
+            scrollToInteractiveGuide();
+        }
+        
+        function showWifiStep(stepNumber, stepLabel, progress) {
+            hideAllStepCards();
+        
+            const selectedStep = document.querySelector(
+                '.step-card[data-step="' + stepNumber + '"]'
+            );
+        
             if (selectedStep) {
                 selectedStep.classList.add("active");
             }
-
-            const progress = Math.round(
-                (stepNumber / totalGuideSteps) * 100
-            );
-
-            document.getElementById(
-                "stepText"
-            ).textContent =
-                "Step " +
-                stepNumber +
-                " of " +
-                totalGuideSteps;
-
-            document.getElementById(
-                "progressText"
-            ).textContent =
+        
+            document.getElementById("stepText").textContent =
+                stepLabel;
+        
+            document.getElementById("progressText").textContent =
                 progress + "%";
-
-            document.getElementById(
-                "progressFill"
-            ).style.width =
+        
+            document.getElementById("progressFill").style.width =
                 progress + "%";
-
-            document.getElementById(
-                "interactiveGuide"
-            ).scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+        
+            scrollToInteractiveGuide();
         }
-
+        
         function finishGuide() {
-            const cards = document.querySelectorAll(
-                ".step-card"
-            );
-
-            cards.forEach(function (card) {
-                card.classList.remove("active");
-            });
-
-            document.getElementById(
-                "completionCard"
-            ).classList.add("active");
-
-            document.getElementById(
-                "stepText"
-            ).textContent =
+            hideAllStepCards();
+        
+            document.getElementById("completionCard").classList.add("active");
+        
+            document.getElementById("stepText").textContent =
                 "Guide completed";
-
-            document.getElementById(
-                "progressText"
-            ).textContent =
+        
+            document.getElementById("progressText").textContent =
                 "100%";
-
-            document.getElementById(
-                "progressFill"
-            ).style.width =
+        
+            document.getElementById("progressFill").style.width =
                 "100%";
-
-            document.getElementById(
-                "interactiveGuide"
-            ).scrollIntoView({
+        
+            scrollToInteractiveGuide();
+        }
+        
+        function restartGuide() {
+            showDeviceSelection();
+        }
+        
+        function scrollToInteractiveGuide() {
+            document.getElementById("interactiveGuide").scrollIntoView({
                 behavior: "smooth",
                 block: "start"
             });
         }
-
-        function restartGuide() {
-            showStep(1);
-        }
-
-        document.getElementById(
-            "currentYear"
-        ).textContent =
+        
+        document.getElementById("currentYear").textContent =
             new Date().getFullYear();
     </script>
 
