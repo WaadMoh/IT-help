@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +9,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>ECAE Office 365</title>
+    <title>ECAE Office 365 Support</title>
 
     <style>
         :root {
@@ -51,9 +50,9 @@
         ========================================= */
 
         .page-header {
+            padding: 35px 20px;
             background: var(--ecae-blue);
             color: white;
-            padding: 35px 20px;
         }
 
         .header-container {
@@ -118,15 +117,71 @@
         }
 
         /* =========================================
-           GUIDE OPTIONS
+           OFFICE GUIDE SELECTION
         ========================================= */
+
+        .office-guide-selection {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(260px, 1fr));
+            gap: 26px;
+        }
+
+        .office-guide-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 310px;
+            padding: 34px 28px;
+            border: 1px solid #DCE5F3;
+            border-top: 6px solid var(--ecae-blue);
+            border-radius: 18px;
+            background: white;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 52, 168, 0.09);
+            transition: 0.3s;
+        }
+
+        .office-guide-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 14px 32px rgba(0, 52, 168, 0.16);
+        }
+
+        .office-guide-card .option-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 76px;
+            height: 76px;
+            margin-bottom: 18px;
+            border-radius: 18px;
+            background: var(--ecae-light-blue);
+            font-size: 37px;
+        }
+
+        .office-guide-card h3 {
+            margin-bottom: 12px;
+            color: var(--ecae-blue);
+            font-size: 22px;
+        }
+
+        .office-guide-card p {
+            flex-grow: 1;
+            margin-bottom: 22px;
+            color: var(--text-grey);
+            line-height: 1.7;
+        }
+
+        /* =========================================
+           FORMAT OPTIONS
+        ========================================= */
+
+        .format-section {
+            display: none;
+        }
 
         .guide-options {
             display: grid;
-            grid-template-columns: repeat(
-                2,
-                minmax(260px, 1fr)
-            );
+            grid-template-columns: repeat(2, minmax(260px, 1fr));
             gap: 26px;
         }
 
@@ -134,7 +189,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 330px;
+            min-height: 340px;
             padding: 34px 28px;
             border: 1px solid #DCE5F3;
             border-top: 6px solid var(--ecae-blue);
@@ -175,6 +230,14 @@
             line-height: 1.7;
         }
 
+        .format-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
         .guide-button {
             display: inline-flex;
             align-items: center;
@@ -199,18 +262,18 @@
             background: var(--ecae-dark-blue);
         }
 
-        .pdf-button {
+        .secondary-button {
             background: white;
             color: var(--ecae-blue);
         }
 
-        .pdf-button:hover {
+        .secondary-button:hover {
             background: var(--ecae-light-blue);
             color: var(--ecae-dark-blue);
         }
 
         /* =========================================
-           BACK BUTTON
+           BACK BUTTONS
         ========================================= */
 
         .back-section {
@@ -218,8 +281,11 @@
             text-align: center;
         }
 
-        .back-button {
-            display: inline-block;
+        .back-button,
+        .return-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 12px 22px;
             border: 2px solid var(--ecae-blue);
             border-radius: 9px;
@@ -227,10 +293,12 @@
             color: var(--ecae-blue);
             font-weight: 700;
             text-decoration: none;
+            cursor: pointer;
             transition: 0.3s;
         }
 
-        .back-button:hover {
+        .back-button:hover,
+        .return-button:hover {
             background: var(--ecae-light-blue);
         }
 
@@ -262,20 +330,6 @@
             line-height: 1.7;
         }
 
-        .return-button {
-            padding: 11px 18px;
-            border: 2px solid var(--ecae-blue);
-            border-radius: 8px;
-            background: white;
-            color: var(--ecae-blue);
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .return-button:hover {
-            background: var(--ecae-light-blue);
-        }
-
         /* =========================================
            PROGRESS BAR
         ========================================= */
@@ -297,7 +351,7 @@
         }
 
         .progress-fill {
-            width: 20%;
+            width: 25%;
             height: 100%;
             background: var(--ecae-blue);
             transition: width 0.3s ease;
@@ -359,12 +413,14 @@
         }
 
         .step-image {
-            width: 100%;
-            max-width: 700px;
             display: block;
-            margin: 20px auto;
+            width: 100%;
+            max-width: 760px;
+            height: auto;
+            margin: 22px auto;
+            border: 1px solid #DCE5F3;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         /* =========================================
@@ -500,10 +556,12 @@
                 width: 160px;
             }
 
+            .office-guide-selection,
             .guide-options {
                 grid-template-columns: 1fr;
             }
 
+            .office-guide-card,
             .guide-option {
                 min-height: 300px;
             }
@@ -545,146 +603,185 @@
                 <h1>ECAE Office 365</h1>
 
                 <p>
-                    Choose how you would like to view this support
-                    guide.
+                    Choose the Office 365 guide you need and follow
+                    the instructions one step at a time.
                 </p>
             </div>
 
-             <div class="header-logo">
-               <img
-                   src="Logoc.png"
+            <div class="header-logo">
+                Logoc.png
             </div>
 
         </div>
     </header>
 
     <main>
-        <!-- =====================================
-             OFFICE GUIDE SELECTION
-        ====================================== -->
-        
-            <div class="guide-buttons">
-            
-                <button
-                    type="button"
-                    class="choice-button"
-                    onclick="showLoginGuide()"
-                >
-                    💻 Office 365 Login Guide
-                </button>
-            
-                <button
-                    type="button"
-                    class="choice-button"
-                    onclick="showDownloadGuide()"
-                >
-                    ⬇️ Office 365 Download Guide
-                </button>
-            
+
+        <!-- =========================================
+             GUIDE TYPE SELECTION
+        ========================================== -->
+
+        <section id="guideSelection">
+
+            <div class="introduction">
+                <h2>Select an Office 365 Guide</h2>
+
+                <p>
+                    Choose whether you need help signing in or
+                    downloading Microsoft 365 applications.
+                </p>
             </div>
-        
+
+            <div class="office-guide-selection">
+
+                <article class="office-guide-card">
+
+                    <div class="option-icon" aria-hidden="true">
+                        🔐
+                    </div>
+
+                    <h3>Office 365 Login Guide</h3>
+
+                    <p>
+                        Learn how to access the ECAE Portal and sign
+                        in to Office 365 using your ECAE account.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="guide-button"
+                        onclick="selectGuide('login')"
+                    >
+                        Open Login Guide
+                    </button>
+
+                </article>
+
+                <article class="office-guide-card">
+
+                    <div class="option-icon" aria-hidden="true">
+                        ⬇️
+                    </div>
+
+                    <h3>Office 365 Download Guide</h3>
+
+                    <p>
+                        Learn how to open the Microsoft download page
+                        and download the application for your device.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="guide-button"
+                        onclick="selectGuide('download')"
+                    >
+                        Open Download Guide
+                    </button>
+
+                </article>
+
+            </div>
+
+            <div class="back-section">
+                <a
+                    href="index.html"
+                    class="back-button"
+                >
+                    ← Back to Support Portal
+                </a>
+            </div>
+
         </section>
-        
-        <div id="login-guide" style="display:none;">
+
         <!-- =========================================
              FORMAT SELECTION
         ========================================== -->
-            <div id="formatSelection">
-            
-                <section class="introduction">
-            
-                    <h2>Choose Login Guide Format</h2>
-            
+
+        <section
+            class="format-section"
+            id="formatSelection"
+        >
+
+            <div class="introduction">
+
+                <h2 id="formatTitle">
+                    Choose Guide Format
+                </h2>
+
+                <p id="formatDescription">
+                    Select how you would like to view this guide.
+                </p>
+
+            </div>
+
+            <div class="guide-options">
+
+                <article class="guide-option">
+
+                    <div class="option-icon" aria-hidden="true">
+                        💻
+                    </div>
+
+                    <h3>Interactive Guide</h3>
+
                     <p>
-                        Select how you would like to view the Office 365 Login Guide.
+                        Follow clear instructions with screenshots,
+                        progress tracking, and navigation buttons.
                     </p>
-            
-                </section>
-            
-                <section class="guide-options">
-            
-                    <!-- Interactive Guide -->
-            
-                    <article class="guide-option">
-            
-                        <div class="option-icon">
-                            💻
-                        </div>
-            
-                        <h3>Interactive Guide</h3>
-            
-                        <p>
-                            Follow the Office 365 login process step by step.
-                        </p>
-            
-                        <button
-                            type="button"
-                            class="guide-button"
-                            onclick="openInteractiveGuide()"
-                        >
-                            Start Interactive Guide
-                        </button>
-            
-                    </article>
-            
-                    <!-- PDF Guide -->
-            
-                    <article class="guide-option">
-            
-                        <div class="option-icon">
-                            📄
-                        </div>
-            
-                        <h3>PDF Guide</h3>
-            
-                        <p>
-                            Open the original PDF guide.
-                        </p>
-            
+
+                    <button
+                        type="button"
+                        class="guide-button"
+                        onclick="openInteractiveGuide()"
+                    >
+                        Start Interactive Guide
+                    </button>
+
+                </article>
+
+                <article class="guide-option">
+
+                    <div class="option-icon" aria-hidden="true">
+                        📄
+                    </div>
+
+                    <h3>Video and PDF Guide</h3>
+
+                    <p>
+                        Watch the original video guide or open the
+                        original PDF instructions.
+                    </p>
+
+                    <div class="format-buttons">
+
+                        office-login.mp4
+                            Watch Video Guide
+                        </a>
+
                         ECAE Office 365.cleaned.pdf
                             View PDF Guide
                         </a>
-            
-                    </article>
-            
-                    <!-- Video Guide -->
-            
-                    <article class="guide-option">
-            
-                        <div class="option-icon">
-                            🎥
-                        </div>
-            
-                        <h3>Video Guide</h3>
-            
-                        <p>
-                            Watch a video walkthrough of the login process.
-                        </p>
-            
-                        office-login.mp4
-                            Watch Video
-                        </a>
-            
-                    </article>
-            
-                </section>
-            
-                <div class="back-section">
-            
-                    <button
-                        type="button"
-                        class="back-button"
-                        onclick="
-                            document.getElementById('login-guide').style.display='none';
-                            document.getElementById('guide-selection').style.display='block';
-                        "
-                    >
-                        ← Back
-                    </button>
-            
-                </div>
-            
+
+                    </div>
+
+                </article>
+
             </div>
+
+            <div class="back-section">
+
+                <button
+                    type="button"
+                    class="back-button"
+                    onclick="returnToGuideSelection()"
+                >
+                    ← Choose Another Guide
+                </button>
+
+            </div>
+
+        </section>
+
         <!-- =========================================
              INTERACTIVE GUIDE
         ========================================== -->
@@ -699,13 +796,13 @@
                 <button
                     type="button"
                     class="return-button"
-                    onclick="returnToGuideOptions()"
+                    onclick="returnToFormatSelection()"
                 >
                     ← Choose Another Format
                 </button>
 
-                <h2>
-                    Interactive ECAE Office 365 Guide
+                <h2 id="interactiveTitle">
+                    Interactive Office 365 Guide
                 </h2>
 
                 <p>
@@ -714,11 +811,11 @@
 
             </div>
 
-            <!-- Progress -->
+            <!-- Progress information -->
 
             <div class="progress-information">
                 <span id="stepText">Step 1 of 4</span>
-                <span id="progressText">20%</span>
+                <span id="progressText">25%</span>
             </div>
 
             <div class="progress-bar">
@@ -729,195 +826,533 @@
             </div>
 
             <!-- =====================================
-                 STEP 1
+                 LOGIN GUIDE STEPS
             ====================================== -->
 
+            <div id="loginSteps">
 
-            <article class="step-card active" data-step="1">
-            
-                <span class="step-number">Step 1</span>
-            
-                <h3>Open Office 365</h3>
-            
-                <ol class="instruction-list">
-                    <li>Open Office 365 using the button below.</li>
-                    <li>You will be redirected to the Microsoft sign in page.</li>
-                </ol>
-            
-                <div class="step-links">
-            
-                    <a
-                        href="https://www.office.com"
-                        class="step-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Open Office 365
-                    </a>
-            
-                </div>
-            
-                <div class="navigation-buttons">
-                    <span></span>
-            
-                    <button
-                        type="button"
-                        class="next-button"
-                        onclick="showStep(2)"
-                    >
-                        Next
-                    </button>
-                </div>
-            
-            </article>
+                <!-- LOGIN STEP 1 -->
 
-            <!-- =====================================
-                 STEP 2
-            ====================================== -->
-            
-            <article class="step-card" data-step="2">
-            
-                <span class="step-number">Step 2</span>
-            
-                <h3>Sign In</h3>
-            
-                <ol class="instruction-list">
-                    <li>Enter your ECAE email address.</li>
-                    <li>Select Next.</li>
-                    <li>Enter your password.</li>
-                    <li>Select Sign In.</li>
-                </ol>
-            
-                <div class="information-note">
-                    <strong>Important:</strong><br><br>
-            
-                    Students using other corporate devices may need to sign in using the following username format:
-            
-                    <br><br>
-            
-                    <strong>ECAE\StudentID</strong>
-            
-                    <br>
-            
-                    Example:
-            
-                    <strong>ECAE\001164</strong>
-                </div>
-            
-                <div class="navigation-buttons">
-            
-                    <button
-                        type="button"
-                        class="previous-button"
-                        onclick="showStep(1)"
-                    >
-                        Previous
-                    </button>
-            
-                    <button
-                        type="button"
-                        class="next-button"
-                        onclick="showStep(3)"
-                    >
-                        Next
-                    </button>
-            
-                </div>
-            
-            </article>
-            <!-- =====================================
-                 STEP 3
-            ====================================== -->
-
-            <article class="step-card" data-step="3">
-
-    
-                <span class="step-number">Step 3</span>
-
-   
-                <h3>Open ECAE Office 365</h3>
-                
-                <ol class="instruction-list">
-                    <li>Look at the right-side panel of the ECAE Portal.</li>
-                    <li>Find the <strong>Important Links (Internal)</strong> section.</li>
-                    <li>Select <strong>ECAE Office 365</strong>.</li>
-                </ol>
-                
-                <img
-                    src="Office screenshot.png"
-                    alt="ECAE Office 365 Link"
-                    class="step-image"
+                <article
+                    class="step-card"
+                    data-guide="login"
+                    data-step="1"
                 >
-                
-                <div class="information-note">
-                    Select the ECAE Office 365 link highlighted in the portal.
-                </div>
-                
-                <div class="navigation-buttons">
 
-                    <button
-                        type="button"
-                        class="previous-button"
-                        onclick="showStep(2)"
-                    >
-                        Previous
-                    </button>
+                    <span class="step-number">Step 1</span>
 
-                    <button
-                        type="button"
-                        class="next-button"
-                        onclick="showStep(4)"
-                    >
-                        Next
-                    </button>
+                    <h3>Open the ECAE Portal</h3>
 
-                </div>
+                    <ol class="instruction-list">
+                        <li>
+                            Open the ECAE Portal using the button below.
+                        </li>
 
-            </article>
+                        <li>
+                            Wait for the ECAE Portal sign-in page to open.
+                        </li>
+                    </ol>
 
+                    <div class="step-links">
+
+                        <a
+                            href="https://portal.ecae.ac.ae/"
+                            class="step-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Open ECAE Portal
+                        </a>
+
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <span></span>
+
+                        <button
+                            type="button"
+                            class="next-button"
+                            onclick="showStep(2)"
+                        >
+                            Next
+                        </button>
+                    </div>
+
+                </article>
+
+                <!-- LOGIN STEP 2 -->
+
+                <article
+                    class="step-card"
+                    data-guide="login"
+                    data-step="2"
+                >
+
+                    <span class="step-number">Step 2</span>
+
+                    <h3>Sign In to the ECAE Portal</h3>
+
+                    <ol class="instruction-list">
+                        <li>
+                            Enter your ECAE username.
+                        </li>
+
+                        <li>
+                            Enter your ECAE password.
+                        </li>
+
+                        <li>
+                            Select <strong>Sign In</strong>.
+                        </li>
+
+                        <li>
+                            After signing in, select the
+                            <strong>Students</strong> tab.
+                        </li>
+                    </ol>
+
+                    <div class="information-note">
+                        <strong>Important:</strong><br><br>
+
+                        Students using other corporate devices may
+                        need to use the following username format:
+
+                        <br><br>
+
+                        <strong>ECAE\StudentID</strong>
+
+                        <br>
+
+                        Example:
+
+                        <strong>ECAE\001164</strong>
+                    </div>
+
+                    <div class="navigation-buttons">
+
+                        <button
+                            type="button"
+                            class="previous-button"
+                            onclick="showStep(1)"
+                        >
+                            Previous
+                        </button>
+
+                        <button
+                            type="button"
+                            class="next-button"
+                            onclick="showStep(3)"
+                        >
+                            Next
+                        </button>
+
+                    </div>
+
+                </article>
+
+                <!-- LOGIN STEP 3 -->
+
+                <article
+                    class="step-card"
+                    data-guide="login"
+                    data-step="3"
+                >
+
+                    <span class="step-number">Step 3</span>
+
+                    <h3>Open ECAE Office 365</h3>
+
+                    <ol class="instruction-list">
+                        <li>
+                            Look at the right-side panel of the
+                            ECAE Portal.
+                        </li>
+
+                        <li>
+                            Find the
+                            <strong>Important Links (Internal)</strong>
+                            section.
+                        </li>
+
+                        <li>
+                            Select
+                            <strong>ECAE Office 365</strong>.
+                        </li>
+                    </ol>
+
+                    Office screenshot.png
+
+                    <div class="information-note">
+                        Select the ECAE Office 365 link shown in the
+                        screenshot.
+                    </div>
+
+                    <div class="navigation-buttons">
+
+                        <button
+                            type="button"
+                            class="previous-button"
+                            onclick="showStep(2)"
+                        >
+                            Previous
+                        </button>
+
+                        <button
+                            type="button"
+                            class="next-button"
+                            onclick="showStep(4)"
+                        >
+                            Next
+                        </button>
+
+                    </div>
+
+                </article>
+
+                <!-- LOGIN STEP 4 -->
+
+                <article
+                    class="step-card"
+                    data-guide="login"
+                    data-step="4"
+                >
+
+                    <span class="step-number">Step 4</span>
+
+                    <h3>Sign In to Office 365</h3>
+
+                    <ol class="instruction-list">
+                        <li>
+                            Enter your ECAE email address.
+                        </li>
+
+                        <li>
+                            Select <strong>Next</strong>.
+                        </li>
+
+                        <li>
+                            Enter your password.
+                        </li>
+
+                        <li>
+                            Select <strong>Sign In</strong>.
+                        </li>
+
+                        <li>
+                            You can now access available Microsoft
+                            365 services and applications.
+                        </li>
+                    </ol>
+
+                    <div class="information-note">
+                        You can also open Microsoft 365 directly
+                        using the button below.
+                    </div>
+
+                    <div class="step-links">
+
+                        <a
+                            href="https://www.office.com"
+                            class="step-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Open Microsoft 365
+                        </a>
+
+                    </div>
+
+                    <div class="navigation-buttons">
+
+                        <button
+                            type="button"
+                            class="previous-button"
+                            onclick="showStep(3)"
+                        >
+                            Previous
+                        </button>
+
+                        <button
+                            type="button"
+                            class="next-button"
+                            onclick="finishGuide()"
+                        >
+                            Finish Guide
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
 
             <!-- =====================================
-                 STEP 4
+                 DOWNLOAD GUIDE STEPS
             ====================================== -->
 
-            <article class="step-card" data-step="4">
+            <div id="downloadSteps">
 
-                <span class="step-number">Step 4</span>
+                <!-- DOWNLOAD STEP 1 -->
 
-                <h3>Sign In</h3>
-                
-                <ol class="instruction-list">
-                    <li>Enter your ECAE email address.</li>
-                    <li>Enter your password.</li>
-                    <li>Select Sign In.</li>
-                    <li>Access Outlook, Word, Excel, PowerPoint, OneDrive, and Teams.</li>
-                </ol>
-                
-                <div class="information-note">
-                    You can also access Office 365 directly from www.office.com.
-                </div>
+                <article
+                    class="step-card"
+                    data-guide="download"
+                    data-step="1"
+                >
 
-                <div class="navigation-buttons">
+                    <span class="step-number">Step 1</span>
 
-                    <button
-                        type="button"
-                        class="previous-button"
-                        onclick="showStep(3)"
-                    >
-                        Previous
-                    </button>
+                    <h3>Sign In to Microsoft 365</h3>
 
-                    <button
-                        type="button"
-                        class="next-button"
-                        onclick="finishGuide()"
-                    >
-                        Finish Guide
-                    </button>
+                    <ol class="instruction-list">
+                        <li>
+                            Open Microsoft 365 using the button below.
+                        </li>
 
-                </div>
+                        <li>
+                            Select <strong>Sign In</strong>.
+                        </li>
 
-            </article>
+                        <li>
+                            Enter your ECAE email address.
+                        </li>
+
+                        <li>
+                            Select <strong>Next</strong>.
+                        </li>
+
+                        <li>
+                            Enter your password and complete the
+                            sign-in process.
+                        </li>
+                    </ol>
+
+                    download-step1.png
+
+                    <div class="step-links">
+
+                        <a
+                            href="https://www.office.com"
+                            class="step-link"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Open Microsoft 365
+                        </a>
+
+                    </div>
+
+                    <div class="information-note">
+                        <strong>Security reminder:</strong>
+                        Do not include your email address, password,
+                        or other personal information in your
+                        screenshots.
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <span></span>
+
+                        <button
+                            type="button"
+                            class="next-button"
+                            onclick="showStep(2)"
+                        >
+                            Next
+                        </button>
+                    </div>
+
+                </article>
+
+                <!-- DOWNLOAD STEP 2 -->
+
+                <article
+                    class="step-card"
+                    data-guide="download"
+                    data-step="2"
+                >
+
+                    <span class="step-number">Step 2</span>
+
+                    <h3>Open the Download Apps Menu</h3>
+
+                    <ol class="instruction-list">
+                        <li>
+                            After signing in, look at the top-right
+                            corner of the page.
+                        </li>
+
+                        <li>
+                            Select the
+                            <strong>three-dot menu (...)</strong>.
+                        </li>
+
+                        <li>
+                            Select <strong>Download apps</strong>.
+                        </li>
+                    </ol>
+
+                    download-step2.png
+
+                    <div class="information-note">
+                        The screenshot highlights both the three-dot
+                        menu and the Download apps option.
+                    </div>
+
+                    <div class="navigation-buttons">
+
+                        <button
+                            type="button"
+                            class="previous-button"
+                            onclick="showStep(1)"
+                        >
+                            Previous
+                        </button>
+
+                        <button
+                            type="button"
+                            class="next-button"
+                            onclick="showStep(3)"
+                        >
+                            Next
+                        </button>
+
+                    </div>
+
+                </article>
+
+                <!-- DOWNLOAD STEP 3 -->
+
+                <article
+                    class="step-card"
+                    data-guide="download"
+                    data-step="3"
+                >
+
+                    <span class="step-number">Step 3</span>
+
+                    <h3>Select Your Device</h3>
+
+                    <ol class="instruction-list">
+                        <li>
+                            Wait for the application download page
+                            to open.
+                        </li>
+
+                        <li>
+                            Select
+                            <strong>Download for Windows</strong>
+                            if you are using a Windows laptop or
+                            desktop.
+                        </li>
+
+                        <li>
+                            Select
+                            <strong>Download for mobile</strong>
+                            if you are using a phone or tablet.
+                        </li>
+                    </ol>
+
+                    download-step3.png
+
+                    <div class="information-note">
+                        Choose the option that matches the device you
+                        are currently using.
+                    </div>
+
+                    <div class="navigation-buttons">
+
+                        <button
+                            type="button"
+                            class="previous-button"
+                            onclick="showStep(2)"
+                        >
+                            Previous
+                        </button>
+
+                        <button
+                            type="button"
+                            class="next-button"
+                            onclick="showStep(4)"
+                        >
+                            Next
+                        </button>
+
+                    </div>
+
+                </article>
+
+                <!-- DOWNLOAD STEP 4 -->
+
+                <article
+                    class="step-card"
+                    data-guide="download"
+                    data-step="4"
+                >
+
+                    <span class="step-number">Step 4</span>
+
+                    <h3>Open the Downloaded File</h3>
+
+                    <ol class="instruction-list">
+                        <li>
+                            Wait for the application file to finish
+                            downloading.
+                        </li>
+
+                        <li>
+                            Open the downloaded file from your
+                            browser's Downloads section.
+                        </li>
+
+                        <li>
+                            If your device asks for permission,
+                            review the message and select the
+                            appropriate option to continue.
+                        </li>
+
+                        <li>
+                            Follow the instructions shown by the
+                            installer.
+                        </li>
+
+                        <li>
+                            After installation, open the application
+                            and sign in with your ECAE account if
+                            requested.
+                        </li>
+                    </ol>
+
+                    download-step4.png
+
+                    <div class="information-note">
+                        The appearance and name of the downloaded file
+                        may differ depending on the device and
+                        browser being used.
+                    </div>
+
+                    <div class="navigation-buttons">
+
+                        <button
+                            type="button"
+                            class="previous-button"
+                            onclick="showStep(3)"
+                        >
+                            Previous
+                        </button>
+
+                        <button
+                            type="button"
+                            class="next-button"
+                            onclick="finishGuide()"
+                        >
+                            Finish Guide
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
 
             <!-- =====================================
                  COMPLETION SCREEN
@@ -937,9 +1372,8 @@
 
                 <h3>Guide Complete</h3>
 
-                <p>
-                    You have reached the end of the ECAE Office
-                    365 guide.
+                <p id="completionMessage">
+                    You have reached the end of the Office 365 guide.
                 </p>
 
                 <div class="completion-actions">
@@ -955,9 +1389,17 @@
                     <button
                         type="button"
                         class="previous-button"
-                        onclick="returnToGuideOptions()"
+                        onclick="returnToFormatSelection()"
                     >
                         Choose Another Format
+                    </button>
+
+                    <button
+                        type="button"
+                        class="previous-button"
+                        onclick="returnToGuideSelection()"
+                    >
+                        Choose Another Guide
                     </button>
 
                     <a
@@ -970,171 +1412,7 @@
                 </div>
 
             </article>
-            </div>
 
-            <div id="download-guide" style="display:none;">
-            <article class="step-card active" data-step="101">
-            
-                <span class="step-number">Step 1</span>
-            
-                <h3>Open Office 365</h3>
-            
-                <ol class="instruction-list">
-                    <li>Open Office 365.</li>
-                    <li>Select Sign In.</li>
-                </ol>
-            
-                download-step1.png
-            
-                <div class="step-links">
-                    <a
-                        href="https://www.office.com"
-                        class="step-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Open Office 365
-                    </a>
-                </div>
-            
-                <div class="navigation-buttons">
-            
-                    <span></span>
-            
-                    <button
-                        type="button"
-                        class="next-button"
-                        onclick="showStep(102)"
-                    >
-                        Next
-                    </button>
-            
-                </div>
-            
-            </article>
-            <article class="step-card" data-step="102">
-            
-                <span class="step-number">Step 2</span>
-            
-                <h3>Sign In</h3>
-            
-                <ol class="instruction-list">
-                    <li>Enter your ECAE email.</li>
-                    <li>Enter your password.</li>
-                    <li>Select Sign In.</li>
-                </ol>
-            
-                download-step2.png
-            
-                <div class="information-note">
-            
-                    <strong>Important:</strong><br><br>
-            
-                    Students using other corporate devices may need to sign in using:
-            
-                    <br><br>
-            
-                    <strong>ECAE\StudentID</strong>
-            
-                    <br>
-            
-                    Example:
-            
-                    <strong>ECAE\001164</strong>
-            
-                </div>
-            
-                <div class="navigation-buttons">
-            
-                    <button
-                        type="button"
-                        class="previous-button"
-                        onclick="showStep(101)"
-                    >
-                        Previous
-                    </button>
-            
-                    <button
-                        type="button"
-                        class="next-button"
-                        onclick="showStep(103)"
-                    >
-                        Next
-                    </button>
-            
-                </div>
-            
-            </article>
-            <article class="step-card" data-step="103">
-            
-                <span class="step-number">Step 3</span>
-            
-                <h3>Select Install Apps</h3>
-            
-                <ol class="instruction-list">
-                    <li>After signing in, the Microsoft 365 portal will open.</li>
-                    <li>Select <strong>Install Apps</strong>.</li>
-                    <li>Select <strong>Microsoft 365 Apps</strong>.</li>
-                </ol>
-            
-                download-step3.png
-            
-                <div class="navigation-buttons">
-            
-                    <button
-                        type="button"
-                        class="previous-button"
-                        onclick="showStep(102)"
-                    >
-                        Previous
-                    </button>
-            
-                    <button
-                        type="button"
-                        class="next-button"
-                        onclick="showStep(104)"
-                    >
-                        Next
-                    </button>
-            
-                </div>
-            
-            </article>
-            <article class="step-card" data-step="103">
-            
-                <span class="step-number">Step 3</span>
-            
-                <h3>Select Install Apps</h3>
-            
-                <ol class="instruction-list">
-                    <li>After signing in, the Microsoft 365 portal will open.</li>
-                    <li>Select <strong>Install Apps</strong>.</li>
-                    <li>Select <strong>Microsoft 365 Apps</strong>.</li>
-                </ol>
-            
-                download-step3.png
-            
-                <div class="navigation-buttons">
-            
-                    <button
-                        type="button"
-                        class="previous-button"
-                        onclick="showStep(102)"
-                    >
-                        Previous
-                    </button>
-            
-                    <button
-                        type="button"
-                        class="next-button"
-                        onclick="showStep(104)"
-                    >
-                        Next
-                    </button>
-            
-                </div>
-            
-            </article>
         </section>
 
     </main>
@@ -1157,6 +1435,71 @@
     <script>
         const totalGuideSteps = 4;
 
+        let selectedGuide = "login";
+
+        function selectGuide(guideType) {
+            selectedGuide = guideType;
+
+            document.getElementById(
+                "guideSelection"
+            ).style.display = "none";
+
+            document.getElementById(
+                "interactiveGuide"
+            ).classList.remove("visible");
+
+            document.getElementById(
+                "formatSelection"
+            ).style.display = "block";
+
+            if (selectedGuide === "login") {
+                document.getElementById(
+                    "formatTitle"
+                ).textContent =
+                    "Choose Login Guide Format";
+
+                document.getElementById(
+                    "formatDescription"
+                ).textContent =
+                    "Select how you would like to view the Office 365 Login Guide.";
+
+                document.getElementById(
+                    "videoGuideLink"
+                ).href =
+                    "office-login.mp4";
+
+                document.getElementById(
+                    "pdfGuideLink"
+                ).href =
+                    "ECAE Office 365.cleaned.pdf";
+            } else {
+                document.getElementById(
+                    "formatTitle"
+                ).textContent =
+                    "Choose Download Guide Format";
+
+                document.getElementById(
+                    "formatDescription"
+                ).textContent =
+                    "Select how you would like to view the Office 365 Download Guide.";
+
+                document.getElementById(
+                    "videoGuideLink"
+                ).href =
+                    "office-download.mp4";
+
+                document.getElementById(
+                    "pdfGuideLink"
+                ).href =
+                    "ECAE Office 365 Download Guide.pdf";
+            }
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
         function openInteractiveGuide() {
             document.getElementById(
                 "formatSelection"
@@ -1166,6 +1509,28 @@
                 "interactiveGuide"
             ).classList.add("visible");
 
+            if (selectedGuide === "login") {
+                document.getElementById(
+                    "interactiveTitle"
+                ).textContent =
+                    "Interactive Office 365 Login Guide";
+
+                document.getElementById(
+                    "completionMessage"
+                ).textContent =
+                    "You have completed the Office 365 Login Guide.";
+            } else {
+                document.getElementById(
+                    "interactiveTitle"
+                ).textContent =
+                    "Interactive Office 365 Download Guide";
+
+                document.getElementById(
+                    "completionMessage"
+                ).textContent =
+                    "You have completed the Office 365 Download Guide.";
+            }
+
             showStep(1);
 
             window.scrollTo({
@@ -1174,32 +1539,19 @@
             });
         }
 
-        function returnToGuideOptions() {
-            document.getElementById(
-                "interactiveGuide"
-            ).classList.remove("visible");
-
-            document.getElementById(
-                "formatSelection"
-            ).style.display = "block";
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        }
-
         function showStep(stepNumber) {
-            const cards = document.querySelectorAll(
+            const allCards = document.querySelectorAll(
                 ".step-card"
             );
 
-            cards.forEach(function (card) {
+            allCards.forEach(function (card) {
                 card.classList.remove("active");
             });
 
             const selectedStep = document.querySelector(
-                '.step-card[data-step="' +
+                '.step-card[data-guide="' +
+                selectedGuide +
+                '"][data-step="' +
                 stepNumber +
                 '"]'
             );
@@ -1239,11 +1591,11 @@
         }
 
         function finishGuide() {
-            const cards = document.querySelectorAll(
+            const allCards = document.querySelectorAll(
                 ".step-card"
             );
 
-            cards.forEach(function (card) {
+            allCards.forEach(function (card) {
                 card.classList.remove("active");
             });
 
@@ -1278,23 +1630,60 @@
             showStep(1);
         }
 
+        function returnToFormatSelection() {
+            document.getElementById(
+                "interactiveGuide"
+            ).classList.remove("visible");
+
+            document.getElementById(
+                "formatSelection"
+            ).style.display = "block";
+
+            const allCards = document.querySelectorAll(
+                ".step-card"
+            );
+
+            allCards.forEach(function (card) {
+                card.classList.remove("active");
+            });
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        function returnToGuideSelection() {
+            document.getElementById(
+                "interactiveGuide"
+            ).classList.remove("visible");
+
+            document.getElementById(
+                "formatSelection"
+            ).style.display = "none";
+
+            document.getElementById(
+                "guideSelection"
+            ).style.display = "block";
+
+            const allCards = document.querySelectorAll(
+                ".step-card"
+            );
+
+            allCards.forEach(function (card) {
+                card.classList.remove("active");
+            });
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
         document.getElementById(
             "currentYear"
         ).textContent =
             new Date().getFullYear();
-    </script>
-    <script>
-
-    function showLoginGuide() {
-        document.getElementById("guide-selection").style.display = "none";
-        document.getElementById("login-guide").style.display = "block";
-    }
-    
-    function showDownloadGuide() {
-        document.getElementById("guide-selection").style.display = "none";
-        document.getElementById("download-guide").style.display = "block";
-    }
-    
     </script>
 
 </body>
