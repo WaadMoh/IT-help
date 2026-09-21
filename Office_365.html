@@ -759,13 +759,14 @@
                     >
                         🎥 Watch Video Guide
                     </a>
+                    
                     <div class="format-buttons">
 
                      <a
-                            href="ECAE Office 365.cleaned.pdf"
-                            class="guide-button secondary-button"
-                            target="_blank"
-                        >
+                         id="pdfGuideButton"
+                         href="ECAE Office 365.cleaned.pdf"
+                         class="guide-button"
+                         >
                             📄 View PDF Guide
                         </a>
                     
@@ -1472,6 +1473,8 @@
             ).style.display = "block";
 
             if (selectedGuide === "login") {
+                document.getElementById("pdfGuideButton").style.display = "inline-flex";
+                document.getElementById("videoGuideButton").style.display = "none";
                 document.getElementById(
                     "formatTitle"
                 ).textContent =
@@ -1492,6 +1495,8 @@
                 ).href =
                     "ECAE Office 365.cleaned.pdf";
             } else {
+                document.getElementById("pdfGuideButton").style.display = "inline-flex";
+                document.getElementById("videoGuideButton").style.display = "none";
                 document.getElementById(
                     "formatTitle"
                 ).textContent =
