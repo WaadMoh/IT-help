@@ -563,28 +563,24 @@
              OFFICE GUIDE SELECTION
         ====================================== -->
         
-        <section id="guide-selection" class="selection-container">
-        
-            <h2>Select a Guide</h2>
-        
             <div class="guide-buttons">
-        
+            
                 <button
                     type="button"
                     class="choice-button"
                     onclick="showLoginGuide()"
                 >
-                    Office 365 Login Guide
+                    💻 Office 365 Login Guide
                 </button>
-        
+            
                 <button
                     type="button"
                     class="choice-button"
                     onclick="showDownloadGuide()"
                 >
-                    Office 365 Download Guide
+                    ⬇️ Office 365 Download Guide
                 </button>
-        
+            
             </div>
         
         </section>
@@ -593,72 +589,102 @@
         <!-- =========================================
              FORMAT SELECTION
         ========================================== -->
-
-        <div id="formatSelection">
-
-            <section class="introduction">
-                <h2>Select a Guide Format</h2>
-
-                <p>
-                    Follow an interactive step-by-step guide or open
-                    the original PDF document.
-                </p>
-            </section>
-
-            <section class="guide-options">
-
-                <!-- Interactive guide option -->
-
-                <article class="guide-option">
-
-                    <div class="option-icon" aria-hidden="true">
-                        💻
-                    </div>
-
-                    <h3>Interactive Guide</h3>
-
+            <div id="formatSelection">
+            
+                <section class="introduction">
+            
+                    <h2>Choose Login Guide Format</h2>
+            
+                    <p>
+                        Select how you would like to view the Office 365 Login Guide.
+                    </p>
+            
+                </section>
+            
+                <section class="guide-options">
+            
+                    <!-- Interactive Guide -->
+            
+                    <article class="guide-option">
+            
+                        <div class="option-icon">
+                            💻
+                        </div>
+            
+                        <h3>Interactive Guide</h3>
+            
+                        <p>
+                            Follow the Office 365 login process step by step.
+                        </p>
+            
+                        <button
+                            type="button"
+                            class="guide-button"
+                            onclick="openInteractiveGuide()"
+                        >
+                            Start Interactive Guide
+                        </button>
+            
+                    </article>
+            
+                    <!-- PDF Guide -->
+            
+                    <article class="guide-option">
+            
+                        <div class="option-icon">
+                            📄
+                        </div>
+            
+                        <h3>PDF Guide</h3>
+            
+                        <p>
+                            Open the original PDF guide.
+                        </p>
+            
+                        ECAE Office 365.cleaned.pdf
+                            View PDF Guide
+                        </a>
+            
+                    </article>
+            
+                    <!-- Video Guide -->
+            
+                    <article class="guide-option">
+            
+                        <div class="option-icon">
+                            🎥
+                        </div>
+            
+                        <h3>Video Guide</h3>
+            
+                        <p>
+                            Watch a video walkthrough of the login process.
+                        </p>
+            
+                        office-login.mp4
+                            Watch Video
+                        </a>
+            
+                    </article>
+            
+                </section>
+            
+                <div class="back-section">
+            
                     <button
                         type="button"
-                        class="guide-button"
-                        onclick="openInteractiveGuide()"
+                        class="back-button"
+                        onclick="
+                            document.getElementById('login-guide').style.display='none';
+                            document.getElementById('guide-selection').style.display='block';
+                        "
                     >
-                        Start Interactive Guide
+                        ← Back
                     </button>
-
-                </article>
-
-                <!-- PDF guide option -->
-
-                <article class="guide-option">
-
-                    <div class="option-icon" aria-hidden="true">
-                        📄
-                    </div>
-
-                    <h3>PDF Guide</h3>
-
-                                   <a
-                        href="ECAE Office 365.cleaned.pdf"
-                        class="guide-button"
-                        >
-                        View PDF Guid                
-                    </a>
-
-                </article>
-
-            </section>
-
-            <div class="back-section">
-                <a
-                    href="index.html"
-                    class="back-button"
-                >
-                    ← Back to Support Portal
-                </a>
+            
+                </div>
+            
             </div>
-
-        </div>
-
         <!-- =========================================
              INTERACTIVE GUIDE
         ========================================== -->
