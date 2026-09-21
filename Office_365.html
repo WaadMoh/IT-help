@@ -752,6 +752,7 @@
                     <div class="format-buttons">
 
                     <a
+                        id="videoGuideButton"
                         href="https://www.youtube.com/watch?v=TYcj4VxtSL0"
                         class="guide-button"
                         target="_blank"
@@ -1495,8 +1496,8 @@
                 ).href =
                     "ECAE Office 365.cleaned.pdf";
             } else {
-                document.getElementById("pdfGuideButton").style.display = "inline-flex";
-                document.getElementById("videoGuideButton").style.display = "none";
+                document.getElementById("pdfGuideButton").style.display = "none";
+                document.getElementById("videoGuideButton").style.display = "inline-flex";
                 document.getElementById(
                     "formatTitle"
                 ).textContent =
