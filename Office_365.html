@@ -743,11 +743,10 @@
                         📄
                     </div>
 
-                    <h3>Video and PDF Guide</h3>
+                    <h3>Guide Resources</h3>
 
                     <p>
-                        Watch the original video guide or open the
-                        original PDF instructions.
+                        Additional guide resources.
                     </p>
                     <div class="format-buttons">
 
@@ -1476,6 +1475,10 @@
             if (selectedGuide === "login") {
                 document.getElementById("pdfGuideButton").style.display = "inline-flex";
                 document.getElementById("videoGuideButton").style.display = "none";
+                document.getElementById("resourceTitle").textContent =
+                    "PDF Guide";
+                document.getElementById("resourceDescription").textContent =
+                    "Open the original PDF instructions.";
                 document.getElementById(
                     "formatTitle"
                 ).textContent =
@@ -1502,7 +1505,11 @@
                     "formatTitle"
                 ).textContent =
                     "Choose Download Guide Format";
-
+                document.getElementById("resourceTitle").textContent =
+                    "Video Guide";
+                
+                document.getElementById("resourceDescription").textContent =
+                    "Watch the video walkthrough.";
                 document.getElementById(
                     "formatDescription"
                 ).textContent =
