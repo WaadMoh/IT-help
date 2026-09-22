@@ -759,8 +759,11 @@
             <button
                 type="button"
                 class="popup-secondary-button"
-                onclick="closePasswordPopup()"
                 id="continuePortalButton"
+                onclick="
+                    document.getElementById('passwordPopup').classList.add('hidden');
+                    document.body.style.overflow = '';
+                "
             >
                 Continue to Support Portal
             </button>
