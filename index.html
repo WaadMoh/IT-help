@@ -1379,19 +1379,21 @@
             document.body.style.overflow = "";
         }
 
-
+        function closePasswordPopup() {
+            const popup =
+                document.getElementById("passwordPopup");
+        
+            popup.classList.add("hidden");
+            document.body.style.overflow = "";
+        }
+        
         function openPasswordPopup() {
             const popup =
                 document.getElementById("passwordPopup");
+        
             popup.classList.remove("hidden");
             document.body.style.overflow = "hidden";
         }
-
-
-        window.addEventListener("load", function () {
-            openPasswordPopup();
-        });
-        
         
         document.addEventListener("keydown", function (event) {
             if (event.key === "Escape") {
@@ -1399,223 +1401,159 @@
             }
         });
         function setLanguage(lang) {
-
-    if (lang === "ar") {
+            const arabicCards = [
+                "مشكلة تسجيل الدخول إلى الموقع الرسمي لـ ECAE",
+                "نظام إدارة التعلم كتاب",
+                "الحضور والمرشد الأكاديمي",
+                "طلب رسالة تسجيل",
+                "مايكروسوفت 365 - ECAE",
+                "البريد الإلكتروني لـ ECAE",
+                "مكتبة ECAE",
+                "دليل الوثائق المؤسسية للطلاب",
+                "ملاحظات أو شكوى",
+                "متابعة الملاحظات",
+                "تقديم طلب منحة بحثية",
+                "تقويم ECAE",
+                "البرامج الأكاديمية في ECAE",
+                "بوابة نظام معلومات الطالب",
+                "إخلاء الطرف ورسالة إتمام الدراسة",
+                "مستندات دعم الغياب",
+                "التظلم على الدرجات",
+                "جدولي الدراسي",
+                "درجاتي",
+                "كشف درجات غير رسمي",
+                "طلب كشف درجات",
+                "دليل توثيق الحساب",
+                "دليل الاتصال بشبكة الواي فاي",
+                "تغيير كلمة المرور في Office 365"
+            ];
         
-
-        document.documentElement.lang = "ar";
-        document.documentElement.dir = "rtl";
-
-        document.getElementById("mainTitle").textContent =
-            "بوابة دعم الطالب";
-
-        document.getElementById("mainDescription").textContent =
-            "ابحث عن حلول واضحة خطوة بخطوة للأنظمة والخدمات الطلابية.";
-
-        document.getElementById("searchLabel").textContent =
-            "ابحث في أدلة الدعم";
-
-        document.getElementById("searchInput").placeholder =
-            "مثال: واي فاي، البريد الإلكتروني، الدرجات";
-        document.getElementById("passwordPopupTitle").textContent =
-            "تذكير بتحديث كلمة المرور";
+            const englishCards = [
+                "ECAE Official Website Login Problem",
+                "Kottab Learning Management System",
+                "My Attendance & Advisor",
+                "Registration Letter Request",
+                "ECAE Office 365",
+                "ECAE Email",
+                "ECAE Library",
+                "Students Directory of Institutional Documents",
+                "Feedback/Complaint",
+                "Feedback Follow-Up",
+                "Research Grant Application Submittal Access",
+                "ECAE Calendar",
+                "ECAE Academic Programs",
+                "Student Information System (SIS) Portal",
+                "eClearance & Letter of Completion",
+                "Absence Support Documents",
+                "Grade Appeal",
+                "My Timetable",
+                "My Grades",
+                "Unofficial Transcript",
+                "Request a Transcript",
+                "Account Authentication Guide",
+                "WiFi Connectivity Guide",
+                "Changing Your Password in Office 365"
+            ];
         
-        document.getElementById("passwordPopupText").innerHTML =
-            "تنتهي صلاحية كلمات مرور ECAE كل <strong>60 يومًا</strong>. إذا انتهت صلاحية كلمة المرور الخاصة بك أو كنت بحاجة إلى تحديثها، يرجى اتباع دليل تغيير كلمة المرور.";
+            if (lang === "ar") {
+                document.documentElement.lang = "ar";
+                document.documentElement.dir = "rtl";
+                document.title = "بوابة دعم الطالب";
         
-        document.getElementById("passwordPopupInfo").innerHTML =
-            "تنتهي صلاحية كلمات مرور ECAE كل 60 يومًا.<br><br>إذا انتهت صلاحية كلمة المرور الخاصة بك، يرجى تحديثها باستخدام دليل تغيير كلمة المرور قبل الوصول إلى أنظمة وخدمات ECAE.";
+                document.getElementById("mainTitle").textContent =
+                    "بوابة دعم الطالب";
         
-        document.getElementById("passwordGuideButton").innerHTML =
-            "🔑 عرض دليل تغيير كلمة المرور";
+                document.getElementById("mainDescription").textContent =
+                    "ابحث عن حلول واضحة خطوة بخطوة للأنظمة والخدمات الطلابية.";
         
-        document.getElementById("continuePortalButton").textContent =
-            "المتابعة إلى بوابة الدعم";
-        document.getElementById("guideSectionTitle").textContent =
-            "ما الذي تبحث عنه؟";
+                document.getElementById("searchLabel").textContent =
+                    "ابحث في أدلة الدعم";
         
-        document.getElementById("guideSectionDescription").textContent =
-            "اختر الموضوع المطلوب أدناه لفتح دليل الدعم.";
-        document.getElementById("card1").textContent =
-            "مشكلة تسجيل الدخول إلى الموقع الرسمي لـ ECAE";       
-        document.getElementById("card2").textContent =
-            "نظام إدارة التعلم كتاب";
-        document.getElementById("card3").textContent =
-            "الحضور والمرشد الأكاديمي";
-
-        document.getElementById("card4").textContent =
-            "طلب رسالة تسجيل";
+                document.getElementById("searchInput").placeholder =
+                    "مثال: واي فاي، البريد الإلكتروني، الدرجات";
         
-        document.getElementById("card5").textContent =
-            "مايكروسوفت 365 - ECAE";
+                document.getElementById("passwordPopupTitle").textContent =
+                    "تذكير بتحديث كلمة المرور";
         
-        document.getElementById("card6").textContent =
-            "البريد الإلكتروني ECAE";
+                document.getElementById("passwordPopupText").innerHTML =
+                    "تنتهي صلاحية كلمات مرور ECAE كل <strong>60 يومًا</strong>. إذا انتهت صلاحية كلمة المرور الخاصة بك أو كنت بحاجة إلى تحديثها، يرجى اتباع دليل تغيير كلمة المرور.";
         
-        document.getElementById("card7").textContent =
-            "مكتبة ECAE";
+                document.getElementById("passwordPopupInfo").innerHTML =
+                    "تنتهي صلاحية كلمات مرور ECAE كل 60 يومًا.<br><br>إذا انتهت صلاحية كلمة المرور الخاصة بك، يرجى تحديثها باستخدام دليل تغيير كلمة المرور قبل الوصول إلى أنظمة وخدمات ECAE.";
         
-        document.getElementById("card8").textContent =
-            "دليل الوثائق المؤسسية للطلاب";
+                document.getElementById("passwordGuideButton").innerHTML =
+                    "🔑 عرض دليل تغيير كلمة المرور";
         
-        document.getElementById("card9").textContent =
-            "ملاحظات أو شكوى";
+                document.getElementById("continuePortalButton").textContent =
+                    "المتابعة إلى بوابة الدعم";
         
-        document.getElementById("card10").textContent =
-            "متابعة الملاحظات";
+                document.getElementById("guideSectionTitle").textContent =
+                    "ما الذي تبحث عنه؟";
         
-        document.getElementById("card11").textContent =
-            "تقديم طلب منحة بحثية";
+                document.getElementById("guideSectionDescription").textContent =
+                    "اختر الموضوع المطلوب أدناه لفتح دليل الدعم.";
         
-        document.getElementById("card12").textContent =
-            "تقويم ECAE";
+                arabicCards.forEach(function (cardText, index) {
+                    document.getElementById("card" + (index + 1)).textContent =
+                        cardText;
+                });
+            } else {
+                document.documentElement.lang = "en";
+                document.documentElement.dir = "ltr";
+                document.title = "Student Portal Support";
         
-        document.getElementById("card13").textContent =
-            "البرامج الأكاديمية";
+                document.getElementById("mainTitle").textContent =
+                    "Student Portal Support";
         
-        document.getElementById("card14").textContent =
-            "بوابة نظام معلومات الطالب";
+                document.getElementById("mainDescription").textContent =
+                    "Find clear, step-by-step solutions for common student systems and services.";
         
-        document.getElementById("card15").textContent =
-            "إخلاء الطرف ورسالة إتمام الدراسة";
+                document.getElementById("searchLabel").textContent =
+                    "Search the Support Guides";
         
-        document.getElementById("card16").textContent =
-            "مستندات دعم الغياب";
+                document.getElementById("searchInput").placeholder =
+                    "Example: Wi-Fi, email, grades...";
         
-        document.getElementById("card17").textContent =
-            "التظلم على الدرجات";
+                document.getElementById("passwordPopupTitle").textContent =
+                    "Password Update Reminder";
         
-        document.getElementById("card18").textContent =
-            "جدولي الدراسي";
+                document.getElementById("passwordPopupText").innerHTML =
+                    "ECAE passwords expire every <strong>60 days</strong>. If your password has expired or needs to be updated, please follow the password guide below.";
         
-        document.getElementById("card19").textContent =
-            "درجاتي";
+                document.getElementById("passwordPopupInfo").innerHTML =
+                    "ECAE passwords expire every 60 days.<br><br>If your password has expired, please update it using the password guide before accessing ECAE systems and services.";
         
-        document.getElementById("card20").textContent =
-            "كشف درجات غير رسمي";
+                document.getElementById("passwordGuideButton").innerHTML =
+                    "🔑 View Password Guide";
         
-        document.getElementById("card21").textContent =
-            "طلب كشف درجات";
+                document.getElementById("continuePortalButton").textContent =
+                    "Continue to Support Portal";
         
-        document.getElementById("card22").textContent =
-            "دليل توثيق الحساب";
+                document.getElementById("guideSectionTitle").textContent =
+                    "What Are You Looking For?";
         
-        document.getElementById("card23").textContent =
-            "دليل الاتصال بشبكة الواي فاي";
+                document.getElementById("guideSectionDescription").textContent =
+                    "Select a topic below to open its support guide.";
         
-        document.getElementById("card24").textContent =
-            "تغيير كلمة المرور في Office 365";
-            } 
-    else {
-
-        document.documentElement.lang = "en";
-        document.documentElement.dir = "ltr";
-
-        document.getElementById("mainTitle").textContent =
-            "Student Portal Support";
-
-        document.getElementById("mainDescription").textContent =
-            "Find clear, step-by-step solutions for common student systems and services.";
-
-        document.getElementById("searchLabel").textContent =
-            "Search the support guides";
-
-        document.getElementById("searchInput").placeholder =
-            "Example: Wi‑Fi, email, grades...";
-
+                englishCards.forEach(function (cardText, index) {
+                    document.getElementById("card" + (index + 1)).textContent =
+                        cardText;
+                });
+            }
+        
             localStorage.setItem("language", lang);
-         }
-        document.getElementById("passwordPopupTitle").textContent =
-            "Password Update Reminder";
         
-        document.getElementById("passwordPopupText").innerHTML =
-            "ECAE passwords expire every <strong>60 days</strong>. If your password has expired or needs to be updated, please follow the password guide below.";
-        
-        document.getElementById("passwordPopupInfo").innerHTML =
-            "ECAE passwords expire every 60 days.<br><br>If your password has expired, please update it using the password guide before accessing ECAE systems and services.";
-        
-        document.getElementById("passwordGuideButton").innerHTML =
-            "🔑 View Password Guide";
-        
-        document.getElementById("continuePortalButton").textContent =
-            "Continue to Support Portal";
-        document.getElementById("guideSectionTitle").textContent =
-            "What Are You Looking For?";
-        
-        document.getElementById("guideSectionDescription").textContent =
-            "Select a topic below to open its support guide.";
-        document.getElementById("card1").textContent =
-            "ECAE Official Website Login Problem";
-        
-        document.getElementById("card2").textContent =
-            "Kottab Learning Management System";
-        
-        document.getElementById("card3").textContent =
-            "My Attendance & Advisor";
-        document.getElementById("card4").textContent =
-            "Registration Letter Request";
-        
-        document.getElementById("card5").textContent =
-            "ECAE Office 365";
-        
-        document.getElementById("card6").textContent =
-            "ECAE Email";
-        
-        document.getElementById("card7").textContent =
-            "ECAE Library";
-        
-        document.getElementById("card8").textContent =
-            "Students Directory of Institutional Documents";
-        
-        document.getElementById("card9").textContent =
-            "Feedback/Complaint";
-        
-        document.getElementById("card10").textContent =
-            "Feedback Follow-Up";
-        
-        document.getElementById("card11").textContent =
-            "Research Grant Application Submittal Access";
-        
-        document.getElementById("card12").textContent =
-            "ECAE Calendar";
-        
-        document.getElementById("card13").textContent =
-            "ECAE Academic Programs";
-        
-        document.getElementById("card14").textContent =
-            "Student Information System (SIS) Portal";
-        
-        document.getElementById("card15").textContent =
-            "eClearance & Letter of Completion";
-        
-        document.getElementById("card16").textContent =
-            "Absence Support Documents";
-        
-        document.getElementById("card17").textContent =
-            "Grade Appeal";
-        
-        document.getElementById("card18").textContent =
-            "My Timetable";
-        
-        document.getElementById("card19").textContent =
-            "My Grades";
-        
-        document.getElementById("card20").textContent =
-            "Unofficial Transcript";
-        
-        document.getElementById("card21").textContent =
-            "Request a Transcript";
-        
-        document.getElementById("card22").textContent =
-            "Account Authentication Guide";
-        
-        document.getElementById("card23").textContent =
-            "WiFi Connectivity Guide";
-        
-        document.getElementById("card24").textContent =
-            "Changing Your Password in Office 365";
-        window.addEventListener("load", function () {
+            document.getElementById("searchInput").value = "";
+            searchProblems();
         }
+        
+        window.addEventListener("load", function () {
+            const savedLanguage =
+                localStorage.getItem("language") || "en";
+        
+            setLanguage(savedLanguage);
+            openPasswordPopup();
+        });
             const savedLanguage =
                 localStorage.getItem("language") || "en";
         
