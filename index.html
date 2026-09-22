@@ -783,7 +783,7 @@
         <div class="header-container">
             <div class="language-switcher">
                 <button onclick="setLanguage('en')">🇬🇧 English</button>
-                <button onclick="alert('Arabic button works')">🇦🇪 العربية</button>
+                <button onclick="setLanguage('ar')">🇦🇪 العربية</button>
             </div>
             <div class="header-text">
                 <h1 id="mainTitle">Student Portal Support</h1>
@@ -1407,59 +1407,6 @@
             }
         });
         function setLanguage(lang) {
-            const arabicCards = [
-                "مشكلة تسجيل الدخول إلى الموقع الرسمي لـ ECAE",
-                "نظام إدارة التعلم كتاب",
-                "الحضور والمرشد الأكاديمي",
-                "طلب رسالة تسجيل",
-                "مايكروسوفت 365 - ECAE",
-                "البريد الإلكتروني لـ ECAE",
-                "مكتبة ECAE",
-                "دليل الوثائق المؤسسية للطلاب",
-                "ملاحظات أو شكوى",
-                "متابعة الملاحظات",
-                "تقديم طلب منحة بحثية",
-                "تقويم ECAE",
-                "البرامج الأكاديمية في ECAE",
-                "بوابة نظام معلومات الطالب",
-                "إخلاء الطرف ورسالة إتمام الدراسة",
-                "مستندات دعم الغياب",
-                "التظلم على الدرجات",
-                "جدولي الدراسي",
-                "درجاتي",
-                "كشف درجات غير رسمي",
-                "طلب كشف درجات",
-                "دليل توثيق الحساب",
-                "دليل الاتصال بشبكة الواي فاي",
-                "تغيير كلمة المرور في Office 365"
-            ];
-        
-            const englishCards = [
-                "ECAE Official Website Login Problem",
-                "Kottab Learning Management System",
-                "My Attendance & Advisor",
-                "Registration Letter Request",
-                "ECAE Office 365",
-                "ECAE Email",
-                "ECAE Library",
-                "Students Directory of Institutional Documents",
-                "Feedback/Complaint",
-                "Feedback Follow-Up",
-                "Research Grant Application Submittal Access",
-                "ECAE Calendar",
-                "ECAE Academic Programs",
-                "Student Information System (SIS) Portal",
-                "eClearance & Letter of Completion",
-                "Absence Support Documents",
-                "Grade Appeal",
-                "My Timetable",
-                "My Grades",
-                "Unofficial Transcript",
-                "Request a Transcript",
-                "Account Authentication Guide",
-                "WiFi Connectivity Guide",
-                "Changing Your Password in Office 365"
-            ];
         
             if (lang === "ar") {
                 document.documentElement.lang = "ar";
@@ -1499,10 +1446,6 @@
                 document.getElementById("guideSectionDescription").textContent =
                     "اختر الموضوع المطلوب أدناه لفتح دليل الدعم.";
         
-                arabicCards.forEach(function (cardText, index) {
-                    document.getElementById("card" + (index + 1)).textContent =
-                        cardText;
-                });
             } else {
                 document.documentElement.lang = "en";
                 document.documentElement.dir = "ltr";
@@ -1541,10 +1484,7 @@
                 document.getElementById("guideSectionDescription").textContent =
                     "Select a topic below to open its support guide.";
         
-                englishCards.forEach(function (cardText, index) {
-                    document.getElementById("card" + (index + 1)).textContent =
-                        cardText;
-                });
+                
             }
         
             localStorage.setItem("language", lang);
