@@ -709,7 +709,7 @@
 
                 <span class="step-number">Step 1</span>
 
-                <h3>Open the ECAE Website or Portal</h3>
+                <h3 id="step1Title">Open the ECAE Website or Portal</h3>
 
                 <ol class="instruction-list">
                     <li>
@@ -762,6 +762,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(2)"
+                        id="next1"
                     >
                         Next
                     </button>
@@ -777,7 +778,7 @@
 
                 <span class="step-number">Step 2</span>
 
-                <h3>Sign In and Choose Students</h3>
+                <h3 id="step2Title">Sign In and Choose Students</h3>
 
                 <ol class="instruction-list">
                     <li>Sign in using your ECAE username and password.</li>
@@ -813,6 +814,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(1)"
+                        id="previous2"
                     >
                         Previous
                     </button>
@@ -821,6 +823,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(3)"
+                        id="next2"
                     >
                         Next
                     </button>
@@ -837,7 +840,7 @@
 
                 <span class="step-number">Step 3</span>
 
-                <h3>Open Student Service</h3>
+                <h3 id="step3Title">Open Student Service</h3>
 
                 <ol class="instruction-list">
                     <li>
@@ -862,6 +865,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(2)"
+                        id="previous3"
                     >
                         Previous
                     </button>
@@ -870,6 +874,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(4)"
+                        id="next3"
                     >
                         Next
                     </button>
@@ -886,7 +891,7 @@
 
                 <span class="step-number">Step 4</span>
 
-                <h3>Select Absence Support Documents</h3>
+                <h3 id="step4Title">Select Absence Support Documents</h3>
 
                 <ol class="instruction-list">
                     <li>
@@ -928,6 +933,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(3)"
+                        id="previous4"
                     >
                         Previous
                     </button>
@@ -936,6 +942,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(5)"
+                        id="next4"
                     >
                         Next
                     </button>
@@ -952,7 +959,7 @@
 
                 <span class="step-number">Step 5</span>
 
-                <h3>Complete the Service</h3>
+                <h3 id="step5Title">Complete the Service</h3>
 
                 <ol class="instruction-list">
                     <li>
@@ -990,6 +997,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(4)"
+                        id="previous5"
                     >
                         Previous
                     </button>
@@ -998,6 +1006,7 @@
                         type="button"
                         class="next-button"
                         onclick="finishGuide()"
+                        id="finishButton"
                     >
                         Finish Guide
                     </button>
@@ -1022,9 +1031,9 @@
                     ✅
                 </div>
 
-                <h3>Guide Complete</h3>
+                <h3 id="completionTitle">Guide Complete</h3>
 
-                <p>
+                <p id="completionDescription">
                     You have reached the end of the Absence Support
                     Documents guide.
                 </p>
@@ -1035,6 +1044,8 @@
                         type="button"
                         class="next-button"
                         onclick="restartGuide()"
+                        id="restartGuideButton"
+                        
                     >
                         Restart Guide
                     </button>
@@ -1043,6 +1054,7 @@
                         type="button"
                         class="previous-button"
                         onclick="returnToGuideOptions()"
+                        id="completionReturnButton"
                     >
                         Choose Another Format
                     </button>
@@ -1050,6 +1062,7 @@
                     <a
                         href="index.html"
                         class="back-button"
+                        id="completionBackButton"
                     >
                         Back to Support Portal
                     </a>
@@ -1247,6 +1260,51 @@
         
                 document.getElementById("interactiveGuideDescription").textContent =
                     "اتبع التعليمات خطوة بخطوة.";
+                document.getElementById("step1Title").textContent =
+                    "افتح موقع ECAE أو البوابة الإلكترونية";
+                
+                document.getElementById("step2Title").textContent =
+                    "تسجيل الدخول واختيار قسم الطلاب";
+                
+                document.getElementById("step3Title").textContent =
+                    "فتح خدمة الطالب";
+                
+                document.getElementById("step4Title").textContent =
+                    "اختيار مستندات دعم الغياب";
+                
+                document.getElementById("step5Title").textContent =
+                    "إكمال الخدمة";
+                
+                document.getElementById("completionTitle").textContent =
+                    "اكتمل الدليل";
+                
+                document.getElementById("completionDescription").textContent =
+                    "لقد وصلت إلى نهاية دليل مستندات دعم الغياب.";
+                
+                document.getElementById("next1").textContent = "التالي";
+                
+                document.getElementById("previous2").textContent = "السابق";
+                document.getElementById("next2").textContent = "التالي";
+                
+                document.getElementById("previous3").textContent = "السابق";
+                document.getElementById("next3").textContent = "التالي";
+                
+                document.getElementById("previous4").textContent = "السابق";
+                document.getElementById("next4").textContent = "التالي";
+                
+                document.getElementById("previous5").textContent = "السابق";
+                
+                document.getElementById("finishButton").textContent =
+                    "إنهاء الدليل";
+                
+                document.getElementById("restartGuideButton").textContent =
+                    "إعادة تشغيل الدليل";
+                
+                document.getElementById("completionReturnButton").textContent =
+                    "اختيار تنسيق آخر";
+                
+                document.getElementById("completionBackButton").textContent =
+                    "العودة إلى بوابة الدعم";
         
             } else {
         
@@ -1288,6 +1346,51 @@
         
                 document.getElementById("interactiveGuideDescription").textContent =
                     "Follow the instructions one step at a time.";
+                document.getElementById("step1Title").textContent =
+                    "Open the ECAE Website or Portal";
+                
+                document.getElementById("step2Title").textContent =
+                    "Sign In and Choose Students";
+                
+                document.getElementById("step3Title").textContent =
+                    "Open Student Service";
+                
+                document.getElementById("step4Title").textContent =
+                    "Select Absence Support Documents";
+                
+                document.getElementById("step5Title").textContent =
+                    "Complete the Service";
+                
+                document.getElementById("completionTitle").textContent =
+                    "Guide Complete";
+                
+                document.getElementById("completionDescription").textContent =
+                    "You have reached the end of the Absence Support Documents guide.";
+                
+                document.getElementById("next1").textContent = "Next";
+                
+                document.getElementById("previous2").textContent = "Previous";
+                document.getElementById("next2").textContent = "Next";
+                
+                document.getElementById("previous3").textContent = "Previous";
+                document.getElementById("next3").textContent = "Next";
+                
+                document.getElementById("previous4").textContent = "Previous";
+                document.getElementById("next4").textContent = "Next";
+                
+                document.getElementById("previous5").textContent = "Previous";
+                
+                document.getElementById("finishButton").textContent =
+                    "Finish Guide";
+                
+                document.getElementById("restartGuideButton").textContent =
+                    "Restart Guide";
+                
+                document.getElementById("completionReturnButton").textContent =
+                    "Choose Another Format";
+                
+                document.getElementById("completionBackButton").textContent =
+                    "Back to Support Portal";
             }
         
             localStorage.setItem("language", lang);
