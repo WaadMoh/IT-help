@@ -532,11 +532,12 @@
         <div class="header-container">
 
             <div class="header-text">
-                <h1>ECAE Academic Programs</h1>
-
-                <p>
-                    Choose how you would like to view this support
-                    guide.
+                <h1 id="pageTitle">
+                    ECAE Academic Programs
+                </h1>
+                
+                <p id="pageDescription">
+                    Choose how you would like to view this support guide.
                 </p>
             </div>
 
@@ -557,12 +558,13 @@
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2>Select a Guide Format</h2>
-
-                <p>
-                    Follow an interactive step-by-step guide or open
-                    the original PDF document.
-                </p>
+                <h2 id="formatTitle">
+                Select a Guide Format
+            </h2>
+            
+            <p id="formatDescription">
+                Follow an interactive step-by-step guide or open the original PDF document.
+            </p>
             </section>
 
             <section class="guide-options">
@@ -575,12 +577,15 @@
                         💻
                     </div>
 
-                    <h3>Interactive Guide</h3>
+                    <h3 id="interactiveTitle">
+                        Interactive Guide
+                    </h3>
 
                     <button
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
+                        id="interactiveButton"
                     >
                         Start Interactive Guide
                     </button>
@@ -595,9 +600,9 @@
                         📄
                     </div>
 
-                    <h3>PDF Guide</h3>
-
-               
+                    <h3 id="pdfTitle">
+                        PDF Guide
+                    </h3>
                     <a
                         href="ECAE Academic Programs.cleaned.pdf"
                         class="guide-button"
