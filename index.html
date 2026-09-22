@@ -851,11 +851,15 @@
         ========================================== -->
 
         <section class="title-section">
-            <h2>What Are You Looking For?</h2>
-
-            <p>
+        
+            <h2 id="guideSectionTitle">
+                What Are You Looking For?
+            </h2>
+        
+            <p id="guideSectionDescription">
                 Select a topic below to open its support guide.
             </p>
+        
         </section>
 
         <!-- =========================================
@@ -867,8 +871,9 @@
             <article class="problem-card">
                 <div class="card-icon" aria-hidden="true">🌐</div>
 
-                <h3>ECAE Official Website Login Problem</h3>
-
+                <h3 id="card1">
+                    ECAE Official Website Login Problem
+                </h3>
                 <a
                     href="ECAE_Official.html"
                     class="guide-button"
@@ -880,8 +885,9 @@
             <article class="problem-card">
                 <div class="card-icon" aria-hidden="true">📚</div>
 
-                <h3>Kottab Learning Management System</h3>
-
+                <h3 id="card2">
+                    Kottab Learning Management System
+                </h3>
                 <a
                     href="Kottab.html"
                     class="guide-button"
@@ -893,8 +899,9 @@
             <article class="problem-card">
                 <div class="card-icon" aria-hidden="true">📋</div>
 
-                <h3>My Attendance &amp; Advisor</h3>
-
+                <h3 id="card3">
+                    My Attendance & Advisor
+                </h3>
                 <a
                     href="Attendance.html"
                     class="guide-button"
@@ -1399,6 +1406,7 @@
         function setLanguage(lang) {
 
     if (lang === "ar") {
+        
 
         document.documentElement.lang = "ar";
         document.documentElement.dir = "rtl";
@@ -1428,7 +1436,18 @@
         
         document.getElementById("continuePortalButton").textContent =
             "المتابعة إلى بوابة الدعم";
-    } 
+        document.getElementById("guideSectionTitle").textContent =
+            "ما الذي تبحث عنه؟";
+        
+        document.getElementById("guideSectionDescription").textContent =
+            "اختر الموضوع المطلوب أدناه لفتح دليل الدعم.";
+        document.getElementById("card1").textContent =
+            " مشكلة تسجيل الدخول إلى موقع الرسمي ECAE";
+        document.getElementById("card2").textContent =
+            "نظام إدارة التعلم كتاب";
+        document.getElementById("card3").textContent =
+            "الحضور والمرشد الأكاديمي";
+            } 
     else {
 
         document.documentElement.lang = "en";
@@ -1462,6 +1481,19 @@
         
         document.getElementById("continuePortalButton").textContent =
             "Continue to Support Portal";
+        document.getElementById("guideSectionTitle").textContent =
+            "What Are You Looking For?";
+        
+        document.getElementById("guideSectionDescription").textContent =
+            "Select a topic below to open its support guide.";
+        document.getElementById("card1").textContent =
+            "ECAE Official Website Login Problem";
+        
+        document.getElementById("card2").textContent =
+            "Kottab Learning Management System";
+        
+        document.getElementById("card3").textContent =
+            "My Attendance & Advisor";
         window.addEventListener("load", function () {
         
             const savedLanguage =
