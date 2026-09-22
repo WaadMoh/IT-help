@@ -1407,18 +1407,44 @@
             }
         });
         function setLanguage(lang) {
-        
+                    
             if (lang === "ar") {
+            
                 document.documentElement.lang = "ar";
                 document.documentElement.dir = "rtl";
-                document.title = "بوابة دعم الطالب";
-        
-            document.getElementById("guideSectionTitle").textContent =
-                "ما الذي تبحث عنه؟";
             
-            document.getElementById("guideSectionDescription").textContent =
-                "اختر الموضوع المطلوب أدناه لفتح دليل الدعم.";
+                document.getElementById("mainTitle").textContent =
+                    "بوابة دعم الطالب";
             
+                document.getElementById("mainDescription").textContent =
+                    "ابحث عن حلول واضحة خطوة بخطوة للأنظمة والخدمات الطلابية.";
+            
+                document.getElementById("searchLabel").textContent =
+                    "ابحث في أدلة الدعم";
+            
+                document.getElementById("searchInput").placeholder =
+                    "مثال: واي فاي، البريد الإلكتروني، الدرجات";
+            
+                document.getElementById("passwordPopupTitle").textContent =
+                    "تذكير بتحديث كلمة المرور";
+            
+                document.getElementById("passwordPopupText").innerHTML =
+                    "تنتهي صلاحية كلمات مرور ECAE كل <strong>60 يومًا</strong>. إذا انتهت صلاحية كلمة المرور الخاصة بك أو كنت بحاجة إلى تحديثها، يرجى اتباع دليل تغيير كلمة المرور.";
+            
+                document.getElementById("passwordPopupInfo").innerHTML =
+                    "تنتهي صلاحية كلمات مرور ECAE كل 60 يومًا.<br><br>إذا انتهت صلاحية كلمة المرور الخاصة بك، يرجى تحديثها باستخدام دليل تغيير كلمة المرور قبل الوصول إلى أنظمة وخدمات ECAE.";
+            
+                document.getElementById("passwordGuideButton").innerHTML =
+                    "🔑 عرض دليل تغيير كلمة المرور";
+            
+                document.getElementById("continuePortalButton").textContent =
+                    "المتابعة إلى بوابة الدعم";
+            
+                document.getElementById("guideSectionTitle").textContent =
+                    "ما الذي تبحث عنه؟";
+            
+                document.getElementById("guideSectionDescription").textContent =
+                    "اختر الموضوع المطلوب أدناه لفتح دليل الدعم.";
             }
             else {
             
