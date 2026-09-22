@@ -726,42 +726,47 @@
             🔐
         </div>
 
-            <h2 id="passwordPopupTitle">
-                Password Update Reminder
-            </h2>
-            
-            <p>
-                ECAE passwords expire every
-                <strong>60 days</strong>.
-                If your password has expired or needs to be updated,
-                please follow the password guide below.
-            </p>
-            
-            <div class="popup-information">
-                ECAE passwords expire every 60 days.
-                <br><br>
-                If your password has expired, please update it using the password guide before accessing ECAE systems and services.
-            </div>
-                        
-            <div class="popup-actions">
-            
-                <a
-                    href="PasswordChanging.html"
-                    class="popup-primary-button"
-                >
-                    🔑 View Password Guide
-                </a>
-            
-                <button
-                    type="button"
-                    class="popup-secondary-button"
-                    onclick="closePasswordPopup()"
-                >
-                    Continue to Support Portal
-                </button>
-            </div>
+        <h2 id="passwordPopupTitle">
+            Password Update Reminder
+        </h2>
+        
+        <p id="passwordPopupText">
+            ECAE passwords expire every
+            <strong>60 days</strong>.
+            If your password has expired or needs to be updated,
+            please follow the password guide below.
+        </p>
+        
+        <div
+            class="popup-information"
+            id="passwordPopupInfo"
+        >
+            ECAE passwords expire every 60 days.
+            <br><br>
+            If your password has expired, please update it using the password guide before accessing ECAE systems and services.
+        </div>
+        
+        <div class="popup-actions">
+        
+            <a
+                href="PasswordChanging.html"
+                class="popup-primary-button"
+                id="passwordGuideButton"
+            >
+                🔑 View Password Guide
+            </a>
+        
+            <button
+                type="button"
+                class="popup-secondary-button"
+                onclick="closePasswordPopup()"
+                id="continuePortalButton"
+            >
+                Continue to Support Portal
+            </button>
         </div>
     </div>
+</div>
             
             <!-- =========================================
                  HEADER
@@ -1399,7 +1404,7 @@
         document.documentElement.dir = "rtl";
 
         document.getElementById("mainTitle").textContent =
-            "دعم بوابة الطالب";
+            "بوابة دعم الطالب";
 
         document.getElementById("mainDescription").textContent =
             "ابحث عن حلول واضحة خطوة بخطوة للأنظمة والخدمات الطلابية.";
@@ -1409,8 +1414,22 @@
 
         document.getElementById("searchInput").placeholder =
             "مثال: واي فاي، البريد الإلكتروني، الدرجات";
-
-    } else {
+        document.getElementById("passwordPopupTitle").textContent =
+            "تذكير بتحديث كلمة المرور";
+        
+        document.getElementById("passwordPopupText").innerHTML =
+            "تنتهي صلاحية كلمات مرور ECAE كل <strong>60 يومًا</strong>. إذا انتهت صلاحية كلمة المرور الخاصة بك أو كنت بحاجة إلى تحديثها، يرجى اتباع دليل تغيير كلمة المرور.";
+        
+        document.getElementById("passwordPopupInfo").innerHTML =
+            "تنتهي صلاحية كلمات مرور ECAE كل 60 يومًا.<br><br>إذا انتهت صلاحية كلمة المرور الخاصة بك، يرجى تحديثها باستخدام دليل تغيير كلمة المرور قبل الوصول إلى أنظمة وخدمات ECAE.";
+        
+        document.getElementById("passwordGuideButton").innerHTML =
+            "🔑 عرض دليل تغيير كلمة المرور";
+        
+        document.getElementById("continuePortalButton").textContent =
+            "المتابعة إلى بوابة الدعم";
+    } 
+    else {
 
         document.documentElement.lang = "en";
         document.documentElement.dir = "ltr";
@@ -1426,67 +1445,32 @@
 
         document.getElementById("searchInput").placeholder =
             "Example: Wi‑Fi, email, grades...";
-    }
-            localStorage.setItem("language", lang);
         }
-
+            localStorage.setItem("language", lang);
+         }
+        document.getElementById("passwordPopupTitle").textContent =
+            "Password Update Reminder";
+        
+        document.getElementById("passwordPopupText").innerHTML =
+            "ECAE passwords expire every <strong>60 days</strong>. If your password has expired or needs to be updated, please follow the password guide below.";
+        
+        document.getElementById("passwordPopupInfo").innerHTML =
+            "ECAE passwords expire every 60 days.<br><br>If your password has expired, please update it using the password guide before accessing ECAE systems and services.";
+        
+        document.getElementById("passwordGuideButton").innerHTML =
+            "🔑 View Password Guide";
+        
+        document.getElementById("continuePortalButton").textContent =
+            "Continue to Support Portal";
         window.addEventListener("load", function () {
         
             const savedLanguage =
                 localStorage.getItem("language") || "en";
         
             setLanguage(savedLanguage);
-        
-        });
-        function setLanguage(lang) {
-        
-            if (lang === "ar") {
-        
-                document.documentElement.lang = "ar";
-                document.documentElement.dir = "rtl";
-        
-                document.getElementById("mainTitle").textContent =
-                    "دعم بوابة الطالب";
-        
-                document.getElementById("mainDescription").textContent =
-                    "ابحث عن حلول واضحة خطوة بخطوة للأنظمة والخدمات الطلابية.";
-        
-                document.getElementById("searchLabel").textContent =
-                    "ابحث في أدلة الدعم";
-        
-                document.getElementById("searchInput").placeholder =
-                    "مثال: واي فاي، البريد الإلكتروني، الدرجات";
-        
-            } else {
-        
-                document.documentElement.lang = "en";
-                document.documentElement.dir = "ltr";
-        
-                document.getElementById("mainTitle").textContent =
-                    "Student Portal Support";
-        
-                document.getElementById("mainDescription").textContent =
-                    "Find clear, step-by-step solutions for common student systems and services.";
-        
-                document.getElementById("searchLabel").textContent =
-                    "Search the support guides";
-        
-                document.getElementById("searchInput").placeholder =
-                    "Example: Wi‑Fi, email, grades...";
-            }
-        
-            localStorage.setItem("language", lang);
-        }
-        
-        window.addEventListener("load", function () {
-        
-            const savedLanguage =
-                localStorage.getItem("language") || "en";
-        
-            setLanguage(savedLanguage);
-        
-        });
 
+        
+        });
 
     </script>
 
