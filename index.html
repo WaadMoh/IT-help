@@ -1413,81 +1413,54 @@
                 document.documentElement.dir = "rtl";
                 document.title = "بوابة دعم الطالب";
         
-                document.getElementById("mainTitle").textContent =
-                    "بوابة دعم الطالب";
-        
-                document.getElementById("mainDescription").textContent =
-                    "ابحث عن حلول واضحة خطوة بخطوة للأنظمة والخدمات الطلابية.";
-        
-                document.getElementById("searchLabel").textContent =
-                    "ابحث في أدلة الدعم";
-        
-                document.getElementById("searchInput").placeholder =
-                    "مثال: واي فاي، البريد الإلكتروني، الدرجات";
-        
-                document.getElementById("passwordPopupTitle").textContent =
-                    "تذكير بتحديث كلمة المرور";
-        
-                document.getElementById("passwordPopupText").innerHTML =
-                    "تنتهي صلاحية كلمات مرور ECAE كل <strong>60 يومًا</strong>. إذا انتهت صلاحية كلمة المرور الخاصة بك أو كنت بحاجة إلى تحديثها، يرجى اتباع دليل تغيير كلمة المرور.";
-        
-                document.getElementById("passwordPopupInfo").innerHTML =
-                    "تنتهي صلاحية كلمات مرور ECAE كل 60 يومًا.<br><br>إذا انتهت صلاحية كلمة المرور الخاصة بك، يرجى تحديثها باستخدام دليل تغيير كلمة المرور قبل الوصول إلى أنظمة وخدمات ECAE.";
-        
-                document.getElementById("passwordGuideButton").innerHTML =
-                    "🔑 عرض دليل تغيير كلمة المرور";
-        
-                document.getElementById("continuePortalButton").textContent =
-                    "المتابعة إلى بوابة الدعم";
-        
-                document.getElementById("guideSectionTitle").textContent =
-                    "ما الذي تبحث عنه؟";
-        
-                document.getElementById("guideSectionDescription").textContent =
-                    "اختر الموضوع المطلوب أدناه لفتح دليل الدعم.";
-        
-            } else {
+            document.getElementById("guideSectionTitle").textContent =
+                "ما الذي تبحث عنه؟";
+            
+            document.getElementById("guideSectionDescription").textContent =
+                "اختر الموضوع المطلوب أدناه لفتح دليل الدعم.";
+            
+            }
+            else {
+            
                 document.documentElement.lang = "en";
                 document.documentElement.dir = "ltr";
-                document.title = "Student Portal Support";
-        
+            
                 document.getElementById("mainTitle").textContent =
                     "Student Portal Support";
-        
+            
                 document.getElementById("mainDescription").textContent =
                     "Find clear, step-by-step solutions for common student systems and services.";
-        
+            
                 document.getElementById("searchLabel").textContent =
                     "Search the Support Guides";
-        
+            
                 document.getElementById("searchInput").placeholder =
                     "Example: Wi-Fi, email, grades...";
-        
+            
                 document.getElementById("passwordPopupTitle").textContent =
                     "Password Update Reminder";
-        
+            
                 document.getElementById("passwordPopupText").innerHTML =
                     "ECAE passwords expire every <strong>60 days</strong>. If your password has expired or needs to be updated, please follow the password guide below.";
-        
+            
                 document.getElementById("passwordPopupInfo").innerHTML =
                     "ECAE passwords expire every 60 days.<br><br>If your password has expired, please update it using the password guide before accessing ECAE systems and services.";
-        
+            
                 document.getElementById("passwordGuideButton").innerHTML =
                     "🔑 View Password Guide";
-        
+            
                 document.getElementById("continuePortalButton").textContent =
                     "Continue to Support Portal";
-        
+            
                 document.getElementById("guideSectionTitle").textContent =
                     "What Are You Looking For?";
-        
+            
                 document.getElementById("guideSectionDescription").textContent =
                     "Select a topic below to open its support guide.";
-        
-                
             }
-        
+            
             localStorage.setItem("language", lang);
+                
         
             document.getElementById("searchInput").value = "";
             searchProblems();
