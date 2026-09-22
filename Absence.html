@@ -89,6 +89,23 @@
             height: auto;
             object-fit: contain;
         }
+        .language-switcher {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+        }
+        
+        .language-switcher button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            background: var(--ecae-blue);
+            color: white;
+            cursor: pointer;
+            font-weight: 700;
+        }
 
         /* =========================================
            MAIN CONTENT
@@ -529,14 +546,19 @@
     ========================================== -->
 
     <header class="page-header">
+        <div class="language-switcher">
+            <button onclick="setLanguage('en')">🇬🇧 English</button>
+            <button onclick="setLanguage('ar')">🇦🇪 العربية</button>
+        </div>
         <div class="header-container">
 
             <div class="header-text">
-                <h1>Absence Support Documents</h1>
-
-                <p>
-                    Choose how you would like to view this support
-                    guide.
+                <h1 id="pageTitle">
+                    Absence Support Documents
+                </h1>
+                
+                <p id="pageDescription">
+                    Choose how you would like to view this support guide.
                 </p>
             </div>
 
@@ -557,11 +579,12 @@
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2>Select a Guide Format</h2>
-
-                <p>
-                    Follow an interactive step-by-step guide or open
-                    the original PDF document.
+                <h2 id="formatTitle">
+                    Select a Guide Format
+                </h2>
+                
+                <p id="formatDescription">
+                    Follow an interactive step-by-step guide or open the original PDF document.
                 </p>
             </section>
 
@@ -575,13 +598,20 @@
                         💻
                     </div>
 
-                    <h3>Interactive Guide</h3>
+                    <h3 id="interactiveTitle">
+                        Interactive Guide
+                    </h3>
+                    
+                    <h3 id="pdfTitle">
+                        PDF Guide
+                    </h3>
 
 
                     <button
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
+                        id="interactiveButton"
                     >
                         Start Interactive Guide
                     </button>
@@ -602,6 +632,7 @@
                     <a
                         href="Absence Support Documents.cleaned.pdf"
                         class="guide-button"
+                        id="pdfButton"
                         >
                         View PDF Guid                
                     </a>
@@ -614,6 +645,7 @@
                 <a
                     href="index.html"
                     class="back-button"
+                    id="backButton"
                 >
                     ← Back to Support Portal
                 </a>
@@ -636,15 +668,16 @@
                     type="button"
                     class="return-button"
                     onclick="returnToGuideOptions()"
+                    id="returnButton"
                 >
                     ← Choose Another Format
                 </button>
 
-                <h2>
+                <h2 id="interactiveGuideTitle">
                     Interactive Absence Support Documents Guide
                 </h2>
 
-                <p>
+                <p id="interactiveGuideDescription">
                     Follow the instructions one step at a time.
                 </p>
 
@@ -1168,6 +1201,102 @@
             "currentYear"
         ).textContent =
             new Date().getFullYear();
+        function setLanguage(lang) {
+
+            if (lang === "ar") {
+        
+                document.documentElement.lang = "ar";
+                document.documentElement.dir = "rtl";
+        
+                document.getElementById("pageTitle").textContent =
+                    "مستندات دعم الغياب";
+        
+                document.getElementById("pageDescription").textContent =
+                    "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
+        
+                document.getElementById("formatTitle").textContent =
+                    "اختر نوع الدليل";
+        
+                document.getElementById("formatDescription").textContent =
+                    "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF الأصلي.";
+        
+                document.getElementById("interactiveTitle").textContent =
+                    "الدليل التفاعلي";
+        
+                document.getElementById("pdfTitle").textContent =
+                    "دليل PDF";
+        
+                document.getElementById("interactiveButton").textContent =
+                    "ابدأ الدليل التفاعلي";
+        
+                document.getElementById("pdfButton").textContent =
+                    "عرض ملف PDF";
+        
+                document.getElementById("backButton").textContent =
+                    "العودة إلى بوابة الدعم";
+        
+                document.getElementById("returnButton").textContent =
+                    "اختيار تنسيق آخر";
+        
+                document.getElementById("interactiveGuideTitle").textContent =
+                    "الدليل التفاعلي لمستندات دعم الغياب";
+        
+                document.getElementById("interactiveGuideDescription").textContent =
+                    "اتبع التعليمات خطوة بخطوة.";
+        
+            } else {
+        
+                document.documentElement.lang = "en";
+                document.documentElement.dir = "ltr";
+        
+                document.getElementById("pageTitle").textContent =
+                    "Absence Support Documents";
+        
+                document.getElementById("pageDescription").textContent =
+                    "Choose how you would like to view this support guide.";
+        
+                document.getElementById("formatTitle").textContent =
+                    "Select a Guide Format";
+        
+                document.getElementById("formatDescription").textContent =
+                    "Follow an interactive step-by-step guide or open the original PDF document.";
+        
+                document.getElementById("interactiveTitle").textContent =
+                    "Interactive Guide";
+        
+                document.getElementById("pdfTitle").textContent =
+                    "PDF Guide";
+        
+                document.getElementById("interactiveButton").textContent =
+                    "Start Interactive Guide";
+        
+                document.getElementById("pdfButton").textContent =
+                    "View PDF Guide";
+        
+                document.getElementById("backButton").textContent =
+                    "← Back to Support Portal";
+        
+                document.getElementById("returnButton").textContent =
+                    "← Choose Another Format";
+        
+                document.getElementById("interactiveGuideTitle").textContent =
+                    "Interactive Absence Support Documents Guide";
+        
+                document.getElementById("interactiveGuideDescription").textContent =
+                    "Follow the instructions one step at a time.";
+            }
+        
+            localStorage.setItem("language", lang);
+        }
+        
+        window.addEventListener("load", function () {
+        
+            const savedLanguage =
+                localStorage.getItem("language") || "en";
+        
+            setLanguage(savedLanguage);
+        
+        });
     </script>
 
 </body>
