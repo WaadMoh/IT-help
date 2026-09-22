@@ -716,7 +716,10 @@
         <button
             type="button"
             class="popup-close"
-            onclick="closePasswordPopup()"
+            onclick="
+                document.getElementById('passwordPopup').classList.add('hidden');
+                document.body.style.overflow = '';
+            "
             aria-label="Close password reminder"
         >
             &times;
@@ -780,7 +783,7 @@
         <div class="header-container">
             <div class="language-switcher">
                 <button onclick="setLanguage('en')">🇬🇧 English</button>
-                <button onclick="setLanguage('ar')">🇦🇪 العربية</button>
+                <button onclick="alert('Arabic button works')">🇦🇪 العربية</button>
             </div>
             <div class="header-text">
                 <h1 id="mainTitle">Student Portal Support</h1>
