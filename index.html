@@ -149,6 +149,27 @@
             height: auto;
             object-fit: contain;
         }
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .language-switcher button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            background: white;
+            color: var(--ecae-blue);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .language-switcher button:hover {
+            background: #EDF3FF;
+        }
 
 
         /* =========================================
@@ -748,11 +769,14 @@
 
     <header class="site-header">
         <div class="header-container">
-
+            <div class="language-switcher">
+                <button onclick="setLanguage('en')">🇬🇧 English</button>
+                <button onclick="setLanguage('ar')">🇦🇪 العربية</button>
+            </div>
             <div class="header-text">
-                <h1>Student Portal Support</h1>
+                <h1 id="mainTitle">Student Portal Support</h1>
 
-                <p>
+                <p id="mainDescription">
                     Find clear, step-by-step solutions for common
                     student systems and services.
                 </p>
@@ -777,7 +801,7 @@
         >
             <label
                 class="search-label"
-                id="search-label"
+                id="searchLabel"
                 for="searchInput"
             >
                 Search the support guides
@@ -1366,6 +1390,103 @@
                 closePasswordPopup();
             }
         });
+        function setLanguage(lang) {
+
+    if (lang === "ar") {
+
+        document.documentElement.lang = "ar";
+        document.documentElement.dir = "rtl";
+
+        document.getElementById("mainTitle").textContent =
+            "دعم بوابة الطالب";
+
+        document.getElementById("mainDescription").textContent =
+            "ابحث عن حلول واضحة خطوة بخطوة للأنظمة والخدمات الطلابية.";
+
+        document.getElementById("searchLabel").textContent =
+            "ابحث في أدلة الدعم";
+
+        document.getElementById("searchInput").placeholder =
+            "مثال: واي فاي، البريد الإلكتروني، الدرجات";
+
+    } else {
+
+        document.documentElement.lang = "en";
+        document.documentElement.dir = "ltr";
+
+        document.getElementById("mainTitle").textContent =
+            "Student Portal Support";
+
+        document.getElementById("mainDescription").textContent =
+            "Find clear, step-by-step solutions for common student systems and services.";
+
+        document.getElementById("searchLabel").textContent =
+            "Search the support guides";
+
+        document.getElementById("searchInput").placeholder =
+            "Example: Wi‑Fi, email, grades...";
+    }
+            localStorage.setItem("language", lang);
+        }
+
+        window.addEventListener("load", function () {
+        
+            const savedLanguage =
+                localStorage.getItem("language") || "en";
+        
+            setLanguage(savedLanguage);
+        
+        });
+        function setLanguage(lang) {
+        
+            if (lang === "ar") {
+        
+                document.documentElement.lang = "ar";
+                document.documentElement.dir = "rtl";
+        
+                document.getElementById("mainTitle").textContent =
+                    "دعم بوابة الطالب";
+        
+                document.getElementById("mainDescription").textContent =
+                    "ابحث عن حلول واضحة خطوة بخطوة للأنظمة والخدمات الطلابية.";
+        
+                document.getElementById("searchLabel").textContent =
+                    "ابحث في أدلة الدعم";
+        
+                document.getElementById("searchInput").placeholder =
+                    "مثال: واي فاي، البريد الإلكتروني، الدرجات";
+        
+            } else {
+        
+                document.documentElement.lang = "en";
+                document.documentElement.dir = "ltr";
+        
+                document.getElementById("mainTitle").textContent =
+                    "Student Portal Support";
+        
+                document.getElementById("mainDescription").textContent =
+                    "Find clear, step-by-step solutions for common student systems and services.";
+        
+                document.getElementById("searchLabel").textContent =
+                    "Search the support guides";
+        
+                document.getElementById("searchInput").placeholder =
+                    "Example: Wi‑Fi, email, grades...";
+            }
+        
+            localStorage.setItem("language", lang);
+        }
+        
+        window.addEventListener("load", function () {
+        
+            const savedLanguage =
+                localStorage.getItem("language") || "en";
+        
+            setLanguage(savedLanguage);
+        
+        });
+
+
     </script>
 
 </body>
