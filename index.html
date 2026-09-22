@@ -1234,7 +1234,7 @@
         <div class="footer-container">
 
             <section class="footer-section">
-                <h3>Need More Help?</h3>
+                <h3 id="footerHelpTitle">Need More Help?</h3>
 
                 <p class="footer-item">
                     <span aria-hidden="true">🌐</span>
@@ -1271,12 +1271,12 @@
             </section>
 
             <section class="footer-section">
-                <h3>Location</h3>
+                <h3 id="footerLocationTitle">Location</h3>
 
                 <p class="footer-item">
                     <span aria-hidden="true">📍</span>
 
-                    <span>
+                    <span id="abuDhabiLocation">
                         Abu Dhabi Campus<br>
                         Ground Floor, Room G17
                     </span>
@@ -1285,7 +1285,7 @@
                 <p class="footer-item">
                     <span aria-hidden="true">📍</span>
 
-                    <span>
+                    <span id="alAinLocation">
                         Al Ain Campus<br>
                         Support available in classes
                     </span>
@@ -1293,14 +1293,13 @@
             </section>
 
             <section class="footer-section">
-                <h3>Working Hours</h3>
+                <h3 id="footerHoursTitle">Working Hours</h3>
 
-                <p>
+                <p id="weekdaysHours">
                     <strong>Monday to Thursday</strong><br>
                     8:00 AM to 9:00 PM
                 </p>
-
-                <p>
+                <p id="fridayHours">
                     <strong>Friday</strong><br>
                     7:30 AM to 12:00 PM
                 </p>
@@ -1562,6 +1561,27 @@
                 document.getElementById("guideBtn22").textContent = "فتح الدليل";
                 document.getElementById("guideBtn23").textContent = "فتح الدليل";
                 document.getElementById("guideBtn24").textContent = "فتح الدليل";
+                document.getElementById("footerHelpTitle").textContent =
+                    "هل تحتاج إلى مساعدة؟";
+                
+                document.getElementById("footerLocationTitle").textContent =
+                    "الموقع";
+                
+                document.getElementById("footerHoursTitle").textContent =
+                    "ساعات العمل";
+                
+                document.getElementById("abuDhabiLocation").innerHTML =
+                    "حرم أبوظبي<br>الطابق الأرضي، الغرفة G17";
+                
+                document.getElementById("alAinLocation").innerHTML =
+                    "حرم العين<br>الدعم متوفر داخل القاعات الدراسية";
+                
+                document.getElementById("weekdaysHours").innerHTML =
+                    "<strong>من الإثنين إلى الخميس</strong><br>8:00 صباحاً إلى 9:00 مساءً";
+                
+                document.getElementById("fridayHours").innerHTML =
+                    "<strong>الجمعة</strong><br>7:30 صباحاً إلى 12:00 ظهراً";
+
             }
             else {
             
@@ -1696,7 +1716,27 @@
                 document.getElementById("guideBtn22").textContent = "Open Guide";
                 document.getElementById("guideBtn23").textContent = "Open Guide";
                 document.getElementById("guideBtn24").textContent = "Open Guide";
-            }
+                document.getElementById("footerHelpTitle").textContent =
+                    "Need More Help?";
+                
+                document.getElementById("footerLocationTitle").textContent =
+                    "Location";
+                
+                document.getElementById("footerHoursTitle").textContent =
+                    "Working Hours";
+                
+                document.getElementById("abuDhabiLocation").innerHTML =
+                    "Abu Dhabi Campus<br>Ground Floor, Room G17";
+                
+                document.getElementById("alAinLocation").innerHTML =
+                    "Al Ain Campus<br>Support available in classes";
+                
+                document.getElementById("weekdaysHours").innerHTML =
+                    "<strong>Monday to Thursday</strong><br>8:00 AM to 9:00 PM";
+                
+                document.getElementById("fridayHours").innerHTML =
+                    "<strong>Friday</strong><br>7:30 AM to 12:00 PM";
+                            }
             
             localStorage.setItem("language", lang);
                 
