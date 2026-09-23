@@ -59,6 +59,7 @@
         }
 
         .header-container {
+            position:relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -91,6 +92,29 @@
             max-width: 100%;
             height: auto;
             object-fit: contain;
+        }
+                .language-switcher {
+            position: absolute;
+            top: -32px;
+            right: 25px;
+            z-index: 20;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .language-switcher button {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            background: white;
+            color: var(--ecae-blue);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .language-switcher button:hover {
+            background: #EDF3FF;
         }
 
         /* =========================================
@@ -533,11 +557,16 @@
 
     <header class="page-header">
         <div class="header-container">
+            <div class="language-switcher">
+                <button onclick="setLanguage('en')">🇬🇧 English</button>
+                <button onclick="setLanguage('ar')">🇦🇪 العربية</button>
+            </div>
+
 
             <div class="header-text">
-                <h1>ECAE Email</h1>
+                <h1 id="pageTitle">ECAE Email</h1>
 
-                <p>
+                <p id="pageDescription">
                     Choose how you would like to view this support
                     guide.
                 </p>
@@ -560,9 +589,9 @@
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2>Select a Guide Format</h2>
+                <h2 id="formatTitle">Select a Guide Format</h2>
 
-                <p>
+                <p id="formatDescription">
                     Follow an interactive step-by-step guide or open
                     the original PDF document.
                 </p>
@@ -578,12 +607,13 @@
                         💻
                     </div>
 
-                    <h3>Interactive Guide</h3>
+                    <h3 id="interactiveTitle">Interactive Guide</h3>
 
                     <button
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
+                        id="interactiveButton"
                     >
                         Start Interactive Guide
                     </button>
@@ -598,13 +628,14 @@
                         📄
                     </div>
 
-                    <h3>PDF Guide</h3>
+                    <h3 id="pdfTitle">PDF Guide</h3>
 
                                    <a
                         href="ECAE Email.cleaned.pdf"
                         class="guide-button"
+                        id="pdfButton"
                         >
-                        View PDF Guid                
+                        View PDF Guide               
                     </a>
 
                 </article>
@@ -615,6 +646,7 @@
                 <a
                     href="index.html"
                     class="back-button"
+                    id="backButton"
                 >
                     ← Back to Support Portal
                 </a>
@@ -637,15 +669,16 @@
                     type="button"
                     class="return-button"
                     onclick="returnToGuideOptions()"
+                    id="returnButton"
                 >
                     ← Choose Another Format
                 </button>
 
-                <h2>
+                <h2 id="interactiveGuideTitle">
                     Interactive ECAE Email Guide
                 </h2>
 
-                <p>
+                <p id="interactiveGuideDescription">
                     Follow the instructions one step at a time.
                 </p>
 
@@ -675,10 +708,10 @@
                 <span class="step-number">Step 1</span>
 
  
-                <h3>Open the ECAE Website or Portal</h3>
+                <h3 id="step1Title">Open the ECAE Website or Portal</h3>
 
     
-                <ol class="instruction-list">
+                <ol id="step1List" class="instruction-list">
        
                     <li>Open the Emirates College for Advanced Education (ECAE) website.</li>
         
@@ -719,6 +752,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(2)"
+                        id="next1"
                     >
                         Next
                     </button>
@@ -737,16 +771,16 @@
                 <span class="step-number">Step 2</span>
 
    
-                <h3>Sign In and Select Students</h3>
+                <h3 id="step2Title">Sign In and Select Students</h3>
 
     
-                <ol class="instruction-list">
+                <ol id="step2List" class="instruction-list">
                     <li>Sign in using your ECAE username and password.</li>
                     <li>After signing in, select the <strong>Students</strong> tab.</li>
                 </ol>
 
    
-                <div class="information-note">
+                <div id="step2Note" class="information-note">
                     If you cannot access the portal, reset your password through Office 365 and try again.
                     <strong>Important:</strong><br>
                     Students using other corporate devices may need to sign in using the following username format:
@@ -788,6 +822,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(1)"
+                        id="previous2"
                     >
                         Previous
                     </button>
@@ -796,6 +831,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(3)"
+                        id="next2"
                     >
                         Next
                     </button>
@@ -812,15 +848,15 @@
         
             <span class="step-number">Step 3</span>
         
-            <h3>Locate ECAE Email</h3>
+            <h3 id="step3Title">Locate ECAE Email</h3>
         
-            <ol class="instruction-list">
+            <ol id="step3List" class="instruction-list">
                 <li>After selecting the <strong>Students</strong> tab, look at the right-side panel.</li>
                 <li>Find the <strong>Important Links (Internal)</strong> section.</li>
                 <li>Select <strong>ECAE Email</strong>.</li>
             </ol>
         
-            <div class="information-note">
+            <div id="step3Note" class="information-note">
                 ECAE Email is available from the Important Links (Internal) section.
             </div>
         
@@ -830,6 +866,7 @@
                     type="button"
                     class="previous-button"
                     onclick="showStep(2)"
+                    id="previous3"
                 >
                     Previous
                 </button>
@@ -838,6 +875,7 @@
                     type="button"
                     class="next-button"
                     onclick="showStep(4)"
+                    id="next3"
                 >
                     Next
                 </button>
@@ -854,16 +892,16 @@
             
                 <span class="step-number">Step 4</span>
             
-                <h3>Access Your ECAE Email</h3>
+                <h3 id="step4Title">Access Your ECAE Email</h3>
             
-                <ol class="instruction-list">
+                <ol id="step4List" class="instruction-list">
                     <li>Select <strong>ECAE Email</strong> from Important Links (Internal).</li>
                     <li>Sign in using your ECAE credentials.</li>
                     <li>Open your mailbox.</li>
                     <li>Use your email account to communicate with faculty and staff and receive important college announcements.</li>
                 </ol>
             
-                <div class="information-note">
+                <div id="step4Note" class="information-note">
                     You can also access your email directly through Outlook Online.
                 </div>
             
@@ -885,6 +923,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(3)"
+                        id="previous4"
                     >
                         Previous
                     </button>
@@ -893,6 +932,7 @@
                         type="button"
                         class="next-button"
                         onclick="finishGuide()"
+                        id="finishButton"
                     >
                         Finish Guide
                     </button>
@@ -917,9 +957,9 @@
                     ✅
                 </div>
 
-                <h3>Guide Complete</h3>
+                <h3 id="completionTitle">Guide Complete</h3>
 
-                <p>
+                <p id="completionDescription">
                     You have reached the end of the ECAE Email
                     guide.
                 </p>
@@ -930,6 +970,7 @@
                         type="button"
                         class="next-button"
                         onclick="restartGuide()"
+                        id="restartGuideButton"
                     >
                         Restart Guide
                     </button>
@@ -938,6 +979,7 @@
                         type="button"
                         class="previous-button"
                         onclick="returnToGuideOptions()"
+                        id="completionReturnButton"
                     >
                         Choose Another Format
                     </button>
@@ -945,6 +987,7 @@
                     <a
                         href="index.html"
                         class="back-button"
+                        id="completionBackButton"
                     >
                         Back to Support Portal
                     </a>
@@ -1100,6 +1143,262 @@
             "currentYear"
         ).textContent =
             new Date().getFullYear();
+            function setLanguage(lang){
+                
+                if(lang==="ar"){
+                
+                document.documentElement.lang="ar";
+                document.documentElement.dir="rtl";
+                
+                document.getElementById("pageTitle").textContent=
+                "بريد ECAE الإلكتروني";
+                
+                document.getElementById("pageDescription").textContent=
+                "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
+                
+                document.getElementById("formatTitle").textContent=
+                "اختر نوع الدليل";
+                
+                document.getElementById("formatDescription").textContent=
+                "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF الأصلي.";
+                
+                document.getElementById("interactiveTitle").textContent=
+                "الدليل التفاعلي";
+                
+                document.getElementById("interactiveButton").textContent=
+                "ابدأ الدليل التفاعلي";
+                
+                document.getElementById("pdfTitle").textContent=
+                "دليل PDF";
+                
+                document.getElementById("pdfButton").textContent=
+                "عرض ملف PDF";
+                
+                document.getElementById("backButton").textContent=
+                "العودة إلى بوابة الدعم";
+                
+                document.getElementById("returnButton").textContent=
+                "اختيار تنسيق آخر";
+                
+                document.getElementById("interactiveGuideTitle").textContent=
+                "الدليل التفاعلي لبريد ECAE الإلكتروني";
+                
+                document.getElementById("interactiveGuideDescription").textContent=
+                "اتبع التعليمات خطوة بخطوة.";
+                
+                document.getElementById("step1Title").textContent=
+                "فتح موقع أو بوابة ECAE";
+                
+                document.getElementById("step2Title").textContent=
+                "تسجيل الدخول واختيار الطلاب";
+                
+                document.getElementById("step3Title").textContent=
+                "العثور على بريد ECAE";
+                
+                document.getElementById("step4Title").textContent=
+                "الوصول إلى بريد ECAE";
+                
+                document.getElementById("step1List").innerHTML=`
+                <li>افتح موقع كلية الإمارات للتطوير التربوي أو البوابة الإلكترونية.</li>
+                <li>اضغط على تسجيل الدخول.</li>
+                <li>اختر بوابة ECAE.</li>
+                <li>يمكنك أيضاً استخدام الروابط المباشرة.</li>
+                `;
+                
+                document.getElementById("step2List").innerHTML=`
+                <li>سجل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك.</li>
+                <li>اختر تبويب الطلاب.</li>
+                `;
+                
+                document.getElementById("step2Note").innerHTML=`
+                إذا لم تتمكن من الوصول إلى البوابة فأعد تعيين كلمة المرور ثم حاول مرة أخرى.<br><br>
+                <strong>مهم:</strong><br>
+                قد تحتاج بعض الأجهزة إلى استخدام:<br><br>
+                <strong>ECAE\\StudentID</strong><br>
+                مثال:<br>
+                <strong>ECAE\\001164</strong>
+                `;
+                
+                document.getElementById("step3List").innerHTML=`
+                <li>بعد اختيار تبويب الطلاب انظر إلى الجانب الأيمن.</li>
+                <li>ابحث عن قسم الروابط المهمة الداخلية.</li>
+                <li>اختر بريد ECAE.</li>
+                `;
+                
+                document.getElementById("step3Note").innerHTML=`
+                يمكن الوصول إلى بريد ECAE من قسم الروابط المهمة الداخلية.
+                `;
+                
+                document.getElementById("step4List").innerHTML=`
+                <li>اختر بريد ECAE من قسم الروابط المهمة الداخلية.</li>
+                <li>قم بتسجيل الدخول باستخدام بيانات ECAE الخاصة بك.</li>
+                <li>افتح صندوق البريد الخاص بك.</li>
+                <li>استخدم البريد الإلكتروني للتواصل مع أعضاء الهيئة الأكاديمية واستلام الإعلانات المهمة.</li>
+                `;
+                
+                document.getElementById("step4Note").innerHTML=`
+                يمكنك أيضاً الوصول إلى بريدك مباشرة عبر Outlook Online.
+                `;
+                
+                document.getElementById("completionTitle").textContent=
+                "اكتمل الدليل";
+                
+                document.getElementById("completionDescription").textContent=
+                "لقد وصلت إلى نهاية دليل بريد ECAE الإلكتروني.";
+                
+                document.getElementById("restartGuideButton").textContent=
+                "إعادة تشغيل الدليل";
+                
+                document.getElementById("completionReturnButton").textContent=
+                "اختيار تنسيق آخر";
+                
+                document.getElementById("completionBackButton").textContent=
+                "العودة إلى بوابة الدعم";
+                
+                document.getElementById("next1").textContent="التالي";
+                document.getElementById("next2").textContent="التالي";
+                document.getElementById("next3").textContent="التالي";
+                
+                document.getElementById("previous2").textContent="السابق";
+                document.getElementById("previous3").textContent="السابق";
+                document.getElementById("previous4").textContent="السابق";
+                
+                document.getElementById("finishButton").textContent="إنهاء الدليل";
+                
+                }else{
+                
+                document.documentElement.lang="en";
+                document.documentElement.dir="ltr";
+                
+                document.getElementById("pageTitle").textContent=
+                "ECAE Email";
+                
+                document.getElementById("pageDescription").textContent=
+                "Choose how you would like to view this support guide.";
+                
+                document.getElementById("formatTitle").textContent=
+                "Select a Guide Format";
+                
+                document.getElementById("formatDescription").textContent=
+                "Follow an interactive step-by-step guide or open the original PDF document.";
+                
+                document.getElementById("interactiveTitle").textContent=
+                "Interactive Guide";
+                
+                document.getElementById("interactiveButton").textContent=
+                "Start Interactive Guide";
+                
+                document.getElementById("pdfTitle").textContent=
+                "PDF Guide";
+                
+                document.getElementById("pdfButton").textContent=
+                "View PDF Guide";
+                
+                document.getElementById("backButton").textContent=
+                "← Back to Support Portal";
+                
+                document.getElementById("returnButton").textContent=
+                "← Choose Another Format";
+                
+                document.getElementById("interactiveGuideTitle").textContent=
+                "Interactive ECAE Email Guide";
+                
+                document.getElementById("interactiveGuideDescription").textContent=
+                "Follow the instructions one step at a time.";
+                
+                document.getElementById("step1Title").textContent=
+                "Open the ECAE Website or Portal";
+                
+                document.getElementById("step2Title").textContent=
+                "Sign In and Select Students";
+                
+                document.getElementById("step3Title").textContent=
+                "Locate ECAE Email";
+                
+                document.getElementById("step4Title").textContent=
+                "Access Your ECAE Email";
+                
+                document.getElementById("step1List").innerHTML=`
+                <li>Open the Emirates College for Advanced Education (ECAE) website.</li>
+                <li>Click Login in the top-right corner.</li>
+                <li>Select ECAE Portal.</li>
+                <li>You can also use the direct links below.</li>
+                `;
+                
+                document.getElementById("step2List").innerHTML=`
+                <li>Sign in using your ECAE username and password.</li>
+                <li>Select the Students tab.</li>
+                `;
+                
+                document.getElementById("step2Note").innerHTML=`
+                If you cannot access the portal, reset your password and try again.<br><br>
+                <strong>Important:</strong><br>
+                Use the following format if needed:<br><br>
+                <strong>ECAE\\StudentID</strong><br>
+                Example:<br>
+                <strong>ECAE\\001164</strong>
+                `;
+                
+                document.getElementById("step3List").innerHTML=`
+                <li>After selecting Students, look at the right-side panel.</li>
+                <li>Locate the Important Links (Internal) section.</li>
+                <li>Select ECAE Email.</li>
+                `;
+                
+                document.getElementById("step3Note").innerHTML=`
+                ECAE Email is available from the Important Links (Internal) section.
+                `;
+                
+                document.getElementById("step4List").innerHTML=`
+                <li>Select ECAE Email from Important Links (Internal).</li>
+                <li>Sign in using your ECAE credentials.</li>
+                <li>Open your mailbox.</li>
+                <li>Use your email to communicate with faculty and receive important college announcements.</li>
+                `;
+                
+                document.getElementById("step4Note").innerHTML=`
+                You can also access your email directly through Outlook Online.
+                `;
+                
+                document.getElementById("completionTitle").textContent=
+                "Guide Complete";
+                
+                document.getElementById("completionDescription").textContent=
+                "You have reached the end of the ECAE Email guide.";
+                
+                document.getElementById("restartGuideButton").textContent=
+                "Restart Guide";
+                
+                document.getElementById("completionReturnButton").textContent=
+                "Choose Another Format";
+                
+                document.getElementById("completionBackButton").textContent=
+                "Back to Support Portal";
+                
+                document.getElementById("next1").textContent="Next";
+                document.getElementById("next2").textContent="Next";
+                document.getElementById("next3").textContent="Next";
+                
+                document.getElementById("previous2").textContent="Previous";
+                document.getElementById("previous3").textContent="Previous";
+                document.getElementById("previous4").textContent="Previous";
+                
+                document.getElementById("finishButton").textContent="Finish Guide";
+                
+                }
+                
+                localStorage.setItem("language",lang);
+                
+                }
+                
+                window.addEventListener("load",function(){
+                
+                const savedLanguage=
+                localStorage.getItem("language") || "en";
+                
+                setLanguage(savedLanguage);
+                
+                });
     </script>
 
 </body>
