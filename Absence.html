@@ -91,17 +91,22 @@
             height: auto;
             object-fit: contain;
         }
-       .language-switcher {
+        .language-switcher {
             position: absolute;
-            top: -30px;
+            top: -40px;
             right: 25px;
             z-index: 20;
             display: flex;
             gap: 8px;
         }
         
+        html[dir="rtl"] .language-switcher {
+            right: auto;
+            left: 25px;
+        }
+        
         .language-switcher button {
-            padding: 6px 12px;
+            padding: 8px 14px;
             border: none;
             border-radius: 6px;
             background: white;
