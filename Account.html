@@ -57,6 +57,7 @@
         }
 
         .header-container {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -89,6 +90,29 @@
             max-width: 100%;
             height: auto;
             object-fit: contain;
+        }
+        .language-switcher {
+            position: absolute;
+            top: -32px;
+            right: 25px;
+            z-index: 20;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .language-switcher button {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            background: white;
+            color: var(--ecae-blue);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .language-switcher button:hover {
+            background: #EDF3FF;
         }
 
         /* =========================================
@@ -531,14 +555,17 @@
 
     <header class="page-header">
         <div class="header-container">
+            <div class="language-switcher">
+                <button onclick="setLanguage('en')">🇬🇧 English</button>
+                <button onclick="setLanguage('ar')">🇦🇪 العربية</button>
+            </div>
 
             <div class="header-text">
-                <h1>Account Authentication Guide</h1>
+                <h1 id="pageTitle">Account Authentication Guide</h1>
 
-                <p>
-                    Choose how you would like to view this support
-                    guide.
-                </p>
+            <p id="pageDescription">
+                Choose how you would like to view this support guide.
+            </p>
             </div>
 
              <div class="header-logo">
@@ -558,12 +585,12 @@
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2>Select a Guide Format</h2>
+                <h2 id="formatTitle">Select a Guide Format</h2>
 
-                <p>
-                    Follow an interactive step-by-step guide or open
-                    the original PDF document.
-                </p>
+            <p id="formatDescription">
+                Follow an interactive step-by-step guide or open
+                the original PDF document.
+            </p>
             </section>
 
             <section class="guide-options">
@@ -576,9 +603,10 @@
                         💻
                     </div>
 
-                    <h3>Interactive Guide</h3>
+                    <h3 id="interactiveTitle">Interactive Guide</h3>
 
                     <button
+                        id="interactiveButton"
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
@@ -596,13 +624,14 @@
                         📄
                     </div>
 
-                    <h3>PDF Guide</h3>
+                    <h3 id="pdfTitle">PDF Guide</h3>
 
-                                   <a
+                    <a
                         href="Account Authentication Guide.pdf"
                         class="guide-button"
-                        >
-                        View PDF Guid                
+                        id="pdfButton"
+                    >
+                        View PDF Guide                
                     </a>
 
                 </article>
@@ -613,6 +642,7 @@
                 <a
                     href="index.html"
                     class="back-button"
+                    id="backButton"
                 >
                     ← Back to Support Portal
                 </a>
@@ -635,15 +665,16 @@
                     type="button"
                     class="return-button"
                     onclick="returnToGuideOptions()"
+                    id="returnButton"
                 >
                     ← Choose Another Format
                 </button>
 
-                <h2>
+                <h2 id="interactiveGuideTitle">
                     Interactive Account Authentication Guide
                 </h2>
 
-                <p>
+                <p id="interactiveGuideDescription">
                     Follow the instructions one step at a time.
                 </p>
 
@@ -671,16 +702,16 @@
             
                 <span class="step-number">Step 1</span>
             
-                <h3>Sign In to Office 365</h3>
+                <h3 id="step1Title">Sign In to Office 365</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step1List">
                     <li>Open your web browser.</li>
                     <li>Go to Office 365.</li>
                     <li>Click <strong>Sign In</strong>.</li>
                     <li>Enter your ECAE email address.</li>
                 </ol>
             
-                <div class="information-note">
+                <div class="information-note" id="step1Note">
                     Enter your email in the format:
                     <br><br>
                     <strong>StudentID@ecae.ac.ae</strong>
@@ -708,6 +739,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(2)"
+                        id="next1"
                     >
                         Next
                     </button>
@@ -722,15 +754,15 @@
             
                 <span class="step-number">Step 2</span>
             
-                <h3>Select Your MFA Method</h3>
+                <h3 id="step2Title">Select Your MFA Method</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step2List">
                     <li>After signing in, start the Multi-Factor Authentication (MFA) setup.</li>
                     <li>Select your preferred verification method.</li>
                     <li>You can choose Authenticator App, Phone Call, or Email.</li>
                 </ol>
             
-                <div class="information-note">
+                <div class="information-note" id="step2Note">
                     MFA provides an additional layer of security for your ECAE account.
                 </div>
             
@@ -740,6 +772,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(1)"
+                        id="previous2"
                     >
                         Previous
                     </button>
@@ -748,6 +781,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(3)"
+                        id="next2"
                     >
                         Next
                     </button>
@@ -764,9 +798,9 @@
             
                 <span class="step-number">Step 3</span>
             
-                <h3>Complete the MFA Setup</h3>
+                <h3 id="step3Title">Complete the MFA Setup</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step3List">
                     <li>Follow the instructions for your selected MFA method.</li>
             
                     <li>
@@ -790,7 +824,7 @@
                     <li>Finish the setup process to secure your account.</li>
                 </ol>
             
-                <div class="information-note">
+                <div class="information-note" id="step3Note">
                     If you experience any difficulties, contact ECAE IT Support for assistance.
                 </div>
             
@@ -800,6 +834,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(2)"
+                        id="previous3"
                     >
                         Previous
                     </button>
@@ -808,6 +843,7 @@
                         type="button"
                         class="next-button"
                         onclick="finishGuide()"
+                        id="finishButton"
                     >
                         Finish Guide
                     </button>
@@ -831,11 +867,10 @@
                     ✅
                 </div>
 
-                <h3>Guide Complete</h3>
+                <h3 id="completionTitle">Guide Complete</h3>
 
-                <p>
-                    You have reached the end of the Account Authentication
-                    guide.
+                <p id="completionDescription">
+                    You have reached the end of the Account Authentication guide.
                 </p>
 
                 <div class="completion-actions">
@@ -844,6 +879,7 @@
                         type="button"
                         class="next-button"
                         onclick="restartGuide()"
+                        id="restartGuideButton"
                     >
                         Restart Guide
                     </button>
@@ -852,6 +888,7 @@
                         type="button"
                         class="previous-button"
                         onclick="returnToGuideOptions()"
+                        id="completionReturnButton"
                     >
                         Choose Another Format
                     </button>
@@ -859,6 +896,7 @@
                     <a
                         href="index.html"
                         class="back-button"
+                        id="completionBackButton"
                     >
                         Back to Support Portal
                     </a>
@@ -887,7 +925,7 @@
     ========================================== -->
 
     <script>
-        const totalGuideSteps = 5;
+        const totalGuideSteps = 3;
 
         function openInteractiveGuide() {
             document.getElementById(
@@ -1011,9 +1049,211 @@
         }
 
         document.getElementById(
-            "currentYear"
-        ).textContent =
-            new Date().getFullYear();
+    "currentYear"
+).textContent =
+    new Date().getFullYear();
+
+        function setLanguage(lang) {
+
+            if (lang === "ar") {
+        
+                document.documentElement.lang = "ar";
+                document.documentElement.dir = "rtl";
+        
+                document.getElementById("pageTitle").textContent =
+                    "دليل توثيق الحساب";
+        
+                document.getElementById("pageDescription").textContent =
+                    "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
+        
+                document.getElementById("formatTitle").textContent =
+                    "اختر نوع الدليل";
+        
+                document.getElementById("formatDescription").textContent =
+                    "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF الأصلي.";
+        
+                document.getElementById("interactiveTitle").textContent =
+                    "الدليل التفاعلي";
+        
+                document.getElementById("interactiveButton").textContent =
+                    "ابدأ الدليل التفاعلي";
+        
+                document.getElementById("pdfTitle").textContent =
+                    "دليل PDF";
+        
+                document.getElementById("pdfButton").textContent =
+                    "عرض ملف PDF";
+        
+                document.getElementById("backButton").textContent =
+                    "العودة إلى بوابة الدعم";
+        
+                document.getElementById("returnButton").textContent =
+                    "اختيار تنسيق آخر";
+        
+                document.getElementById("interactiveGuideTitle").textContent =
+                    "الدليل التفاعلي لتوثيق الحساب";
+        
+                document.getElementById("interactiveGuideDescription").textContent =
+                    "اتبع التعليمات خطوة بخطوة.";
+        
+                document.getElementById("step1Title").textContent =
+                    "تسجيل الدخول إلى Office 365";
+        
+                document.getElementById("step2Title").textContent =
+                    "اختيار طريقة التحقق متعدد العوامل";
+        
+                document.getElementById("step3Title").textContent =
+                    "إكمال إعداد التحقق متعدد العوامل";
+        
+                document.getElementById("step1List").innerHTML = `
+                <li>افتح متصفح الإنترنت.</li>
+                <li>انتقل إلى Office 365.</li>
+                <li>اضغط على <strong>تسجيل الدخول</strong>.</li>
+                <li>أدخل بريدك الإلكتروني الخاص بـ ECAE.</li>
+                `;
+        
+                document.getElementById("step1Note").innerHTML = `
+                أدخل بريدك الإلكتروني بالصيغة التالية:<br><br>
+                <strong>StudentID@ecae.ac.ae</strong><br>
+                مثال:<br>
+                <strong>0020911@ecae.ac.ae</strong>
+                `;
+        
+                document.getElementById("step2List").innerHTML = `
+                <li>بعد تسجيل الدخول ابدأ إعداد التحقق متعدد العوامل (MFA).</li>
+                <li>اختر طريقة التحقق المفضلة لديك.</li>
+                <li>يمكنك استخدام تطبيق Authenticator أو المكالمة الهاتفية أو البريد الإلكتروني.</li>
+                `;
+        
+                document.getElementById("step2Note").innerHTML = `
+                يوفر التحقق متعدد العوامل طبقة إضافية من الأمان لحسابك في ECAE.
+                `;
+        
+                document.getElementById("step3List").innerHTML = `
+                <li>اتبع التعليمات الخاصة بطريقة التحقق التي اخترتها.</li>
+                <li>في حالة المكالمة الهاتفية قم بالرد على المكالمة واتبع التعليمات.</li>
+                <li>في حالة الرسائل النصية أدخل رمز التحقق المرسل إلى هاتفك.</li>
+                <li>
+                بالنسبة لتطبيق Microsoft Authenticator:
+                    <ul>
+                        <li>قم بتثبيت التطبيق.</li>
+                        <li>افتح التطبيق.</li>
+                        <li>امسح رمز QR.</li>
+                        <li>أدخل رمز التحقق الظاهر في التطبيق.</li>
+                    </ul>
+                </li>
+                <li>أكمل عملية الإعداد لحماية حسابك.</li>
+                `;
+        
+                document.getElementById("step3Note").innerHTML = `
+                إذا واجهت أي مشكلة يرجى التواصل مع دعم تقنية المعلومات في ECAE.
+                `;
+        
+                document.getElementById("completionTitle").textContent =
+                    "اكتمل الدليل";
+        
+                document.getElementById("completionDescription").textContent =
+                    "لقد وصلت إلى نهاية دليل توثيق الحساب.";
+        
+                document.getElementById("restartGuideButton").textContent =
+                    "إعادة تشغيل الدليل";
+        
+                document.getElementById("completionReturnButton").textContent =
+                    "اختيار تنسيق آخر";
+        
+                document.getElementById("completionBackButton").textContent =
+                    "العودة إلى بوابة الدعم";
+        
+                document.getElementById("next1").textContent = "التالي";
+                document.getElementById("next2").textContent = "التالي";
+                document.getElementById("previous2").textContent = "السابق";
+                document.getElementById("previous3").textContent = "السابق";
+                document.getElementById("finishButton").textContent = "إنهاء الدليل";
+        
+            } else {
+        
+                document.documentElement.lang = "en";
+                document.documentElement.dir = "ltr";
+        
+                document.getElementById("pageTitle").textContent =
+                    "Account Authentication Guide";
+        
+                document.getElementById("pageDescription").textContent =
+                    "Choose how you would like to view this support guide.";
+        
+                document.getElementById("formatTitle").textContent =
+                    "Select a Guide Format";
+        
+                document.getElementById("formatDescription").textContent =
+                    "Follow an interactive step-by-step guide or open the original PDF document.";
+        
+                document.getElementById("interactiveTitle").textContent =
+                    "Interactive Guide";
+        
+                document.getElementById("interactiveButton").textContent =
+                    "Start Interactive Guide";
+        
+                document.getElementById("pdfTitle").textContent =
+                    "PDF Guide";
+        
+                document.getElementById("pdfButton").textContent =
+                    "View PDF Guide";
+        
+                document.getElementById("backButton").textContent =
+                    "← Back to Support Portal";
+        
+                document.getElementById("returnButton").textContent =
+                    "← Choose Another Format";
+        
+                document.getElementById("interactiveGuideTitle").textContent =
+                    "Interactive Account Authentication Guide";
+        
+                document.getElementById("interactiveGuideDescription").textContent =
+                    "Follow the instructions one step at a time.";
+        
+                document.getElementById("step1Title").textContent =
+                    "Sign In to Office 365";
+        
+                document.getElementById("step2Title").textContent =
+                    "Select Your MFA Method";
+        
+                document.getElementById("step3Title").textContent =
+                    "Complete the MFA Setup";
+        
+                document.getElementById("completionTitle").textContent =
+                    "Guide Complete";
+        
+                document.getElementById("completionDescription").textContent =
+                    "You have reached the end of the Account Authentication guide.";
+        
+                document.getElementById("restartGuideButton").textContent =
+                    "Restart Guide";
+        
+                document.getElementById("completionReturnButton").textContent =
+                    "Choose Another Format";
+        
+                document.getElementById("completionBackButton").textContent =
+                    "Back to Support Portal";
+        
+                document.getElementById("next1").textContent = "Next";
+                document.getElementById("next2").textContent = "Next";
+                document.getElementById("previous2").textContent = "Previous";
+                document.getElementById("previous3").textContent = "Previous";
+                document.getElementById("finishButton").textContent = "Finish Guide";
+        
+            }
+        
+            localStorage.setItem("language", lang);
+        }
+        
+        window.addEventListener("load", function () {
+        
+            const savedLanguage =
+                localStorage.getItem("language") || "en";
+        
+            setLanguage(savedLanguage);
+        
+        });
     </script>
 
 </body>
