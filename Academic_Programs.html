@@ -89,20 +89,22 @@
             height: auto;
             object-fit: contain;
         }
-         .language-switcher {
+        .language-switcher {
+            position: absolute;
+            top: -32px;
+            right: 25px;
+            z-index: 20;
             display: flex;
-            justify-content: flex-end;
             gap: 8px;
-            padding: 10px 20px;
-            background: white;
         }
         
         .language-switcher button {
-            padding: 8px 14px;
+            padding: 6px 10px;
             border: none;
             border-radius: 6px;
             background: white;
             color: var(--ecae-blue);
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
         }
@@ -708,7 +710,7 @@
                 <h3 id="step1Title">Open the ECAE Website or Portal</h3>
 
     
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step1List">
        
                     <li>Open the Emirates College for Advanced Education (ECAE) website.</li>
         
@@ -770,13 +772,13 @@
                 <h3 id="step2Title">Sign In and Select Students</h3>
 
     
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step2List">
                     <li>Sign in using your ECAE username and password.</li>
                     <li>After signing in, select the <strong>Students</strong> tab.</li>
                 </ol>
 
    
-                <div class="information-note">
+                <div class="information-note" id="step2Note">
                     If you cannot access the portal, reset your password through Office 365 and try again.
                     <strong>Important:</strong><br>
                     Students using other corporate devices may need to sign in using the following username format:
@@ -843,13 +845,13 @@
             
                 <h3 id="step3Title">Open Student Service</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step3List">
                     <li>Look at the right-side panel of the ECAE Portal.</li>
                     <li>Find the <strong>Important Links (Internal)</strong> section.</li>
                     <li>Select <strong>Student Service</strong>.</li>
                 </ol>
             
-                <div class="information-note">
+                <div class="information-note" id="step3Note">
                     Student Service provides access to academic and student-related services and resources.
                 </div>
 
@@ -886,14 +888,14 @@
             
                 <h3 id="step4Title">Open ECAE Academic Programs</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step4List">
                     <li>Open the Student Service homepage.</li>
                     <li>Locate the <strong>ECAE Academic Programs</strong> tile.</li>
                     <li>Select the tile to view the latest academic program information.</li>
                     <li>Review program details, admission requirements, and related resources.</li>
                 </ol>
             
-                <div class="information-note">
+                <div class="information-note" id="step4Note">
                     The ECAE Academic Programs page provides information about academic programs offered by the college, including program details, admission requirements, and related resources.
                 </div>
             
@@ -1187,6 +1189,47 @@
         
                 document.getElementById("step4Title").textContent =
                     "فتح البرامج الأكاديمية لـ ECAE";
+                document.getElementById("step1List").innerHTML = `
+                <li>افتح الموقع الإلكتروني لكلية الإمارات للتطوير التربوي.</li>
+                <li>اضغط على <strong>تسجيل الدخول</strong> في أعلى الصفحة.</li>
+                <li>اختر <strong>بوابة ECAE</strong>.</li>
+                <li>يمكنك أيضاً فتح البوابة مباشرة باستخدام الروابط أدناه.</li>
+                `;
+                
+                document.getElementById("step2List").innerHTML = `
+                <li>سجل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك.</li>
+                <li>بعد تسجيل الدخول اختر تبويب <strong>الطلاب</strong>.</li>
+                `;
+                
+                document.getElementById("step2Note").innerHTML = `
+                إذا لم تتمكن من الوصول إلى البوابة فقم بإعادة تعيين كلمة المرور من خلال Office 365 ثم حاول مرة أخرى.<br><br>
+                <strong>مهم:</strong><br>
+                قد يحتاج بعض الطلاب إلى تسجيل الدخول بالصيغة التالية:<br><br>
+                <strong>ECAE\\StudentID</strong><br>
+                مثال:<br>
+                <strong>ECAE\\001164</strong>
+                `;
+                
+                document.getElementById("step3List").innerHTML = `
+                <li>انظر إلى اللوحة الموجودة على الجانب الأيمن من بوابة ECAE.</li>
+                <li>ابحث عن قسم <strong>Important Links (Internal)</strong>.</li>
+                <li>اختر <strong>Student Service</strong>.</li>
+                `;
+                
+                document.getElementById("step3Note").innerHTML = `
+                توفر خدمة الطالب إمكانية الوصول إلى الخدمات والموارد الأكاديمية والخدمات المتعلقة بالطلاب.
+                `;
+                
+                document.getElementById("step4List").innerHTML = `
+                <li>افتح الصفحة الرئيسية لخدمة الطالب.</li>
+                <li>ابحث عن مربع <strong>البرامج الأكاديمية في ECAE</strong>.</li>
+                <li>اضغط عليه للاطلاع على أحدث معلومات البرامج الأكاديمية.</li>
+                <li>راجع تفاصيل البرامج ومتطلبات القبول والموارد المرتبطة بها.</li>
+                `;
+                
+                document.getElementById("step4Note").innerHTML = `
+                توفر صفحة البرامج الأكاديمية معلومات حول البرامج الأكاديمية المطروحة في الكلية بما في ذلك تفاصيل البرامج ومتطلبات القبول والموارد ذات الصلة.
+                `;
         
                 document.getElementById("completionTitle").textContent =
                     "اكتمل الدليل";
@@ -1255,6 +1298,47 @@
         
                 document.getElementById("step4Title").textContent =
                     "Open ECAE Academic Programs";
+                document.getElementById("step1List").innerHTML = `
+                <li>Open the Emirates College for Advanced Education website.</li>
+                <li>Click <strong>Login</strong> in the top-right corner.</li>
+                <li>Select <strong>ECAE Portal</strong>.</li>
+                <li>You can also open the portal directly using the links below.</li>
+                `;
+                
+                document.getElementById("step2List").innerHTML = `
+                <li>Sign in using your ECAE username and password.</li>
+                <li>After signing in, select the <strong>Students</strong> tab.</li>
+                `;
+                
+                document.getElementById("step2Note").innerHTML = `
+                If you cannot access the portal, reset your password through Office 365 and try again.<br><br>
+                <strong>Important:</strong><br>
+                Students using some devices may need to sign in using:<br><br>
+                <strong>ECAE\\StudentID</strong><br>
+                Example:<br>
+                <strong>ECAE\\001164</strong>
+                `;
+                
+                document.getElementById("step3List").innerHTML = `
+                <li>Look at the right-side panel of the ECAE Portal.</li>
+                <li>Find the <strong>Important Links (Internal)</strong> section.</li>
+                <li>Select <strong>Student Service</strong>.</li>
+                `;
+                
+                document.getElementById("step3Note").innerHTML = `
+                Student Service provides access to academic and student-related services and resources.
+                `;
+                
+                document.getElementById("step4List").innerHTML = `
+                <li>Open the Student Service homepage.</li>
+                <li>Locate the <strong>ECAE Academic Programs</strong> tile.</li>
+                <li>Select it to view the latest academic program information.</li>
+                <li>Review program details, admission requirements, and related resources.</li>
+                `;
+                
+                document.getElementById("step4Note").innerHTML = `
+                The ECAE Academic Programs page provides information about academic programs offered by the college, including admission requirements and related resources.
+                `;
         
                 document.getElementById("completionTitle").textContent =
                     "Guide Complete";
