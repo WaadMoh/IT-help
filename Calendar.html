@@ -59,6 +59,7 @@
         }
 
         .header-container {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -91,6 +92,29 @@
             max-width: 100%;
             height: auto;
             object-fit: contain;
+        }
+                .language-switcher {
+            position: absolute;
+            top: -32px;
+            right: 25px;
+            z-index: 20;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .language-switcher button {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            background: white;
+            color: var(--ecae-blue);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .language-switcher button:hover {
+            background: #EDF3FF;
         }
 
         /* =========================================
@@ -533,11 +557,15 @@
 
     <header class="page-header">
         <div class="header-container">
+            <div class="language-switcher">
+                <button onclick="setLanguage('en')">🇬🇧 English</button>
+                <button onclick="setLanguage('ar')">🇦🇪 العربية</button>
+            </div>
 
             <div class="header-text">
-                <h1>ECAE Calendar/h1>
+                <h1 id="pageTitle">ECAE Calendar</h1>
 
-                <p>
+                <p id="pageDescription">
                     Choose how you would like to view this support
                     guide.
                 </p>
@@ -560,9 +588,9 @@
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2>Select a Guide Format</h2>
+                <h2 id="formatTitle">Select a Guide Format</h2>
 
-                <p>
+                <p id="formatDescription">
                     Follow an interactive step-by-step guide or open
                     the original PDF document.
                 </p>
@@ -578,12 +606,13 @@
                         💻
                     </div>
 
-                    <h3>Interactive Guide</h3>
+                    <h3 id="interactiveTitle">Interactive Guide</h3>
 
                     <button
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
+                        id="interactiveButton"
                     >
                         Start Interactive Guide
                     </button>
@@ -598,13 +627,14 @@
                         📄
                     </div>
 
-                    <h3>PDF Guide</h3>
+                    <h3 id="pdfTitle">PDF Guide</h3>
 
                                    <a
                         href="ECAE Calendar.cleaned.pdf"
                         class="guide-button"
+                        id="pdfButton"
                         >
-                        View PDF Guid                
+                        View PDF Guide                
                     </a>
 
                 </article>
@@ -615,6 +645,7 @@
                 <a
                     href="index.html"
                     class="back-button"
+                    id="backButton"
                 >
                     ← Back to Support Portal
                 </a>
@@ -637,15 +668,16 @@
                     type="button"
                     class="return-button"
                     onclick="returnToGuideOptions()"
+                    id="returnButton"
                 >
                     ← Choose Another Format
                 </button>
 
-                <h2>
+                <h2 id="interactiveGuideTitle">
                     Interactive Students Directory of Institutional Documents Guide
                 </h2>
 
-                <p>
+                <p id="interactiveGuideDescription">
                     Follow the instructions one step at a time.
                 </p>
 
@@ -675,10 +707,10 @@
                 <span class="step-number">Step 1</span>
 
  
-                <h3>Open the ECAE Website or Portal</h3>
+                <h3 id="step1Title">Open the ECAE Website or Portal</h3>
 
     
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step1List">
        
                     <li>Open the Emirates College for Advanced Education (ECAE) website.</li>
         
@@ -719,6 +751,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(2)"
+                        id="next1"
                     >
                         Next
                     </button>
@@ -737,16 +770,16 @@
                 <span class="step-number">Step 2</span>
 
    
-                <h3>Sign In and Select Students</h3>
+                <h3 id="step2Title">Sign In and Select Students</h3>
 
     
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step2List">
                     <li>Sign in using your ECAE username and password.</li>
                     <li>After signing in, select the <strong>Students</strong> tab.</li>
                 </ol>
 
    
-                <div class="information-note">
+                <div class="information-note" id="step2Note">
                     If you cannot access the portal, reset your password through Office 365 and try again.
                     <strong>Important:</strong><br>
                     Students using other corporate devices may need to sign in using the following username format:
@@ -788,6 +821,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(1)"
+                        id="previous2"
                     >
                         Previous
                     </button>
@@ -796,6 +830,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(3)"
+                        id="next2"
                     >
                         Next
                     </button>
@@ -812,29 +847,33 @@
             
                 <span class="step-number">Step 3</span>
             
-                <h3>Locate Important Links (Internal)</h3>
+                <h3 id="step3Title">Locate Important Links (Internal)</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step3List">
                     <li>After selecting the <strong>Students</strong> tab, look at the right-side panel.</li>
                     <li>Find the <strong>Important Links (Internal)</strong> section.</li>
                     <li>Locate <strong>ECAE Calendar</strong> in the list of available services.</li>
                 </ol>
             
-                <div class="information-note">
+                <div class="information-note" id="step3Note">
                     ECAE Calendar is available from the Important Links (Internal) section.
                 </div>
             
                 <div class="navigation-buttons">
             
                     <button type="button"
-                            class="previous-button"
-                            onclick="showStep(2)">
+                        class="previous-button"
+                        onclick="showStep(2)"
+                        id="previous3"
+                    >
                         Previous
                     </button>
             
                     <button type="button"
-                            class="next-button"
-                            onclick="showStep(4)">
+                        class="next-button"
+                        onclick="showStep(4)"
+                        id="next3"
+                    >
                         Next
                     </button>
             
@@ -849,30 +888,34 @@
             
                 <span class="step-number">Step 4</span>
             
-                <h3>Open ECAE Calendar</h3>
+                <h3 id="step4Title">Open ECAE Calendar</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step4List">
                     <li>Select <strong>ECAE Calendar</strong> from the Important Links (Internal) section.</li>
                     <li>Wait for the academic calendar page to open.</li>
                     <li>Review important academic dates and events.</li>
                     <li>Check semester schedules, registration periods, holidays, and examination dates.</li>
                 </ol>
             
-                <div class="information-note">
+                <div class="information-note" id="step4Note">
                     The ECAE Calendar provides important academic dates, including semester schedules, registration periods, holidays, examination dates, and other key events.
                 </div>
             
                 <div class="navigation-buttons">
             
                     <button type="button"
-                            class="previous-button"
-                            onclick="showStep(3)">
+                        class="previous-button"
+                        onclick="showStep(3)"
+                        id="previous4"
+                    >
                         Previous
                     </button>
             
                     <button type="button"
-                            class="next-button"
-                            onclick="finishGuide()">
+                        class="next-button"
+                        onclick="finishGuide()"
+                        id="finishButton"
+                    >
                         Finish Guide
                     </button>
             
@@ -895,9 +938,9 @@
                     ✅
                 </div>
 
-                <h3>Guide Complete</h3>
+                <h3 id="completionTitle">Guide Complete</h3>
 
-                <p>
+                <p id="completionDescription">
                     You have reached the end of the ECAE Calendar
                     guide.
                 </p>
@@ -908,6 +951,7 @@
                         type="button"
                         class="next-button"
                         onclick="restartGuide()"
+                        id="restartGuideButton"
                     >
                         Restart Guide
                     </button>
@@ -916,6 +960,8 @@
                         type="button"
                         class="previous-button"
                         onclick="returnToGuideOptions()"
+                        id="completionReturnButton"
+                        
                     >
                         Choose Another Format
                     </button>
@@ -923,6 +969,7 @@
                     <a
                         href="index.html"
                         class="back-button"
+                        id="completionBackButton"
                     >
                         Back to Support Portal
                     </a>
@@ -1078,6 +1125,141 @@
             "currentYear"
         ).textContent =
             new Date().getFullYear();
+        function setLanguage(lang) {
+
+            if (lang === "ar") {
+        
+                document.documentElement.lang = "ar";
+                document.documentElement.dir = "rtl";
+        
+                document.getElementById("pageTitle").textContent =
+                    "تقويم ECAE";
+        
+                document.getElementById("pageDescription").textContent =
+                    "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
+        
+                document.getElementById("formatTitle").textContent =
+                    "اختر نوع الدليل";
+        
+                document.getElementById("formatDescription").textContent =
+                    "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF الأصلي.";
+        
+                document.getElementById("interactiveTitle").textContent =
+                    "الدليل التفاعلي";
+        
+                document.getElementById("interactiveButton").textContent =
+                    "ابدأ الدليل التفاعلي";
+        
+                document.getElementById("pdfTitle").textContent =
+                    "دليل PDF";
+        
+                document.getElementById("pdfButton").textContent =
+                    "عرض ملف PDF";
+        
+                document.getElementById("backButton").textContent =
+                    "العودة إلى بوابة الدعم";
+        
+                document.getElementById("returnButton").textContent =
+                    "اختيار تنسيق آخر";
+        
+                document.getElementById("interactiveGuideTitle").textContent =
+                    "الدليل التفاعلي لتقويم ECAE";
+        
+                document.getElementById("interactiveGuideDescription").textContent =
+                    "اتبع التعليمات خطوة بخطوة.";
+        
+                document.getElementById("step1Title").textContent =
+                    "فتح موقع أو بوابة ECAE";
+        
+                document.getElementById("step2Title").textContent =
+                    "تسجيل الدخول واختيار الطلاب";
+        
+                document.getElementById("step3Title").textContent =
+                    "البحث عن الروابط المهمة الداخلية";
+        
+                document.getElementById("step4Title").textContent =
+                    "فتح تقويم ECAE";
+        
+                document.getElementById("step1List").innerHTML = `
+                <li>افتح موقع كلية الإمارات للتطوير التربوي أو البوابة الإلكترونية.</li>
+                <li>اضغط على تسجيل الدخول.</li>
+                <li>اختر بوابة ECAE.</li>
+                <li>يمكنك أيضاً استخدام الروابط المباشرة أدناه.</li>
+                `;
+        
+                document.getElementById("step2List").innerHTML = `
+                <li>سجل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك.</li>
+                <li>بعد تسجيل الدخول اختر تبويب الطلاب.</li>
+                `;
+        
+                document.getElementById("step2Note").innerHTML = `
+                إذا لم تتمكن من الوصول إلى البوابة فأعد تعيين كلمة المرور من خلال Office 365 ثم حاول مرة أخرى.<br><br>
+                <strong>مهم:</strong><br>
+                قد تحتاج بعض الأجهزة إلى تسجيل الدخول بالصيغة التالية:<br><br>
+                <strong>ECAE\\StudentID</strong>
+                `;
+        
+                document.getElementById("step3List").innerHTML = `
+                <li>بعد اختيار تبويب الطلاب انظر إلى اللوحة الجانبية اليمنى.</li>
+                <li>ابحث عن قسم الروابط المهمة الداخلية.</li>
+                <li>ابحث عن خدمة تقويم ECAE.</li>
+                `;
+        
+                document.getElementById("step3Note").innerHTML = `
+                يتوفر تقويم ECAE ضمن قسم الروابط المهمة الداخلية.
+                `;
+        
+                document.getElementById("step4List").innerHTML = `
+                <li>اختر تقويم ECAE من الروابط المهمة الداخلية.</li>
+                <li>انتظر حتى يتم فتح صفحة التقويم الأكاديمي.</li>
+                <li>راجع التواريخ والفعاليات المهمة.</li>
+                <li>تحقق من الجداول الدراسية وفترات التسجيل والعطل والاختبارات.</li>
+                `;
+        
+                document.getElementById("step4Note").innerHTML = `
+                يوفر تقويم ECAE التواريخ الأكاديمية المهمة ومواعيد التسجيل والعطل والاختبارات.
+                `;
+        
+                document.getElementById("completionTitle").textContent =
+                    "اكتمل الدليل";
+        
+                document.getElementById("completionDescription").textContent =
+                    "لقد وصلت إلى نهاية دليل تقويم ECAE.";
+        
+                document.getElementById("restartGuideButton").textContent =
+                    "إعادة تشغيل الدليل";
+        
+                document.getElementById("completionReturnButton").textContent =
+                    "اختيار تنسيق آخر";
+        
+                document.getElementById("completionBackButton").textContent =
+                    "العودة إلى بوابة الدعم";
+        
+                document.getElementById("next1").textContent = "التالي";
+                document.getElementById("next2").textContent = "التالي";
+                document.getElementById("next3").textContent = "التالي";
+                document.getElementById("previous2").textContent = "السابق";
+                document.getElementById("previous3").textContent = "السابق";
+                document.getElementById("previous4").textContent = "السابق";
+                document.getElementById("finishButton").textContent = "إنهاء الدليل";
+        
+            } else {
+        
+                document.documentElement.lang = "en";
+                document.documentElement.dir = "ltr";
+            }
+        
+            localStorage.setItem("language", lang);
+        }
+        
+        window.addEventListener("load", function () {
+        
+            const savedLanguage =
+                localStorage.getItem("language") || "en";
+        
+            setLanguage(savedLanguage);
+        
+        });
     </script>
 
 </body>
