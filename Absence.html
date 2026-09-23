@@ -713,7 +713,7 @@
 
                 <h3 id="step1Title">Open the ECAE Website or Portal</h3>
 
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step1List">
                     <li>
                         Open the Emirates College for Advanced
                         Education official website.
@@ -782,13 +782,13 @@
 
                 <h3 id="step2Title">Sign In and Choose Students</h3>
 
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step2List">
                     <li>Sign in using your ECAE username and password.</li>
                     <li>After signing in, select the <strong>Students</strong> tab.</li>
                 </ol>
 
    
-                <div class="information-note">
+                <div class="information-note" id="step2Note">
                     If you cannot access the portal, reset your password through Office 365 and try again.
                     <strong>Important:</strong><br>
                     Students using other corporate devices may need to sign in using the following username format:
@@ -844,7 +844,7 @@
 
                 <h3 id="step3Title">Open Student Service</h3>
 
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step3List">
                     <li>
                         On the ECAE Portal, find the
                         <strong>Important Links (Internal)</strong>
@@ -895,7 +895,7 @@
 
                 <h3 id="step4Title">Select Absence Support Documents</h3>
 
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step4List">
                     <li>
                         On the Student Service homepage, find the
                         available student services.
@@ -912,7 +912,7 @@
                     </li>
                 </ol>
 
-                <div class="information-note">
+                <div class="information-note" id="step4Note">
                     The Absence Support Documents service allows
                     students to provide supporting documents related
                     to approved absences.
@@ -963,7 +963,7 @@
 
                 <h3 id="step5Title">Complete the Service</h3>
 
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step5List">
                     <li>
                         Open
                         <strong>Absence Support Documents</strong>.
@@ -988,7 +988,7 @@
                     </li>
                 </ol>
 
-                <div class="information-note">
+                <div class="information-note" id="step5Note">
                     Make sure your supporting document is clear and
                     that the information you provide is correct.
                 </div>
@@ -1276,6 +1276,54 @@
                 
                 document.getElementById("step5Title").textContent =
                     "إكمال الخدمة";
+                document.getElementById("step1List").innerHTML = `
+                <li>افتح الموقع الرسمي لكلية الإمارات للتطوير التربوي.</li>
+                <li>اضغط على <strong>تسجيل الدخول</strong> في أعلى الصفحة.</li>
+                <li>اختر <strong>بوابة ECAE</strong> من القائمة.</li>
+                <li>يمكنك فتح البوابة مباشرة من الزر أدناه.</li>
+                `;
+                
+                document.getElementById("step2List").innerHTML = `
+                <li>سجل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بـ ECAE.</li>
+                <li>بعد تسجيل الدخول اختر تبويب <strong>الطلاب</strong>.</li>
+                `;
+                
+                document.getElementById("step2Note").innerHTML = `
+                إذا لم تتمكن من الدخول إلى البوابة قم بإعادة تعيين كلمة المرور من Office 365 ثم حاول مرة أخرى.<br><br>
+                <strong>مهم:</strong><br>
+                عند استخدام بعض الأجهزة قد تحتاج لتسجيل الدخول بالصيغة التالية:<br><br>
+                <strong>ECAE\\StudentID</strong><br>
+                مثال:<br>
+                <strong>ECAE\\001164</strong>
+                `;
+                
+                document.getElementById("step3List").innerHTML = `
+                <li>في بوابة ECAE ابحث عن قسم <strong>Important Links (Internal)</strong>.</li>
+                <li>يقع هذا القسم في الجهة اليمنى من البوابة.</li>
+                <li>اختر <strong>Student Service</strong>.</li>
+                `;
+                
+                document.getElementById("step4List").innerHTML = `
+                <li>في صفحة خدمات الطلاب ابحث عن الخدمات المتاحة.</li>
+                <li>اختر <strong>مستندات دعم الغياب</strong>.</li>
+                <li>يمكنك استخدام الرابط المباشر لخدمة الطلاب.</li>
+                `;
+                
+                document.getElementById("step4Note").innerHTML = `
+                تتيح خدمة مستندات دعم الغياب للطلاب رفع المستندات الداعمة المتعلقة بالغيابات المعتمدة.
+                `;
+                
+                document.getElementById("step5List").innerHTML = `
+                <li>افتح خدمة <strong>مستندات دعم الغياب</strong>.</li>
+                <li>أدخل المعلومات المطلوبة.</li>
+                <li>قم بإرفاق المستند الداعم.</li>
+                <li>يمكن أن يكون المستند تقريراً طبياً أو وثيقة رسمية.</li>
+                <li>راجع المعلومات قبل إرسال الطلب.</li>
+                `;
+                
+                document.getElementById("step5Note").innerHTML = `
+                تأكد من أن المستند واضح وأن جميع المعلومات المدخلة صحيحة.
+                `;
                 
                 document.getElementById("completionTitle").textContent =
                     "اكتمل الدليل";
@@ -1362,6 +1410,54 @@
                 
                 document.getElementById("step5Title").textContent =
                     "Complete the Service";
+                document.getElementById("step1List").innerHTML = `
+                <li>Open the Emirates College for Advanced Education official website.</li>
+                <li>Select <strong>Login</strong> in the top-right corner.</li>
+                <li>Choose <strong>ECAE Portal</strong>.</li>
+                <li>You may also open the portal directly using the button below.</li>
+                `;
+                
+                document.getElementById("step2List").innerHTML = `
+                <li>Sign in using your ECAE username and password.</li>
+                <li>Select the <strong>Students</strong> tab.</li>
+                `;
+                
+                document.getElementById("step2Note").innerHTML = `
+                If you cannot access the portal, reset your password through Office 365 and try again.<br><br>
+                <strong>Important:</strong><br>
+                Use the following format on some devices:<br><br>
+                <strong>ECAE\\StudentID</strong><br>
+                Example:<br>
+                <strong>ECAE\\001164</strong>
+                `;
+                
+                document.getElementById("step3List").innerHTML = `
+                <li>Find the <strong>Important Links (Internal)</strong> section.</li>
+                <li>It appears on the right side of the portal.</li>
+                <li>Select <strong>Student Service</strong>.</li>
+                `;
+                
+                document.getElementById("step4List").innerHTML = `
+                <li>On the Student Service homepage locate the available services.</li>
+                <li>Select <strong>Absence Support Documents</strong>.</li>
+                <li>You may also use the direct Student Service link.</li>
+                `;
+                
+                document.getElementById("step4Note").innerHTML = `
+                The Absence Support Documents service allows students to submit supporting documents related to approved absences.
+                `;
+                
+                document.getElementById("step5List").innerHTML = `
+                <li>Open the Absence Support Documents service.</li>
+                <li>Fill in the required information.</li>
+                <li>Attach the supporting document.</li>
+                <li>The document may be a medical certificate or other official document.</li>
+                <li>Review everything before submitting.</li>
+                `;
+                
+                document.getElementById("step5Note").innerHTML = `
+                Make sure your supporting document is clear and all information is correct.
+                `;
                 
                 document.getElementById("completionTitle").textContent =
                     "Guide Complete";
