@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,6 +56,7 @@
         }
 
         .header-container {
+            position:relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -92,6 +89,29 @@
             max-width: 100%;
             height: auto;
             object-fit: contain;
+        }
+                .language-switcher {
+            position: absolute;
+            top: -32px;
+            right: 25px;
+            z-index: 20;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .language-switcher button {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            background: white;
+            color: var(--ecae-blue);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .language-switcher button:hover {
+            background: #EDF3FF;
         }
 
         /* =========================================
@@ -534,11 +554,15 @@
 
     <header class="page-header">
         <div class="header-container">
+            <div class="language-switcher">
+                <button onclick="setLanguage('en')">🇬🇧 English</button>
+                <button onclick="setLanguage('ar')">🇦🇪 العربية</button>
+            </div>
 
             <div class="header-text">
-                <h1>ECAE official website login problem</h1>
+                <h1 id="pageTitle">ECAE official website login problem</h1>
 
-                <p>
+                <p id="pageDescription">
                     Choose how you would like to view this support
                     guide.
                 </p>
@@ -561,9 +585,9 @@
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2>Select a Guide Format</h2>
+                <h2 id="formatTitle">Select a Guide Format</h2>
 
-                <p>
+                <p id="formatDescription">
                     Follow an interactive step-by-step guide or open
                     the original PDF document.
                 </p>
@@ -579,12 +603,13 @@
                         💻
                     </div>
 
-                    <h3>Interactive Guide</h3>
+                    <h3 id="interactiveTitle">Interactive Guide</h3>
 
                     <button
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
+                        id="interactiveButton"
                     >
                         Start Interactive Guide
                     </button>
@@ -599,13 +624,14 @@
                         📄
                     </div>
 
-                    <h3>PDF Guide</h3>
+                    <h3 id="pdfTitle">PDF Guide</h3>
 
                                    <a
                         href="official_webpage.pdf"
                         class="guide-button"
+                        id="pdfButton"
                         >
-                        View PDF Guid                
+                        View PDF Guide               
                     </a>
 
                 </article>
@@ -616,6 +642,7 @@
                 <a
                     href="index.html"
                     class="back-button"
+                    id="backButton"
                 >
                     ← Back to Support Portal
                 </a>
@@ -638,15 +665,16 @@
                     type="button"
                     class="return-button"
                     onclick="returnToGuideOptions()"
+                    id="returnButton"
                 >
                     ← Choose Another Format
                 </button>
 
-                <h2>
+                <h2 id="interactiveGuideTitle">
                     Interactive ECAE official website login problem Guide
                 </h2>
 
-                <p>
+               <p id="interactiveGuideDescription">
                     Follow the instructions one step at a time.
                 </p>
 
@@ -676,10 +704,10 @@
                 <span class="step-number">Step 1</span>
 
  
-                <h3>Open the ECAE Website or Portal</h3>
+                <h3 id="step1Title">Open the ECAE Website or Portal</h3>
 
     
-                <ol class="instruction-list">
+                <ol id="step1List" class="instruction-list">
        
                     <li>Open the Emirates College for Advanced Education (ECAE) website.</li>
         
@@ -720,6 +748,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(2)"
+                        id="next1"
                     >
                         Next
                     </button>
@@ -738,16 +767,16 @@
                 <span class="step-number">Step 2</span>
 
    
-                <h3>Sign In and Select Students</h3>
+                <h3 id="step2Title">Sign In and Select Students</h3>
 
     
-                <ol class="instruction-list">
+                <ol id="step2List" class="instruction-list">
                     <li>Sign in using your ECAE username and password.</li>
                     <li>After signing in, select the <strong>Students</strong> tab.</li>
                 </ol>
 
    
-                <div class="information-note">
+                <div id="step2Note" class="information-note">
                     If you cannot access the portal, reset your password through Office 365 and try again.
                     <strong>Important:</strong><br>
                     Students using other corporate devices may need to sign in using the following username format:
@@ -789,6 +818,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(1)"
+                        id="previous2"
                     >
                         Previous
                     </button>
@@ -796,7 +826,8 @@
                     <button
                         type="button"
                         class="next-button"
-                        onclick="showStep(3)"
+                        onclick="finishGuide()"
+                        id="finishButton"
                     >
                         Next
                     </button>
@@ -822,9 +853,9 @@
                     ✅
                 </div>
 
-                <h3>Guide Complete</h3>
+                <h3 id="completionTitle">Guide Complete</h3>
 
-                <p>
+                <p id="completionDescription">
                     You have reached the end of the ECAE official
                     website login problem guide.
                 </p>
@@ -835,6 +866,7 @@
                         type="button"
                         class="next-button"
                         onclick="restartGuide()"
+                        id="restartGuideButton"
                     >
                         Restart Guide
                     </button>
@@ -843,6 +875,7 @@
                         type="button"
                         class="previous-button"
                         onclick="returnToGuideOptions()"
+                        id="completionReturnButton"
                     >
                         Choose Another Format
                     </button>
@@ -850,6 +883,7 @@
                     <a
                         href="index.html"
                         class="back-button"
+                        id="completionBackButton"
                     >
                         Back to Support Portal
                     </a>
@@ -1005,6 +1039,188 @@
             "currentYear"
         ).textContent =
             new Date().getFullYear();
+            function setLanguage(lang){
+            
+            if(lang==="ar"){
+            
+            document.documentElement.lang="ar";
+            document.documentElement.dir="rtl";
+            
+            document.getElementById("pageTitle").textContent=
+            "مشكلة تسجيل الدخول لموقع ECAE";
+            
+            document.getElementById("pageDescription").textContent=
+            "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
+            
+            document.getElementById("formatTitle").textContent=
+            "اختر نوع الدليل";
+            
+            document.getElementById("formatDescription").textContent=
+            "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF الأصلي.";
+            
+            document.getElementById("interactiveTitle").textContent=
+            "الدليل التفاعلي";
+            
+            document.getElementById("interactiveButton").textContent=
+            "ابدأ الدليل التفاعلي";
+            
+            document.getElementById("pdfTitle").textContent=
+            "دليل PDF";
+            
+            document.getElementById("pdfButton").textContent=
+            "عرض ملف PDF";
+            
+            document.getElementById("backButton").textContent=
+            "العودة إلى بوابة الدعم";
+            
+            document.getElementById("returnButton").textContent=
+            "اختيار تنسيق آخر";
+            
+            document.getElementById("interactiveGuideTitle").textContent=
+            "الدليل التفاعلي لمشكلة تسجيل الدخول";
+            
+            document.getElementById("interactiveGuideDescription").textContent=
+            "اتبع التعليمات خطوة بخطوة";
+            
+            document.getElementById("step1Title").textContent=
+            "فتح موقع أو بوابة ECAE";
+            
+            document.getElementById("step2Title").textContent=
+            "تسجيل الدخول واختيار الطلاب";
+            
+            document.getElementById("step1List").innerHTML=`
+            <li>افتح موقع كلية الإمارات للتطوير التربوي أو البوابة الإلكترونية.</li>
+            <li>اضغط على تسجيل الدخول.</li>
+            <li>اختر بوابة ECAE.</li>
+            <li>يمكنك أيضاً استخدام الروابط المباشرة.</li>
+            `;
+            
+            document.getElementById("step2List").innerHTML=`
+            <li>سجل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك.</li>
+            <li>اختر تبويب الطلاب بعد تسجيل الدخول.</li>
+            `;
+            
+            document.getElementById("step2Note").innerHTML=`
+            إذا لم تتمكن من تسجيل الدخول فأعد تعيين كلمة المرور ثم حاول مرة أخرى.<br><br>
+            <strong>مهم:</strong><br>
+            قد تحتاج بعض الأجهزة لاستخدام:<br><br>
+            <strong>ECAE\\StudentID</strong>
+            `;
+            
+            document.getElementById("completionTitle").textContent=
+            "اكتمل الدليل";
+            
+            document.getElementById("completionDescription").textContent=
+            "لقد وصلت إلى نهاية دليل مشكلة تسجيل الدخول.";
+            
+            document.getElementById("restartGuideButton").textContent=
+            "إعادة تشغيل الدليل";
+            
+            document.getElementById("completionReturnButton").textContent=
+            "اختيار تنسيق آخر";
+            
+            document.getElementById("completionBackButton").textContent=
+            "العودة إلى بوابة الدعم";
+            
+            document.getElementById("next1").textContent="التالي";
+            document.getElementById("previous2").textContent="السابق";
+            document.getElementById("finishButton").textContent="إنهاء الدليل";
+            
+            }else{
+            
+            document.documentElement.lang="en";
+            document.documentElement.dir="ltr";
+            
+            document.getElementById("pageTitle").textContent=
+            "ECAE Official Website Login Problem";
+            
+            document.getElementById("pageDescription").textContent=
+            "Choose how you would like to view this support guide.";
+            
+            document.getElementById("formatTitle").textContent=
+            "Select a Guide Format";
+            
+            document.getElementById("formatDescription").textContent=
+            "Follow an interactive step-by-step guide or open the original PDF document.";
+            
+            document.getElementById("interactiveTitle").textContent=
+            "Interactive Guide";
+            
+            document.getElementById("interactiveButton").textContent=
+            "Start Interactive Guide";
+            
+            document.getElementById("pdfTitle").textContent=
+            "PDF Guide";
+            
+            document.getElementById("pdfButton").textContent=
+            "View PDF Guide";
+            
+            document.getElementById("backButton").textContent=
+            "← Back to Support Portal";
+            
+            document.getElementById("returnButton").textContent=
+            "← Choose Another Format";
+            
+            document.getElementById("interactiveGuideTitle").textContent=
+            "Interactive ECAE Official Website Login Problem Guide";
+            
+            document.getElementById("interactiveGuideDescription").textContent=
+            "Follow the instructions one step at a time.";
+            
+            document.getElementById("step1Title").textContent=
+            "Open the ECAE Website or Portal";
+            
+            document.getElementById("step2Title").textContent=
+            "Sign In and Select Students";
+            
+            document.getElementById("step1List").innerHTML=`
+            <li>Open the Emirates College for Advanced Education (ECAE) website.</li>
+            <li>Click Login.</li>
+            <li>Select ECAE Portal.</li>
+            <li>You may also use the direct links.</li>
+            `;
+            
+            document.getElementById("step2List").innerHTML=`
+            <li>Sign in using your ECAE username and password.</li>
+            <li>Select the Students tab.</li>
+            `;
+            
+            document.getElementById("step2Note").innerHTML=`
+            If you cannot access the portal, reset your password and try again.<br><br>
+            <strong>Important:</strong><br>
+            Use:<br><br>
+            <strong>ECAE\\StudentID</strong>
+            `;
+            
+            document.getElementById("completionTitle").textContent=
+            "Guide Complete";
+            
+            document.getElementById("completionDescription").textContent=
+            "You have reached the end of the ECAE website login problem guide.";
+            
+            document.getElementById("restartGuideButton").textContent=
+            "Restart Guide";
+            
+            document.getElementById("completionReturnButton").textContent=
+            "Choose Another Format";
+            
+            document.getElementById("completionBackButton").textContent=
+            "Back to Support Portal";
+            
+            document.getElementById("next1").textContent="Next";
+            document.getElementById("previous2").textContent="Previous";
+            document.getElementById("finishButton").textContent="Finish Guide";
+            }
+            
+            localStorage.setItem("language",lang);
+            }
+            
+            window.addEventListener("load",function(){
+            const savedLanguage=
+            localStorage.getItem("language") || "en";
+            
+            setLanguage(savedLanguage);
+            });
     </script>
 
 </body>
