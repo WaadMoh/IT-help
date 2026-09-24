@@ -58,6 +58,7 @@
         }
 
         .header-container {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -91,6 +92,30 @@
             height: auto;
             object-fit: contain;
         }
+        .language-switcher {
+            position: absolute;
+            top: -32px;
+            right: 25px;
+            z-index: 20;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .language-switcher button {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            background: white;
+            color: var(--ecae-blue);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .language-switcher button:hover {
+            background: #EDF3FF;
+        }
+
 
         /* =========================================
            MAIN CONTENT
@@ -532,11 +557,15 @@
 
     <header class="page-header">
         <div class="header-container">
+            <div class="language-switcher">
+                <button onclick="setLanguage('en')">🇬🇧 English</button>
+                <button onclick="setLanguage('ar')">🇦🇪 العربية</button>
+            </div>
 
             <div class="header-text">
-                <h1>Research Grant Application Submittal Access</h1>
+                <h1 id="pageTitle">Research Grant Application Submittal Access</h1>
 
-                <p>
+                <p id="pageDescription">
                     Choose how you would like to view this support
                     guide.
                 </p>
@@ -559,9 +588,9 @@
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2>Select a Guide Format</h2>
+                <h2 id="formatTitle">Select a Guide Format</h2>
 
-                <p>
+                <p id="formatDescription">
                     Follow an interactive step-by-step guide or open
                     the original PDF document.
                 </p>
@@ -577,12 +606,13 @@
                         💻
                     </div>
 
-                    <h3>Interactive Guide</h3>
+                    <h3 id="interactiveTitle">Interactive Guide</h3>
 
                     <button
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
+                        id="interactiveButton"
                     >
                         Start Interactive Guide
                     </button>
@@ -597,11 +627,12 @@
                         📄
                     </div>
 
-                    <h3>PDF Guide</h3>
+                    <h3 id="pdfTitle">PDF Guide</h3>
 
                                    <a
                         href="Research Grant Application Submittal Access.cleaned.pdf"
                         class="guide-button"
+                        id="pdfButton"
                         >
                         View PDF Guid                
                     </a>
@@ -614,6 +645,7 @@
                 <a
                     href="index.html"
                     class="back-button"
+                    id="backButton"
                 >
                     ← Back to Support Portal
                 </a>
@@ -636,15 +668,16 @@
                     type="button"
                     class="return-button"
                     onclick="returnToGuideOptions()"
+                    id="returnButton"
                 >
                     ← Choose Another Format
                 </button>
 
-                <h2>
+                <h2 id="interactiveGuideTitle">
                     Interactive Research Grant Application Submittal Access Guide
                 </h2>
 
-                <p>
+                <p id="interactiveGuideDescription">
                     Follow the instructions one step at a time.
                 </p>
 
@@ -674,10 +707,10 @@
                 <span class="step-number">Step 1</span>
 
  
-                <h3>Open the ECAE Website or Portal</h3>
+                <h3 id="step1Title">Open the ECAE Website or Portal</h3>
 
     
-                <ol class="instruction-list">
+                <ol id="step1List" class="instruction-list">
        
                     <li>Open the Emirates College for Advanced Education (ECAE) website.</li>
         
@@ -696,6 +729,7 @@
                         class="step-link"
                         target="_blank"
                         rel="noopener noreferrer"
+                        id="step1WebsiteLink"
                     >
                         Open ECAE Website
                     </a>
@@ -705,6 +739,7 @@
                         class="step-link"
                         target="_blank"
                         rel="noopener noreferrer"
+                        id="step1PortalLink"
                     >
                         Open ECAE Portal
                     </a>
@@ -718,6 +753,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(2)"
+                        id="next1"
                     >
                         Next
                     </button>
@@ -736,16 +772,16 @@
                 <span class="step-number">Step 2</span>
 
    
-                <h3>Sign In and Select Students</h3>
+                <h3 id="step2Title">Sign In and Select Students</h3>
 
     
-                <ol class="instruction-list">
+                <ol id="step2List" class="instruction-list">
                     <li>Sign in using your ECAE username and password.</li>
                     <li>After signing in, select the <strong>Students</strong> tab.</li>
                 </ol>
 
    
-                <div class="information-note">
+                <div id="step2Note" class="information-note">
                     If you cannot access the portal, reset your password through Office 365 and try again.
                     <strong>Important:</strong><br>
                     Students using other corporate devices may need to sign in using the following username format:
@@ -776,6 +812,7 @@
                         class="step-link"
                         target="_blank"
                         rel="noopener noreferrer"
+                        id="step2OfficeLink"
                     >
                         Open Office 365
                     </a>
@@ -787,6 +824,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(1)"
+                        id="previous2"
                     >
                         Previous
                     </button>
@@ -795,6 +833,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(3)"
+                        id="next2"
                     >
                         Next
                     </button>
@@ -816,9 +855,9 @@
                 <h3>Locate Important Links (Internal)</h3>
 
     
-                <h3>Open Research Grant Application Submittal Access</h3>
+                <h3 id="step3Title">Open Research Grant Application Submittal Access</h3>
                 
-                <ol class="instruction-list">
+                <ol id="step3List" class="instruction-list">
                     <li>After selecting the <strong>Students</strong> tab, look at the right-side panel.</li>
                     <li>Find the <strong>Important Links (Internal)</strong> section.</li>
                     <li>Select <strong>Research Grant Application Submittal Access</strong>.</li>
@@ -829,6 +868,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(2)"
+                        id="previous3"
                     >
                         Previous
                     </button>
@@ -837,6 +877,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(4)"
+                        id="next3"
                     >
                         Next
                     </button>
@@ -850,20 +891,20 @@
                  STEP 4
             ====================================== -->
 
-            <article class="step-card" data-step="5">
+            <article class="step-card" data-step="4">
 
-                <span class="step-number">Step 5</span>
+                <span class="step-number">Step 4</span>
 
-<h3>Submit a Research Grant Application</h3>
+                <h3 id="step4Title">Submit a Research Grant Application</h3>
 
-                <ol class="instruction-list">
+                <ol id="step4List" class="instruction-list">
                     <li>Open the Research Grant Application Submittal Access service.</li>
                     <li>Review the eligibility requirements.</li>
                     <li>Complete the required application information.</li>
                     <li>Submit your research grant or research funding application.</li>
                 </ol>
                 
-                <div class="information-note">
+                <div id="step4Note" class="information-note">
                     This portal is intended for eligible students who wish to apply for research grants or submit research funding applications.
                 </div>
                 
@@ -873,6 +914,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(3)"
+                        id="previous4"
                     >
                         Previous
                     </button>
@@ -881,6 +923,7 @@
                         type="button"
                         class="next-button"
                         onclick="finishGuide()"
+                        id="finishButton"
                     >
                         Finish Guide
                     </button>
@@ -905,9 +948,9 @@
                     ✅
                 </div>
 
-                <h3>Guide Complete</h3>
+                <h3 id="completionTitle">Guide Complete</h3>
 
-                <p>
+                <p id="completionDescription">
                     You have reached the end of the SResearch Grant 
                     Application Submittal Access guide.
                 </p>
@@ -918,6 +961,7 @@
                         type="button"
                         class="next-button"
                         onclick="restartGuide()"
+                        id="restartGuideButton"
                     >
                         Restart Guide
                     </button>
@@ -926,6 +970,7 @@
                         type="button"
                         class="previous-button"
                         onclick="returnToGuideOptions()"
+                        id="completionReturnButton"
                     >
                         Choose Another Format
                     </button>
@@ -933,6 +978,7 @@
                     <a
                         href="index.html"
                         class="back-button"
+                        id="completionBackButton"
                     >
                         Back to Support Portal
                     </a>
@@ -952,7 +998,9 @@
     <footer>
         <p>
             © <span id="currentYear"></span>
-            Student Support Portal
+            <span id="footerText">
+                Student Support Portal
+            </span>
         </p>
     </footer>
 
@@ -1088,6 +1136,294 @@
             "currentYear"
         ).textContent =
             new Date().getFullYear();
+            function setLanguage(lang) {
+            
+                if (lang === "ar") {
+            
+                    document.documentElement.lang = "ar";
+                    document.documentElement.dir = "rtl";
+            
+                    document.getElementById("pageTitle").textContent =
+                        "الوصول إلى تقديم طلب منحة بحثية";
+            
+                    document.getElementById("pageDescription").textContent =
+                        "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
+            
+                    document.getElementById("formatTitle").textContent =
+                        "اختر نوع الدليل";
+            
+                    document.getElementById("formatDescription").textContent =
+                        "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF.";
+            
+                    document.getElementById("interactiveTitle").textContent =
+                        "الدليل التفاعلي";
+            
+                    document.getElementById("pdfTitle").textContent =
+                        "دليل PDF";
+            
+                    document.getElementById("interactiveButton").textContent =
+                        "ابدأ الدليل التفاعلي";
+            
+                    document.getElementById("pdfButton").textContent =
+                        "عرض ملف PDF";
+            
+                    document.getElementById("backButton").textContent =
+                        "العودة إلى بوابة الدعم";
+            
+                    document.getElementById("returnButton").textContent =
+                        "اختيار تنسيق آخر";
+            
+                    document.getElementById("interactiveGuideTitle").textContent =
+                        "الدليل التفاعلي للوصول إلى تقديم طلب منحة بحثية";
+            
+                    document.getElementById("interactiveGuideDescription").textContent =
+                        "اتبع التعليمات خطوة بخطوة.";
+            
+                    document.getElementById("step1Title").textContent =
+                        "فتح موقع ECAE أو البوابة";
+            
+                    document.getElementById("step2Title").textContent =
+                        "تسجيل الدخول واختيار الطلاب";
+            
+                    document.getElementById("step3Title").textContent =
+                        "فتح خدمة تقديم طلب منحة بحثية";
+            
+                    document.getElementById("step4Title").textContent =
+                        "إرسال طلب المنحة البحثية";
+            
+                    document.getElementById("step1List").innerHTML = `
+                        <li>افتح موقع كلية الإمارات للتطوير التربوي.</li>
+                        <li>اضغط على تسجيل الدخول.</li>
+                        <li>اختر بوابة ECAE.</li>
+                        <li>يمكنك أيضاً استخدام الروابط المباشرة.</li>
+                    `;
+            
+                    document.getElementById("step2List").innerHTML = `
+                        <li>سجل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك.</li>
+                        <li>اختر تبويب الطلاب.</li>
+                    `;
+            
+                    document.getElementById("step2Note").innerHTML = `
+                        إذا لم تتمكن من الدخول إلى البوابة، قم بإعادة تعيين كلمة المرور من Office 365 ثم حاول مرة أخرى.<br><br>
+                        <strong>مهم:</strong><br>
+                        قد يحتاج بعض الطلاب إلى استخدام الصيغة التالية:<br><br>
+                        <strong>ECAE\\StudentID</strong><br>
+                        مثال:<br>
+                        <strong>ECAE\\001164</strong>
+                    `;
+            
+                    document.getElementById("step3List").innerHTML = `
+                        <li>بعد اختيار تبويب الطلاب، انظر إلى اللوحة الموجودة في الجانب الأيمن.</li>
+                        <li>ابحث عن قسم الروابط المهمة الداخلية.</li>
+                        <li>اختر الوصول إلى تقديم طلب منحة بحثية.</li>
+                    `;
+            
+                    document.getElementById("step4List").innerHTML = `
+                        <li>افتح خدمة تقديم طلب منحة بحثية.</li>
+                        <li>راجع متطلبات الأهلية.</li>
+                        <li>أكمل معلومات الطلب المطلوبة.</li>
+                        <li>أرسل طلب المنحة أو التمويل البحثي.</li>
+                    `;
+            
+                    document.getElementById("step4Note").textContent =
+                        "هذه الخدمة مخصصة للطلاب المؤهلين الراغبين في التقدم للحصول على منح أو تمويل بحثي.";
+            
+                    document.getElementById("step1WebsiteLink").textContent =
+                        "فتح موقع ECAE";
+            
+                    document.getElementById("step1PortalLink").textContent =
+                        "فتح بوابة ECAE";
+            
+                    document.getElementById("step2OfficeLink").textContent =
+                        "فتح Office 365";
+            
+                    document.getElementById("next1").textContent =
+                        "التالي";
+            
+                    document.getElementById("previous2").textContent =
+                        "السابق";
+            
+                    document.getElementById("next2").textContent =
+                        "التالي";
+            
+                    document.getElementById("previous3").textContent =
+                        "السابق";
+            
+                    document.getElementById("next3").textContent =
+                        "التالي";
+            
+                    document.getElementById("previous4").textContent =
+                        "السابق";
+            
+                    document.getElementById("finishButton").textContent =
+                        "إنهاء الدليل";
+            
+                    document.getElementById("completionTitle").textContent =
+                        "اكتمل الدليل";
+            
+                    document.getElementById("completionDescription").textContent =
+                        "لقد وصلت إلى نهاية دليل الوصول إلى تقديم طلب منحة بحثية.";
+            
+                    document.getElementById("restartGuideButton").textContent =
+                        "إعادة تشغيل الدليل";
+            
+                    document.getElementById("completionReturnButton").textContent =
+                        "اختيار تنسيق آخر";
+            
+                    document.getElementById("completionBackButton").textContent =
+                        "العودة إلى بوابة الدعم";
+            
+                    document.getElementById("footerText").textContent =
+                        "بوابة دعم الطلاب";
+            
+                } else {
+            
+                    document.documentElement.lang = "en";
+                    document.documentElement.dir = "ltr";
+            
+                    document.getElementById("pageTitle").textContent =
+                        "Research Grant Application Submittal Access";
+            
+                    document.getElementById("pageDescription").textContent =
+                        "Choose how you would like to view this support guide.";
+            
+                    document.getElementById("formatTitle").textContent =
+                        "Select a Guide Format";
+            
+                    document.getElementById("formatDescription").textContent =
+                        "Follow an interactive step-by-step guide or open the original PDF document.";
+            
+                    document.getElementById("interactiveTitle").textContent =
+                        "Interactive Guide";
+            
+                    document.getElementById("pdfTitle").textContent =
+                        "PDF Guide";
+            
+                    document.getElementById("interactiveButton").textContent =
+                        "Start Interactive Guide";
+            
+                    document.getElementById("pdfButton").textContent =
+                        "View PDF Guide";
+            
+                    document.getElementById("backButton").textContent =
+                        "← Back to Support Portal";
+            
+                    document.getElementById("returnButton").textContent =
+                        "← Choose Another Format";
+            
+                    document.getElementById("interactiveGuideTitle").textContent =
+                        "Interactive Research Grant Application Submittal Access Guide";
+            
+                    document.getElementById("interactiveGuideDescription").textContent =
+                        "Follow the instructions one step at a time.";
+            
+                    document.getElementById("step1Title").textContent =
+                        "Open the ECAE Website or Portal";
+            
+                    document.getElementById("step2Title").textContent =
+                        "Sign In and Select Students";
+            
+                    document.getElementById("step3Title").textContent =
+                        "Open Research Grant Application Submittal Access";
+            
+                    document.getElementById("step4Title").textContent =
+                        "Submit a Research Grant Application";
+            
+                    document.getElementById("step1List").innerHTML = `
+                        <li>Open the Emirates College for Advanced Education (ECAE) website.</li>
+                        <li>Click Login.</li>
+                        <li>Select ECAE Portal.</li>
+                        <li>You can also use the direct links.</li>
+                    `;
+            
+                    document.getElementById("step2List").innerHTML = `
+                        <li>Sign in using your ECAE username and password.</li>
+                        <li>Select the Students tab.</li>
+                    `;
+            
+                    document.getElementById("step2Note").innerHTML = `
+                        If you cannot access the portal, reset your password through Office 365 and try again.<br><br>
+                        <strong>Important:</strong><br>
+                        Students using other corporate devices may need to sign in using:<br><br>
+                        <strong>ECAE\\StudentID</strong><br>
+                        Example:<br>
+                        <strong>ECAE\\001164</strong>
+                    `;
+            
+                    document.getElementById("step3List").innerHTML = `
+                        <li>After selecting Students, look at the right-side panel.</li>
+                        <li>Locate Important Links (Internal).</li>
+                        <li>Select Research Grant Application Submittal Access.</li>
+                    `;
+            
+                    document.getElementById("step4List").innerHTML = `
+                        <li>Open the Research Grant Application Submittal Access service.</li>
+                        <li>Review eligibility requirements.</li>
+                        <li>Complete the required application information.</li>
+                        <li>Submit your research grant or funding application.</li>
+                    `;
+            
+                    document.getElementById("step4Note").textContent =
+                        "This portal is intended for eligible students who wish to apply for research grants or research funding.";
+            
+                    document.getElementById("step1WebsiteLink").textContent =
+                        "Open ECAE Website";
+            
+                    document.getElementById("step1PortalLink").textContent =
+                        "Open ECAE Portal";
+            
+                    document.getElementById("step2OfficeLink").textContent =
+                        "Open Office 365";
+            
+                    document.getElementById("next1").textContent =
+                        "Next";
+            
+                    document.getElementById("previous2").textContent =
+                        "Previous";
+            
+                    document.getElementById("next2").textContent =
+                        "Next";
+            
+                    document.getElementById("previous3").textContent =
+                        "Previous";
+            
+                    document.getElementById("next3").textContent =
+                        "Next";
+            
+                    document.getElementById("previous4").textContent =
+                        "Previous";
+            
+                    document.getElementById("finishButton").textContent =
+                        "Finish Guide";
+            
+                    document.getElementById("completionTitle").textContent =
+                        "Guide Complete";
+            
+                    document.getElementById("completionDescription").textContent =
+                        "You have reached the end of the Research Grant Application Submittal Access guide.";
+            
+                    document.getElementById("restartGuideButton").textContent =
+                        "Restart Guide";
+            
+                    document.getElementById("completionReturnButton").textContent =
+                        "Choose Another Format";
+            
+                    document.getElementById("completionBackButton").textContent =
+                        "Back to Support Portal";
+            
+                    document.getElementById("footerText").textContent =
+                        "Student Support Portal";
+                }
+            
+                localStorage.setItem("language", lang);
+            }
+            
+            window.addEventListener("load", function () {
+                const savedLanguage =
+                    localStorage.getItem("language") || "en";
+            
+                setLanguage(savedLanguage);
+            });
     </script>
 
 </body>
