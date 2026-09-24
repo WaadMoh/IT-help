@@ -56,6 +56,7 @@
         }
 
         .header-container {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -88,6 +89,29 @@
             max-width: 100%;
             height: auto;
             object-fit: contain;
+        }
+        .language-switcher {
+            position: absolute;
+            top: -32px;
+            right: 25px;
+            z-index: 20;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .language-switcher button {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            background: white;
+            color: var(--ecae-blue);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .language-switcher button:hover {
+            background: #EDF3FF;
         }
 
         /* =========================================
@@ -596,11 +620,15 @@
 
     <header class="page-header">
         <div class="header-container">
+            <div class="language-switcher">
+                <button onclick="setLanguage('en')">🇬🇧 English</button>
+                <button onclick="setLanguage('ar')">🇦🇪 العربية</button>
+            </div>
 
             <div class="header-text">
-                <h1>ECAE Office 365</h1>
+                <h1 id="pageTitle">ECAE Office 365</h1>
 
-                <p>
+                <p id="pageDescription">
                     Choose the Office 365 guide you need and follow
                     the instructions one step at a time.
                 </p>
@@ -622,9 +650,9 @@
         <section id="guideSelection">
 
             <div class="introduction">
-                <h2>Select an Office 365 Guide</h2>
+                <h2 id="guideSelectionTitle">Select an Office 365 Guide</h2>
 
-                <p>
+                <p id="guideSelectionDescription">
                     Choose whether you need help signing in or
                     downloading Microsoft 365 applications.
                 </p>
@@ -638,9 +666,9 @@
                         🔐
                     </div>
 
-                    <h3>Office 365 Login Guide</h3>
+                    <h3 id="loginGuideTitle">Office 365 Login Guide</h3>
 
-                    <p>
+                    <p id="loginGuideDescription">
                         Learn how to access the ECAE Portal and sign
                         in to Office 365 using your ECAE account.
                     </p>
@@ -649,6 +677,7 @@
                         type="button"
                         class="guide-button"
                         onclick="selectGuide('login')"
+                        id="loginGuideButton"
                     >
                         Open Login Guide
                     </button>
@@ -661,9 +690,9 @@
                         ⬇️
                     </div>
 
-                    <h3>Office 365 Download Guide</h3>
+                    <h3 id="downloadGuideTitle">Office 365 Download Guide</h3>
 
-                    <p>
+                    <p id="downloadGuideDescription">
                         Learn how to open the Microsoft download page
                         and download the application for your device.
                     </p>
@@ -672,6 +701,7 @@
                         type="button"
                         class="guide-button"
                         onclick="selectGuide('download')"
+                        id="downloadGuideButton"
                     >
                         Open Download Guide
                     </button>
@@ -684,6 +714,7 @@
                 <a
                     href="index.html"
                     class="back-button"
+                    id="backButton"
                 >
                     ← Back to Support Portal
                 </a>
@@ -720,9 +751,9 @@
                         💻
                     </div>
 
-                    <h3>Interactive Guide</h3>
+                    <h3 id="interactiveGuideTitle">Interactive Guide</h3>
 
-                    <p>
+                    <p id="interactiveGuideDescription">
                         Follow clear instructions with screenshots,
                         progress tracking, and navigation buttons.
                     </p>
@@ -731,6 +762,7 @@
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
+                        id="interactiveButton"
                     >
                         Start Interactive Guide
                     </button>
@@ -743,9 +775,9 @@
                         📄
                     </div>
 
-                    <h3>Guide Resources</h3>
+                    <h3 id="resourceTitle">Guide Resources</h3>
 
-                    <p>
+                    <p id="resourceDescription">
                         Additional guide resources.
                     </p>
                     <div class="format-buttons">
@@ -766,6 +798,8 @@
                          id="pdfGuideButton"
                          href="ECAE Office 365.cleaned.pdf"
                          class="guide-button"
+                         id="downloadGuideButton"
+                         
                          >
                             📄 View PDF Guide
                         </a>
@@ -783,6 +817,7 @@
                     type="button"
                     class="back-button"
                     onclick="returnToGuideSelection()"
+                    id="returnButton"
                 >
                     ← Choose Another Guide
                 </button>
@@ -806,6 +841,7 @@
                     type="button"
                     class="return-button"
                     onclick="returnToFormatSelection()"
+                    id="returnButton"
                 >
                     ← Choose Another Format
                 </button>
@@ -850,9 +886,9 @@
 
                     <span class="step-number">Step 1</span>
 
-                    <h3>Open the ECAE Portal</h3>
+                    <h3 id="loginStep1Title">Open the ECAE Portal</h3>
 
-                    <ol class="instruction-list">
+                    <ol id="loginStep1List" class="instruction-list">
                         <li>
                             Open the ECAE Portal using the button below.
                         </li>
@@ -882,6 +918,7 @@
                             type="button"
                             class="next-button"
                             onclick="showStep(2)"
+                            id="loginNext1"
                         >
                             Next
                         </button>
@@ -899,9 +936,9 @@
 
                     <span class="step-number">Step 2</span>
 
-                    <h3>Sign In to the ECAE Portal</h3>
+                    <h3 id="loginStep2Title">Sign In to the ECAE Portal</h3>
 
-                    <ol class="instruction-list">
+                    <ol id="loginStep2List" class="instruction-list">
                         <li>
                             Enter your ECAE username.
                         </li>
@@ -920,7 +957,7 @@
                         </li>
                     </ol>
 
-                    <div class="information-note">
+                    <div id="loginStep2Note" class="information-note">
                         <strong>Important:</strong><br><br>
 
                         Students using other corporate devices may
@@ -943,6 +980,7 @@
                             type="button"
                             class="previous-button"
                             onclick="showStep(1)"
+                            id="loginPrevious2"
                         >
                             Previous
                         </button>
@@ -951,6 +989,7 @@
                             type="button"
                             class="next-button"
                             onclick="showStep(3)"
+                            id="loginNext2"
                         >
                             Next
                         </button>
@@ -969,9 +1008,9 @@
 
                     <span class="step-number">Step 3</span>
 
-                    <h3>Open ECAE Office 365</h3>
+                    <h3 id="loginStep3Title">Open ECAE Office 365</h3>
 
-                    <ol class="instruction-list">
+                    <ol id="loginStep3List" class="instruction-list">
                         <li>
                             Look at the right-side panel of the
                             ECAE Portal.
@@ -994,7 +1033,7 @@
                         class="step-image"
                     >
 
-                    <div class="information-note">
+                    <div id="loginStep3Note" class="information-note">
                         Select the ECAE Office 365 link shown in the
                         screenshot.
                     </div>
@@ -1005,6 +1044,7 @@
                             type="button"
                             class="previous-button"
                             onclick="showStep(2)"
+                            id="loginPrevious3"
                         >
                             Previous
                         </button>
@@ -1013,6 +1053,7 @@
                             type="button"
                             class="next-button"
                             onclick="showStep(4)"
+                            id="loginNext3"
                         >
                             Next
                         </button>
@@ -1031,9 +1072,9 @@
 
                     <span class="step-number">Step 4</span>
 
-                    <h3>Sign In to Office 365</h3>
+                    <h3 id="loginStep4Title">Sign In to Office 365</h3>
 
-                    <ol class="instruction-list">
+                    <ol id="loginStep4List" class="instruction-list">
                         <li>
                             Enter your ECAE email address.
                         </li>
@@ -1056,7 +1097,7 @@
                         </li>
                     </ol>
 
-                    <div class="information-note">
+                    <div id="loginStep4Note" class="information-note">
                         You can also open Microsoft 365 directly
                         using the button below.
                     </div>
@@ -1080,6 +1121,7 @@
                             type="button"
                             class="previous-button"
                             onclick="showStep(3)"
+                            id="loginPrevious4"
                         >
                             Previous
                         </button>
@@ -1088,6 +1130,7 @@
                             type="button"
                             class="next-button"
                             onclick="finishGuide()"
+                            id="finishButton"
                         >
                             Finish Guide
                         </button>
@@ -1114,9 +1157,9 @@
 
                     <span class="step-number">Step 1</span>
 
-                    <h3>Sign In to Microsoft 365</h3>
+                    <h3 id="downloadStep1Title">Sign In to Microsoft 365</h3>
 
-                    <ol class="instruction-list">
+                    <ol id="downloadStep1List" class="instruction-list">
                         <li>
                             Open Microsoft 365 using the button below.
                         </li>
@@ -1165,6 +1208,7 @@
                             type="button"
                             class="next-button"
                             onclick="showStep(2)"
+                            id="downloadNext1"
                         >
                             Next
                         </button>
@@ -1182,9 +1226,9 @@
 
                     <span class="step-number">Step 2</span>
 
-                    <h3>Open the Download Apps Menu</h3>
+                    <h3 id="downloadStep2Title">Open the Download Apps Menu</h3>
 
-                    <ol class="instruction-list">
+                    <ol id="downloadStep2List" class="instruction-list">
                         <li>
                             After signing in, look at the top-right
                             corner of the page.
@@ -1205,7 +1249,7 @@
                         class="step-image"
                     >
                         
-                    <div class="information-note">
+                    <div id="downloadStep2Note" class="information-note">
                         The screenshot highlights both the three-dot
                         menu and the Download apps option.
                     </div>
@@ -1216,6 +1260,7 @@
                             type="button"
                             class="previous-button"
                             onclick="showStep(1)"
+                            id="downloadPrevious2"
                         >
                             Previous
                         </button>
@@ -1224,6 +1269,7 @@
                             type="button"
                             class="next-button"
                             onclick="showStep(3)"
+                            id="downloadNext2"
                         >
                             Next
                         </button>
@@ -1242,9 +1288,9 @@
 
                     <span class="step-number">Step 3</span>
 
-                    <h3>Select Your Device</h3>
+                    <h3 id="downloadStep3Title">Select Your Device</h3>
 
-                    <ol class="instruction-list">
+                    <ol id="downloadStep3List" class="instruction-list">
                         <li>
                             Wait for the application download page
                             to open.
@@ -1269,7 +1315,7 @@
                         class="step-image"
                     >
 
-                    <div class="information-note">
+                    <div id="downloadStep3Note" class="information-note">
                         Choose the option that matches the device you
                         are currently using.
                     </div>
@@ -1280,6 +1326,7 @@
                             type="button"
                             class="previous-button"
                             onclick="showStep(2)"
+                            id="downloadPrevious3"
                         >
                             Previous
                         </button>
@@ -1288,6 +1335,7 @@
                             type="button"
                             class="next-button"
                             onclick="showStep(4)"
+                            id="downloadNext3"
                         >
                             Next
                         </button>
@@ -1306,9 +1354,9 @@
 
                     <span class="step-number">Step 4</span>
 
-                    <h3>Open the Downloaded File</h3>
+                    <h3 id="downloadStep4Title">Open the Downloaded File</h3>
 
-                    <ol class="instruction-list">
+                    <ol id="downloadStep4List" class="instruction-list">
                         <li>
                             Wait for the application file to finish
                             downloading.
@@ -1344,7 +1392,7 @@
                     >
                         
 
-                    <div class="information-note">
+                    <div id="downloadStep4Note" class="information-note">
                         The appearance and name of the downloaded file
                         may differ depending on the device and
                         browser being used.
@@ -1356,6 +1404,7 @@
                             type="button"
                             class="previous-button"
                             onclick="showStep(3)"
+                            id="downloadPrevious4"
                         >
                             Previous
                         </button>
@@ -1364,6 +1413,7 @@
                             type="button"
                             class="next-button"
                             onclick="finishGuide()"
+                            id="finishButton"
                         >
                             Finish Guide
                         </button>
@@ -1390,7 +1440,7 @@
                     ✅
                 </div>
 
-                <h3>Guide Complete</h3>
+                <h3 id="completionTitle">Guide Complete</h3>
 
                 <p id="completionMessage">
                     You have reached the end of the Office 365 guide.
@@ -1402,6 +1452,7 @@
                         type="button"
                         class="next-button"
                         onclick="restartGuide()"
+                        id="restartGuideButton"
                     >
                         Restart Guide
                     </button>
@@ -1410,6 +1461,7 @@
                         type="button"
                         class="previous-button"
                         onclick="returnToFormatSelection()"
+                        id="completionReturnButton"
                     >
                         Choose Another Format
                     </button>
@@ -1418,6 +1470,7 @@
                         type="button"
                         class="previous-button"
                         onclick="returnToGuideSelection()"
+                        id="completionGuideButton"
                     >
                         Choose Another Guide
                     </button>
@@ -1425,6 +1478,7 @@
                     <a
                         href="index.html"
                         class="back-button"
+                        id="completionBackButton"
                     >
                         Back to Support Portal
                     </a>
@@ -1444,7 +1498,9 @@
     <footer>
         <p>
             © <span id="currentYear"></span>
-            Student Support Portal
+            <span id="footerText">
+                Student Support Portal
+            </span>
         </p>
     </footer>
 
@@ -1490,12 +1546,12 @@
                     "Select how you would like to view the Office 365 Login Guide.";
 
                 document.getElementById(
-                    "videoGuideLink"
+                    "videoGuideButton"
                 ).href =
                     "office-login.mp4";
 
                 document.getElementById(
-                    "pdfGuideLink"
+                    "pdfGuideButton"
                 ).href =
                     "ECAE Office 365.cleaned.pdf";
             } else {
@@ -1716,6 +1772,240 @@
             "currentYear"
         ).textContent =
             new Date().getFullYear();
+            function setLanguage(lang) {
+            
+                if (lang === "ar") {
+            
+                    document.documentElement.lang = "ar";
+                    document.documentElement.dir = "rtl";
+            
+                    document.getElementById("pageTitle").textContent =
+                        "دعم Microsoft 365";
+            
+                    document.getElementById("pageDescription").textContent =
+                        "اختر الدليل الذي تحتاجه واتبع الخطوات خطوة بخطوة.";
+            
+                    document.getElementById("guideSelectionTitle").textContent =
+                        "اختر دليل Microsoft 365";
+            
+                    document.getElementById("guideSelectionDescription").textContent =
+                        "اختر ما إذا كنت تحتاج إلى المساعدة في تسجيل الدخول أو تنزيل تطبيقات Microsoft 365.";
+            
+                    document.getElementById("loginGuideTitle").textContent =
+                        "دليل تسجيل الدخول إلى Microsoft 365";
+            
+                    document.getElementById("loginGuideDescription").textContent =
+                        "تعرف على كيفية الوصول إلى بوابة ECAE وتسجيل الدخول إلى Microsoft 365 باستخدام حسابك.";
+            
+                    document.getElementById("loginGuideButton").textContent =
+                        "فتح دليل تسجيل الدخول";
+            
+                    document.getElementById("downloadGuideTitle").textContent =
+                        "دليل تنزيل Microsoft 365";
+            
+                    document.getElementById("downloadGuideDescription").textContent =
+                        "تعرف على كيفية تنزيل تطبيقات Microsoft 365 على جهازك.";
+            
+                    document.getElementById("downloadGuideButton").textContent =
+                        "فتح دليل التنزيل";
+            
+                    document.getElementById("backButton").textContent =
+                        "العودة إلى بوابة الدعم";
+            
+                    document.getElementById("formatTitle").textContent =
+                        "اختر نوع الدليل";
+            
+                    document.getElementById("formatDescription").textContent =
+                        "اختر الطريقة التي تفضلها لعرض هذا الدليل.";
+            
+                    document.getElementById("interactiveGuideTitle").textContent =
+                        "الدليل التفاعلي";
+            
+                    document.getElementById("interactiveGuideDescription").textContent =
+                        "اتبع التعليمات خطوة بخطوة مع الصور وأشرطة التقدم.";
+            
+                    document.getElementById("interactiveButton").textContent =
+                        "ابدأ الدليل التفاعلي";
+            
+                    document.getElementById("resourceTitle").textContent =
+                        "موارد الدليل";
+            
+                    document.getElementById("resourceDescription").textContent =
+                        "موارد إضافية للدليل.";
+            
+                    document.getElementById("videoGuideButton").textContent =
+                        "🎥 مشاهدة الفيديو";
+            
+                    document.getElementById("pdfGuideButton").textContent =
+                        "📄 عرض PDF";
+            
+                    document.getElementById("returnButton").textContent =
+                        "اختيار دليل آخر";
+            
+                    document.getElementById("interactiveTitle").textContent =
+                        selectedGuide === "login"
+                            ? "الدليل التفاعلي لتسجيل الدخول إلى Microsoft 365"
+                            : "الدليل التفاعلي لتنزيل Microsoft 365";
+            
+                    document.getElementById("loginStep1Title").textContent =
+                        "فتح بوابة ECAE";
+            
+                    document.getElementById("loginStep2Title").textContent =
+                        "تسجيل الدخول إلى البوابة";
+            
+                    document.getElementById("loginStep3Title").textContent =
+                        "فتح Microsoft 365";
+            
+                    document.getElementById("loginStep4Title").textContent =
+                        "تسجيل الدخول إلى Microsoft 365";
+            
+                    document.getElementById("downloadStep1Title").textContent =
+                        "تسجيل الدخول إلى Microsoft 365";
+            
+                    document.getElementById("downloadStep2Title").textContent =
+                        "فتح قائمة تنزيل التطبيقات";
+            
+                    document.getElementById("downloadStep3Title").textContent =
+                        "اختيار نوع الجهاز";
+            
+                    document.getElementById("downloadStep4Title").textContent =
+                        "فتح الملف الذي تم تنزيله";
+            
+                    document.getElementById("loginStep3Note").textContent =
+                        "اختر رابط Microsoft 365 الموضح في الصورة.";
+            
+                    document.getElementById("loginStep4Note").textContent =
+                        "يمكنك فتح Microsoft 365 مباشرة باستخدام الزر أدناه.";
+            
+                    document.getElementById("downloadStep2Note").textContent =
+                        "توضح الصورة مكان قائمة التنزيل وخيار تنزيل التطبيقات.";
+            
+                    document.getElementById("downloadStep3Note").textContent =
+                        "اختر الخيار المناسب للجهاز الذي تستخدمه.";
+            
+                    document.getElementById("downloadStep4Note").textContent =
+                        "قد يختلف اسم الملف ومظهره حسب نوع الجهاز والمتصفح.";
+            
+                    document.getElementById("completionTitle").textContent =
+                        "اكتمل الدليل";
+            
+                    document.getElementById("completionMessage").textContent =
+                        "لقد وصلت إلى نهاية دليل Microsoft 365.";
+            
+                    document.getElementById("restartGuideButton").textContent =
+                        "إعادة تشغيل الدليل";
+            
+                    document.getElementById("completionReturnButton").textContent =
+                        "اختيار تنسيق آخر";
+            
+                    document.getElementById("completionGuideButton").textContent =
+                        "اختيار دليل آخر";
+            
+                    document.getElementById("completionBackButton").textContent =
+                        "العودة إلى بوابة الدعم";
+            
+                    document.getElementById("footerText").textContent =
+                        "بوابة دعم الطلاب";
+            
+                } else {
+            
+                    document.documentElement.lang = "en";
+                    document.documentElement.dir = "ltr";
+            
+                    document.getElementById("pageTitle").textContent =
+                        "ECAE Office 365";
+            
+                    document.getElementById("pageDescription").textContent =
+                        "Choose the Office 365 guide you need and follow the instructions one step at a time.";
+            
+                    document.getElementById("guideSelectionTitle").textContent =
+                        "Select an Office 365 Guide";
+            
+                    document.getElementById("guideSelectionDescription").textContent =
+                        "Choose whether you need help signing in or downloading Microsoft 365 applications.";
+            
+                    document.getElementById("loginGuideTitle").textContent =
+                        "Office 365 Login Guide";
+            
+                    document.getElementById("loginGuideDescription").textContent =
+                        "Learn how to access the ECAE Portal and sign in to Office 365 using your ECAE account.";
+            
+                    document.getElementById("loginGuideButton").textContent =
+                        "Open Login Guide";
+            
+                    document.getElementById("downloadGuideTitle").textContent =
+                        "Office 365 Download Guide";
+            
+                    document.getElementById("downloadGuideDescription").textContent =
+                        "Learn how to open the Microsoft download page and download the application for your device.";
+            
+                    document.getElementById("downloadGuideButton").textContent =
+                        "Open Download Guide";
+            
+                    document.getElementById("backButton").textContent =
+                        "← Back to Support Portal";
+            
+                    document.getElementById("formatTitle").textContent =
+                        "Choose Guide Format";
+            
+                    document.getElementById("formatDescription").textContent =
+                        "Select how you would like to view this guide.";
+            
+                    document.getElementById("interactiveGuideTitle").textContent =
+                        "Interactive Guide";
+            
+                    document.getElementById("interactiveGuideDescription").textContent =
+                        "Follow clear instructions with screenshots, progress tracking, and navigation buttons.";
+            
+                    document.getElementById("interactiveButton").textContent =
+                        "Start Interactive Guide";
+            
+                    document.getElementById("resourceTitle").textContent =
+                        "Guide Resources";
+            
+                    document.getElementById("resourceDescription").textContent =
+                        "Additional guide resources.";
+            
+                    document.getElementById("videoGuideButton").textContent =
+                        "🎥 Watch Video Guide";
+            
+                    document.getElementById("pdfGuideButton").textContent =
+                        "📄 View PDF Guide";
+            
+                    document.getElementById("returnButton").textContent =
+                        "← Choose Another Guide";
+            
+                    document.getElementById("completionTitle").textContent =
+                        "Guide Complete";
+            
+                    document.getElementById("completionMessage").textContent =
+                        "You have reached the end of the Office 365 guide.";
+            
+                    document.getElementById("restartGuideButton").textContent =
+                        "Restart Guide";
+            
+                    document.getElementById("completionReturnButton").textContent =
+                        "Choose Another Format";
+            
+                    document.getElementById("completionGuideButton").textContent =
+                        "Choose Another Guide";
+            
+                    document.getElementById("completionBackButton").textContent =
+                        "Back to Support Portal";
+            
+                    document.getElementById("footerText").textContent =
+                        "Student Support Portal";
+                }
+            
+                localStorage.setItem("language", lang);
+            }
+            
+            window.addEventListener("load", function () {
+                const savedLanguage =
+                    localStorage.getItem("language") || "en";
+            
+                setLanguage(savedLanguage);
+            });
     </script>
 
 </body>
