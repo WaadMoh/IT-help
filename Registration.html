@@ -58,6 +58,7 @@
         }
 
         .header-container {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -91,6 +92,30 @@
             height: auto;
             object-fit: contain;
         }
+        .language-switcher {
+            position: absolute;
+            top: -32px;
+            right: 25px;
+            z-index: 20;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .language-switcher button {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            background: white;
+            color: var(--ecae-blue);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .language-switcher button:hover {
+            background: #EDF3FF;
+        }
+
 
         /* =========================================
            MAIN CONTENT
@@ -540,11 +565,15 @@
 
     <header class="page-header">
         <div class="header-container">
+            <div class="language-switcher">
+                <button onclick="setLanguage('en')">🇬🇧 English</button>
+                <button onclick="setLanguage('ar')">🇦🇪 العربية</button>
+            </div>
 
             <div class="header-text">
-                <h1>Registration Letter Request</h1>
+                <h1 id="pageTitle">Registration Letter Request</h1>
 
-                <p>
+                <p id="pageDescription">
                     Choose how you would like to view this support
                     guide.
                 </p>
@@ -567,9 +596,9 @@
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2>Select a Guide Format</h2>
+                <h2 id="formatTitle">Select a Guide Format</h2>
 
-                <p>
+                <p id="formatDescription">
                     Follow an interactive step-by-step guide or open
                     the original PDF document.
                 </p>
@@ -585,12 +614,13 @@
                         💻
                     </div>
 
-                    <h3>Interactive Guide</h3>
+                    <h3 id="interactiveTitle">Interactive Guide</h3>
 
                     <button
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
+                        id="interactiveButton"
                     >
                         Start Interactive Guide
                     </button>
@@ -605,11 +635,12 @@
                         📄
                     </div>
 
-                    <h3>PDF Guide</h3>
+                    <h3 id="pdfTitle">PDF Guide</h3>
 
                                    <a
                         href="Registration Letter Request.cleaned.pdf"
                         class="guide-button"
+                        id="pdfButton"
                         >
                         View PDF Guid                
                     </a>
@@ -622,6 +653,7 @@
                 <a
                     href="index.html"
                     class="back-button"
+                    id="backButton"
                 >
                     ← Back to Support Portal
                 </a>
@@ -644,15 +676,16 @@
                     type="button"
                     class="return-button"
                     onclick="returnToGuideOptions()"
+                    id="returnButton"
                 >
                     ← Choose Another Format
                 </button>
 
-                <h2>
+                <h2 id="interactiveGuideTitle">
                     Interactive Registration Letter Request
                 </h2>
 
-                <p>
+                <p id="interactiveGuideDescription">
                     Follow the instructions one step at a time.
                 </p>
 
@@ -680,14 +713,14 @@
             
                 <span class="step-number">Step 1</span>
             
-                <h3>Open and Sign In to ECAE Portal</h3>
+                <h3 id="step1Title">Open and Sign In to ECAE Portal</h3>
             
-                <ol class="instruction-list">
+                <ol id="step1List" class="instruction-list">
                     <li>Open the ECAE Portal.</li>
                     <li>Sign in using your ECAE username and password.</li>
                     <li>Select the <strong>Students</strong> tab.</li>
                 </ol>
-                <div class="information-note">
+                <div id="step1Note" class="information-note">
                     If you cannot access the portal, reset your password through Office 365 and try again.
                     <strong>Important:</strong><br>
                     Students using other corporate devices may need to sign in using the following username format:
@@ -722,6 +755,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(2)"
+                        id="next1"
                     >
                         Next
                     </button>
@@ -737,9 +771,9 @@
             
                 <span class="step-number">Step 2</span>
             
-                <h3>Open Registration Letter Request</h3>
+                <h3 id="step2Title">Open Registration Letter Request</h3>
             
-                <ol class="instruction-list">
+                <ol id="step2List" class="instruction-list">
                     <li>Open Student Service.</li>
                     <li>Locate <strong>Registration Letter Request</strong>.</li>
                     <li>Select the Registration Letter Request tile.</li>
@@ -750,7 +784,7 @@
                     alt="eClearance Request"
                     class="step-image"
                 >            
-                <div class="information-note">
+                <div id="step2Note" class="information-note">
                     Registration Letter Request is available from Student Service.
                 </div>
             
@@ -760,6 +794,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(1)"
+                        id="previous2"
                     >
                         Previous
                     </button>
@@ -768,6 +803,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(3)"
+                        id="next2"
                     >
                         Next
                     </button>
@@ -783,9 +819,9 @@
             
                 <span class="step-number">Step 3</span>
             
-                <h3>Submit Registration Letter Request</h3>
+                <h3 id="step3Title">Submit Registration Letter Request</h3>
             
-                <ol class="instruction-list">
+                <ol id="step3List" class="instruction-list">
                     <li>Select <strong>Add New Registration Letter Request</strong>.</li>
                     <li>Complete the required information.</li>
                     <li>Review the request details.</li>
@@ -798,7 +834,7 @@
                     class="step-image"
                 >
 
-                <div class="information-note">
+                <div id="step3Note" class="information-note">
                     Registration letters can be requested for banks, scholarships, visa applications, employers, and other official purposes.
                 </div>
             
@@ -808,6 +844,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(2)"
+                        id="previous3"
                     >
                         Previous
                     </button>
@@ -816,6 +853,7 @@
                         type="button"
                         class="next-button"
                         onclick="finishGuide()"
+                        id="finishButton"
                     >
                         Finish Guide
                     </button>
@@ -839,9 +877,9 @@
                     ✅
                 </div>
 
-                <h3>Guide Complete</h3>
+                <h3 id="completionTitle">Guide Complete</h3>
 
-                <p>
+                <p id="completionDescription">
                     You have reached the end of the Registration 
                     Letter Request guide.
                 </p>
@@ -852,6 +890,7 @@
                         type="button"
                         class="next-button"
                         onclick="restartGuide()"
+                        id="restartGuideButton"
                     >
                         Restart Guide
                     </button>
@@ -860,6 +899,7 @@
                         type="button"
                         class="previous-button"
                         onclick="returnToGuideOptions()"
+                        id="completionReturnButton"
                     >
                         Choose Another Format
                     </button>
@@ -867,6 +907,7 @@
                     <a
                         href="index.html"
                         class="back-button"
+                        id="completionBackButton"
                     >
                         Back to Support Portal
                     </a>
@@ -886,7 +927,9 @@
     <footer>
         <p>
             © <span id="currentYear"></span>
-            Student Support Portal
+            <span id="footerText">
+                Student Support Portal
+            </span>
         </p>
     </footer>
 
@@ -1022,6 +1065,254 @@
             "currentYear"
         ).textContent =
             new Date().getFullYear();
+            function setLanguage(lang) {
+            
+                if (lang === "ar") {
+            
+                    document.documentElement.lang = "ar";
+                    document.documentElement.dir = "rtl";
+            
+                    document.getElementById("pageTitle").textContent =
+                        "طلب رسالة إثبات تسجيل";
+            
+                    document.getElementById("pageDescription").textContent =
+                        "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
+            
+                    document.getElementById("formatTitle").textContent =
+                        "اختر نوع الدليل";
+            
+                    document.getElementById("formatDescription").textContent =
+                        "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF.";
+            
+                    document.getElementById("interactiveTitle").textContent =
+                        "الدليل التفاعلي";
+            
+                    document.getElementById("pdfTitle").textContent =
+                        "دليل PDF";
+            
+                    document.getElementById("interactiveButton").textContent =
+                        "ابدأ الدليل التفاعلي";
+            
+                    document.getElementById("pdfButton").textContent =
+                        "عرض ملف PDF";
+            
+                    document.getElementById("backButton").textContent =
+                        "العودة إلى بوابة الدعم";
+            
+                    document.getElementById("returnButton").textContent =
+                        "اختيار تنسيق آخر";
+            
+                    document.getElementById("interactiveGuideTitle").textContent =
+                        "الدليل التفاعلي لطلب رسالة إثبات تسجيل";
+            
+                    document.getElementById("interactiveGuideDescription").textContent =
+                        "اتبع التعليمات خطوة بخطوة.";
+            
+                    document.getElementById("step1Title").textContent =
+                        "فتح وتسجيل الدخول إلى بوابة ECAE";
+            
+                    document.getElementById("step2Title").textContent =
+                        "فتح طلب رسالة إثبات التسجيل";
+            
+                    document.getElementById("step3Title").textContent =
+                        "إرسال طلب رسالة إثبات التسجيل";
+            
+                    document.getElementById("step1List").innerHTML = `
+                        <li>افتح بوابة ECAE.</li>
+                        <li>سجل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك.</li>
+                        <li>اختر تبويب <strong>الطلاب</strong>.</li>
+                    `;
+            
+                    document.getElementById("step1Note").innerHTML = `
+                        إذا لم تتمكن من الدخول إلى البوابة، قم بإعادة تعيين كلمة المرور من Office 365 ثم حاول مرة أخرى.<br><br>
+                        <strong>مهم:</strong><br>
+                        قد يحتاج بعض الطلاب إلى تسجيل الدخول باستخدام الصيغة التالية:<br><br>
+                        <strong>ECAE\\StudentID</strong><br>
+                        مثال:<br>
+                        <strong>ECAE\\001164</strong>
+                    `;
+            
+                    document.getElementById("step2List").innerHTML = `
+                        <li>افتح خدمات الطالب.</li>
+                        <li>ابحث عن <strong>طلب رسالة إثبات تسجيل</strong>.</li>
+                        <li>اضغط على مربع الخدمة.</li>
+                    `;
+            
+                    document.getElementById("step2Note").textContent =
+                        "يمكن الوصول إلى خدمة طلب رسالة إثبات التسجيل من خلال خدمات الطالب.";
+            
+                    document.getElementById("step3List").innerHTML = `
+                        <li>اختر إضافة طلب جديد.</li>
+                        <li>أكمل المعلومات المطلوبة.</li>
+                        <li>راجع تفاصيل الطلب.</li>
+                        <li>أرسل الطلب.</li>
+                        <li>انتظر معالجة الطلب.</li>
+                    `;
+            
+                    document.getElementById("step3Note").textContent =
+                        "يمكن طلب رسائل إثبات التسجيل للبنوك والمنح الدراسية والتأشيرات وجهات العمل والأغراض الرسمية الأخرى.";
+            
+                    document.getElementById("next1").textContent =
+                        "التالي";
+            
+                    document.getElementById("previous2").textContent =
+                        "السابق";
+            
+                    document.getElementById("next2").textContent =
+                        "التالي";
+            
+                    document.getElementById("previous3").textContent =
+                        "السابق";
+            
+                    document.getElementById("finishButton").textContent =
+                        "إنهاء الدليل";
+            
+                    document.getElementById("completionTitle").textContent =
+                        "اكتمل الدليل";
+            
+                    document.getElementById("completionDescription").textContent =
+                        "لقد وصلت إلى نهاية دليل طلب رسالة إثبات تسجيل.";
+            
+                    document.getElementById("restartGuideButton").textContent =
+                        "إعادة تشغيل الدليل";
+            
+                    document.getElementById("completionReturnButton").textContent =
+                        "اختيار تنسيق آخر";
+            
+                    document.getElementById("completionBackButton").textContent =
+                        "العودة إلى بوابة الدعم";
+            
+                    document.getElementById("footerText").textContent =
+                        "بوابة دعم الطلاب";
+            
+                } else {
+            
+                    document.documentElement.lang = "en";
+                    document.documentElement.dir = "ltr";
+            
+                    document.getElementById("pageTitle").textContent =
+                        "Registration Letter Request";
+            
+                    document.getElementById("pageDescription").textContent =
+                        "Choose how you would like to view this support guide.";
+            
+                    document.getElementById("formatTitle").textContent =
+                        "Select a Guide Format";
+            
+                    document.getElementById("formatDescription").textContent =
+                        "Follow an interactive step-by-step guide or open the original PDF document.";
+            
+                    document.getElementById("interactiveTitle").textContent =
+                        "Interactive Guide";
+            
+                    document.getElementById("pdfTitle").textContent =
+                        "PDF Guide";
+            
+                    document.getElementById("interactiveButton").textContent =
+                        "Start Interactive Guide";
+            
+                    document.getElementById("pdfButton").textContent =
+                        "View PDF Guide";
+            
+                    document.getElementById("backButton").textContent =
+                        "← Back to Support Portal";
+            
+                    document.getElementById("returnButton").textContent =
+                        "← Choose Another Format";
+            
+                    document.getElementById("interactiveGuideTitle").textContent =
+                        "Interactive Registration Letter Request Guide";
+            
+                    document.getElementById("interactiveGuideDescription").textContent =
+                        "Follow the instructions one step at a time.";
+            
+                    document.getElementById("step1Title").textContent =
+                        "Open and Sign In to ECAE Portal";
+            
+                    document.getElementById("step2Title").textContent =
+                        "Open Registration Letter Request";
+            
+                    document.getElementById("step3Title").textContent =
+                        "Submit Registration Letter Request";
+            
+                    document.getElementById("step1List").innerHTML = `
+                        <li>Open the ECAE Portal.</li>
+                        <li>Sign in using your ECAE username and password.</li>
+                        <li>Select the Students tab.</li>
+                    `;
+            
+                    document.getElementById("step1Note").innerHTML = `
+                        If you cannot access the portal, reset your password through Office 365 and try again.<br><br>
+                        <strong>Important:</strong><br>
+                        Students using other corporate devices may need to sign in using the following username format:<br><br>
+                        <strong>ECAE\\StudentID</strong><br>
+                        Example:<br>
+                        <strong>ECAE\\001164</strong>
+                    `;
+            
+                    document.getElementById("step2List").innerHTML = `
+                        <li>Open Student Service.</li>
+                        <li>Locate Registration Letter Request.</li>
+                        <li>Select the Registration Letter Request tile.</li>
+                    `;
+            
+                    document.getElementById("step2Note").textContent =
+                        "Registration Letter Request is available from Student Service.";
+            
+                    document.getElementById("step3List").innerHTML = `
+                        <li>Select Add New Registration Letter Request.</li>
+                        <li>Complete the required information.</li>
+                        <li>Review the request details.</li>
+                        <li>Submit the request.</li>
+                        <li>Wait for processing.</li>
+                    `;
+            
+                    document.getElementById("step3Note").textContent =
+                        "Registration letters can be requested for banks, scholarships, visa applications, employers, and other official purposes.";
+            
+                    document.getElementById("next1").textContent =
+                        "Next";
+            
+                    document.getElementById("previous2").textContent =
+                        "Previous";
+            
+                    document.getElementById("next2").textContent =
+                        "Next";
+            
+                    document.getElementById("previous3").textContent =
+                        "Previous";
+            
+                    document.getElementById("finishButton").textContent =
+                        "Finish Guide";
+            
+                    document.getElementById("completionTitle").textContent =
+                        "Guide Complete";
+            
+                    document.getElementById("completionDescription").textContent =
+                        "You have reached the end of the Registration Letter Request guide.";
+            
+                    document.getElementById("restartGuideButton").textContent =
+                        "Restart Guide";
+            
+                    document.getElementById("completionReturnButton").textContent =
+                        "Choose Another Format";
+            
+                    document.getElementById("completionBackButton").textContent =
+                        "Back to Support Portal";
+            
+                    document.getElementById("footerText").textContent =
+                        "Student Support Portal";
+                }
+            
+                localStorage.setItem("language", lang);
+            }
+            
+            window.addEventListener("load", function () {
+                const savedLanguage =
+                    localStorage.getItem("language") || "en";
+            
+                setLanguage(savedLanguage);
+            });
     </script>
 
 </body>
