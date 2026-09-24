@@ -57,6 +57,7 @@
         }
 
         .header-container {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -644,7 +645,6 @@
                 <a
                     href="index.html"
                     class="back-button"
-                    id="backPortalBtn"
                     id="backButton"
                 >
                     ← Back to Support Portal
@@ -1007,7 +1007,9 @@
     <footer>
         <p>
             © <span id="currentYear"></span>
-            Student Support Portal
+            <span id="footerText">
+                Student Support Portal
+            </span>
         </p>
     </footer>
 
@@ -1112,10 +1114,10 @@
                 "completionCard"
             ).classList.add("active");
 
-            document.getElementById(
-                "stepText"
-            ).textContent =
-                "Guide completed";
+            document.getElementById("stepText").textContent =
+                currentLanguage === "ar"
+                    ? "اكتمل الدليل"
+                    : "Guide completed";
 
             document.getElementById(
                 "progressText"
@@ -1143,7 +1145,11 @@
             "currentYear"
         ).textContent =
             new Date().getFullYear();
+            let currentLanguage = "en";
+
             function setLanguage(lang) {
+            
+                currentLanguage = lang;
             
                 if (lang === "ar") {
             
@@ -1153,7 +1159,7 @@
                     document.getElementById("pageTitle").textContent =
                         "نظام كتّاب لإدارة التعلم";
             
-                    document.getElementById("pageSubtitle").textContent =
+                    document.getElementById("pageDescription").textContent =
                         "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
             
                     document.getElementById("formatTitle").textContent =
@@ -1162,22 +1168,22 @@
                     document.getElementById("formatDescription").textContent =
                         "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF الأصلي.";
             
-                    document.getElementById("interactiveCardTitle").textContent =
+                    document.getElementById("interactiveTitle").textContent =
                         "الدليل التفاعلي";
             
-                    document.getElementById("pdfCardTitle").textContent =
+                    document.getElementById("pdfTitle").textContent =
                         "دليل PDF";
             
-                    document.getElementById("startGuideBtn").textContent =
+                    document.getElementById("interactiveButton").textContent =
                         "ابدأ الدليل التفاعلي";
             
-                    document.getElementById("pdfGuideBtn").textContent =
+                    document.getElementById("pdfButton").textContent =
                         "عرض ملف PDF";
             
-                    document.getElementById("backPortalBtn").textContent =
+                    document.getElementById("backButton").textContent =
                         "العودة إلى بوابة الدعم";
             
-                    document.getElementById("chooseFormatBtn").textContent =
+                    document.getElementById("returnButton").textContent =
                         "اختيار تنسيق آخر";
             
                     document.getElementById("interactiveGuideTitle").textContent =
@@ -1199,62 +1205,71 @@
                         "الدخول إلى نظام كتّاب";
             
                     document.getElementById("step1List").innerHTML = `
-                    <li>افتح الموقع الإلكتروني لكلية الإمارات للتطوير التربوي.</li>
-                    <li>اضغط على <strong>تسجيل الدخول</strong> في أعلى الصفحة.</li>
-                    <li>اختر <strong>بوابة ECAE</strong>.</li>
-                    <li>يمكنك أيضاً فتح البوابة مباشرة باستخدام الروابط أدناه.</li>
+                        <li>افتح الموقع الإلكتروني لكلية الإمارات للتطوير التربوي.</li>
+                        <li>اضغط على <strong>تسجيل الدخول</strong> في أعلى الصفحة.</li>
+                        <li>اختر <strong>بوابة ECAE</strong>.</li>
+                        <li>يمكنك أيضاً فتح البوابة مباشرة باستخدام الروابط أدناه.</li>
                     `;
             
                     document.getElementById("step2List").innerHTML = `
-                    <li>سجل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك.</li>
-                    <li>بعد تسجيل الدخول اختر تبويب <strong>الطلاب</strong>.</li>
+                        <li>سجل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك.</li>
+                        <li>بعد تسجيل الدخول، اختر تبويب <strong>الطلاب</strong>.</li>
                     `;
             
                     document.getElementById("step2Note").innerHTML = `
-                    إذا لم تتمكن من الدخول إلى البوابة قم بإعادة تعيين كلمة المرور من Office 365 ثم حاول مرة أخرى.<br><br>
-                    <strong>مهم:</strong><br>
-                    قد يحتاج بعض الطلاب إلى تسجيل الدخول بالصيغة التالية:<br><br>
-                    <strong>ECAE\\StudentID</strong><br>
-                    مثال:<br>
-                    <strong>ECAE\\001164</strong>
+                        إذا لم تتمكن من الدخول إلى البوابة، قم بإعادة تعيين كلمة المرور من Office 365 ثم حاول مرة أخرى.
+                        <br><br>
+                        <strong>مهم:</strong><br>
+                        قد يحتاج الطلاب الذين يستخدمون أجهزة أخرى إلى تسجيل الدخول بالصيغة التالية:
+                        <br><br>
+                        <strong>ECAE\\StudentID</strong>
+                        <br>
+                        مثال:
+                        <strong>ECAE\\001164</strong>
                     `;
             
                     document.getElementById("step3List").innerHTML = `
-                    <li>بعد اختيار تبويب <strong>الطلاب</strong> انظر إلى اللوحة اليمنى.</li>
-                    <li>ابحث عن قسم <strong>Important Links (Internal)</strong>.</li>
-                    <li>اختر <strong>Kottab Learning Management System</strong>.</li>
+                        <li>بعد اختيار تبويب <strong>الطلاب</strong>، انظر إلى اللوحة الموجودة في الجهة اليمنى.</li>
+                        <li>ابحث عن قسم <strong>Important Links (Internal)</strong>.</li>
+                        <li>اختر <strong>Kottab Learning Management System</strong>.</li>
                     `;
             
                     document.getElementById("step4List").innerHTML = `
-                    <li>افتح نظام كتّاب لإدارة التعلم.</li>
-                    <li>سجل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك.</li>
-                    <li>يمكنك الوصول إلى المقررات والواجبات والاختبارات والإعلانات.</li>
-                    <li>راجع المواد والمعلومات التي يشاركها أعضاء هيئة التدريس.</li>
+                        <li>افتح نظام كتّاب لإدارة التعلم.</li>
+                        <li>سجل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك.</li>
+                        <li>يمكنك الوصول إلى مواد المقررات والواجبات والاختبارات والمناقشات والإعلانات.</li>
+                        <li>راجع المواد والمعلومات التي يقدمها أعضاء هيئة التدريس.</li>
                     `;
             
-                    document.getElementById("step4Note1").innerHTML = `
-                    نظام كتّاب لإدارة التعلم هو منصة التعلم الإلكترونية الرئيسية المستخدمة في كلية الإمارات للتطوير التربوي.
-                    `;
+                    document.getElementById("step4Note1").innerHTML =
+                        "نظام كتّاب لإدارة التعلم هو منصة التعلم الإلكترونية الرئيسية المستخدمة في كلية الإمارات للتطوير التربوي.";
             
-                    document.getElementById("step4Note2").innerHTML = `
-                    إذا لم تتمكن من الدخول إلى كتّاب فقد تكون كلمة المرور منتهية الصلاحية. قم بإعادة تعيين كلمة المرور من Office 365 ثم حاول مرة أخرى.
-                    `;
+                    document.getElementById("step4Note2").innerHTML =
+                        "إذا لم تتمكن من الدخول إلى نظام كتّاب، فقد تكون كلمة المرور منتهية الصلاحية. قم بإعادة تعيين كلمة المرور من Office 365 ثم حاول مرة أخرى.";
             
                     document.getElementById("completionTitle").textContent =
                         "اكتمل الدليل";
             
-                    document.getElementById("completionText").textContent =
+                    document.getElementById("completionDescription").textContent =
                         "لقد وصلت إلى نهاية دليل نظام كتّاب لإدارة التعلم.";
             
-                    document.getElementById("next1").textContent = "التالي";
+                    document.getElementById("next1").textContent =
+                        "التالي";
             
-                    document.getElementById("previous2").textContent = "السابق";
-                    document.getElementById("next2").textContent = "التالي";
+                    document.getElementById("previous2").textContent =
+                        "السابق";
             
-                    document.getElementById("previous3").textContent = "السابق";
-                    document.getElementById("next3").textContent = "التالي";
+                    document.getElementById("next2").textContent =
+                        "التالي";
             
-                    document.getElementById("previous4").textContent = "السابق";
+                    document.getElementById("previous3").textContent =
+                        "السابق";
+            
+                    document.getElementById("next3").textContent =
+                        "التالي";
+            
+                    document.getElementById("previous4").textContent =
+                        "السابق";
             
                     document.getElementById("finishButton").textContent =
                         "إنهاء الدليل";
@@ -1279,7 +1294,7 @@
                     document.getElementById("pageTitle").textContent =
                         "Kottab Learning Management System";
             
-                    document.getElementById("pageSubtitle").textContent =
+                    document.getElementById("pageDescription").textContent =
                         "Choose how you would like to view this support guide.";
             
                     document.getElementById("formatTitle").textContent =
@@ -1288,22 +1303,22 @@
                     document.getElementById("formatDescription").textContent =
                         "Follow an interactive step-by-step guide or open the original PDF document.";
             
-                    document.getElementById("interactiveCardTitle").textContent =
+                    document.getElementById("interactiveTitle").textContent =
                         "Interactive Guide";
             
-                    document.getElementById("pdfCardTitle").textContent =
+                    document.getElementById("pdfTitle").textContent =
                         "PDF Guide";
             
-                    document.getElementById("startGuideBtn").textContent =
+                    document.getElementById("interactiveButton").textContent =
                         "Start Interactive Guide";
             
-                    document.getElementById("pdfGuideBtn").textContent =
+                    document.getElementById("pdfButton").textContent =
                         "View PDF Guide";
             
-                    document.getElementById("backPortalBtn").textContent =
+                    document.getElementById("backButton").textContent =
                         "← Back to Support Portal";
             
-                    document.getElementById("chooseFormatBtn").textContent =
+                    document.getElementById("returnButton").textContent =
                         "← Choose Another Format";
             
                     document.getElementById("interactiveGuideTitle").textContent =
@@ -1325,62 +1340,71 @@
                         "Access Kottab LMS";
             
                     document.getElementById("step1List").innerHTML = `
-                    <li>Open the Emirates College for Advanced Education (ECAE) website.</li>
-                    <li>Click <strong>Login</strong> in the top-right corner.</li>
-                    <li>Select <strong>ECAE Portal</strong>.</li>
-                    <li>You can also open the portal directly using the links below.</li>
+                        <li>Open the Emirates College for Advanced Education (ECAE) website.</li>
+                        <li>Click <strong>Login</strong> in the top-right corner.</li>
+                        <li>Select <strong>ECAE Portal</strong>.</li>
+                        <li>You can also open the portal directly using the links below.</li>
                     `;
             
                     document.getElementById("step2List").innerHTML = `
-                    <li>Sign in using your ECAE username and password.</li>
-                    <li>After signing in, select the <strong>Students</strong> tab.</li>
+                        <li>Sign in using your ECAE username and password.</li>
+                        <li>After signing in, select the <strong>Students</strong> tab.</li>
                     `;
             
                     document.getElementById("step2Note").innerHTML = `
-                    If you cannot access the portal, reset your password through Office 365 and try again.<br><br>
-                    <strong>Important:</strong><br>
-                    Students using other corporate devices may need to sign in using the following username format:<br><br>
-                    <strong>ECAE\\StudentID</strong><br>
-                    Example:<br>
-                    <strong>ECAE\\001164</strong>
+                        If you cannot access the portal, reset your password through Office 365 and try again.
+                        <br><br>
+                        <strong>Important:</strong><br>
+                        Students using other corporate devices may need to sign in using the following username format:
+                        <br><br>
+                        <strong>ECAE\\StudentID</strong>
+                        <br>
+                        Example:
+                        <strong>ECAE\\001164</strong>
                     `;
             
                     document.getElementById("step3List").innerHTML = `
-                    <li>After selecting the Students tab, look at the right-side panel.</li>
-                    <li>Find the <strong>Important Links (Internal)</strong> section.</li>
-                    <li>Select <strong>Kottab Learning Management System</strong>.</li>
+                        <li>After selecting the <strong>Students</strong> tab, look at the right-side panel.</li>
+                        <li>Find the <strong>Important Links (Internal)</strong> section.</li>
+                        <li>Select <strong>Kottab Learning Management System</strong>.</li>
                     `;
             
                     document.getElementById("step4List").innerHTML = `
-                    <li>Open the Kottab Learning Management System.</li>
-                    <li>Sign in using your ECAE username and password.</li>
-                    <li>Access course materials, assignments, quizzes, discussions, and announcements.</li>
-                    <li>Review the information provided by your instructors.</li>
+                        <li>Open the Kottab Learning Management System.</li>
+                        <li>Sign in using your ECAE username and password.</li>
+                        <li>Access course materials, assignments, quizzes, discussions, and announcements.</li>
+                        <li>Review the information provided by your instructors.</li>
                     `;
             
-                    document.getElementById("step4Note1").innerHTML = `
-                    The Kottab Learning Management System (LMS) is the primary online learning platform used by ECAE.
-                    `;
+                    document.getElementById("step4Note1").innerHTML =
+                        "The Kottab Learning Management System (LMS) is the primary online learning platform used by ECAE.";
             
-                    document.getElementById("step4Note2").innerHTML = `
-                    If you are unable to access Kottab, your password may have expired. Reset your password through Office 365 and try again.
-                    `;
+                    document.getElementById("step4Note2").innerHTML =
+                        "If you are unable to access Kottab, your password may have expired. Reset your password through Office 365 and try again.";
             
                     document.getElementById("completionTitle").textContent =
                         "Guide Complete";
             
-                    document.getElementById("completionText").textContent =
+                    document.getElementById("completionDescription").textContent =
                         "You have reached the end of the Kottab Learning Management System guide.";
             
-                    document.getElementById("next1").textContent = "Next";
+                    document.getElementById("next1").textContent =
+                        "Next";
             
-                    document.getElementById("previous2").textContent = "Previous";
-                    document.getElementById("next2").textContent = "Next";
+                    document.getElementById("previous2").textContent =
+                        "Previous";
             
-                    document.getElementById("previous3").textContent = "Previous";
-                    document.getElementById("next3").textContent = "Next";
+                    document.getElementById("next2").textContent =
+                        "Next";
             
-                    document.getElementById("previous4").textContent = "Previous";
+                    document.getElementById("previous3").textContent =
+                        "Previous";
+            
+                    document.getElementById("next3").textContent =
+                        "Next";
+            
+                    document.getElementById("previous4").textContent =
+                        "Previous";
             
                     document.getElementById("finishButton").textContent =
                         "Finish Guide";
@@ -1398,10 +1422,34 @@
                         "Student Support Portal";
                 }
             
+                updateProgressLanguage();
+            
                 localStorage.setItem("language", lang);
             }
             
+            function updateProgressLanguage() {
+            
+                const activeStep =
+                    document.querySelector(".step-card.active[data-step]");
+            
+                if (!activeStep) {
+                    return;
+                }
+            
+                const stepNumber =
+                    Number(activeStep.getAttribute("data-step"));
+            
+                if (currentLanguage === "ar") {
+                    document.getElementById("stepText").textContent =
+                        "الخطوة " + stepNumber + " من " + totalGuideSteps;
+                } else {
+                    document.getElementById("stepText").textContent =
+                        "Step " + stepNumber + " of " + totalGuideSteps;
+                }
+            }
+            
             window.addEventListener("load", function () {
+            
                 const savedLanguage =
                     localStorage.getItem("language") || "en";
             
