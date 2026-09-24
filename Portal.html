@@ -57,6 +57,7 @@
         }
 
         .header-container {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -90,6 +91,30 @@
             height: auto;
             object-fit: contain;
         }
+        .language-switcher {
+            position: absolute;
+            top: -32px;
+            right: 25px;
+            z-index: 20;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .language-switcher button {
+            padding: 6px 10px;
+            border: none;
+            border-radius: 6px;
+            background: white;
+            color: var(--ecae-blue);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .language-switcher button:hover {
+            background: #EDF3FF;
+        }
+
 
         /* =========================================
            MAIN CONTENT
@@ -539,11 +564,15 @@
 
     <header class="page-header">
         <div class="header-container">
+            <div class="language-switcher">
+                <button onclick="setLanguage('en')">🇬🇧 English</button>
+                <button onclick="setLanguage('ar')">🇦🇪 العربية</button>
+            </div>
 
             <div class="header-text">
-                <h1>Student Information System (SIS) Portal</h1>
+                <h1 id="pageTitle">Student Information System (SIS) Portal</h1>
 
-                <p>
+                <p id="pageDescription">
                     Choose how you would like to view this support
                     guide.
                 </p>
@@ -566,9 +595,9 @@
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2>Select a Guide Format</h2>
+                <h2 id="formatTitle">Select a Guide Format</h2>
 
-                <p>
+                <p id="formatDescription">
                     Follow an interactive step-by-step guide or open
                     the original PDF document.
                 </p>
@@ -584,12 +613,13 @@
                         💻
                     </div>
 
-                    <h3>Interactive Guide</h3>
+                    <h3 id="interactiveTitle">Interactive Guide</h3>
 
                     <button
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
+                        id="interactiveButton"
                     >
                         Start Interactive Guide
                     </button>
@@ -604,11 +634,12 @@
                         📄
                     </div>
 
-                    <h3>PDF Guide</h3>
+                    <h3 id="pdfTitle">PDF Guide</h3>
 
                                    <a
                         href="Student portal user guide.pdf"
                         class="guide-button"
+                        id="pdfButton"
                         >
                         View PDF Guid                
                     </a>
@@ -621,6 +652,7 @@
                 <a
                     href="index.html"
                     class="back-button"
+                    id="backButton"
                 >
                     ← Back to Support Portal
                 </a>
@@ -643,15 +675,16 @@
                     type="button"
                     class="return-button"
                     onclick="returnToGuideOptions()"
+                    id="returnButton"
                 >
                     ← Choose Another Format
                 </button>
 
-                <h2>
+                <h2 id="interactiveGuideTitle">
                     Interactive Student Information System (SIS) Portal
                 </h2>
 
-                <p>
+                <p id="interactiveGuideDescription">
                     Follow the instructions one step at a time.
                 </p>
 
@@ -679,14 +712,14 @@
             
                 <span class="step-number">Step 1</span>
             
-                <h3>Open and Sign In to ECAE Portal</h3>
+                <h3 id="step1Title">Open and Sign In to ECAE Portal</h3>
             
-                <ol class="instruction-list">
+                <ol id="step1List" class="instruction-list">
                     <li>Open the ECAE Portal.</li>
                     <li>Sign in using your ECAE username and password.</li>
                     <li>Select the <strong>Students</strong> tab.</li>
                 </ol>
-                <div class="information-note">
+                <div id="step1Note" class="information-note">
                     If you cannot access the portal, reset your password through Office 365 and try again.
                     <strong>Important:</strong><br>
                     Students using other corporate devices may need to sign in using the following username format:
@@ -720,6 +753,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(2)"
+                        id="next1"
                     >
                         Next
                     </button>
@@ -733,9 +767,9 @@
             <article class="step-card" data-step="2">            
                 <span class="step-number">Step 2</span>
             
-                <h3>Open Student Information System (SIS)</h3>
+                <h3 id="step2Title">Open Student Information System (SIS)</h3>
             
-                <ol class="instruction-list">
+                <ol id="step2List" class="instruction-list">
                     <li>Open Student Service.</li>
                     <li>Locate the <strong>Student Information System (SIS)</strong> tile.</li>
                     <li>Select the SIS tile.</li>
@@ -746,7 +780,7 @@
                      alt="eClearance Request"
                     class="step-image"
                 >            
-                <div class="information-note">
+                <div id="step2Note" class="information-note">
                     SIS provides access to academic information and student records.
                 </div>
             
@@ -756,6 +790,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(1)"
+                        id="previous2"
                     >
                         Previous
                     </button>
@@ -764,6 +799,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(3)"
+                        id="next2"
                     >
                         Next
                     </button>
@@ -778,9 +814,9 @@
             
                 <span class="step-number">Step 3</span>
             
-                <h3>Access Student Information</h3>
+                <h3 id="step3Title">Access Student Information</h3>
             
-                <ol class="instruction-list">
+                <ol id="step3List" class="instruction-list">
                     <li>Wait for the Student Information System page to load.</li>
                     <li>View your academic information.</li>
                     <li>Access registration, grades, profile information, and available student services.</li>
@@ -791,7 +827,7 @@
                      alt="eClearance Request"
                     class="step-image"
                 >              
-                <div class="information-note">
+                <div id="step3Note" class="information-note">
                     The Student Information System provides access to registration details, grades, academic progress, and other student services.
                 </div>
             
@@ -801,6 +837,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(2)"
+                        id="previous3"
                     >
                         Previous
                     </button>
@@ -809,6 +846,7 @@
                         type="button"
                         class="next-button"
                         onclick="finishGuide()"
+                        id="finishButton"
                     >
                         Finish Guide
                     </button>
@@ -832,9 +870,9 @@
                     ✅
                 </div>
 
-                <h3>Guide Complete</h3>
+                <h3 id="completionTitle">Guide Complete</h3>
 
-                <p>
+                <p id="completionDescription">
                     You have reached the end of the Student Information
                     System (SIS) Portal guide.
                 </p>
@@ -845,6 +883,7 @@
                         type="button"
                         class="next-button"
                         onclick="restartGuide()"
+                        id="restartGuideButton"
                     >
                         Restart Guide
                     </button>
@@ -853,6 +892,7 @@
                         type="button"
                         class="previous-button"
                         onclick="returnToGuideOptions()"
+                        id="completionReturnButton"
                     >
                         Choose Another Format
                     </button>
@@ -860,6 +900,7 @@
                     <a
                         href="index.html"
                         class="back-button"
+                        id="completionBackButton"
                     >
                         Back to Support Portal
                     </a>
@@ -879,7 +920,9 @@
     <footer>
         <p>
             © <span id="currentYear"></span>
-            Student Support Portal
+            <span id="footerText">
+                Student Support Portal
+            </span>
         </p>
     </footer>
 
@@ -1015,6 +1058,250 @@
             "currentYear"
         ).textContent =
             new Date().getFullYear();
+            function setLanguage(lang) {
+            
+                if (lang === "ar") {
+            
+                    document.documentElement.lang = "ar";
+                    document.documentElement.dir = "rtl";
+            
+                    document.getElementById("pageTitle").textContent =
+                        "نظام معلومات الطالب (SIS)";
+            
+                    document.getElementById("pageDescription").textContent =
+                        "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
+            
+                    document.getElementById("formatTitle").textContent =
+                        "اختر نوع الدليل";
+            
+                    document.getElementById("formatDescription").textContent =
+                        "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF.";
+            
+                    document.getElementById("interactiveTitle").textContent =
+                        "الدليل التفاعلي";
+            
+                    document.getElementById("pdfTitle").textContent =
+                        "دليل PDF";
+            
+                    document.getElementById("interactiveButton").textContent =
+                        "ابدأ الدليل التفاعلي";
+            
+                    document.getElementById("pdfButton").textContent =
+                        "عرض ملف PDF";
+            
+                    document.getElementById("backButton").textContent =
+                        "العودة إلى بوابة الدعم";
+            
+                    document.getElementById("returnButton").textContent =
+                        "اختيار تنسيق آخر";
+            
+                    document.getElementById("interactiveGuideTitle").textContent =
+                        "الدليل التفاعلي لنظام معلومات الطالب (SIS)";
+            
+                    document.getElementById("interactiveGuideDescription").textContent =
+                        "اتبع التعليمات خطوة بخطوة.";
+            
+                    document.getElementById("step1Title").textContent =
+                        "فتح وتسجيل الدخول إلى بوابة ECAE";
+            
+                    document.getElementById("step2Title").textContent =
+                        "فتح نظام معلومات الطالب";
+            
+                    document.getElementById("step3Title").textContent =
+                        "الوصول إلى معلومات الطالب";
+            
+                    document.getElementById("step1List").innerHTML = `
+                        <li>افتح بوابة ECAE.</li>
+                        <li>سجل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بك.</li>
+                        <li>اختر تبويب <strong>الطلاب</strong>.</li>
+                    `;
+            
+                    document.getElementById("step1Note").innerHTML = `
+                        إذا لم تتمكن من الدخول إلى البوابة، قم بإعادة تعيين كلمة المرور من Office 365 ثم حاول مرة أخرى.<br><br>
+                        <strong>مهم:</strong><br>
+                        قد يحتاج بعض الطلاب إلى استخدام الصيغة التالية:<br><br>
+                        <strong>ECAE\\StudentID</strong><br>
+                        مثال:<br>
+                        <strong>ECAE\\001164</strong>
+                    `;
+            
+                    document.getElementById("step2List").innerHTML = `
+                        <li>افتح خدمات الطالب.</li>
+                        <li>ابحث عن مربع <strong>Student Information System (SIS)</strong>.</li>
+                        <li>اضغط على مربع SIS.</li>
+                    `;
+            
+                    document.getElementById("step2Note").textContent =
+                        "يوفر نظام SIS الوصول إلى المعلومات الأكاديمية وسجلات الطالب.";
+            
+                    document.getElementById("step3List").innerHTML = `
+                        <li>انتظر حتى يتم تحميل صفحة SIS.</li>
+                        <li>اعرض معلوماتك الأكاديمية.</li>
+                        <li>الوصول إلى التسجيل والدرجات والملف الشخصي والخدمات الطلابية.</li>
+                    `;
+            
+                    document.getElementById("step3Note").textContent =
+                        "يوفر نظام SIS الوصول إلى تفاصيل التسجيل والدرجات والتقدم الأكاديمي والخدمات الطلابية الأخرى.";
+            
+                    document.getElementById("next1").textContent =
+                        "التالي";
+            
+                    document.getElementById("previous2").textContent =
+                        "السابق";
+            
+                    document.getElementById("next2").textContent =
+                        "التالي";
+            
+                    document.getElementById("previous3").textContent =
+                        "السابق";
+            
+                    document.getElementById("finishButton").textContent =
+                        "إنهاء الدليل";
+            
+                    document.getElementById("completionTitle").textContent =
+                        "اكتمل الدليل";
+            
+                    document.getElementById("completionDescription").textContent =
+                        "لقد وصلت إلى نهاية دليل نظام معلومات الطالب (SIS).";
+            
+                    document.getElementById("restartGuideButton").textContent =
+                        "إعادة تشغيل الدليل";
+            
+                    document.getElementById("completionReturnButton").textContent =
+                        "اختيار تنسيق آخر";
+            
+                    document.getElementById("completionBackButton").textContent =
+                        "العودة إلى بوابة الدعم";
+            
+                    document.getElementById("footerText").textContent =
+                        "بوابة دعم الطلاب";
+            
+                } else {
+            
+                    document.documentElement.lang = "en";
+                    document.documentElement.dir = "ltr";
+            
+                    document.getElementById("pageTitle").textContent =
+                        "Student Information System (SIS) Portal";
+            
+                    document.getElementById("pageDescription").textContent =
+                        "Choose how you would like to view this support guide.";
+            
+                    document.getElementById("formatTitle").textContent =
+                        "Select a Guide Format";
+            
+                    document.getElementById("formatDescription").textContent =
+                        "Follow an interactive step-by-step guide or open the original PDF document.";
+            
+                    document.getElementById("interactiveTitle").textContent =
+                        "Interactive Guide";
+            
+                    document.getElementById("pdfTitle").textContent =
+                        "PDF Guide";
+            
+                    document.getElementById("interactiveButton").textContent =
+                        "Start Interactive Guide";
+            
+                    document.getElementById("pdfButton").textContent =
+                        "View PDF Guide";
+            
+                    document.getElementById("backButton").textContent =
+                        "← Back to Support Portal";
+            
+                    document.getElementById("returnButton").textContent =
+                        "← Choose Another Format";
+            
+                    document.getElementById("interactiveGuideTitle").textContent =
+                        "Interactive Student Information System (SIS) Portal Guide";
+            
+                    document.getElementById("interactiveGuideDescription").textContent =
+                        "Follow the instructions one step at a time.";
+            
+                    document.getElementById("step1Title").textContent =
+                        "Open and Sign In to ECAE Portal";
+            
+                    document.getElementById("step2Title").textContent =
+                        "Open Student Information System (SIS)";
+            
+                    document.getElementById("step3Title").textContent =
+                        "Access Student Information";
+            
+                    document.getElementById("step1List").innerHTML = `
+                        <li>Open the ECAE Portal.</li>
+                        <li>Sign in using your ECAE username and password.</li>
+                        <li>Select the Students tab.</li>
+                    `;
+            
+                    document.getElementById("step1Note").innerHTML = `
+                        If you cannot access the portal, reset your password through Office 365 and try again.<br><br>
+                        <strong>Important:</strong><br>
+                        Students using other corporate devices may need to sign in using the following username format:<br><br>
+                        <strong>ECAE\\StudentID</strong><br>
+                        Example:<br>
+                        <strong>ECAE\\001164</strong>
+                    `;
+            
+                    document.getElementById("step2List").innerHTML = `
+                        <li>Open Student Service.</li>
+                        <li>Locate the Student Information System (SIS) tile.</li>
+                        <li>Select the SIS tile.</li>
+                    `;
+            
+                    document.getElementById("step2Note").textContent =
+                        "SIS provides access to academic information and student records.";
+            
+                    document.getElementById("step3List").innerHTML = `
+                        <li>Wait for the Student Information System page to load.</li>
+                        <li>View your academic information.</li>
+                        <li>Access registration, grades, profile information, and student services.</li>
+                    `;
+            
+                    document.getElementById("step3Note").textContent =
+                        "The Student Information System provides access to registration details, grades, academic progress, and student services.";
+            
+                    document.getElementById("next1").textContent =
+                        "Next";
+            
+                    document.getElementById("previous2").textContent =
+                        "Previous";
+            
+                    document.getElementById("next2").textContent =
+                        "Next";
+            
+                    document.getElementById("previous3").textContent =
+                        "Previous";
+            
+                    document.getElementById("finishButton").textContent =
+                        "Finish Guide";
+            
+                    document.getElementById("completionTitle").textContent =
+                        "Guide Complete";
+            
+                    document.getElementById("completionDescription").textContent =
+                        "You have reached the end of the Student Information System (SIS) Portal guide.";
+            
+                    document.getElementById("restartGuideButton").textContent =
+                        "Restart Guide";
+            
+                    document.getElementById("completionReturnButton").textContent =
+                        "Choose Another Format";
+            
+                    document.getElementById("completionBackButton").textContent =
+                        "Back to Support Portal";
+            
+                    document.getElementById("footerText").textContent =
+                        "Student Support Portal";
+                }
+            
+                localStorage.setItem("language", lang);
+            }
+            
+            window.addEventListener("load", function () {
+                const savedLanguage =
+                    localStorage.getItem("language") || "en";
+            
+                setLanguage(savedLanguage);
+            });
     </script>
 
 </body>
