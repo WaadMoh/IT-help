@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
@@ -44,6 +43,56 @@
 
         button {
             font-family: inherit;
+        }
+
+        /* =========================================
+           LANGUAGE SWITCHER
+        ========================================= */
+
+        .language-bar {
+            position: relative;
+            z-index: 10;
+            padding: 10px 4%;
+            background: var(--ecae-dark-blue);
+        }
+
+        .language-container {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .language-switcher {
+            display: inline-flex;
+            gap: 4px;
+            padding: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 9px;
+            background: rgba(255, 255, 255, 0.13);
+        }
+
+        .language-button {
+            min-width: 70px;
+            padding: 7px 13px;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .language-button:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .language-button.active {
+            background: white;
+            color: var(--ecae-blue);
         }
 
         /* =========================================
@@ -123,10 +172,7 @@
 
         .guide-options {
             display: grid;
-            grid-template-columns: repeat(
-                2,
-                minmax(260px, 1fr)
-            );
+            grid-template-columns: repeat(2, minmax(260px, 1fr));
             gap: 26px;
         }
 
@@ -163,16 +209,10 @@
         }
 
         .guide-option h3 {
-            margin-bottom: 12px;
-            color: var(--ecae-blue);
-            font-size: 22px;
-        }
-
-        .guide-option p {
             flex-grow: 1;
             margin-bottom: 22px;
-            color: var(--text-grey);
-            line-height: 1.7;
+            color: var(--ecae-blue);
+            font-size: 22px;
         }
 
         .guide-button {
@@ -297,7 +337,7 @@
         }
 
         .progress-fill {
-            width: 20%;
+            width: 25%;
             height: 100%;
             background: var(--ecae-blue);
             transition: width 0.3s ease;
@@ -466,6 +506,36 @@
         }
 
         /* =========================================
+           ARABIC AND RTL
+        ========================================= */
+
+        html[dir="rtl"] body {
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        html[dir="rtl"] .language-container {
+            justify-content: flex-start;
+        }
+
+        html[dir="rtl"] .header-text {
+            text-align: right;
+        }
+
+        html[dir="rtl"] .instruction-list {
+            padding-left: 0;
+            padding-right: 24px;
+        }
+
+        html[dir="rtl"] .information-note {
+            border-left: none;
+            border-right: 5px solid var(--ecae-blue);
+        }
+
+        html[dir="rtl"] .step-link {
+            margin: 5px 0 5px 5px;
+        }
+
+        /* =========================================
            FOOTER
         ========================================= */
 
@@ -482,8 +552,22 @@
         ========================================= */
 
         @media (max-width: 700px) {
+            .language-bar {
+                padding: 8px 15px;
+            }
+
+            .language-button {
+                min-width: 61px;
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
             .header-container {
                 flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            html[dir="rtl"] .header-text {
                 text-align: center;
             }
 
@@ -526,6 +610,38 @@
 <body>
 
     <!-- =========================================
+         LANGUAGE SWITCHER
+    ========================================== -->
+
+    <div class="language-bar">
+        <div class="language-container">
+            <div
+                class="language-switcher"
+                role="group"
+                aria-label="Language selection"
+            >
+                <button
+                    type="button"
+                    class="language-button active"
+                    id="englishButton"
+                    onclick="setLanguage('en')"
+                >
+                    English
+                </button>
+
+                <button
+                    type="button"
+                    class="language-button"
+                    id="arabicButton"
+                    onclick="setLanguage('ar')"
+                >
+                    العربية
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================
          HEADER
     ========================================== -->
 
@@ -533,17 +649,17 @@
         <div class="header-container">
 
             <div class="header-text">
-                <h1>Kottab Learning Management System</h1>
+                <h1 id="pageTitle">
+                    Kottab Learning Management System
+                </h1>
 
-                <p>
-                    Choose how you would like to view this support
-                    guide.
+                <p id="pageSubtitle">
+                    Choose how you would like to view this support guide.
                 </p>
             </div>
 
-             <div class="header-logo">
-               <img
-                   src="Logoc.png"
+            <div class="header-logo">
+                Logoc.png
             </div>
 
         </div>
@@ -558,9 +674,11 @@
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2>Select a Guide Format</h2>
+                <h2 id="formatTitle">
+                    Select a Guide Format
+                </h2>
 
-                <p>
+                <p id="formatDescription">
                     Follow an interactive step-by-step guide or open
                     the original PDF document.
                 </p>
@@ -568,27 +686,26 @@
 
             <section class="guide-options">
 
-                <!-- Interactive guide option -->
-
                 <article class="guide-option">
 
                     <div class="option-icon" aria-hidden="true">
                         💻
                     </div>
 
-                    <h3>Interactive Guide</h3>
+                    <h3 id="interactiveCardTitle">
+                        Interactive Guide
+                    </h3>
 
                     <button
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
+                        id="startGuideButton"
                     >
                         Start Interactive Guide
                     </button>
 
                 </article>
-
-                <!-- PDF guide option -->
 
                 <article class="guide-option">
 
@@ -596,13 +713,12 @@
                         📄
                     </div>
 
-                    <h3>PDF Guide</h3>
+                    <h3 id="pdfCardTitle">
+                        PDF Guide
+                    </h3>
 
-                                   <a
-                        href="Kottab LMS.cleaned.pdf"
-                        class="guide-button"
-                        >
-                        View PDF Guid                
+                    Kottab LMS.cleaned.pdf
+                        View PDF Guide
                     </a>
 
                 </article>
@@ -613,6 +729,7 @@
                 <a
                     href="index.html"
                     class="back-button"
+                    id="backPortalButton"
                 >
                     ← Back to Support Portal
                 </a>
@@ -635,15 +752,16 @@
                     type="button"
                     class="return-button"
                     onclick="returnToGuideOptions()"
+                    id="chooseFormatButton"
                 >
                     ← Choose Another Format
                 </button>
 
-                <h2>
+                <h2 id="interactiveGuideTitle">
                     Interactive Kottab Learning Management System Guide
                 </h2>
 
-                <p>
+                <p id="interactiveGuideDescription">
                     Follow the instructions one step at a time.
                 </p>
 
@@ -653,7 +771,7 @@
 
             <div class="progress-information">
                 <span id="stepText">Step 1 of 4</span>
-                <span id="progressText">20%</span>
+                <span id="progressText">25%</span>
             </div>
 
             <div class="progress-bar">
@@ -669,23 +787,33 @@
 
             <article class="step-card active" data-step="1">
 
-   
-                <span class="step-number">Step 1</span>
+                <span class="step-number" id="step1Number">
+                    Step 1
+                </span>
 
- 
-                <h3>Open the ECAE Website or Portal</h3>
+                <h3 id="step1Title">
+                    Open the ECAE Website or Portal
+                </h3>
 
-    
                 <ol class="instruction-list">
-       
-                    <li>Open the Emirates College for Advanced Education (ECAE) website.</li>
-        
-                    <li>Click <strong>Login</strong> in the top-right corner.</li>
-        
-                    <li>Select <strong>ECAE Portal</strong>.</li>
-       
-                    <li>You can also open the portal directly using the links below.</li>
-  
+                    <li id="step1Instruction1">
+                        Open the Emirates College for Advanced Education
+                        (ECAE) website.
+                    </li>
+
+                    <li id="step1Instruction2">
+                        Click <strong>Login</strong> in the top-right
+                        corner.
+                    </li>
+
+                    <li id="step1Instruction3">
+                        Select <strong>ECAE Portal</strong>.
+                    </li>
+
+                    <li id="step1Instruction4">
+                        You can also open the portal directly using the
+                        links below.
+                    </li>
                 </ol>
 
                 <div class="step-links">
@@ -695,6 +823,7 @@
                         class="step-link"
                         target="_blank"
                         rel="noopener noreferrer"
+                        id="openWebsiteButton"
                     >
                         Open ECAE Website
                     </a>
@@ -704,6 +833,7 @@
                         class="step-link"
                         target="_blank"
                         rel="noopener noreferrer"
+                        id="openPortalButton"
                     >
                         Open ECAE Portal
                     </a>
@@ -717,6 +847,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(2)"
+                        id="step1NextButton"
                     >
                         Next
                     </button>
@@ -728,46 +859,44 @@
                  STEP 2
             ====================================== -->
 
-
             <article class="step-card" data-step="2">
 
-   
-                <span class="step-number">Step 2</span>
+                <span class="step-number" id="step2Number">
+                    Step 2
+                </span>
 
-   
-                <h3>Sign In and Select Students</h3>
+                <h3 id="step2Title">
+                    Sign In and Select Students
+                </h3>
 
-    
                 <ol class="instruction-list">
-                    <li>Sign in using your ECAE username and password.</li>
-                    <li>After signing in, select the <strong>Students</strong> tab.</li>
+                    <li id="step2Instruction1">
+                        Sign in using your ECAE username and password.
+                    </li>
+
+                    <li id="step2Instruction2">
+                        After signing in, select the
+                        <strong>Students</strong> tab.
+                    </li>
                 </ol>
 
-   
-                <div class="information-note">
-                    If you cannot access the portal, reset your password through Office 365 and try again.
-                    <strong>Important:</strong><br>
-                    Students using other corporate devices may need to sign in using the following username format:
+                <div class="information-note" id="step2Note">
+                    If you cannot access the portal, reset your password
+                    through Office 365 and try again.
                     <br><br>
+
+                    <strong>Important:</strong><br>
+
+                    Students using other corporate devices may need to
+                    sign in using the following username format:
+                    <br><br>
+
                     <strong>ECAE\StudentID</strong>
                     <br>
+
                     Example:
                     <strong>ECAE\001164</strong>
                 </div>
-
-    
-                <div class="step-links">
-        
-                    <a
-           
-                        href="https://www.office.com"
-                        class="step-link"
-                        target="_blank"
-                        >
-                        Open Office 365
-                    </a>
-                </div>
-
 
                 <div class="step-links">
                     <a
@@ -775,6 +904,7 @@
                         class="step-link"
                         target="_blank"
                         rel="noopener noreferrer"
+                        id="openOfficeButton"
                     >
                         Open Office 365
                     </a>
@@ -786,6 +916,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(1)"
+                        id="step2PreviousButton"
                     >
                         Previous
                     </button>
@@ -794,6 +925,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(3)"
+                        id="step2NextButton"
                     >
                         Next
                     </button>
@@ -808,16 +940,33 @@
 
             <article class="step-card" data-step="3">
 
-    
-                <span class="step-number">Step 3</span>
+                <span class="step-number" id="step3Number">
+                    Step 3
+                </span>
 
-   
-                <h3>Open Kottab Learning Management System</h3>
-                
+                <h3 id="step3Title">
+                    Open Kottab Learning Management System
+                </h3>
+
                 <ol class="instruction-list">
-                    <li>After selecting the <strong>Students</strong> tab, look at the right-side panel.</li>
-                    <li>Find the <strong>Important Links (Internal)</strong> section.</li>
-                    <li>Select <strong>Kottab Learning Management System</strong>.</li>
+                    <li id="step3Instruction1">
+                        After selecting the
+                        <strong>Students</strong> tab, look at the
+                        right-side panel.
+                    </li>
+
+                    <li id="step3Instruction2">
+                        Find the
+                        <strong>Important Links (Internal)</strong>
+                        section.
+                    </li>
+
+                    <li id="step3Instruction3">
+                        Select
+                        <strong>
+                            Kottab Learning Management System
+                        </strong>.
+                    </li>
                 </ol>
 
                 <div class="navigation-buttons">
@@ -826,6 +975,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(2)"
+                        id="step3PreviousButton"
                     >
                         Previous
                     </button>
@@ -834,6 +984,7 @@
                         type="button"
                         class="next-button"
                         onclick="showStep(4)"
+                        id="step3NextButton"
                     >
                         Next
                     </button>
@@ -842,37 +993,58 @@
 
             </article>
 
-
             <!-- =====================================
                  STEP 4
             ====================================== -->
 
-            <article class="step-card" data-step="5">
+            <article class="step-card" data-step="4">
 
-                <span class="step-number">Step 5</span>
+                <span class="step-number" id="step4Number">
+                    Step 4
+                </span>
 
-                <h3>Access Kottab LMS</h3>
-                
+                <h3 id="step4Title">
+                    Access Kottab LMS
+                </h3>
+
                 <ol class="instruction-list">
-                    <li>Open the Kottab Learning Management System.</li>
-                    <li>Sign in using your ECAE username and password.</li>
-                    <li>Access course materials, assignments, quizzes, discussions, and announcements.</li>
-                    <li>Review the information provided by your instructors.</li>
+                    <li id="step4Instruction1">
+                        Open the Kottab Learning Management System.
+                    </li>
+
+                    <li id="step4Instruction2">
+                        Sign in using your ECAE username and password.
+                    </li>
+
+                    <li id="step4Instruction3">
+                        Access course materials, assignments, quizzes,
+                        discussions, and announcements.
+                    </li>
+
+                    <li id="step4Instruction4">
+                        Review the information provided by your
+                        instructors.
+                    </li>
                 </ol>
-                
-                <div class="information-note">
-                    The Kottab Learning Management System (LMS) is the primary online learning platform used by ECAE.
+
+                <div class="information-note" id="step4Note1">
+                    The Kottab Learning Management System (LMS) is the
+                    primary online learning platform used by ECAE.
                 </div>
-                
-                <div class="information-note">
-                    If you are unable to access Kottab, your password may have expired. Reset your password through Office 365 and try again.
+
+                <div class="information-note" id="step4Note2">
+                    If you are unable to access Kottab, your password
+                    may have expired. Reset your password through
+                    Office 365 and try again.
                 </div>
-                
+
                 <div class="step-links">
                     <a
                         href="https://lms.ecae.ac.ae/"
                         class="step-link"
                         target="_blank"
+                        rel="noopener noreferrer"
+                        id="openKottabButton"
                     >
                         Open Kottab LMS
                     </a>
@@ -884,6 +1056,7 @@
                         type="button"
                         class="previous-button"
                         onclick="showStep(3)"
+                        id="step4PreviousButton"
                     >
                         Previous
                     </button>
@@ -892,6 +1065,7 @@
                         type="button"
                         class="next-button"
                         onclick="finishGuide()"
+                        id="finishGuideButton"
                     >
                         Finish Guide
                     </button>
@@ -916,9 +1090,11 @@
                     ✅
                 </div>
 
-                <h3>Guide Complete</h3>
+                <h3 id="completionTitle">
+                    Guide Complete
+                </h3>
 
-                <p>
+                <p id="completionDescription">
                     You have reached the end of the Kottab Learning
                     Management System guide.
                 </p>
@@ -929,6 +1105,7 @@
                         type="button"
                         class="next-button"
                         onclick="restartGuide()"
+                        id="restartGuideButton"
                     >
                         Restart Guide
                     </button>
@@ -937,6 +1114,7 @@
                         type="button"
                         class="previous-button"
                         onclick="returnToGuideOptions()"
+                        id="completionFormatButton"
                     >
                         Choose Another Format
                     </button>
@@ -944,6 +1122,7 @@
                     <a
                         href="index.html"
                         class="back-button"
+                        id="completionBackButton"
                     >
                         Back to Support Portal
                     </a>
@@ -963,7 +1142,7 @@
     <footer>
         <p>
             © <span id="currentYear"></span>
-            Student Support Portal
+            <span id="footerText">Student Support Portal</span>
         </p>
     </footer>
 
@@ -973,6 +1152,467 @@
 
     <script>
         const totalGuideSteps = 4;
+        let currentStep = 1;
+        let currentLanguage = "en";
+
+        const translations = {
+            en: {
+                documentTitle:
+                    "Kottab Learning Management System",
+
+                pageTitle:
+                    "Kottab Learning Management System",
+
+                pageSubtitle:
+                    "Choose how you would like to view this support guide.",
+
+                formatTitle:
+                    "Select a Guide Format",
+
+                formatDescription:
+                    "Follow an interactive step-by-step guide or open the original PDF document.",
+
+                interactiveCardTitle:
+                    "Interactive Guide",
+
+                startGuideButton:
+                    "Start Interactive Guide",
+
+                pdfCardTitle:
+                    "PDF Guide",
+
+                pdfGuideButton:
+                    "View PDF Guide",
+
+                backPortalButton:
+                    "← Back to Support Portal",
+
+                chooseFormatButton:
+                    "← Choose Another Format",
+
+                interactiveGuideTitle:
+                    "Interactive Kottab Learning Management System Guide",
+
+                interactiveGuideDescription:
+                    "Follow the instructions one step at a time.",
+
+                stepWord:
+                    "Step",
+
+                ofWord:
+                    "of",
+
+                guideCompleted:
+                    "Guide completed",
+
+                step1Number:
+                    "Step 1",
+
+                step1Title:
+                    "Open the ECAE Website or Portal",
+
+                step1Instruction1:
+                    "Open the Emirates College for Advanced Education (ECAE) website.",
+
+                step1Instruction2:
+                    "Click <strong>Login</strong> in the top-right corner.",
+
+                step1Instruction3:
+                    "Select <strong>ECAE Portal</strong>.",
+
+                step1Instruction4:
+                    "You can also open the portal directly using the links below.",
+
+                openWebsiteButton:
+                    "Open ECAE Website",
+
+                openPortalButton:
+                    "Open ECAE Portal",
+
+                step1NextButton:
+                    "Next",
+
+                step2Number:
+                    "Step 2",
+
+                step2Title:
+                    "Sign In and Select Students",
+
+                step2Instruction1:
+                    "Sign in using your ECAE username and password.",
+
+                step2Instruction2:
+                    "After signing in, select the <strong>Students</strong> tab.",
+
+                step2Note:
+                    "If you cannot access the portal, reset your password through Office 365 and try again.<br><br>" +
+                    "<strong>Important:</strong><br>" +
+                    "Students using other corporate devices may need to sign in using the following username format:" +
+                    "<br><br><strong>ECAE&#92;StudentID</strong><br>" +
+                    "Example: <strong>ECAE&#92;001164</strong>",
+
+                openOfficeButton:
+                    "Open Office 365",
+
+                step2PreviousButton:
+                    "Previous",
+
+                step2NextButton:
+                    "Next",
+
+                step3Number:
+                    "Step 3",
+
+                step3Title:
+                    "Open Kottab Learning Management System",
+
+                step3Instruction1:
+                    "After selecting the <strong>Students</strong> tab, look at the right-side panel.",
+
+                step3Instruction2:
+                    "Find the <strong>Important Links (Internal)</strong> section.",
+
+                step3Instruction3:
+                    "Select <strong>Kottab Learning Management System</strong>.",
+
+                step3PreviousButton:
+                    "Previous",
+
+                step3NextButton:
+                    "Next",
+
+                step4Number:
+                    "Step 4",
+
+                step4Title:
+                    "Access Kottab LMS",
+
+                step4Instruction1:
+                    "Open the Kottab Learning Management System.",
+
+                step4Instruction2:
+                    "Sign in using your ECAE username and password.",
+
+                step4Instruction3:
+                    "Access course materials, assignments, quizzes, discussions, and announcements.",
+
+                step4Instruction4:
+                    "Review the information provided by your instructors.",
+
+                step4Note1:
+                    "The Kottab Learning Management System (LMS) is the primary online learning platform used by ECAE.",
+
+                step4Note2:
+                    "If you are unable to access Kottab, your password may have expired. Reset your password through Office 365 and try again.",
+
+                openKottabButton:
+                    "Open Kottab LMS",
+
+                step4PreviousButton:
+                    "Previous",
+
+                finishGuideButton:
+                    "Finish Guide",
+
+                completionTitle:
+                    "Guide Complete",
+
+                completionDescription:
+                    "You have reached the end of the Kottab Learning Management System guide.",
+
+                restartGuideButton:
+                    "Restart Guide",
+
+                completionFormatButton:
+                    "Choose Another Format",
+
+                completionBackButton:
+                    "Back to Support Portal",
+
+                footerText:
+                    "Student Support Portal"
+            },
+
+            ar: {
+                documentTitle:
+                    "نظام كتّاب لإدارة التعلم",
+
+                pageTitle:
+                    "نظام كتّاب لإدارة التعلم",
+
+                pageSubtitle:
+                    "اختر الطريقة التي ترغب في عرض دليل الدعم من خلالها.",
+
+                formatTitle:
+                    "اختر نوع الدليل",
+
+                formatDescription:
+                    "اتبع الدليل التفاعلي خطوة بخطوة أو افتح مستند PDF الأصلي.",
+
+                interactiveCardTitle:
+                    "الدليل التفاعلي",
+
+                startGuideButton:
+                    "ابدأ الدليل التفاعلي",
+
+                pdfCardTitle:
+                    "دليل PDF",
+
+                pdfGuideButton:
+                    "عرض دليل PDF",
+
+                backPortalButton:
+                    "العودة إلى بوابة الدعم ←",
+
+                chooseFormatButton:
+                    "اختيار تنسيق آخر ←",
+
+                interactiveGuideTitle:
+                    "الدليل التفاعلي لنظام كتّاب لإدارة التعلم",
+
+                interactiveGuideDescription:
+                    "اتبع التعليمات خطوة بخطوة.",
+
+                stepWord:
+                    "الخطوة",
+
+                ofWord:
+                    "من",
+
+                guideCompleted:
+                    "اكتمل الدليل",
+
+                step1Number:
+                    "الخطوة 1",
+
+                step1Title:
+                    "فتح موقع أو بوابة كلية الإمارات للتطوير التربوي",
+
+                step1Instruction1:
+                    "افتح موقع كلية الإمارات للتطوير التربوي.",
+
+                step1Instruction2:
+                    "انقر على <strong>تسجيل الدخول</strong> في الزاوية العلوية اليمنى.",
+
+                step1Instruction3:
+                    "اختر <strong>بوابة الكلية</strong>.",
+
+                step1Instruction4:
+                    "يمكنك أيضاً فتح الموقع أو البوابة مباشرة باستخدام الروابط أدناه.",
+
+                openWebsiteButton:
+                    "فتح موقع الكلية",
+
+                openPortalButton:
+                    "فتح بوابة الكلية",
+
+                step1NextButton:
+                    "التالي",
+
+                step2Number:
+                    "الخطوة 2",
+
+                step2Title:
+                    "تسجيل الدخول واختيار قسم الطلاب",
+
+                step2Instruction1:
+                    "سجّل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بالكلية.",
+
+                step2Instruction2:
+                    "بعد تسجيل الدخول، اختر تبويب <strong>الطلاب</strong>.",
+
+                step2Note:
+                    "إذا لم تتمكن من الدخول إلى البوابة، فأعد تعيين كلمة المرور من خلال Office 365 ثم حاول مرة أخرى.<br><br>" +
+                    "<strong>مهم:</strong><br>" +
+                    "قد يحتاج الطلاب الذين يستخدمون أجهزة المؤسسة الأخرى إلى تسجيل الدخول باستخدام صيغة اسم المستخدم التالية:" +
+                    "<br><br><strong>ECAE&#92;StudentID</strong><br>" +
+                    "مثال: <strong>ECAE&#92;001164</strong>",
+
+                openOfficeButton:
+                    "فتح Office 365",
+
+                step2PreviousButton:
+                    "السابق",
+
+                step2NextButton:
+                    "التالي",
+
+                step3Number:
+                    "الخطوة 3",
+
+                step3Title:
+                    "فتح نظام كتّاب لإدارة التعلم",
+
+                step3Instruction1:
+                    "بعد اختيار تبويب <strong>الطلاب</strong>، انتقل إلى اللوحة الموجودة على الجانب الأيمن.",
+
+                step3Instruction2:
+                    "ابحث عن قسم <strong>الروابط المهمة الداخلية</strong>.",
+
+                step3Instruction3:
+                    "اختر <strong>نظام كتّاب لإدارة التعلم</strong>.",
+
+                step3PreviousButton:
+                    "السابق",
+
+                step3NextButton:
+                    "التالي",
+
+                step4Number:
+                    "الخطوة 4",
+
+                step4Title:
+                    "الدخول إلى نظام كتّاب",
+
+                step4Instruction1:
+                    "افتح نظام كتّاب لإدارة التعلم.",
+
+                step4Instruction2:
+                    "سجّل الدخول باستخدام اسم المستخدم وكلمة المرور الخاصة بالكلية.",
+
+                step4Instruction3:
+                    "يمكنك الوصول إلى المواد الدراسية والواجبات والاختبارات والمناقشات والإعلانات.",
+
+                step4Instruction4:
+                    "راجع المعلومات التي يقدمها المدرسون.",
+
+                step4Note1:
+                    "نظام كتّاب لإدارة التعلم هو منصة التعلم الإلكترونية الأساسية التي تستخدمها كلية الإمارات للتطوير التربوي.",
+
+                step4Note2:
+                    "إذا لم تتمكن من الدخول إلى نظام كتّاب، فقد تكون كلمة المرور منتهية الصلاحية. أعد تعيين كلمة المرور من خلال Office 365 ثم حاول مرة أخرى.",
+
+                openKottabButton:
+                    "فتح نظام كتّاب",
+
+                step4PreviousButton:
+                    "السابق",
+
+                finishGuideButton:
+                    "إنهاء الدليل",
+
+                completionTitle:
+                    "اكتمل الدليل",
+
+                completionDescription:
+                    "لقد وصلت إلى نهاية دليل نظام كتّاب لإدارة التعلم.",
+
+                restartGuideButton:
+                    "إعادة تشغيل الدليل",
+
+                completionFormatButton:
+                    "اختيار تنسيق آخر",
+
+                completionBackButton:
+                    "العودة إلى بوابة الدعم",
+
+                footerText:
+                    "بوابة دعم الطلاب"
+            }
+        };
+
+        const htmlTranslationIds = [
+            "step1Instruction2",
+            "step1Instruction3",
+            "step2Instruction2",
+            "step2Note",
+            "step3Instruction1",
+            "step3Instruction2",
+            "step3Instruction3"
+        ];
+
+        function setLanguage(language) {
+            if (!translations[language]) {
+                language = "en";
+            }
+
+            currentLanguage = language;
+
+            document.documentElement.lang = language;
+            document.documentElement.dir =
+                language === "ar" ? "rtl" : "ltr";
+
+            document.title =
+                translations[language].documentTitle;
+
+            Object.keys(translations[language]).forEach(
+                function (translationId) {
+                    if (
+                        translationId === "documentTitle" ||
+                        translationId === "stepWord" ||
+                        translationId === "ofWord" ||
+                        translationId === "guideCompleted"
+                    ) {
+                        return;
+                    }
+
+                    const element =
+                        document.getElementById(translationId);
+
+                    if (!element) {
+                        return;
+                    }
+
+                    if (
+                        htmlTranslationIds.includes(translationId)
+                    ) {
+                        element.innerHTML =
+                            translations[language][translationId];
+                    } else {
+                        element.textContent =
+                            translations[language][translationId];
+                    }
+                }
+            );
+
+            document
+                .getElementById("englishButton")
+                .classList.toggle(
+                    "active",
+                    language === "en"
+                );
+
+            document
+                .getElementById("arabicButton")
+                .classList.toggle(
+                    "active",
+                    language === "ar"
+                );
+
+            localStorage.setItem(
+                "language",
+                language
+            );
+
+            updateProgressText();
+        }
+
+        function updateProgressText() {
+            const completionCard =
+                document.getElementById("completionCard");
+
+            if (
+                completionCard.classList.contains("active")
+            ) {
+                document.getElementById(
+                    "stepText"
+                ).textContent =
+                    translations[currentLanguage].guideCompleted;
+
+                return;
+            }
+
+            document.getElementById(
+                "stepText"
+            ).textContent =
+                translations[currentLanguage].stepWord +
+                " " +
+                currentStep +
+                " " +
+                translations[currentLanguage].ofWord +
+                " " +
+                totalGuideSteps;
+        }
 
         function openInteractiveGuide() {
             document.getElementById(
@@ -1007,6 +1647,15 @@
         }
 
         function showStep(stepNumber) {
+            if (
+                stepNumber < 1 ||
+                stepNumber > totalGuideSteps
+            ) {
+                return;
+            }
+
+            currentStep = stepNumber;
+
             const cards = document.querySelectorAll(
                 ".step-card"
             );
@@ -1029,13 +1678,7 @@
                 (stepNumber / totalGuideSteps) * 100
             );
 
-            document.getElementById(
-                "stepText"
-            ).textContent =
-                "Step " +
-                stepNumber +
-                " of " +
-                totalGuideSteps;
+            updateProgressText();
 
             document.getElementById(
                 "progressText"
@@ -1071,17 +1714,15 @@
             document.getElementById(
                 "stepText"
             ).textContent =
-                "Guide completed";
+                translations[currentLanguage].guideCompleted;
 
             document.getElementById(
                 "progressText"
-            ).textContent =
-                "100%";
+            ).textContent = "100%";
 
             document.getElementById(
                 "progressFill"
-            ).style.width =
-                "100%";
+            ).style.width = "100%";
 
             document.getElementById(
                 "interactiveGuide"
@@ -1099,6 +1740,11 @@
             "currentYear"
         ).textContent =
             new Date().getFullYear();
+
+        const savedLanguage =
+            localStorage.getItem("language") || "en";
+
+        setLanguage(savedLanguage);
     </script>
 
 </body>
