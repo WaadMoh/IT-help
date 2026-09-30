@@ -146,14 +146,14 @@
         ========================================= */
 
         .guide-options {
-            display: grid;
-            grid-template-columns: repeat(
-                2,
-                minmax(260px, 1fr)
-            );
-            gap: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-
+        .guide-option {
+            width: 100%;
+            max-width: 450px;
+        }
         .guide-option {
             display: flex;
             flex-direction: column;
@@ -936,21 +936,7 @@
                     </li>
 
                     <li>
-                        Fill in the requested information.
-                    </li>
-
-                    <li>
-                        Add the relevant supporting document.
-                    </li>
-
-                    <li>
-                        The supporting document may be a medical
-                        certificate or other official documentation.
-                    </li>
-
-                    <li>
-                        Check the information and document before
-                        completing the service.
+                        Fill in the requested information and documents.
                     </li>
                 </ol>
 
