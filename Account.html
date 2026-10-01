@@ -144,35 +144,34 @@
         /* =========================================
            GUIDE OPTIONS
         ========================================= */
-
         .guide-options {
-            display: grid;
-            grid-template-columns: repeat(
-                2,
-                minmax(260px, 1fr)
-            );
-            gap: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-
+        
         .guide-option {
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 330px;
-            padding: 34px 28px;
+            width: 100%;
+            max-width: 650px;
+            min-height: 420px;
+            padding: 50px 40px;
             border: 1px solid #DCE5F3;
-            border-top: 6px solid var(--ecae-blue);
-            border-radius: 18px;
+            border-top: 8px solid var(--ecae-blue);
+            border-radius: 20px;
             background: white;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 52, 168, 0.09);
-            transition: 0.3s;
+            box-shadow: 0 12px 35px rgba(0, 52, 168, 0.12);
+            transition: all 0.3s ease;
+        }
+        
+        .guide-option:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(0, 52, 168, 0.18);
         }
 
-        .guide-option:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 14px 32px rgba(0, 52, 168, 0.16);
-        }
 
         .option-icon {
             display: flex;
@@ -223,15 +222,6 @@
             background: var(--ecae-dark-blue);
         }
 
-        .pdf-button {
-            background: white;
-            color: var(--ecae-blue);
-        }
-
-        .pdf-button:hover {
-            background: var(--ecae-light-blue);
-            color: var(--ecae-dark-blue);
-        }
 
         /* =========================================
            BACK BUTTON
@@ -581,16 +571,13 @@
         <!-- =========================================
              FORMAT SELECTION
         ========================================== -->
-
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2 id="formatTitle">Select a Guide Format</h2>
-
-            <p id="formatDescription">
-                Follow an interactive step-by-step guide or open
-                the original PDF document.
-            </p>
+                
+                <p id="formatDescription">
+                    Follow an interactive step-by-step guide
+                </p>
             </section>
 
             <section class="guide-options">
@@ -603,38 +590,23 @@
                         💻
                     </div>
 
-                    <h3 id="interactiveTitle">Interactive Guide</h3>
+                    <h3 id="interactiveTitle">
+                        Interactive Guide
+                    </h3>
+                    
+
 
                     <button
-                        id="interactiveButton"
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
+                        id="interactiveButton"
                     >
                         Start Interactive Guide
                     </button>
 
                 </article>
 
-                <!-- PDF guide option -->
-
-                <article class="guide-option">
-
-                    <div class="option-icon" aria-hidden="true">
-                        📄
-                    </div>
-
-                    <h3 id="pdfTitle">PDF Guide</h3>
-
-                    <a
-                        href="Account Authentication Guide.pdf"
-                        class="guide-button"
-                        id="pdfButton"
-                    >
-                        View PDF Guide                
-                    </a>
-
-                </article>
 
             </section>
 
@@ -650,6 +622,7 @@
 
         </div>
 
+
         <!-- =========================================
              INTERACTIVE GUIDE
         ========================================== -->
@@ -661,14 +634,6 @@
 
             <div class="interactive-heading">
 
-                <button
-                    type="button"
-                    class="return-button"
-                    onclick="returnToGuideOptions()"
-                    id="returnButton"
-                >
-                    ← Choose Another Format
-                </button>
 
                 <h2 id="interactiveGuideTitle">
                     Interactive Account Authentication Guide
@@ -727,7 +692,7 @@
                         class="step-link"
                         target="_blank"
                     >
-                        Open Office 365
+                        https://www.office.com
                     </a>
             
                 </div>
@@ -1064,31 +1029,21 @@
                     "دليل توثيق الحساب";
         
                 document.getElementById("pageDescription").textContent =
-                    "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
+                    "ااتبع الدليل التفاعلي خطوة بخطوة .";
         
-                document.getElementById("formatTitle").textContent =
-                    "اختر نوع الدليل";
-        
-                document.getElementById("formatDescription").textContent =
-                    "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF الأصلي.";
         
                 document.getElementById("interactiveTitle").textContent =
                     "الدليل التفاعلي";
         
                 document.getElementById("interactiveButton").textContent =
                     "ابدأ الدليل التفاعلي";
-        
-                document.getElementById("pdfTitle").textContent =
-                    "دليل PDF";
-        
-                document.getElementById("pdfButton").textContent =
-                    "عرض ملف PDF";
+
+
         
                 document.getElementById("backButton").textContent =
                     "العودة إلى بوابة الدعم";
         
-                document.getElementById("returnButton").textContent =
-                    "اختيار تنسيق آخر";
+
         
                 document.getElementById("interactiveGuideTitle").textContent =
                     "الدليل التفاعلي لتوثيق الحساب";
@@ -1157,9 +1112,7 @@
         
                 document.getElementById("restartGuideButton").textContent =
                     "إعادة تشغيل الدليل";
-        
-                document.getElementById("completionReturnButton").textContent =
-                    "اختيار تنسيق آخر";
+
         
                 document.getElementById("completionBackButton").textContent =
                     "العودة إلى بوابة الدعم";
@@ -1179,31 +1132,22 @@
                     "Account Authentication Guide";
         
                 document.getElementById("pageDescription").textContent =
-                    "Choose how you would like to view this support guide.";
-        
-                document.getElementById("formatTitle").textContent =
-                    "Select a Guide Format";
+                    "View the support guide.";
+
         
                 document.getElementById("formatDescription").textContent =
-                    "Follow an interactive step-by-step guide or open the original PDF document.";
+                    "Follow an interactive step-by-step guide.";
         
                 document.getElementById("interactiveTitle").textContent =
                     "Interactive Guide";
         
                 document.getElementById("interactiveButton").textContent =
                     "Start Interactive Guide";
-        
-                document.getElementById("pdfTitle").textContent =
-                    "PDF Guide";
-        
-                document.getElementById("pdfButton").textContent =
-                    "View PDF Guide";
+
         
                 document.getElementById("backButton").textContent =
                     "← Back to Support Portal";
         
-                document.getElementById("returnButton").textContent =
-                    "← Choose Another Format";
         
                 document.getElementById("interactiveGuideTitle").textContent =
                     "Interactive Account Authentication Guide";
@@ -1229,8 +1173,6 @@
                 document.getElementById("restartGuideButton").textContent =
                     "Restart Guide";
         
-                document.getElementById("completionReturnButton").textContent =
-                    "Choose Another Format";
         
                 document.getElementById("completionBackButton").textContent =
                     "Back to Support Portal";
