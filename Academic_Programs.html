@@ -258,17 +258,21 @@
 
         .interactive-guide {
             display: none;
+            width: 92%;
+            max-width: 900px;
+            margin: 0 auto;
         }
-
+        
         .interactive-guide.visible {
             display: block;
         }
-
+        
         .interactive-heading {
-            margin-bottom: 28px;
+            max-width: 750px;
+            margin: 0 auto 35px;
             text-align: center;
         }
-
+        
         .interactive-heading h2 {
             margin: 17px 0 8px;
             color: var(--ecae-blue);
@@ -580,11 +584,7 @@
 
         <div id="formatSelection">
 
-            <section class="introduction">
-                <h2 id="formatTitle">
-                Select a Guide Format
-            </h2>
-            
+
             <p id="formatDescription">
                 Follow an interactive step-by-step guide.
             </p>
