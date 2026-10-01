@@ -1119,8 +1119,6 @@
                         document.getElementById("backButton").textContent =
                             "العودة إلى بوابة الدعم";
                 
-                        document.getElementById("returnButton").textContent =
-                            "اختيار تنسيق آخر";
                 
                         document.getElementById("interactiveGuideTitle").textContent =
                             "الدليل التفاعلي لوثائق المؤسسة";
@@ -1188,9 +1186,10 @@
                 
                         document.getElementById("restartGuideButton").textContent =
                             "إعادة تشغيل الدليل";
+                        document.getElementById("completionBackButton").textContent =
+                            "العودة إلى بوابة الدعم";
                 
-                        document.getElementById("completionReturnButton").textContent =
-                            "اختيار تنسيق آخر";
+
                 
                         document.getElementById("next1").textContent = "التالي";
                         document.getElementById("next2").textContent = "التالي";
@@ -1305,21 +1304,19 @@
                         document.getElementById("previous2").textContent = "Previous";
                         document.getElementById("previous3").textContent = "Previous";
                         document.getElementById("previous4").textContent = "Previous";
-                        document.getElementById("finishButton").textContent = "Finish Guide";
-                    }
+                        document.getElementById("finishButton").textContent =
+                            "Finish Guide";
+                        
+                        }
+                        
+                        localStorage.setItem("language", lang);
+                        }
+                                        
+                        window.addEventListener("load", function () {
                 
-                        document.documentElement.lang = "en";
-                        document.documentElement.dir = "ltr";
-                    }
-                
-                    localStorage.setItem("language", lang);
-                }
-                
-                window.addEventListener("load", function () {
-                
-                    const savedLanguage =
-                        localStorage.getItem("language") || "en";
-                
+                        const savedLanguage =
+                            localStorage.getItem("language") || "en";
+                    
                     setLanguage(savedLanguage);
                 
                 });
