@@ -146,35 +146,34 @@
         /* =========================================
            GUIDE OPTIONS
         ========================================= */
-
         .guide-options {
-            display: grid;
-            grid-template-columns: repeat(
-                2,
-                minmax(260px, 1fr)
-            );
-            gap: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-
+        
         .guide-option {
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 330px;
-            padding: 34px 28px;
+            width: 100%;
+            max-width: 650px;
+            min-height: 420px;
+            padding: 50px 40px;
             border: 1px solid #DCE5F3;
-            border-top: 6px solid var(--ecae-blue);
-            border-radius: 18px;
+            border-top: 8px solid var(--ecae-blue);
+            border-radius: 20px;
             background: white;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 52, 168, 0.09);
-            transition: 0.3s;
+            box-shadow: 0 12px 35px rgba(0, 52, 168, 0.12);
+            transition: all 0.3s ease;
+        }
+        
+        .guide-option:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(0, 52, 168, 0.18);
         }
 
-        .guide-option:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 14px 32px rgba(0, 52, 168, 0.16);
-        }
 
         .option-icon {
             display: flex;
@@ -225,15 +224,7 @@
             background: var(--ecae-dark-blue);
         }
 
-        .pdf-button {
-            background: white;
-            color: var(--ecae-blue);
-        }
 
-        .pdf-button:hover {
-            background: var(--ecae-light-blue);
-            color: var(--ecae-dark-blue);
-        }
 
         /* =========================================
            BACK BUTTON
@@ -566,8 +557,7 @@
                 <h1 id="pageTitle">ECAE Calendar</h1>
 
                 <p id="pageDescription">
-                    Choose how you would like to view this support
-                    guide.
+                    View this support guide.
                 </p>
             </div>
 
@@ -585,14 +575,13 @@
              FORMAT SELECTION
         ========================================== -->
 
+
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2 id="formatTitle">Select a Guide Format</h2>
-
+                
                 <p id="formatDescription">
-                    Follow an interactive step-by-step guide or open
-                    the original PDF document.
+                    Follow an interactive step-by-step guide
                 </p>
             </section>
 
@@ -606,7 +595,11 @@
                         💻
                     </div>
 
-                    <h3 id="interactiveTitle">Interactive Guide</h3>
+                    <h3 id="interactiveTitle">
+                        Interactive Guide
+                    </h3>
+                    
+
 
                     <button
                         type="button"
@@ -619,25 +612,6 @@
 
                 </article>
 
-                <!-- PDF guide option -->
-
-                <article class="guide-option">
-
-                    <div class="option-icon" aria-hidden="true">
-                        📄
-                    </div>
-
-                    <h3 id="pdfTitle">PDF Guide</h3>
-
-                                   <a
-                        href="ECAE Calendar.cleaned.pdf"
-                        class="guide-button"
-                        id="pdfButton"
-                        >
-                        View PDF Guide                
-                    </a>
-
-                </article>
 
             </section>
 
@@ -663,15 +637,6 @@
         >
 
             <div class="interactive-heading">
-
-                <button
-                    type="button"
-                    class="return-button"
-                    onclick="returnToGuideOptions()"
-                    id="returnButton"
-                >
-                    ← Choose Another Format
-                </button>
 
                 <h2 id="interactiveGuideTitle">
                     Interactive Students Directory of Institutional Documents Guide
@@ -730,7 +695,8 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Open ECAE Website
+                        https://www.ecae.ac.ae/en/
+                        
                     </a>
 
                     <a
@@ -739,7 +705,7 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Open ECAE Portal
+                        https://portal.ecae.ac.ae/
                     </a>
 
                 </div>
@@ -799,21 +765,11 @@
                         class="step-link"
                         target="_blank"
                         >
-                        Open Office 365
+                        https://www.office.com
                     </a>
                 </div>
 
 
-                <div class="step-links">
-                    <a
-                        href="https://www.office.com"
-                        class="step-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Open Office 365
-                    </a>
-                </div>
 
                 <div class="navigation-buttons">
 
@@ -956,15 +912,6 @@
                         Restart Guide
                     </button>
 
-                    <button
-                        type="button"
-                        class="previous-button"
-                        onclick="returnToGuideOptions()"
-                        id="completionReturnButton"
-                        
-                    >
-                        Choose Another Format
-                    </button>
 
                     <a
                         href="index.html"
@@ -1136,25 +1083,17 @@
                     "تقويم ECAE";
         
                 document.getElementById("pageDescription").textContent =
-                    "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
+                    "عرض دليل الدعم.";
         
-                document.getElementById("formatTitle").textContent =
-                    "اختر نوع الدليل";
         
                 document.getElementById("formatDescription").textContent =
-                    "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF الأصلي.";
+                    "اتبع دليلاً تفاعلياً خطوة بخطوة.";
         
                 document.getElementById("interactiveTitle").textContent =
                     "الدليل التفاعلي";
         
                 document.getElementById("interactiveButton").textContent =
                     "ابدأ الدليل التفاعلي";
-        
-                document.getElementById("pdfTitle").textContent =
-                    "دليل PDF";
-        
-                document.getElementById("pdfButton").textContent =
-                    "عرض ملف PDF";
         
                 document.getElementById("backButton").textContent =
                     "العودة إلى بوابة الدعم";
@@ -1248,7 +1187,111 @@
                 document.documentElement.lang = "en";
                 document.documentElement.dir = "ltr";
             }
-        
+            document.getElementById("pageTitle").textContent =
+                "ECAE Calendar";
+            
+            document.getElementById("pageDescription").textContent =
+                "View the support guide.";
+            
+            document.getElementById("formatDescription").textContent =
+                "Follow an interactive step-by-step guide.";
+            
+            document.getElementById("interactiveTitle").textContent =
+                "Interactive Guide";
+            
+            document.getElementById("interactiveButton").textContent =
+                "Start Interactive Guide";
+            
+            document.getElementById("backButton").textContent =
+                "← Back to Support Portal";
+            
+            document.getElementById("returnButton").textContent =
+                "Choose Another Format";
+            
+            document.getElementById("interactiveGuideTitle").textContent =
+                "Interactive ECAE Calendar Guide";
+            
+            document.getElementById("interactiveGuideDescription").textContent =
+                "Follow the instructions one step at a time.";
+            
+            document.getElementById("step1Title").textContent =
+                "Open the ECAE Website or Portal";
+            
+            document.getElementById("step2Title").textContent =
+                "Sign In and Select Students";
+            
+            document.getElementById("step3Title").textContent =
+                "Find the Important Internal Links";
+            
+            document.getElementById("step4Title").textContent =
+                "Open the ECAE Calendar";
+            
+            document.getElementById("step1List").innerHTML = `
+            <li>Open the Emirates College for Advanced Education website or portal.</li>
+            <li>Select Login.</li>
+            <li>Choose ECAE Portal.</li>
+            <li>You may also use the direct links below.</li>
+            `;
+            
+            document.getElementById("step2List").innerHTML = `
+            <li>Sign in using your ECAE username and password.</li>
+            <li>After signing in, select the Students tab.</li>
+            `;
+            
+            document.getElementById("step2Note").innerHTML = `
+            If you cannot access the portal, reset your password through Office 365 and try again.<br><br>
+            <strong>Important:</strong><br>
+            Some devices may require the following username format:<br><br>
+            <strong>ECAE\\StudentID</strong>
+            `;
+            
+            document.getElementById("step3List").innerHTML = `
+            <li>After selecting the Students tab, look at the right-side panel.</li>
+            <li>Locate the Important Links (Internal) section.</li>
+            <li>Find the ECAE Calendar service.</li>
+            `;
+            
+            document.getElementById("step3Note").innerHTML = `
+            The ECAE Calendar is available under the Important Links (Internal) section.
+            `;
+            
+            document.getElementById("step4List").innerHTML = `
+            <li>Select ECAE Calendar from the Important Links (Internal) section.</li>
+            <li>Wait for the academic calendar page to open.</li>
+            <li>Review important academic dates and events.</li>
+            <li>Check schedules, registration periods, holidays, and examination dates.</li>
+            `;
+            
+            document.getElementById("step4Note").innerHTML = `
+            The ECAE Calendar provides important academic dates, registration periods, holidays, and examination schedules.
+            `;
+            
+            document.getElementById("completionTitle").textContent =
+                "Guide Complete";
+            
+            document.getElementById("completionDescription").textContent =
+                "You have reached the end of the ECAE Calendar guide.";
+            
+            document.getElementById("restartGuideButton").textContent =
+                "Restart Guide";
+            
+            document.getElementById("completionReturnButton").textContent =
+                "Choose Another Format";
+            
+            document.getElementById("completionBackButton").textContent =
+                "Back to Support Portal";
+            
+            document.getElementById("next1").textContent = "Next";
+            document.getElementById("next2").textContent = "Next";
+            document.getElementById("next3").textContent = "Next";
+            
+            document.getElementById("previous2").textContent = "Previous";
+            document.getElementById("previous3").textContent = "Previous";
+            document.getElementById("previous4").textContent = "Previous";
+            
+            document.getElementById("finishButton").textContent =
+                "Finish Guide";
+                    
             localStorage.setItem("language", lang);
         }
         
