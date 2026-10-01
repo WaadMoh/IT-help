@@ -145,32 +145,31 @@
         ========================================= */
 
         .guide-options {
-            display: grid;
-            grid-template-columns: repeat(
-                2,
-                minmax(260px, 1fr)
-            );
-            gap: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-
+        
         .guide-option {
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 330px;
-            padding: 34px 28px;
+            width: 100%;
+            max-width: 650px;
+            min-height: 420px;
+            padding: 50px 40px;
             border: 1px solid #DCE5F3;
-            border-top: 6px solid var(--ecae-blue);
-            border-radius: 18px;
+            border-top: 8px solid var(--ecae-blue);
+            border-radius: 20px;
             background: white;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 52, 168, 0.09);
-            transition: 0.3s;
+            box-shadow: 0 12px 35px rgba(0, 52, 168, 0.12);
+            transition: all 0.3s ease;
         }
-
+        
         .guide-option:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 14px 32px rgba(0, 52, 168, 0.16);
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(0, 52, 168, 0.18);
         }
 
         .option-icon {
@@ -192,25 +191,26 @@
         }
 
         .guide-option p {
-            flex-grow: 1;
-            margin-bottom: 22px;
+            max-width: 450px;
+            margin-bottom: 28px;
             color: var(--text-grey);
-            line-height: 1.7;
+            line-height: 1.8;
+            font-size: 16px;
         }
 
-        .guide-button {
+        .guide-button 
+            max-width: 300px;
+            min-height: 58px;
+            font-size: 17px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 235px;
-            min-height: 49px;
             padding: 13px 18px;
             border: 2px solid var(--ecae-blue);
             border-radius: 9px;
             background: var(--ecae-blue);
             color: white;
-            font-size: 15px;
             font-weight: 700;
             text-decoration: none;
             cursor: pointer;
@@ -227,10 +227,6 @@
             color: var(--ecae-blue);
         }
 
-        .pdf-button:hover {
-            background: var(--ecae-light-blue);
-            color: var(--ecae-dark-blue);
-        }
 
         /* =========================================
            BACK BUTTON
@@ -565,7 +561,7 @@
                 </h1>
                 
                 <p id="pageDescription">
-                    Choose how you would like to view this support guide.
+                    View the support guide.
                 </p>
             </div>
 
@@ -591,7 +587,7 @@
             </h2>
             
             <p id="formatDescription">
-                Follow an interactive step-by-step guide or open the original PDF document.
+                Follow an interactive step-by-step guide.
             </p>
             </section>
 
@@ -620,29 +616,6 @@
 
                 </article>
 
-                <!-- PDF guide option -->
-
-                <article class="guide-option">
-
-                    <div class="option-icon" aria-hidden="true">
-                        📄
-                    </div>
-
-                    <h3 id="pdfTitle">
-                        PDF Guide
-                    </h3>
-                    <a
-                        href="ECAE Academic Programs.cleaned.pdf"
-                        class="guide-button"
-                        id="pdfButton"
-                        >
-                        View PDF Guide                
-                    </a>
-
-                </article>
-
-            </section>
-
             <div class="back-section">
                 <a
                     href="index.html"
@@ -665,15 +638,6 @@
         >
 
             <div class="interactive-heading">
-
-                <button
-                    type="button"
-                    class="return-button"
-                    onclick="returnToGuideOptions()"
-                    id="returnButton"
-                >
-                    ← Choose Another Format
-                </button>
 
                 <h2 id="interactiveGuideTitle">
                     Interactive ECAE Academic Programs Guide
@@ -1165,9 +1129,7 @@
                 document.getElementById("interactiveButton").textContent =
                     "ابدأ الدليل التفاعلي";
         
-                document.getElementById("pdfButton").textContent =
-                    "عرض ملف PDF";
-        
+
                 document.getElementById("backButton").textContent =
                     "العودة إلى بوابة الدعم";
         
@@ -1257,31 +1219,24 @@
                     "ECAE Academic Programs";
         
                 document.getElementById("pageDescription").textContent =
-                    "Choose how you would like to view this support guide.";
+                    "View the support guide.";
         
-                document.getElementById("formatTitle").textContent =
-                    "Select a Guide Format";
+
         
                 document.getElementById("formatDescription").textContent =
-                    "Follow an interactive step-by-step guide or open the original PDF document.";
+                    "Follow an interactive step-by-step guide";
         
                 document.getElementById("interactiveTitle").textContent =
                     "Interactive Guide";
         
-                document.getElementById("pdfTitle").textContent =
-                    "PDF Guide";
         
                 document.getElementById("interactiveButton").textContent =
                     "Start Interactive Guide";
         
-                document.getElementById("pdfButton").textContent =
-                    "View PDF Guide";
         
                 document.getElementById("backButton").textContent =
                     "← Back to Support Portal";
-        
-                document.getElementById("returnButton").textContent =
-                    "← Choose Another Format";
+
         
                 document.getElementById("interactiveGuideTitle").textContent =
                     "Interactive ECAE Academic Programs Guide";
@@ -1350,9 +1305,7 @@
         
                 document.getElementById("restartGuideButton").textContent =
                     "Restart Guide";
-        
-                document.getElementById("completionReturnButton").textContent =
-                    "Choose Another Format";
+
         
                 document.getElementById("completionBackButton").textContent =
                     "Back to Support Portal";
