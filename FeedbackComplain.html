@@ -148,33 +148,33 @@
         ========================================= */
 
         .guide-options {
-            display: grid;
-            grid-template-columns: repeat(
-                2,
-                minmax(260px, 1fr)
-            );
-            gap: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-
+        
         .guide-option {
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 330px;
-            padding: 34px 28px;
+            width: 100%;
+            max-width: 650px;
+            min-height: 420px;
+            padding: 50px 40px;
             border: 1px solid #DCE5F3;
-            border-top: 6px solid var(--ecae-blue);
-            border-radius: 18px;
+            border-top: 8px solid var(--ecae-blue);
+            border-radius: 20px;
             background: white;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 52, 168, 0.09);
-            transition: 0.3s;
+            box-shadow: 0 12px 35px rgba(0, 52, 168, 0.12);
+            transition: all 0.3s ease;
+        }
+        
+        .guide-option:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(0, 52, 168, 0.18);
         }
 
-        .guide-option:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 14px 32px rgba(0, 52, 168, 0.16);
-        }
 
         .option-icon {
             display: flex;
@@ -225,15 +225,7 @@
             background: var(--ecae-dark-blue);
         }
 
-        .pdf-button {
-            background: white;
-            color: var(--ecae-blue);
-        }
 
-        .pdf-button:hover {
-            background: var(--ecae-light-blue);
-            color: var(--ecae-dark-blue);
-        }
 
         /* =========================================
            BACK BUTTON
@@ -257,6 +249,49 @@
         }
 
         .back-button:hover {
+            background: var(--ecae-light-blue);
+        }
+
+
+        /* =========================================
+           INTERACTIVE GUIDE
+        ========================================= */
+
+        .interactive-guide {
+            display: none;
+        }
+
+        .interactive-guide.visible {
+            display: block;
+        }
+
+        .interactive-heading {
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .interactive-heading h2 {
+            margin: 17px 0 8px;
+            color: var(--ecae-blue);
+            font-size: 28px;
+        }
+
+        .interactive-heading p {
+            color: var(--text-grey);
+            line-height: 1.7;
+        }
+
+        .return-button {
+            padding: 11px 18px;
+            border: 2px solid var(--ecae-blue);
+            border-radius: 8px;
+            background: white;
+            color: var(--ecae-blue);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .return-button:hover {
             background: var(--ecae-light-blue);
         }
 
@@ -566,8 +601,7 @@
                 <h1 id="pageTitle">Feedback/Complaint</h1>
 
                 <p id="pageDescription">
-                    Choose how you would like to view this support
-                    guide.
+                    View this support guide.
                 </p>
             </div>
 
@@ -588,11 +622,9 @@
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2 id="formatTitle">Select a Guide Format</h2>
-
+                
                 <p id="formatDescription">
-                    Follow an interactive step-by-step guide or open
-                    the original PDF document.
+                    Follow an interactive step-by-step guide
                 </p>
             </section>
 
@@ -606,7 +638,11 @@
                         💻
                     </div>
 
-                    <h3 id="interactiveTitle">Interactive Guide</h3>
+                    <h3 id="interactiveTitle">
+                        Interactive Guide
+                    </h3>
+                    
+
 
                     <button
                         type="button"
@@ -619,25 +655,6 @@
 
                 </article>
 
-                <!-- PDF guide option -->
-
-                <article class="guide-option">
-
-                    <div class="option-icon" aria-hidden="true">
-                        📄
-                    </div>
-
-                    <h3 id="pdfTitle">PDF Guide</h3>
-
-                                   <a
-                        href="Feedback - Complaint.cleaned.pdf"
-                        class="guide-button"
-                        id="pdfButton"
-                        >
-                        View PDF Guide               
-                    </a>
-
-                </article>
 
             </section>
 
@@ -646,7 +663,6 @@
                     href="index.html"
                     class="back-button"
                     id="backButton"
-                    
                 >
                     ← Back to Support Portal
                 </a>
@@ -665,14 +681,6 @@
 
             <div class="interactive-heading">
 
-                <button
-                    type="button"
-                    class="return-button"
-                    onclick="returnToGuideOptions()"
-                    id="returnButton"
-                >
-                    ← Choose Another Format
-                </button>
 
                 <h2 id="interactiveGuideTitle">
                     Interactive Feedback/Complaint Guide
@@ -731,7 +739,7 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Open ECAE Website
+                        https://www.ecae.ac.ae/en/
                     </a>
 
                     <a
@@ -740,7 +748,7 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Open ECAE Portal
+                        https://portal.ecae.ac.ae/
                     </a>
 
                 </div>
@@ -800,19 +808,7 @@
                         class="step-link"
                         target="_blank"
                         >
-                        Open Office 365
-                    </a>
-                </div>
-
-
-                <div class="step-links">
-                    <a
-                        href="https://www.office.com"
-                        class="step-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Open Office 365
+                        https://www.office.com
                     </a>
                 </div>
 
@@ -965,9 +961,6 @@
                         class="previous-button"
                         onclick="returnToGuideOptions()"
                         id="completionReturnButton"
-                    >
-                        Choose Another Format
-                    </button>
 
                     <a
                         href="index.html"
@@ -1139,13 +1132,10 @@
                 "التغذية الراجعة والشكاوى";
                 
                 document.getElementById("pageDescription").textContent=
-                "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
-                
-                document.getElementById("formatTitle").textContent=
-                "اختر نوع الدليل";
-                
+                "عرض دليل الدعم.";
+
                 document.getElementById("formatDescription").textContent=
-                "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF الأصلي.";
+                "اتبع الدليل التفاعلي خطوة بخطوة .";
                 
                 document.getElementById("interactiveTitle").textContent=
                 "الدليل التفاعلي";
@@ -1153,17 +1143,11 @@
                 document.getElementById("interactiveButton").textContent=
                 "ابدأ الدليل التفاعلي";
                 
-                document.getElementById("pdfTitle").textContent=
-                "دليل PDF";
-                
-                document.getElementById("pdfButton").textContent=
-                "عرض ملف PDF";
-                
+
                 document.getElementById("backButton").textContent=
                 "العودة إلى بوابة الدعم";
                 
-                document.getElementById("returnButton").textContent=
-                "اختيار تنسيق آخر";
+
                 
                 document.getElementById("interactiveGuideTitle").textContent=
                 "الدليل التفاعلي للتغذية الراجعة والشكاوى";
@@ -1234,8 +1218,6 @@
                 document.getElementById("restartGuideButton").textContent=
                 "إعادة تشغيل الدليل";
                 
-                document.getElementById("completionReturnButton").textContent=
-                "اختيار تنسيق آخر";
                 
                 document.getElementById("completionBackButton").textContent=
                 "العودة إلى بوابة الدعم";
@@ -1259,13 +1241,13 @@
                 "Feedback / Complaint";
                 
                 document.getElementById("pageDescription").textContent=
-                "Choose how you would like to view this support guide.";
+                "View this support guide.";
                 
                 document.getElementById("formatTitle").textContent=
                 "Select a Guide Format";
                 
                 document.getElementById("formatDescription").textContent=
-                "Follow an interactive step-by-step guide or open the original PDF document.";
+                "Follow an interactive step-by-step guide.";
                 
                 document.getElementById("interactiveTitle").textContent=
                 "Interactive Guide";
@@ -1273,17 +1255,11 @@
                 document.getElementById("interactiveButton").textContent=
                 "Start Interactive Guide";
                 
-                document.getElementById("pdfTitle").textContent=
-                "PDF Guide";
-                
-                document.getElementById("pdfButton").textContent=
-                "View PDF Guide";
+
                 
                 document.getElementById("backButton").textContent=
                 "← Back to Support Portal";
                 
-                document.getElementById("returnButton").textContent=
-                "← Choose Another Format";
                 
                 document.getElementById("interactiveGuideTitle").textContent=
                 "Interactive Feedback / Complaint Guide";
@@ -1354,8 +1330,6 @@
                 document.getElementById("restartGuideButton").textContent=
                 "Restart Guide";
                 
-                document.getElementById("completionReturnButton").textContent=
-                "Choose Another Format";
                 
                 document.getElementById("completionBackButton").textContent=
                 "Back to Support Portal";
