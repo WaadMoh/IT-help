@@ -669,7 +669,7 @@
             <article class="step-card active" data-step="1">
 
    
-                <span class="step-number">Step 1</span>
+                <span class="step-number" id="stepNumber1">Step 1</span>
 
  
                 <h3 id="step1Title">Open the ECAE Website or Portal</h3>
@@ -732,7 +732,7 @@
             <article class="step-card" data-step="2">
 
    
-                <span class="step-number">Step 2</span>
+                <span class="step-number" id="stepNumber2">Step 2</span>
 
    
                 <h3 id="step2Title">Sign In and Select Students</h3>
@@ -798,8 +798,8 @@
             ====================================== -->
 
             <article class="step-card" data-step="3">
-            
-                <span class="step-number">Step 3</span>
+                
+                <span class="step-number" id="stepNumber3">Step 3</span>
             
                 <h3 id="step3Title">Locate Important Links (Internal)</h3>
             
@@ -842,7 +842,7 @@
             
             <article class="step-card" data-step="4">
             
-                <span class="step-number">Step 4</span>
+                <span class="step-number" id="stepNumber4">Step 4</span>
             
                 <h3 id="step4Title">Open My Attendance & Advisor</h3>
             
@@ -1132,8 +1132,6 @@
                     document.getElementById("restartGuideButton").textContent =
                         "إعادة تشغيل الدليل";
             
-                    document.getElementById("completionReturnButton").textContent =
-                        "اختيار تنسيق آخر";
             
                     document.getElementById("completionBackButton").textContent =
                         "العودة إلى بوابة الدعم";
@@ -1186,6 +1184,26 @@
                     document.getElementById("step4Note").innerHTML = `
                     يتيح هذا القسم للطلاب عرض ومتابعة سجلات الحضور الخاصة بهم.
                     `;
+                    document.getElementById("stepNumber1").textContent = "الخطوة 1";
+                    document.getElementById("stepNumber2").textContent = "الخطوة 2";
+                    document.getElementById("stepNumber3").textContent = "الخطوة 3";
+                    document.getElementById("stepNumber4").textContent = "الخطوة 4";
+                    
+                    document.getElementById("next1").textContent = "التالي";
+                    document.getElementById("next2").textContent = "التالي";
+                    document.getElementById("next3").textContent = "التالي";
+                    
+                    document.getElementById("previous2").textContent = "السابق";
+                    document.getElementById("previous3").textContent = "السابق";
+                    document.getElementById("previous4").textContent = "السابق";
+                    
+                    document.getElementById("finishButton").textContent = "إنهاء الدليل";
+                    document.getElementById("finishButton").textContent =
+                    "إنهاء الدليل";
+                     
+                    document.getElementById("completionBackButton").textContent =
+                    "العودة إلى بوابة الدعم";
+                                        
                 } else {
             
                     document.documentElement.lang = "en";
@@ -1275,6 +1293,27 @@
                     document.getElementById("step4Note").innerHTML = `
                     This section allows students to view and monitor their attendance records.
                     `;
+
+                    document.getElementById("stepNumber1").textContent = "Step 1";
+                    document.getElementById("stepNumber2").textContent = "Step 2";
+                    document.getElementById("stepNumber3").textContent = "Step 3";
+                    document.getElementById("stepNumber4").textContent = "Step 4";
+                    
+                    document.getElementById("next1").textContent = "Next";
+                    document.getElementById("next2").textContent = "Next";
+                    document.getElementById("next3").textContent = "Next";
+                    
+                    document.getElementById("previous2").textContent = "Previous";
+                    document.getElementById("previous3").textContent = "Previous";
+                    document.getElementById("previous4").textContent = "Previous";
+                    
+                    document.getElementById("finishButton").textContent = "Finish Guide";
+                    document.getElementById("restartGuideButton").textContent =
+                        "Restart Guide";
+                
+                    document.getElementById("completionBackButton").textContent =
+                        "Back to Support Portal";
+
             
                 }
             
