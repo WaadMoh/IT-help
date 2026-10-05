@@ -558,8 +558,7 @@
                 <h1 id="pageTitle">Unofficial Transcript</h1>
 
                 <p id="pageSubtitle">
-                    View this support
-                    guide.
+                    View this support guide.
                 </p>
             </div>
 
@@ -674,7 +673,7 @@
                 <h3 id="step1Title">Open the ECAE Website or Portal</h3>
 
     
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step1List">
        
                     <li>Open the Emirates College for Advanced Education (ECAE) website.</li>
         
@@ -735,13 +734,13 @@
                 <h3 id="step2Title">Sign In and Select Students</h3>
 
     
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step2List">
                     <li>Sign in using your ECAE username and password.</li>
                     <li>After signing in, select the <strong>Students</strong> tab.</li>
                 </ol>
 
    
-                <div class="information-note">
+                <div class="information-note" id="step2Note">
                     If you cannot access the portal, reset your password through Office 365 and try again.
                     <strong>Important:</strong><br>
                     Students using other corporate devices may need to sign in using the following username format:
@@ -800,7 +799,7 @@
                 <span id="step3Number">Step 3</span>
                 <h3 id="step3Title">Open Unofficial Transcript</h3>
                 
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step3List">
                     <li>After selecting the <strong>Students</strong> tab, look at the left navigation menu.</li>
                     <li>Locate <strong>Unofficial Transcript</strong>.</li>
                     <li>Select <strong>Unofficial Transcript</strong>.</li>
@@ -840,14 +839,14 @@
                 <span id="step4Number">Step 4</span>
                 <h3 id="step4Title">View Your Unofficial Transcript</h3>
                 
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step4List">
                     <li>Open the Unofficial Transcript page.</li>
                     <li>Review your academic record.</li>
                     <li>View completed courses and grades.</li>
                     <li>Review your cumulative academic performance.</li>
                 </ol>
                 
-                <div class="information-note">
+                <div class="information-note" id="step4Note">
                     The Unofficial Transcript provides a summary of your academic record for personal reference and is not considered an official document.
                 </div>
 
@@ -1077,14 +1076,15 @@
                     document.documentElement.dir = "rtl";
             
                     document.getElementById("pageTitle").textContent = "كشف الدرجات غير الرسمي";
-                    document.getElementById("pageDescription").textContent = "عرض دليل الدعم.";
+                    document.getElementById(""pageSubtitle").textContent = "عرض دليل الدعم.";
                     document.getElementById("formatDescription").textContent = "اتبع الدليل التفاعلي خطوة بخطوة .";
             
                     document.getElementById("interactiveTitle").textContent = "الدليل التفاعلي";
                     document.getElementById("interactiveButton").textContent = "ابدأ الدليل التفاعلي";
             
             
-                    document.getElementById("backButton").textContent = "العودة إلى بوابة الدعم";
+                    document.getElementById("backPortalBtn").textContent =
+                        "العودة إلى بوابة الدعم";
             
                                 
                     document.getElementById("interactiveGuideTitle").textContent =
@@ -1156,11 +1156,11 @@
                     document.getElementById("completionDescription").textContent =
                         "لقد وصلت إلى نهاية دليل الجدول الدراسي.";
             
-                    document.getElementById("restartGuideButton").textContent =
+                    document.getElementById("restartGuideBtn").textContent =
                         "إعادة تشغيل الدليل";
+                                
             
-            
-                    document.getElementById("completionBackButton").textContent =
+                    document.getElementById("completionBackBtn").textContent =
                         "العودة إلى بوابة الدعم";
             
                     document.getElementById("footerText").textContent =
@@ -1260,12 +1260,12 @@
                     document.getElementById("completionDescription").textContent =
                         "You have reached the end of Unofficial Transcript guide.";
             
-                    document.getElementById("restartGuideButton").textContent =
+                    document.getElementById("restartGuideBtn").textContent =
                         "Restart Guide";
             
-                    document.getElementById("completionBackButton").textContent =
-                        "Back to Support Portal";
-            
+                    document.getElementById("completionBackBtn").textContent =
+                        "العودة إلى بوابة الدعم";
+                                
                     document.getElementById("footerText").textContent =
                         "Student Support Portal";
                 }
