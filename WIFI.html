@@ -672,11 +672,11 @@
             
                 <h3 id="deviceSelectionTitle">Which Device Are You Using?</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="deviceSelectionList">
                     <li>Select the type of device you want to connect.</li>
                     <li>You will only see the instructions for your selected device.</li>
                 </ol>
-            
+                            
                 <div class="information-note" id="deviceSelectionNote">
                     The Wi-Fi settings are different for IOS and Android devices.
                 </div>
@@ -715,7 +715,7 @@
             
                 <h3 id="step1Title">Open Wi-Fi Settings</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step1List">
                     <li>Open <strong>Settings</strong> on your IOS.</li>
                     <li>Select <strong>Wi-Fi</strong>.</li>
                     <li>Select <strong>ECAE-BYOD</strong> from the available networks.</li>
@@ -755,7 +755,7 @@
             
                 <h3 id="step2Title">Enter Your ECAE Account Details</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step2List">
                     <li>Enter your ECAE username.</li>
                     <li>Enter your ECAE account password.</li>
                     <li>Tap <strong>Join</strong> or <strong>Connect</strong>.</li>
@@ -800,7 +800,7 @@
             
                 <h3 id="step3Title">Trust the Connection</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step3List">
                     <li>Wait for the certificate information to appear.</li>
                     <li>Tap <strong>Trust</strong> to complete the setup.</li>
                     <li>Wait for your device to connect to ECAE-BYOD.</li>
@@ -844,7 +844,7 @@
             
                 <h3 id="step5Title">Open Wi-Fi Settings</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step5List">
                     <li>Open Wi-Fi settings on your Android device.</li>
                     <li>Select <strong>ECAE-BYOD</strong> from the available networks.</li>
                 </ol>
@@ -883,7 +883,7 @@
             
                 <h3 id="step6Title">Configure the Wi-Fi Settings</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step6List">
                     <li>Select <strong>PEAP</strong> as the EAP method.</li>
                     <li>Select <strong>MSCHAPV2</strong> for Phase 2 authentication.</li>
                     <li>Set the certificate option to <strong>Don't validate</strong>.</li>
@@ -931,7 +931,7 @@
             
                 <h3 id="step7Title">Connect to ECAE-BYOD</h3>
             
-                <ol class="instruction-list">
+                <ol class="instruction-list" id="step7List">
                     <li>Review the connection settings.</li>
                     <li>Tap <strong>Connect</strong>.</li>
                     <li>Wait for your device to join the ECAE-BYOD network.</li>
@@ -1210,6 +1210,40 @@
             
                     document.getElementById("step7Note").textContent =
                         "يجب أن يكون جهاز Android متصلاً الآن بشبكة ECAE-BYOD.";
+
+                    document.getElementById("deviceSelectionList").innerHTML = `
+                    <li>اختر نوع الجهاز الذي تريد توصيله.</li>
+                    <li>ستظهر لك التعليمات الخاصة بالجهاز الذي اخترته فقط.</li>
+                    `;
+                    document.getElementById("step1List").innerHTML = `
+                    <li>افتح الإعدادات على جهاز iOS.</li>
+                    <li>اختر الواي فاي.</li>
+                    <li>اختر شبكة ECAE-BYOD من الشبكات المتاحة.</li>
+                    `;
+                    document.getElementById("step2List").innerHTML = `
+                        <li>أدخل اسم المستخدم الخاص بـ ECAE.</li>
+                        <li>أدخل كلمة المرور الخاصة بحساب ECAE.</li>
+                        <li>اضغط على انضمام أو اتصال.</li>
+                        `;
+                    document.getElementById("step3List").innerHTML = `
+                    <li>انتظر ظهور معلومات الشهادة.</li>
+                    <li>اضغط على وثوق لإكمال الإعداد.</li>
+                    <li>انتظر حتى يتصل الجهاز بشبكة ECAE‑BYOD.</li>
+                    `;
+                    document.getElementById("step5List").innerHTML = `
+                    <li>افتح إعدادات الواي فاي على جهاز أندرويد.</li>
+                    <li>اختر شبكة ECAE‑BYOD من الشبكات المتاحة.</li>
+                    `;
+                    document.getElementById("step7List").innerHTML = `
+                    <li>راجع إعدادات الاتصال.</li>
+                    <li>اضغط على اتصال.</li>
+                    <li>انتظر حتى يتصل الجهاز بشبكة ECAE‑BYOD.</li>
+                    `;
+                    document.getElementById("step7List").innerHTML = `
+                    <li>راجع إعدادات الاتصال.</li>
+                    <li>اضغط على اتصال.</li>
+                    <li>انتظر حتى يتصل الجهاز بشبكة ECAE‑BYOD.</li>
+                    `;
             
                     document.getElementById("chooseDeviceIOS").textContent =
                         "اختيار جهاز آخر";
@@ -1329,6 +1363,11 @@
             
                     document.getElementById("step7Note").textContent =
                         "Your Android device should now be connected to ECAE-BYOD.";
+                    document.getElementById("deviceSelectionList").innerHTML = `
+                        <li>Select the type of device you want to connect.</li>
+                        <li>You will only see the instructions for your selected device.</li>
+                    `;
+
             
                     document.getElementById("chooseDeviceIOS").textContent =
                         "Choose Another Device";
