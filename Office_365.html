@@ -798,7 +798,7 @@
                     type="button"
                     class="back-button"
                     onclick="returnToGuideSelection()"
-                    id="returnButton"
+                    id="returnGuideButton"
                 >
                     ← Choose Another Guide
                 </button>
@@ -822,7 +822,7 @@
                     type="button"
                     class="return-button"
                     onclick="returnToFormatSelection()"
-                    id="returnButton"
+                    id="returnFormatButton"
                 >
                     ← Choose Another Format
                 </button>
@@ -1111,7 +1111,7 @@
                             type="button"
                             class="next-button"
                             onclick="finishGuide()"
-                            id="finishButton"
+                            iid="loginFinishButton"
                         >
                             Finish Guide
                         </button>
@@ -1394,7 +1394,7 @@
                             type="button"
                             class="next-button"
                             onclick="finishGuide()"
-                            id="finishButton"
+                            id="downloadFinishButton"
                         >
                             Finish Guide
                         </button>
@@ -1493,79 +1493,51 @@
         const totalGuideSteps = 4;
 
         let selectedGuide = "login";
+        let currentLanguage =
+            localStorage.getItem("language") || "en";
 
         function selectGuide(guideType) {
             selectedGuide = guideType;
-
-            document.getElementById(
-                "guideSelection"
-            ).style.display = "none";
-
-            document.getElementById(
-                "interactiveGuide"
-            ).classList.remove("visible");
-
-            document.getElementById(
-                "formatSelection"
-            ).style.display = "block";
-
+        
+            document.getElementById("guideSelection").style.display =
+                "none";
+        
+            document.getElementById("interactiveGuide").classList.remove(
+                "visible"
+            );
+        
+            document.getElementById("formatSelection").style.display =
+                "block";
+        
+            const guideOptions =
+                document.querySelector(".guide-options");
+        
+            const videoCard =
+                document.querySelectorAll(".guide-option")[1];
+        
             if (selectedGuide === "login") {
-            
-                document.querySelectorAll(".guide-option")[1].style.display = "none";
-            
-                document.querySelector(".guide-options").style.display = "flex";
-                document.querySelector(".guide-options").style.justifyContent = "center";
-            
-                document.getElementById(
-                    "formatTitle"
-                ).textContent =
-                    "Choose Login Guide Format";
-
-
-                document.getElementById(
-                    "formatDescription"
-                ).textContent =
-                    "View the Office 365 Login Guide.";
-
-                document.getElementById(
-                    "videoGuideButton"
-                ).href =
-                    "office-login.mp4";
-
+                /* Hide the Video Guide for Login */
+                videoCard.style.display = "none";
+        
+                /* Center the Interactive Guide */
+                guideOptions.style.display = "flex";
+                guideOptions.style.justifyContent = "center";
+        
             } else {
-            
-                document.querySelectorAll(".guide-option")[1].style.display = "flex";
-            
-                document.querySelector(".guide-options").style.display = "grid";
-                document.querySelector(".guide-options").style.gridTemplateColumns =
+                /* Show the Video Guide for Download */
+                videoCard.style.display = "flex";
+        
+                guideOptions.style.display = "grid";
+                guideOptions.style.gridTemplateColumns =
                     "repeat(2, minmax(260px, 1fr))";
-
-
-                document.getElementById(
-                    "formatTitle"
-                ).textContent =
-                    "Choose Download Guide Format";
-                document.getElementById("resourceTitle").textContent =
-                    "Video Guide";
-                
-                document.getElementById("resourceDescription").textContent =
-                    "Watch the video walkthrough.";
-                document.getElementById(
-                    "formatDescription"
-                ).textContent =
-                    "Select how you would like to view the Office 365 Download Guide.";
-
-                document.getElementById(
-                    "videoGuideLink"
-                ).href =
-                    "office-download.mp4";
-
-                document.getElementById(
-                    "pdfGuideLink"
-                ).href =
-                    "ECAE Office 365 Download Guide.pdf";
+        
+                document.getElementById("videoGuideButton").href =
+                    "https://www.youtube.com/watch?v=TYcj4VxtSL0";
             }
-
+        
+            /* Apply the selected language after changing guides */
+            setLanguage(currentLanguage);
+        
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
@@ -1573,24 +1545,34 @@
         }
 
         function openInteractiveGuide() {
-            document.getElementById(
-                "formatSelection"
-            ).style.display = "none";
-
-            document.getElementById(
-                "interactiveGuide"
-            ).classList.add("visible");
-
+            document.getElementById("formatSelection").style.display =
+                "none";
+        
+            document.getElementById("interactiveGuide").classList.add(
+                "visible"
+            );
+        
+            /* Hide the top return-to-format button for Login */
             if (selectedGuide === "login") {
                 document.getElementById(
-                    "interactiveTitle"
-                ).textContent =
-                    "Interactive Office 365 Login Guide";
-
+                    "returnFormatButton"
+                ).style.display = "none";
+            } else {
                 document.getElementById(
-                    "completionMessage"
-                ).textContent =
-                    "You have completed the Office 365 Login Guide.";
+                    "returnFormatButton"
+                ).style.display = "inline-flex";
+            }
+        
+            /* Reapply Arabic or English */
+            setLanguage(currentLanguage);
+        
+            showStep(1);
+        
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
             } else {
                 document.getElementById(
                     "interactiveTitle"
@@ -1661,40 +1643,51 @@
                 block: "start"
             });
         }
-
+        
         function finishGuide() {
-            const allCards = document.querySelectorAll(
-                ".step-card"
-            );
-
+            const allCards =
+                document.querySelectorAll(".step-card");
+        
             allCards.forEach(function (card) {
                 card.classList.remove("active");
             });
-
+        
             document.getElementById(
                 "completionCard"
             ).classList.add("active");
-
-            document.getElementById(
-                "stepText"
-            ).textContent =
-                "Guide completed";
-
-            document.getElementById(
-                "progressText"
-            ).textContent =
+        
+            document.getElementById("stepText").textContent =
+                currentLanguage === "ar"
+                    ? "اكتمل الدليل"
+                    : "Guide completed";
+        
+            document.getElementById("progressText").textContent =
                 "100%";
-
-            document.getElementById(
-                "progressFill"
-            ).style.width =
+        
+            document.getElementById("progressFill").style.width =
                 "100%";
-
-            document.getElementById(
-                "interactiveGuide"
-            ).scrollIntoView({
+        
+            /*
+               Hide Choose Another Format for Login.
+               Show it for Download.
+            */
+            if (selectedGuide === "login*) {
+                document.getElementByI*(
+                    "completionReturnBut*on"
+                ).style.display = "non*";
+            } else {
+                document.g*tElementById(
+                    "complet*onReturnButton"
+                ).style.di*play = "inline-flex";
+            }
+        
+            s*tLanguage(currentLanguage);
+        
+            d*cument.getElementById(
+                "in*eractiveGuide"
+            ).scrollIntoVie*({
                 behavior: "smooth",
-                block: "start"
+           *    block: "start"
             });
         }
 
@@ -1757,6 +1750,7 @@
         ).textContent =
             new Date().getFullYear();
             function setLanguage(lang) {
+                currentLanguage = lang;
             
                 if (lang === "ar") {
             
@@ -1793,12 +1787,20 @@
                     document.getElementById("backButton").textContent =
                         "العودة إلى بوابة الدعم";
             
-                    document.getElementById("formatTitle").textContent =
-                        "اختر نوع الدليل";
-            
-                    document.getElementById("formatDescription").textContent =
-                        "اختر الطريقة التي تفضلها لعرض هذا الدليل.";
-            
+                    if (selectedGuide === "login") {
+                        document.getElementById("formatTitle"*.textContent =
+                            "دليل تسجيل الدخول إلى Microsoft 365";
+                    
+                        document.getElementById("formatDescri*tion").textContent =
+                            "ابدأ دليل تسجيل الدخول التفاعلي.";
+                    
+                    } else {
+                        document.getElementById("*ormatTitle").textContent =
+                           "اختر نوع دليل تنزيل Microsoft 365";
+                    
+                        document.getElementById("fo*matDescription").textContent =
+                            "ابدأ الدليل التفاعلي أو شاهد دليل الفيديو.";
+                    }
                     document.getElementById("interactiveGuideTitle").textContent =
                         "الدليل التفاعلي";
             
@@ -1818,9 +1820,11 @@
                         "🎥 مشاهدة الفيديو";
   
             
-                    document.getElementById("returnButton").textContent =
+                    document.getElementById("returnGuideButton").textC*ntent =
                         "اختيار دليل آخر";
-            
+                    
+                    document.getElementById("returnFormatButton").textContent =
+                        "اختيار تنسيق آخر";
                     document.getElementById("interactiveTitle").textContent =
                         selectedGuide === "login"
                             ? "الدليل التفاعلي لتسجيل الدخول إلى Microsoft 365"
