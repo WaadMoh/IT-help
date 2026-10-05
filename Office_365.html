@@ -638,7 +638,7 @@
 
              <div class="header-logo">
                <img
-                   src="Logoc.png"
+                   src="Logoc.png">
             </div>
         </div>
     </header>
@@ -1537,12 +1537,44 @@
                     "You have completed the Office 365 Download Guide.";
             }
 
-            showStep(1);
+            setLanguage(currentLanguage);
 
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
             });
+        }
+        function openInteractiveGuide() {
+        
+            document.getElementById(
+                "formatSelection"
+            ).style.display = "none";
+        
+            document.getElementById(
+                "interactiveGuide"
+            ).classList.add("visible");
+        
+            if (selectedGuide === "login") {
+        
+                document.getElementById(
+                    "returnFormatButton"
+                ).style.display = "none";
+        
+            } else {
+        
+                document.getElementById(
+                    "returnFormatButton"
+                ).style.display = "inline-flex";
+        
+            }
+        
+            showStep(1);
+        
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        
         }
 
         function showStep(stepNumber) {
@@ -1793,17 +1825,17 @@
                         "العودة إلى بوابة الدعم";
             
                     if (selectedGuide === "login") {
-                        document.getElementById("formatTitle"*.textContent =
+                        document.getElementById("formatTitle").textContent =
                             "دليل تسجيل الدخول إلى Microsoft 365";
                     
-                        document.getElementById("formatDescri*tion").textContent =
+                        document.getElementById("formatDescription").textContent =
                             "ابدأ دليل تسجيل الدخول التفاعلي.";
                     
                     } else {
-                        document.getElementById("*ormatTitle").textContent =
+                        document.getElementById("formatTitle").textContent =
                            "اختر نوع دليل تنزيل Microsoft 365";
                     
-                        document.getElementById("fo*matDescription").textContent =
+                        document.getElementById("formatDescription").textContent =
                             "ابدأ الدليل التفاعلي أو شاهد دليل الفيديو.";
                     }
                     document.getElementById("interactiveGuideTitle").textContent =
@@ -1825,7 +1857,7 @@
                         "🎥 مشاهدة الفيديو";
   
             
-                    document.getElementById("returnGuideButton").textC*ntent =
+                    document.getElementById("returnGuideButton").textContent =
                         "اختيار دليل آخر";
                     
                     document.getElementById("returnFormatButton").textContent =
