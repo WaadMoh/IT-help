@@ -1111,7 +1111,7 @@
                             type="button"
                             class="next-button"
                             onclick="finishGuide()"
-                            iid="loginFinishButton"
+                            id="loginFinishButton"
                         >
                             Finish Guide
                         </button>
@@ -1523,56 +1523,7 @@
                 guideOptions.style.display = "flex";
                 guideOptions.style.justifyContent = "center";
         
-            } else {
-                /* Show the Video Guide for Download */
-                videoCard.style.display = "flex";
-        
-                guideOptions.style.display = "grid";
-                guideOptions.style.gridTemplateColumns =
-                    "repeat(2, minmax(260px, 1fr))";
-        
-                document.getElementById("videoGuideButton").href =
-                    "https://www.youtube.com/watch?v=TYcj4VxtSL0";
-            }
-        
-            /* Apply the selected language after changing guides */
-            setLanguage(currentLanguage);
-        
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        }
 
-        function openInteractiveGuide() {
-            document.getElementById("formatSelection").style.display =
-                "none";
-        
-            document.getElementById("interactiveGuide").classList.add(
-                "visible"
-            );
-        
-            /* Hide the top return-to-format button for Login */
-            if (selectedGuide === "login") {
-                document.getElementById(
-                    "returnFormatButton"
-                ).style.display = "none";
-            } else {
-                document.getElementById(
-                    "returnFormatButton"
-                ).style.display = "inline-flex";
-            }
-        
-            /* Reapply Arabic or English */
-            setLanguage(currentLanguage);
-        
-            showStep(1);
-        
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        }
             } else {
                 document.getElementById(
                     "interactiveTitle"
@@ -1671,23 +1622,23 @@
                Hide Choose Another Format for Login.
                Show it for Download.
             */
-            if (selectedGuide === "login*) {
-                document.getElementByI*(
-                    "completionReturnBut*on"
-                ).style.display = "non*";
+            if (selectedGuide === "login") {
+                document.getElementById(
+                    "completionReturnButton"
+                ).style.display = "none";
             } else {
-                document.g*tElementById(
-                    "complet*onReturnButton"
-                ).style.di*play = "inline-flex";
+                document.getElementById(
+                    "completionReturnButton"
+                ).style.display = "inline-flex";
             }
         
-            s*tLanguage(currentLanguage);
+            setLanguage(currentLanguage);
         
-            d*cument.getElementById(
-                "in*eractiveGuide"
-            ).scrollIntoVie*({
+            document.getElementById(
+                "interactiveGuide"
+            ).scrollIntoView({
                 behavior: "smooth",
-           *    block: "start"
+                block: "start"
             });
         }
 
@@ -1765,7 +1716,60 @@
             
                     document.getElementById("guideSelectionTitle").textContent =
                         "اختر دليل Microsoft 365";
-            
+                    document.getElementById("loginStep1List").innerHTML = `
+                        <li>افتح بوابة ECAE باستخدام الرابط الموجود بالأسفل.</li>
+                        <li>انتظر حتى تفتح صفحة تسجيل الدخول لبوابة ECAE.</li>
+                    `;
+                    
+                    document.getElementById("loginStep2List").innerHTML = `
+                        <li>أدخل اسم المستخدم الخاص بك في ECAE.</li>
+                        <li>أدخل كلمة مرور حساب ECAE.</li>
+                        <li>اضغط على تسجيل الدخول.</li>
+                        <li>بعد تسجيل الدخول اختر تبويب الطلاب.</li>
+                    `;
+                    
+                    document.getElementById("loginStep2Note").innerHTML = `
+                        <strong>مهم:</strong><br><br>
+                        قد يحتاج الطلاب الذين يستخدمون أجهزة مؤسسية أخرى إلى استخدام الصيغة التالية:<br><br>
+                        <strong>ECAE\\StudentID</strong><br>
+                        مثال:<br>
+                        <strong>ECAE\\001164</strong>
+                    `;
+                    
+                    document.getElementById("loginStep3List").innerHTML = `
+                        <li>انظر إلى اللوحة الموجودة في الجانب الأيمن من بوابة ECAE.</li>
+                        <li>ابحث عن قسم الروابط المهمة الداخلية.</li>
+                        <li>اختر ECAE Office 365.</li>
+                    `;
+                    
+                    document.getElementById("loginStep4List").innerHTML = `
+                        <li>أدخل عنوان البريد الإلكتروني الخاص بك في ECAE.</li>
+                        <li>اضغط على التالي.</li>
+                        <li>أدخل كلمة المرور.</li>
+                        <li>اضغط على تسجيل الدخول.</li>
+                        <li>يمكنك الآن الوصول إلى خدمات وتطبيقات Microsoft 365.</li>
+                    `;
+                    
+                    document.getElementById("loginNext1").textContent =
+                        "التالي";
+                    
+                    document.getElementById("loginPrevious2").textContent =
+                        "السابق";
+                    
+                    document.getElementById("loginNext2").textContent =
+                        "التالي";
+                    
+                    document.getElementById("loginPrevious3").textContent =
+                        "السابق";
+                    
+                    document.getElementById("loginNext3").textContent =
+                        "التالي";
+                    
+                    document.getElementById("loginPrevious4").textContent =
+                        "السابق";
+                    
+                    document.getElementById("loginFinishButton").textContent =
+                        "إنهاء الدليل";
                     document.getElementById("guideSelectionDescription").textContent =
                         "اختر ما إذا كنت تحتاج إلى المساعدة في تسجيل الدخول أو تنزيل تطبيقات Microsoft 365.";
             
@@ -1948,9 +1952,12 @@
                     document.getElementById("videoGuideButton").textContent =
                         "🎥 Watch Video Guide";
             
-                    document.getElementById("returnButton").textContent =
+                    document.getElementById("returnGuideButton").textContent =
                         "← Choose Another Guide";
-            
+                    
+                    document.getElementById("returnFormatButton").textContent =
+                        "← Choose Another Format";
+                                
                     document.getElementById("completionTitle").textContent =
                         "Guide Complete";
             
