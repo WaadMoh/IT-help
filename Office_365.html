@@ -768,10 +768,9 @@
                         📄
                     </div>
 
-                    <h3 id="resourceTitle">Guide Resources</h3>
-
+                    <h3 id="resourceTitle">Video Guide</h3>
                     <p id="resourceDescription">
-                        Additional guide resources.
+                        Watch the video walkthrough.
                     </p>
                     <div class="format-buttons">
 
@@ -784,20 +783,7 @@
                     >
                         🎥 Watch Video Guide
                     </a>
-                    
-                    <div class="format-buttons">
 
-                     <a
-                         id="pdfGuideButton"
-                         href="ECAE Office 365.cleaned.pdf"
-                         class="guide-button"
-                         id="downloadGuideButton"
-                         
-                         >
-                            📄 View PDF Guide
-                        </a>
-                    
-                    </div>
                     
 
                 </article>
@@ -1522,7 +1508,6 @@
             ).style.display = "block";
 
             if (selectedGuide === "login") {
-                document.getElementById("pdfGuideButton").style.display = "inline-flex";
                 document.getElementById("videoGuideButton").style.display = "none";
                 document.getElementById("resourceTitle").textContent =
                     "PDF Guide";
@@ -1543,12 +1528,7 @@
                 ).href =
                     "office-login.mp4";
 
-                document.getElementById(
-                    "pdfGuideButton"
-                ).href =
-                    "ECAE Office 365.cleaned.pdf";
             } else {
-                document.getElementById("pdfGuideButton").style.display = "none";
                 document.getElementById("videoGuideButton").style.display = "inline-flex";
                 document.getElementById(
                     "formatTitle"
@@ -1825,9 +1805,7 @@
             
                     document.getElementById("videoGuideButton").textContent =
                         "🎥 مشاهدة الفيديو";
-            
-                    document.getElementById("pdfGuideButton").textContent =
-                        "📄 عرض PDF";
+  
             
                     document.getElementById("returnButton").textContent =
                         "اختيار دليل آخر";
@@ -1954,9 +1932,6 @@
             
                     document.getElementById("videoGuideButton").textContent =
                         "🎥 Watch Video Guide";
-            
-                    document.getElementById("pdfGuideButton").textContent =
-                        "📄 View PDF Guide";
             
                     document.getElementById("returnButton").textContent =
                         "← Choose Another Guide";
