@@ -213,7 +213,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 340px;
+            width: 100%;
+            max-width: 650px;
+            min-height: 420px;
             padding: 34px 28px;
             border: 1px solid #DCE5F3;
             border-top: 6px solid var(--ecae-blue);
@@ -731,7 +733,7 @@
                 </h2>
 
                 <p id="formatDescription">
-                    Select how you would like to view this guide.
+                    View this guide.
                 </p>
 
             </div>
@@ -1508,17 +1510,22 @@
             ).style.display = "block";
 
             if (selectedGuide === "login") {
-                document.getElementById("videoGuideButton").style.display = "none";
-
+            
+                document.querySelectorAll(".guide-option")[1].style.display = "none";
+            
+                document.querySelector(".guide-options").style.display = "flex";
+                document.querySelector(".guide-options").style.justifyContent = "center";
+            
                 document.getElementById(
                     "formatTitle"
                 ).textContent =
                     "Choose Login Guide Format";
 
+
                 document.getElementById(
                     "formatDescription"
                 ).textContent =
-                    "Select how you would like to view the Office 365 Login Guide.";
+                    "View the Office 365 Login Guide.";
 
                 document.getElementById(
                     "videoGuideButton"
@@ -1526,7 +1533,14 @@
                     "office-login.mp4";
 
             } else {
-                document.getElementById("videoGuideButton").style.display = "inline-flex";
+            
+                document.querySelectorAll(".guide-option")[1].style.display = "flex";
+            
+                document.querySelector(".guide-options").style.display = "grid";
+                document.querySelector(".guide-options").style.gridTemplateColumns =
+                    "repeat(2, minmax(260px, 1fr))";
+
+
                 document.getElementById(
                     "formatTitle"
                 ).textContent =
