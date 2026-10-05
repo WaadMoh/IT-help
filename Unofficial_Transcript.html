@@ -146,34 +146,35 @@
            GUIDE OPTIONS
         ========================================= */
 
-        .guide-options {
-            display: grid;
-            grid-template-columns: repeat(
-                2,
-                minmax(260px, 1fr)
-            );
-            gap: 26px;
-        }
 
+        .guide-options {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
         .guide-option {
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 330px;
-            padding: 34px 28px;
+            width: 100%;
+            max-width: 650px;
+            min-height: 420px;
+            padding: 50px 40px;
             border: 1px solid #DCE5F3;
-            border-top: 6px solid var(--ecae-blue);
-            border-radius: 18px;
+            border-top: 8px solid var(--ecae-blue);
+            border-radius: 20px;
             background: white;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 52, 168, 0.09);
-            transition: 0.3s;
+            box-shadow: 0 12px 35px rgba(0, 52, 168, 0.12);
+            transition: all 0.3s ease;
+        }
+        
+        .guide-option:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 45px rgba(0, 52, 168, 0.18);
         }
 
-        .guide-option:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 14px 32px rgba(0, 52, 168, 0.16);
-        }
 
         .option-icon {
             display: flex;
@@ -224,15 +225,7 @@
             background: var(--ecae-dark-blue);
         }
 
-        .pdf-button {
-            background: white;
-            color: var(--ecae-blue);
-        }
 
-        .pdf-button:hover {
-            background: var(--ecae-light-blue);
-            color: var(--ecae-dark-blue);
-        }
 
         /* =========================================
            BACK BUTTON
@@ -565,7 +558,7 @@
                 <h1 id="pageTitle">Unofficial Transcript</h1>
 
                 <p id="pageSubtitle">
-                    Choose how you would like to view this support
+                    View this support
                     guide.
                 </p>
             </div>
@@ -587,11 +580,9 @@
         <div id="formatSelection">
 
             <section class="introduction">
-                <h2 id="formatTitle">Select a Guide Format</h2>
-
+                
                 <p id="formatDescription">
-                    Follow an interactive step-by-step guide or open
-                    the original PDF document.
+                    Follow an interactive step-by-step guide
                 </p>
             </section>
 
@@ -605,36 +596,20 @@
                         💻
                     </div>
 
-                    <h3 id="interactiveCardTitle">Interactive Guide</h3>
+                    <h3 id="interactiveTitle">
+                        Interactive Guide
+                    </h3>
+                    
+
 
                     <button
                         type="button"
                         class="guide-button"
                         onclick="openInteractiveGuide()"
-                        id="startGuideBtn"
+                        id="interactiveButton"
                     >
                         Start Interactive Guide
                     </button>
-
-                </article>
-
-                <!-- PDF guide option -->
-
-                <article class="guide-option">
-
-                    <div class="option-icon" aria-hidden="true">
-                        📄
-                    </div>
-
-                    <h3 id="pdfCardTitle">PDF Guide</h3>
-
-                                   <a
-                        href="Unofficial Transcript.cleaned.pdf"
-                        class="guide-button"
-                        id="pdfGuideBtn"
-                        >
-                        View PDF Guide                
-                    </a>
 
                 </article>
 
@@ -663,14 +638,6 @@
 
             <div class="interactive-heading">
 
-                <button
-                    type="button"
-                    class="return-button"
-                    onclick="returnToGuideOptions()"
-                    id="chooseFormatBtn"
-                >
-                    ← Choose Another Format
-                </button>
 
                 <h2 id="interactiveGuideTitle">
                     Interactive Unofficial Transcript Guide
@@ -727,7 +694,7 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Open ECAE Website
+                        https://www.ecae.ac.ae/en/
                     </a>
 
                     <a
@@ -736,7 +703,7 @@
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        Open ECAE Portal
+                        https://portal.ecae.ac.ae/
                     </a>
 
                 </div>
@@ -794,21 +761,10 @@
                         class="step-link"
                         target="_blank"
                         >
-                        Open Office 365
+                        https://www.office.com
                     </a>
                 </div>
 
-
-                <div class="step-links">
-                    <a
-                        href="https://www.office.com"
-                        class="step-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Open Office 365
-                    </a>
-                </div>
 
                 <div class="navigation-buttons">
 
@@ -953,14 +909,6 @@
                         Restart Guide
                     </button>
 
-                    <button
-                        type="button"
-                        class="previous-button"
-                        onclick="returnToGuideOptions()"
-                        id="completionFormatBtn"
-                    >
-                        Choose Another Format
-                    </button>
 
                     <a
                         href="index.html"
@@ -1128,23 +1076,19 @@
                     document.documentElement.lang = "ar";
                     document.documentElement.dir = "rtl";
             
-                    document.getElementById("pageTitle").textContent = "جدولي الدراسي";
-                    document.getElementById("pageDescription").textContent = "اختر الطريقة التي ترغب في عرض دليل الدعم بها.";
-            
-                    document.getElementById("formatTitle").textContent = "اختر نوع الدليل";
-                    document.getElementById("formatDescription").textContent = "اتبع دليلاً تفاعلياً خطوة بخطوة أو افتح ملف PDF.";
+                    document.getElementById("pageTitle").textContent = "كشف الدرجات غير الرسمي";
+                    document.getElementById("pageDescription").textContent = "عرض دليل الدعم.";
+                    document.getElementById("formatDescription").textContent = "اتبع الدليل التفاعلي خطوة بخطوة .";
             
                     document.getElementById("interactiveTitle").textContent = "الدليل التفاعلي";
                     document.getElementById("interactiveButton").textContent = "ابدأ الدليل التفاعلي";
             
-                    document.getElementById("pdfTitle").textContent = "دليل PDF";
-                    document.getElementById("pdfButton").textContent = "عرض ملف PDF";
             
                     document.getElementById("backButton").textContent = "العودة إلى بوابة الدعم";
             
-                    document.getElementById("returnButton").textContent = "اختيار تنسيق آخر";
-            
-                    document.getElementById("interactiveGuideTitle").textContent = "الدليل التفاعلي للجدول الدراسي";
+                                
+                    document.getElementById("interactiveGuideTitle").textContent =
+                        "الدليل التفاعلي لكشف الدرجات غير الرسمي";
                     document.getElementById("interactiveGuideDescription").textContent = "اتبع التعليمات خطوة بخطوة.";
             
                     document.getElementById("step1Title").textContent = "فتح موقع ECAE أو البوابة الإلكترونية";
@@ -1155,13 +1099,7 @@
                         <li>اختر بوابة ECAE.</li>
                         <li>يمكنك أيضاً استخدام الروابط المباشرة.</li>
                     `;
-            
-                    document.getElementById("step1WebsiteLink").textContent =
-                        "فتح موقع ECAE";
-            
-                    document.getElementById("step1PortalLink").textContent =
-                        "فتح بوابة ECAE";
-            
+
                     document.getElementById("step2Title").textContent =
                         "تسجيل الدخول واختيار الطلاب";
             
@@ -1179,31 +1117,28 @@
                         <strong>ECAE\\001164</strong>
                     `;
             
-                    document.getElementById("step2OfficeLink").textContent =
-                        "فتح Office 365";
+ 
             
                     document.getElementById("step3Title").textContent =
-                        "فتح الجدول الدراسي";
-            
+                        "فتح كشف الدرجات غير الرسمي";
+                    
                     document.getElementById("step3List").innerHTML = `
-                        <li>بعد اختيار تبويب الطلاب، انتقل إلى القائمة الجانبية.</li>
-                        <li>ابحث عن الجدول الدراسي.</li>
-                        <li>اختر الجدول الدراسي.</li>
+                        <li>بعد اختيار تبويب الطلاب، انتقل إلى القائمة الجانبية اليسرى.</li>
+                        <li>ابحث عن كشف الدرجات غير الرسمي.</li>
+                        <li>اضغط على كشف الدرجات غير الرسمي.</li>
                     `;
-            
-                    document.getElementById("step4Title").textContent =
-                        "عرض الجدول الدراسي";
-            
+                     document.getElementById("step4Title").textContent =
+                        "عرض كشف الدرجات غير الرسمي";
+                    
                     document.getElementById("step4List").innerHTML = `
-                        <li>افتح صفحة الجدول الدراسي.</li>
-                        <li>راجع جدول محاضراتك.</li>
-                        <li>تحقق من أسماء المقررات وأوقات المحاضرات والقاعات.</li>
-                        <li>راجع معلومات أعضاء هيئة التدريس وجدولك الأسبوعي.</li>
+                        <li>افتح صفحة كشف الدرجات غير الرسمي.</li>
+                        <li>راجع سجلك الأكاديمي.</li>
+                        <li>اعرض المقررات المكتملة والدرجات.</li>
+                        <li>راجع الأداء الأكاديمي التراكمي.</li>
                     `;
-            
+                    
                     document.getElementById("step4Note").textContent =
-                        "يتيح الجدول الدراسي للطلاب عرض أسماء المقررات وأوقاتها والقاعات وأعضاء هيئة التدريس.";
-            
+                        "يوفر كشف الدرجات غير الرسمي ملخصاً لسجلك الأكاديمي للاستخدام الشخصي فقط ولا يعتبر مستنداً رسمياً.";
                     document.getElementById("next1").textContent = "التالي";
             
                     document.getElementById("previous2").textContent = "السابق";
@@ -1224,8 +1159,6 @@
                     document.getElementById("restartGuideButton").textContent =
                         "إعادة تشغيل الدليل";
             
-                    document.getElementById("completionReturnButton").textContent =
-                        "اختيار تنسيق آخر";
             
                     document.getElementById("completionBackButton").textContent =
                         "العودة إلى بوابة الدعم";
@@ -1238,15 +1171,12 @@
                     document.documentElement.lang = "en";
                     document.documentElement.dir = "ltr";
             
-                    document.getElementById("pageTitle").textContent = "My Timetable";
+                    document.getElementById("pageTitle").textContent = "Unofficial Transcript";
                     document.getElementById("pageDescription").textContent =
-                        "Choose how you would like to view this support guide.";
-            
-                    document.getElementById("formatTitle").textContent =
-                        "Select a Guide Format";
+                        "View this support guide.";
             
                     document.getElementById("formatDescription").textContent =
-                        "Follow an interactive step-by-step guide or open the original PDF document.";
+                        "Follow an interactive step-by-step guide.";
             
                     document.getElementById("interactiveTitle").textContent =
                         "Interactive Guide";
@@ -1254,20 +1184,12 @@
                     document.getElementById("interactiveButton").textContent =
                         "Start Interactive Guide";
             
-                    document.getElementById("pdfTitle").textContent =
-                        "PDF Guide";
-            
-                    document.getElementById("pdfButton").textContent =
-                        "View PDF Guide";
             
                     document.getElementById("backButton").textContent =
                         "← Back to Support Portal";
             
-                    document.getElementById("returnButton").textContent =
-                        "← Choose Another Format";
-            
                     document.getElementById("interactiveGuideTitle").textContent =
-                        "Interactive My Timetable Guide";
+                        "Interactive Unofficial Transcript Guide";
             
                     document.getElementById("interactiveGuideDescription").textContent =
                         "Follow the instructions one step at a time.";
@@ -1282,12 +1204,7 @@
                         <li>You can also use the direct links.</li>
                     `;
             
-                    document.getElementById("step1WebsiteLink").textContent =
-                        "Open ECAE Website";
-            
-                    document.getElementById("step1PortalLink").textContent =
-                        "Open ECAE Portal";
-            
+
                     document.getElementById("step2Title").textContent =
                         "Sign In and Select Students";
             
@@ -1304,32 +1221,28 @@
                         Example:<br>
                         <strong>ECAE\\001164</strong>
                     `;
-            
-                    document.getElementById("step2OfficeLink").textContent =
-                        "Open Office 365";
+
             
                     document.getElementById("step3Title").textContent =
-                        "Open My Timetable";
+                        "Open Unofficial Transcript";
             
                     document.getElementById("step3List").innerHTML = `
                         <li>After selecting the Students tab, look at the left navigation menu.</li>
-                        <li>Locate My Timetable.</li>
-                        <li>Select My Timetable.</li>
+                        <li>Locate Unofficial Transcript.</li>
+                        <li>Select Unofficial Transcript.</li>
                     `;
-            
                     document.getElementById("step4Title").textContent =
-                        "View Your Class Schedule";
-            
+                        "View Your Unofficial Transcript";
+                    
                     document.getElementById("step4List").innerHTML = `
-                        <li>Open the My Timetable page.</li>
-                        <li>Review your class schedule.</li>
-                        <li>Check course names, class times, and locations.</li>
-                        <li>Review instructor information and your weekly timetable.</li>
+                        <li>Open the Unofficial Transcript page.</li>
+                        <li>Review your academic record.</li>
+                        <li>View completed courses and grades.</li>
+                        <li>Review your cumulative academic performance.</li>
                     `;
-            
+                    
                     document.getElementById("step4Note").textContent =
-                        "My Timetable allows students to view course names, class times, locations, and instructors.";
-            
+                        "The Unofficial Transcript provides a summary of your academic record for personal reference and is not considered an official document.";
                     document.getElementById("next1").textContent = "Next";
             
                     document.getElementById("previous2").textContent = "Previous";
@@ -1345,13 +1258,10 @@
                         "Guide Complete";
             
                     document.getElementById("completionDescription").textContent =
-                        "You have reached the end of the My Timetable guide.";
+                        "You have reached the end of Unofficial Transcript guide.";
             
                     document.getElementById("restartGuideButton").textContent =
                         "Restart Guide";
-            
-                    document.getElementById("completionReturnButton").textContent =
-                        "Choose Another Format";
             
                     document.getElementById("completionBackButton").textContent =
                         "Back to Support Portal";
